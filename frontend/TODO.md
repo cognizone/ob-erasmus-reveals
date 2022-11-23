@@ -1,0 +1,6 @@
+- Create usual .scss structure with abstract, base, etc.
+- Create CoreModule
+- Create SharedModule
+- add @angular/material and @angular/cdk
+- import utility styles from boostrap
+  - we can try with 5 see how it goes, or go the usual way with 4.X
