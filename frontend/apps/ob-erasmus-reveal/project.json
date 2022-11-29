@@ -19,7 +19,7 @@
           "apps/ob-erasmus-reveal/src/favicon.ico",
           "apps/ob-erasmus-reveal/src/assets"
         ],
-        "styles": ["apps/ob-erasmus-reveal/src/styles.scss"],
+        "styles": ["apps/ob-erasmus-reveal/src/styles/main.scss"],
         "scripts": []
       },
       "configurations": {
