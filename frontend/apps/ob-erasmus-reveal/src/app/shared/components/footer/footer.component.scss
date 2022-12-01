@@ -1,0 +1,75 @@
+@import 'abstracts';
+
+footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--footer-bg-color);
+}
+
+.my-footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+
+  p {
+    color: var(--font-color-links);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    color: var(--font-color-links);
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.my-sub-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.my-sub-footer-links {
+  font-size: 1rem;
+  color: var(--color-gray-70);
+  line-height: 1.5rem;
+  padding-left: 2rem;
+  text-decoration: underline;
+}
+
+.my-copyright {
+  color: var(--color-gray-70);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  padding-top: 0.25rem;
+}
+
+form {
+  margin-top: 1.5rem;
+
+  .my-signup {
+    width: 100%;
+    display: flex;
+    position: relative;
+  }
+
+  input {
+    @include sign-up-input;
+  }
+
+  button {
+    @include join-now-button;
+  }
+}

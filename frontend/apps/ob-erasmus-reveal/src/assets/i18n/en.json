@@ -1,0 +1,29 @@
+{
+  "global": {
+    "about": "What's Reveal?",
+    "about_tags": "About tags",
+    "application_name": "Reveal",
+    "email_placeholder": "Enter your email",
+    "join": "Join"
+  },
+  "header": {
+    "get_started": "Get started",
+    "sign_in": "Sign in",
+    "skills": "Skills"
+  },
+  "login": {},
+  "footer": {
+    "accessibility": "Accessibility",
+    "discover": "Discover",
+    "follow": "Follow us",
+    "help": "Help",
+    "join_now": "Join and start right away to share your skills",
+    "privacy_policy": "Privacy Policy",
+    "social_media": {
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    },
+    "terms_of_use": "Terms of Use"
+  }
+}

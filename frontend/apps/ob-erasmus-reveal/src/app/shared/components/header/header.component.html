@@ -1,0 +1,16 @@
+<header *transloco="let t">
+  <div class="my-header container">
+    <div>Reveal Logo Here!</div>
+    <div class="my-nav-container">
+      <nav>
+        <ul>
+          <li *ngFor="let navItem of navItems">
+            <a [ngClass]="navItem.className">
+              {{ t(navItem.labelKey) }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

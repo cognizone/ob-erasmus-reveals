@@ -1,0 +1,44 @@
+<footer *transloco="let t;">
+  <div class="container">
+    <!-- Social media and login -->
+    <nav class="my-footer">
+      <div>Reveal Logo here!</div>
+      <div>
+        <p>{{ t('footer.discover') }}</p>
+        <ul>
+          <li *ngFor="let discover of discoverItems">
+            <a>{{ t(discover.labelKey) }}</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p>{{ t('footer.follow') }}</p>
+        <ul>
+          <li *ngFor="let media of socialMedia">
+            <a>{{ t(media.labelKey) }}</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p>{{ t('footer.join_now') }}</p>
+        <form>
+          <div class="my-signup">
+            <input type="text" [placeholder]=" t('global.email_placeholder') "/>
+            <button>{{ t('global.join') }}</button>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+  <!-- Policies -->
+  <div class="my-sub-footer">
+    <div class="container d-flex justify-content-between">
+      <div class="my-copyright">© {{ year }} {{ t('global.application_name') }}</div>
+      <div>
+        <a class="my-sub-footer-links"> {{ t('footer.terms_of_use') }}</a>
+        <a class="my-sub-footer-links">{{ t('footer.accessibility') }}</a>
+        <a class="my-sub-footer-links">{{ t('footer.privacy_policy') }}</a>
+      </div>
+    </div>
+  </div>
+</footer>

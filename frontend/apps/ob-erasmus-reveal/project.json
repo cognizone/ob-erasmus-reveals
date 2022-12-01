@@ -20,6 +20,9 @@
           "apps/ob-erasmus-reveal/src/assets"
         ],
         "styles": ["apps/ob-erasmus-reveal/src/styles/main.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/ob-erasmus-reveal/src/styles"]
+        },
         "scripts": []
       },
       "configurations": {
