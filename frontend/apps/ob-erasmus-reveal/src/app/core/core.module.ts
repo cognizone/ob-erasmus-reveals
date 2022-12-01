@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { DATA_MODEL_DEFINITION_HELPER_TOKEN, JsonModelService } from '@cognizone/json-model';
-import { TRANSLOCO_CONFIG, translocoConfig } from '@ngneat/transloco';
+import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, translocoConfig } from '@ngneat/transloco';
 import { TranslocoLocaleModule } from '@ngneat/transloco-locale';
 
 import { environment } from '../../environments/environment';
 import { AuthService, ConfigService, CountriesService, customIdGeneratorProvider } from './services';
 import { getInitializerProvider } from './utils';
+import { TranslocoHttpLoader } from './services/transloco-http-loader.service';
 
 @NgModule({
   declarations: [],
@@ -30,6 +31,7 @@ import { getInitializerProvider } from './utils';
         prodMode: environment.production,
       }),
     },
+    { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader },
   ],
 })
 export class CoreModule {}
