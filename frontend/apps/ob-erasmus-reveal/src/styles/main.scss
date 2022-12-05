@@ -1,7 +1,11 @@
 @import 'abstracts';
 
-@import "vendors/bootstrap";
+@import 'vendors/bootstrap';
+@import 'vendors/material';
 
 @import 'base/base';
 @import 'base/css-variables';
 @import 'base/typography';
+
+@import 'components/buttons';
+@import 'components/icons';
