@@ -1,0 +1,8 @@
+html body .mat-mdc-menu-panel.mdc-menu-surface {
+  border-radius: 8px;
+  box-shadow: 0 0 1px 0 rgba(40, 41, 61, 0.04), 0 2px 4px 0 rgba(96, 97, 112, 0.16);
+  color: var(--color-gray-60);
+  .mat-mdc-menu-item {
+    font-weight: 600;
+  }
+}

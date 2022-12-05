@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-import { NavItem } from "../../models/nav-item";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { NavItem } from '../../models/nav-item';
 
 @Component({
   selector: 'ob-erasmus-reveal-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
   year: number = new Date().getFullYear();
@@ -20,7 +22,7 @@ export class FooterComponent {
     },
     {
       labelKey: 'footer.help',
-      path: '/about'
+      path: '/about',
     },
   ];
 
@@ -35,7 +37,7 @@ export class FooterComponent {
     },
     {
       labelKey: 'footer.social_media.linkedin',
-      path: '#'
+      path: '#',
     },
   ];
 }

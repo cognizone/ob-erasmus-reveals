@@ -1,9 +1,10 @@
 :root {
+  --color-gray-60: #686868;
   --color-gray-70: #505050;
-  --border-color: #C6C6C6;
-  --join-bg-color: linear-gradient(135deg, #CD1AFF 0%, #1D80FF 100%);
-  --footer-bg-color: #F9F9FD;
-  --primary-violet: #5B43B1;
-  --font-color-links: #686868; // The name might change
+  --border-color: #c6c6c6;
+  --join-bg-color: linear-gradient(135deg, #cd1aff 0%, #1d80ff 100%);
+  --footer-bg-color: #f9f9fd;
+  --primary-violet: #5b43b1;
+  --font-color-links: var(--color-gray-60); // The name might change
   --font-family: 'Archivo', sans-serif;
 }

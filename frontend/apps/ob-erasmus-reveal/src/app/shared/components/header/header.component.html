@@ -1,16 +1,34 @@
-<header *transloco="let t">
-  <div class="my-header container">
-    <div>Reveal Logo Here!</div>
-    <div class="my-nav-container">
-      <nav>
-        <ul>
-          <li *ngFor="let navItem of navItems">
-            <a [ngClass]="navItem.className">
-              {{ t(navItem.labelKey) }}
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+<header *transloco="let t" class="container d-flex align-items-center">
+  <div>Reveal Logo Here!</div>
+  <div class="flex-grow-1"></div>
+  <nav>
+    <ul>
+      <li>
+        <a class="app-button">{{ t('header.skills') }}</a>
+      </li>
+      <li>
+        <a class="app-button">{{ t('global.about') }}</a>
+      </li>
+    </ul>
+  </nav>
+  <button class="app-button ml-3" [matMenuTriggerFor]="menu">
+    <mat-icon>language</mat-icon>
+    {{ t('langs.' + i18nService.getActiveLang()) }}
+  </button>
+
+  <div class="my-auth-links">
+    <a class="app-button">{{ t('header.sign_in') }}</a>
+    <a class="app-button" color="primary">{{ t('header.get_started') }}</a>
   </div>
+
+  <mat-menu #menu="matMenu">
+    <button
+      *ngFor="let lang of i18nService.getAvailableLangs()"
+      mat-menu-item
+      [class.is-active]="lang === i18nService.getActiveLang()"
+      (click)="languageService.setActiveLang(lang)"
+    >
+      {{ t('langs.' + lang) }}
+    </button>
+  </mat-menu>
 </header>
