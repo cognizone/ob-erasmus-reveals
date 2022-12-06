@@ -6,36 +6,29 @@
   margin-bottom: 0;
 }
 
-.my-left-column {
-  display: flex;
-  flex-direction: column;
+img {
+  @include app-images(550px);
+}
 
+.my-left-column {
   section {
     margin-bottom: 2.5rem;
-    background-color: #F4F4FC; // maybe we can simplify this with the var usage, William do you have any idea about this?
-    img {
-      @include app-images(370px); // also better to use px here or we change it to rem? :Thinking thinking
-    }
+    background-color: var(--color-ghost-white);
+    // TODO - find a way to use the same variable and assign different colors based on sections
 
     &:nth-child(2) {
-      background-color: #F2FBF7;
-
-      img {
-        @include app-images(338px);
-      }
+      background-color: var(--color-floral-white);
     }
   }
 }
 
 .my-right-column {
   margin-left: 1.5rem;
-  margin-top: 14rem;
+  display: flex;
+  align-items: center;
 
   section {
-    background-color: #FEFBEB;
-    img {
-      @include app-images(336px);
-    }
+    background-color: var(--color-pale-yellow);
   }
 }
 

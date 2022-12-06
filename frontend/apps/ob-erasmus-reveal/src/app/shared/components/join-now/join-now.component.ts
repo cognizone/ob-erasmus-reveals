@@ -1,27 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'ob-erasmus-reveal-join-now',
-    templateUrl: './join-now.component.html',
-    styleUrls: ['./join-now.component.scss'],
+  selector: 'ob-erasmus-reveal-join-now',
+  templateUrl: './join-now.component.html',
+  styleUrls: ['./join-now.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JoinNowComponent {
-    points: point[] = [
-        {
-            "label": 'action_points.point_1'
-        },
-        {
-            "label": 'action_points.point_2'
-        },
-        {
-            "label": 'action_points.point_3'
-        },
-        {
-            "label": 'action_points.point_4'
-        }
-    ]
+  points: Point[] = [...new Array(4)].map((k, index) => ({ label: `action_points.point_${index + 1}` }));
 }
 
-interface point {
-    label: string
+interface Point {
+  label: string
 }

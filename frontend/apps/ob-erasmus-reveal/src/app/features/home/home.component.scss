@@ -4,10 +4,7 @@
   margin: auto;
 
   h1 {
-    font-size: 4rem;
-    color: var(--color-primary-text);
     margin-bottom: 2rem;
-    font-weight: 600;
   }
 
   .my-skills-description {
@@ -16,37 +13,32 @@
     margin-bottom: 2.5rem;
   }
 
-  // This will go away with app-button class
   a {
-    border-radius: 0.5rem;
-    background-color: var(--primary-violet);
-    color: white;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.43px;
-    line-height: 1rem;
+    height: 3rem;
+    flex: 0 0 auto;
+    margin-right: 1rem;
   }
 
   .my-skills-meta {
-    font-size: 1rem;
     font-style: italic;
     color: var(--color-gray-50);
   }
 }
 
 .my-user-skills {
-  margin-top: -6.5rem; // Not the best solution, TODO - add media query so it looks fine on a mobile device
+  margin-top: -6.5rem; // TODO - check in the channel for mobile device usage
 
   img {
     height: 1000px;
-    width: 680px; // This will change once Language PR is merged
+    width: 680px;
   }
 }
 
 .my-join-now {
   background-color: var(--primary-violet);
-  color: white;
+  color: var(--color-white);
 }
 
 .my-targets {
@@ -55,7 +47,6 @@
   margin-top: 6rem;
 
   p {
-    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 0;
   }

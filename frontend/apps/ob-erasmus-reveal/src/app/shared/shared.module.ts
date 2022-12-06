@@ -9,8 +9,6 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { RouterModule } from '@angular/router';
-import { MatButtonModule } from '@angular/material/button';
 import { AboutComponent } from './components/about/about.component';
 import { JoinNowComponent } from './components/join-now/join-now.component';
 import { SignupComponent } from './components/signup/signup.component';

@@ -1,11 +1,11 @@
-@import 'abstracts';
+@use 'abstracts/mixins' as *;
 
 footer {
   background-color: var(--footer-bg-color);
 }
 
 .my-logo {
-  @include app-images(36px);
+  @include app-images(158px);
 }
 
 .my-footer {
@@ -23,8 +23,7 @@ footer {
   }
 
   ul {
-    list-style-type: none;
-    padding: 0;
+    @include reset-ul;
   }
 
   li {
