@@ -5,4 +5,5 @@ export * from './custom-id-generator.service';
 export * from './item.service';
 export * from './language.service';
 export * from './static-items.service';
+export * from './transloco-http-loader.service';
 export * from './user.service';

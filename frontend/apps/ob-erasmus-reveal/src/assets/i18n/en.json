@@ -1,15 +1,75 @@
 {
+  "about": {
+    "skills": {
+      "part_1": {
+        "description_1": "While you can safely display your hard skills, directly related to your role, your soft ones may need a boost of recognition.",
+        "description_2": "Reveal helps you receive feedback to build trust in all your skills.",
+        "description_3": "With the the endorsement of your peers, your skills are better recognised and valuable.",
+        "heading_1": "Share skills,",
+        "heading_2": "share credit",
+        "logo_alt": "Skills part 1 logo"
+      },
+      "part_2": {
+        "description_1": "Giving spontaneous feedback in the workplace is hard, but neuroscience says a proactive invitation makes it far easier.",
+        "description_2": "Whenever you want input from your colleagues, your friends, you peers, just post a feedback request, and feel the value of all you skills.",
+        "heading_1": "Reveal your skills and yourself",
+        "logo_alt": "Skills part 2 logo"
+      },
+      "part_3": {
+        "description_1": "Soft skills are especially relevant in CV writing, interviewing and communicating with people at work or other areas of your life.",
+        "description_2": "As you progress through your job search process, use Reveal to update your CV and highlight your most relevant soft skills.",
+        "heading_1": "Let people know how skilled you are",
+        "logo_alt": "Skills part 3 logo"
+      }
+    }
+  },
   "global": {
     "about": "What's Reveal?",
     "about_tags": "About tags",
     "application_name": "Reveal",
     "email_placeholder": "Enter your email",
-    "join": "Join"
+    "join": "Join",
+    "logo_alt": "Application logo"
   },
   "header": {
     "get_started": "Get started",
     "sign_in": "Sign in",
     "skills": "Skills"
+  },
+  "home": {
+    "description": "Reveal helps you to promote your skills and expand your personal development",
+    "heading": "Let your skills make all the difference",
+    "promote_skills": "Start to promote your skills",
+    "skills_alt": "Multiple skills per user",
+    "skills_meta_description": "Free, all reward, start right now to get and give endorsements",
+    "target_1": {
+      "description": "your visibility",
+      "image_alt": "visibility",
+      "label": "Improve"
+    },
+    "target_2": {
+      "description": "your reputation",
+      "image_alt": "reputation",
+      "label": "Boost"
+    },
+    "target_3": {
+      "description": "your credential",
+      "image_alt": "credential",
+      "label": "Build"
+    }
+  },
+  "join_now": {
+    "action_points": {
+      "image_alt": "points to be noted",
+      "point_1": "Take action on your personal development",
+      "point_2": "Be more confident in your role",
+      "point_3": "Showcase all your skills",
+      "point_4": "Grow in your career"
+    },
+    "already_member": "Already a member?",
+    "connect": "Connect",
+    "description": "Join the people using Reveal to get credit for your skills",
+    "heading": "Up your game, join Reveal"
   },
   "login": {},
   "footer": {

@@ -1,0 +1,21 @@
+<ng-container *transloco="let t; read: 'join_now'">
+  <div class="container my-join-now-content">
+    <div>
+      <h4>{{ t('heading') }}</h4>
+      <p>{{ t('description') }}</p>
+    </div>
+    <ob-erasmus-reveal-signup></ob-erasmus-reveal-signup>
+    <ul>
+      <li *ngFor="let point of points">
+        <img src="assets/images/icon-svgs/icon-etoile-check.svg" [alt]="t('action_points.image_alt')">
+        {{ t(point.label) }}
+      </li>
+    </ul>
+
+    <!-- TODO -- try to move to left -->
+    <div class="my-member">
+      <p>{{ t('already_member') }}</p>
+      <a><u>{{ t('connect') }}</u></a>
+    </div>
+  </div>
+</ng-container>

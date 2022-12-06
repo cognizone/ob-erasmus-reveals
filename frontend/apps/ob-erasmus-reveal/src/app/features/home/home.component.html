@@ -1,0 +1,55 @@
+<!-- Introduction -->
+<section *transloco="let t; read: 'home'" class="container">
+  <div class="row">
+
+    <!-- left part of homepage -->
+    <article class="my-homepage col-12 col-lg-7">
+      <h1>{{ t('heading') }}</h1>
+      <p class="my-skills-description"> {{ t('description') }}</p>
+      <!-- TODO - add app-button similar to Language PR merge -->
+      <div class="d-flex align-items-center">
+        <div class="w-100">
+          <a>{{ t('promote_skills') }}</a>
+        </div>
+        <div class="my-skills-meta">
+          <p> {{ t('skills_meta_description') }}</p>
+        </div>
+      </div>
+
+      <div class="my-targets">
+        <div>
+          <img src="assets/images/icon-svgs/icon-view.svg" [alt]="t('target_1.image_alt')"/>
+          <p class="my-target-label">{{ t('target_1.label') }}</p>
+          <p class="my-target-description">{{ t('target_1.description') }}</p>
+        </div>
+        <div>
+          <img src="assets/images/icon-svgs/icon-rating.svg" [alt]="t('target_2.image_alt')"/>
+          <p class="my-target-label">{{ t('target_2.label') }}</p>
+          <p class="my-target-description">{{ t('target_2.description') }}</p>
+        </div>
+        <div>
+          <img src="assets/images/icon-svgs/icon-award.svg" [alt]="t('target_3.image_alt')"/>
+          <p class="my-target-label">{{ t('target_3.label') }}</p>
+          <p class="my-target-description">{{ t('target_3.description') }}</p>
+        </div>
+      </div>
+    </article>
+    <!-- left part of homepage -->
+
+    <!-- right image on homepage -->
+    <div class="col-12 col-lg-5 my-user-skills">
+      <img src="assets/images/homepage/home-cover-BG.svg" [alt]="t('skills_alt')"/>
+    </div>
+  </div>
+</section>
+<!-- Introduction ends here -->
+
+<!-- TODO charts, Next PR -->
+
+<!--about section -->
+<ob-erasmus-reveal-about></ob-erasmus-reveal-about>
+<!-- about section ends here -->
+<!-- join reveal section -->
+<section class="my-join-now">
+  <ob-erasmus-reveal-join-now></ob-erasmus-reveal-join-now>
+</section>

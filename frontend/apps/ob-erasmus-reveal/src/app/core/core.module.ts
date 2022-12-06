@@ -7,8 +7,7 @@ import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, translocoConfig } from '@ngneat/tra
 import { TranslocoLocaleModule } from '@ngneat/transloco-locale';
 
 import { environment } from '../../environments/environment';
-import { AuthService, ConfigService, CountriesService, customIdGeneratorProvider, LanguageService } from './services';
-import { TranslocoHttpLoader } from './services/transloco-http-loader.service';
+import { AuthService, ConfigService, CountriesService, customIdGeneratorProvider, LanguageService, TranslocoHttpLoader } from './services';
 import { getInitializerProvider } from './utils';
 
 @NgModule({

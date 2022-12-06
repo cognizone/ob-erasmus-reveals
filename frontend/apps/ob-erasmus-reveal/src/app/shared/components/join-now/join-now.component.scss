@@ -1,0 +1,51 @@
+@import "abstracts";
+
+.my-join-now-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 7.5rem;
+  width: 400px;
+  height: 850px;
+  text-align: center;
+
+  h4 {
+    font-size: 3rem
+  }
+
+  p {
+    margin-top: 1.5rem;
+    font-size: 1.5rem
+  }
+}
+
+ul {
+  padding-top: 2.5rem;
+  padding-left: 0;
+  list-style-type: none;
+  text-align: left;
+
+  img {
+    margin-right: 1rem;
+  }
+
+  li {
+    margin-top: 1.5rem;
+  }
+}
+
+.my-member {
+  display: flex;
+  align-items: center;
+
+  p {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  a {
+    text-decoration: underline;
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+}
