@@ -7,30 +7,18 @@
       <h1>{{ t('heading') }}</h1>
       <p class="my-skills-description"> {{ t('description') }}</p>
       <!-- TODO - add app-button similar to Language PR merge -->
-      <div class="d-flex align-items-center">
-        <div class="w-100">
-          <a>{{ t('promote_skills') }}</a>
-        </div>
+      <div class="d-flex">
+        <a class="app-button" color="primary">{{ t('promote_skills') }}</a>
         <div class="my-skills-meta">
           <p> {{ t('skills_meta_description') }}</p>
         </div>
       </div>
 
       <div class="my-targets">
-        <div>
-          <img src="assets/images/icon-svgs/icon-view.svg" [alt]="t('target_1.image_alt')"/>
-          <p class="my-target-label">{{ t('target_1.label') }}</p>
-          <p class="my-target-description">{{ t('target_1.description') }}</p>
-        </div>
-        <div>
-          <img src="assets/images/icon-svgs/icon-rating.svg" [alt]="t('target_2.image_alt')"/>
-          <p class="my-target-label">{{ t('target_2.label') }}</p>
-          <p class="my-target-description">{{ t('target_2.description') }}</p>
-        </div>
-        <div>
-          <img src="assets/images/icon-svgs/icon-award.svg" [alt]="t('target_3.image_alt')"/>
-          <p class="my-target-label">{{ t('target_3.label') }}</p>
-          <p class="my-target-description">{{ t('target_3.description') }}</p>
+        <div *ngFor="let target of targets">
+          <img [src]="target.path" [alt]="t(target.altLabel)"/>
+          <p class="my-target-label">{{ t(target.label) }}</p>
+          <p class="my-target-description">{{ t(target.description) }}</p>
         </div>
       </div>
     </article>

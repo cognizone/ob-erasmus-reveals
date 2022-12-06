@@ -1,4 +1,4 @@
-@import 'abstracts';
+@use 'abstracts/mixins' as *;
 
 form {
   margin-top: 1.5rem;

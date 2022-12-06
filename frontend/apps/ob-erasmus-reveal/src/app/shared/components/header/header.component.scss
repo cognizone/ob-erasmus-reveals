@@ -1,16 +1,18 @@
+@use 'abstracts/mixins' as *;
+
 header {
   padding: 2rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .my-logo {
-  @include app-images(36px);
+  @include app-images(158px);
 }
 
 nav {
-  z-index: 99999; // Maybe just 1
   ul {
-    list-style-type: none;
-    padding: 0;
+    @include reset-ul;
     margin: 0;
     display: flex;
     gap: 1rem;

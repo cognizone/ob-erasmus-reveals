@@ -1,4 +1,4 @@
-@import "abstracts";
+@use 'abstracts/mixins' as *;
 
 .my-join-now-content {
   display: flex;
@@ -20,9 +20,8 @@
 }
 
 ul {
+  @include reset-ul;
   padding-top: 2.5rem;
-  padding-left: 0;
-  list-style-type: none;
   text-align: left;
 
   img {
