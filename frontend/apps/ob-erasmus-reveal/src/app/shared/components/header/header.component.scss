@@ -2,7 +2,12 @@ header {
   padding: 2rem 0;
 }
 
+.my-logo {
+  @include app-images(36px);
+}
+
 nav {
+  z-index: 99999; // Maybe just 1
   ul {
     list-style-type: none;
     padding: 0;

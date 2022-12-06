@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Social media and login -->
     <nav class="my-footer">
-      <div>Reveal Logo here!</div>
+      <img class="my-logo" src="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')" />
       <div>
         <p>{{ t('footer.discover') }}</p>
         <ul>
@@ -21,12 +21,7 @@
       </div>
       <div>
         <p>{{ t('footer.join_now') }}</p>
-        <form>
-          <div class="my-signup">
-            <input type="text" [placeholder]=" t('global.email_placeholder') "/>
-            <button>{{ t('global.join') }}</button>
-          </div>
-        </form>
+        <ob-erasmus-reveal-signup></ob-erasmus-reveal-signup>
       </div>
     </nav>
   </div>

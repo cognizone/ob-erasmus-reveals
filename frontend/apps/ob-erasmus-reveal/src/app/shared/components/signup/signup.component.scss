@@ -1,0 +1,19 @@
+@import 'abstracts';
+
+form {
+  margin-top: 1.5rem;
+
+  .my-signup {
+    width: 100%;
+    display: flex;
+    position: relative;
+  }
+
+  input {
+    @include sign-up-input;
+  }
+
+  button {
+    @include join-now-button;
+  }
+}

@@ -1,0 +1,55 @@
+@import "abstracts";
+
+.my-heading {
+  font-size: 3.75rem;
+  color: var(--color-primary-text);
+  margin-bottom: 0;
+}
+
+.my-left-column {
+  display: flex;
+  flex-direction: column;
+
+  section {
+    margin-bottom: 2.5rem;
+    background-color: #F4F4FC; // maybe we can simplify this with the var usage, William do you have any idea about this?
+    img {
+      @include app-images(370px); // also better to use px here or we change it to rem? :Thinking thinking
+    }
+
+    &:nth-child(2) {
+      background-color: #F2FBF7;
+
+      img {
+        @include app-images(338px);
+      }
+    }
+  }
+}
+
+.my-right-column {
+  margin-left: 1.5rem;
+  margin-top: 14rem;
+
+  section {
+    background-color: #FEFBEB;
+    img {
+      @include app-images(336px);
+    }
+  }
+}
+
+.my-skills {
+  border-radius: var(--skills-border-radius);
+  padding: 2.5rem;
+  width: 620px;
+
+  p {
+    color: var(--color-primary-text);
+    font-size: 1rem;
+  }
+}
+
+.my-text {
+  margin-top: 1.5rem;
+}

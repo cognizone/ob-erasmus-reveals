@@ -1,0 +1,71 @@
+@import "abstracts";
+
+.my-homepage {
+  margin: auto;
+
+  h1 {
+    font-size: 4rem;
+    color: var(--color-primary-text);
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  .my-skills-description {
+    font-size: 1.5rem;
+    color: var(--color-primary-text);
+    margin-bottom: 2.5rem;
+  }
+
+  // This will go away with app-button class
+  a {
+    border-radius: 0.5rem;
+    background-color: var(--primary-violet);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.43px;
+    line-height: 1rem;
+  }
+
+  .my-skills-meta {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-gray-50);
+  }
+}
+
+.my-user-skills {
+  margin-top: -6.5rem; // Not the best solution, TODO - add media query so it looks fine on a mobile device
+
+  img {
+    height: 1000px;
+    width: 680px; // This will change once Language PR is merged
+  }
+}
+
+.my-join-now {
+  background-color: var(--primary-violet);
+  color: white;
+}
+
+.my-targets {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6rem;
+
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+}
+
+.my-target-label {
+  margin-top: 0.875rem;
+  color: var(--color-gray-70);
+}
+
+.my-target-description {
+  color: var(--primary-violet);
+}

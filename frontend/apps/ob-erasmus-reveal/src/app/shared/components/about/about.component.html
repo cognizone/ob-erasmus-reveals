@@ -1,0 +1,35 @@
+<ng-container *transloco="let t; read: 'about'">
+  <!-- skills description -->
+  <section class="container d-flex">
+    <div class="my-left-column">
+      <section class="my-skills">
+        <article>
+          <h2 class="my-heading">{{ t('skills.part_1.heading_1') }}</h2>
+          <h3 class="my-heading">{{ t('skills.part_1.heading_2') }}</h3>
+          <p class="my-text mb-0">{{ t('skills.part_1.description_1') }}</p>
+          <p>{{ t('skills.part_1.description_2') }}</p>
+          <p><strong>{{ t('skills.part_1.description_3') }}</strong></p>
+          <img src="assets/images/homepage/home-skills-1.webp" [alt]="t('skills.part_1.logo_alt')" />
+        </article>
+      </section>
+      <section class="my-skills">
+        <article>
+          <h2 class="my-heading">{{ t('skills.part_2.heading_1') }}</h2>
+          <p class="my-text">{{ t('skills.part_2.description_1') }}</p>
+          <p><strong>{{ t('skills.part_2.description_2') }}</strong></p>
+          <img src="assets/images/homepage/home-skills-2.webp" [alt]="t('skills.part_2.logo_alt')" />
+        </article>
+      </section>
+    </div>
+    <div class="my-right-column">
+      <section class="my-skills">
+        <article>
+          <h2 class="my-heading">{{ t('skills.part_3.heading_1') }}</h2>
+          <p class="my-text"><strong>{{ t('skills.part_3.description_1') }}</strong></p>
+          <p>{{ t('skills.part_3.description_2') }}</p>
+          <img src="assets/images/homepage/home-skills-3.webp" [alt]="t('skills.part_3.logo_alt')" />
+        </article>
+      </section>
+    </div>
+  </section>
+</ng-container>
