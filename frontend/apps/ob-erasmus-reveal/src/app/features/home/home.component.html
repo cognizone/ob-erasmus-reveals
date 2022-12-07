@@ -1,3 +1,4 @@
+<ob-erasmus-reveal-header></ob-erasmus-reveal-header>
 <!-- Introduction -->
 <section *transloco="let t; read: 'home'" class="container">
   <div class="row">
@@ -8,7 +9,7 @@
       <p class="my-skills-description"> {{ t('description') }}</p>
       <!-- TODO - add app-button similar to Language PR merge -->
       <div class="d-flex">
-        <a class="app-button" color="primary">{{ t('promote_skills') }}</a>
+        <a class="app-button" color="primary" routerLink="/signup">{{ t('promote_skills') }}</a>
         <div class="my-skills-meta">
           <p> {{ t('skills_meta_description') }}</p>
         </div>
@@ -16,9 +17,9 @@
 
       <div class="my-targets">
         <div *ngFor="let target of targets">
-          <img [src]="target.path" [alt]="t(target.altLabel)"/>
-          <p class="my-target-label">{{ t(target.label) }}</p>
-          <p class="my-target-description">{{ t(target.description) }}</p>
+          <img [width]="target.imgWidth" [height]="target.imgHeight" [ngSrc]="target.imgSrc" [alt]="t(target.imgAlt)"/>
+          <p class="my-target-label">{{ t(target.heading) }}</p>
+          <p class="my-target-description">{{ t(target.content) }}</p>
         </div>
       </div>
     </article>
@@ -26,7 +27,8 @@
 
     <!-- right image on homepage -->
     <div class="col-12 col-lg-5 my-user-skills">
-      <img src="assets/images/homepage/home-cover-BG.svg" [alt]="t('skills_alt')"/>
+      <img priority [ngSrc]="'assets/images/homepage/home-cover-BG_' + this.i18nService.getActiveLang() + '.webp'" height="1000"
+           width="630" [alt]="t('skills_alt')"/>
     </div>
   </div>
 </section>
@@ -38,6 +40,14 @@
 <ob-erasmus-reveal-about></ob-erasmus-reveal-about>
 <!-- about section ends here -->
 <!-- join reveal section -->
-<section class="my-join-now">
-  <ob-erasmus-reveal-join-now></ob-erasmus-reveal-join-now>
+<section class="my-join-now" *transloco="let t; read: 'join_now'">
+  <div class="container my-join-now-content">
+    <ob-erasmus-reveal-join-now></ob-erasmus-reveal-join-now>
+    <div class="my-member">
+      <p class="mr-3 mb-0"> {{ t('already_member') }}</p>
+      <a class="app-anchor" routerLink="/login">{{ t('connect') }}</a>
+    </div>
+  </div>
 </section>
+
+<ob-erasmus-reveal-footer></ob-erasmus-reveal-footer>

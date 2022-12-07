@@ -1,0 +1,30 @@
+<div class="container mb-5">
+  <ng-container *transloco="let t">
+    <header class="d-flex align-items-center">
+      <a routerLink="/"><img width="158" height="36" ngSrc="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')"/></a>
+    </header>
+  </ng-container>
+
+  <ng-container *transloco="let t; read:'complete_profile'">
+    <h1>{{ t('greetings') }}</h1>
+    <h2 class="mb-5">{{ t('welcome_to_reveal') }}</h2>
+
+    <div class="my-profile-description">
+      <p>{{ t('description_1') }}</p>
+      <p>{{ t('description_2') }}</p>
+    </div>
+
+    <div class="my-information">
+      <h3>{{ t('information.heading') }}</h3>
+      <div *ngFor="let info of information" class="d-flex pt-4">
+        <img [ngSrc]="info.imgSrc" [alt]="t(info.imgAlt)" [width]="info.imgWidth" [height]="info.imgHeight" />
+        <div class="pl-5">
+          <h4> {{ t(info.heading) }} </h4>
+          <p> {{ t(info.content) }} </p>
+        </div>
+      </div>
+    </div>
+    <button class="app-button" color="primary" (click)="onClick()"> {{ t('complete_now') }} </button>
+  </ng-container>
+</div>
+<!-- TODO add the new footer, 3 different footers in this application -->

@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { I18nService } from '@cognizone/i18n';
+import { InformativeSection  } from '@app/core';
 
 @Component({
   selector: 'ob-erasmus-reveal-home',
@@ -7,32 +9,31 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  targets: Target[] = [
+  targets: InformativeSection[] = [
     {
-      'altLabel': 'target_1.image_alt',
-      'label': 'target_1.label',
-      'path': 'assets/images/icon-svgs/icon-view.svg',
-      'description': 'target_1.description'
+      'imgAlt': 'target_1.image_alt',
+      'heading': 'target_1.label',
+      'imgSrc': 'assets/images/icon-svgs/icon-view.svg',
+      'content': 'target_1.description',
+      'imgWidth': '39',
+      'imgHeight': '31'
     },
     {
-      'altLabel': 'target_2.image_alt',
-      'label': 'target_2.label',
-      'path': 'assets/images/icon-svgs/icon-rating.svg',
-      'description': 'target_2.description'
+      'imgAlt': 'target_2.image_alt',
+      'heading': 'target_2.label',
+      'imgSrc': 'assets/images/icon-svgs/icon-rating.svg',
+      'content': 'target_2.description',
+      'imgWidth': '33',
+      'imgHeight': '33'
     },
     {
-      'altLabel': 'target_3.image_alt',
-      'label': 'target_3.label',
-      'path': 'assets/images/icon-svgs/icon-award.svg',
-      'description': 'target_3.description'
+      'imgAlt': 'target_3.image_alt',
+      'heading': 'target_3.label',
+      'imgSrc': 'assets/images/icon-svgs/icon-award.svg',
+      'content': 'target_3.description',
+      'imgWidth': '39',
+      'imgHeight': '39'
     }
   ]
-
-}
-
-interface Target {
-  altLabel: string;
-  label: string;
-  path: string;
-  description: string;
+  constructor(public i18nService: I18nService) {}
 }

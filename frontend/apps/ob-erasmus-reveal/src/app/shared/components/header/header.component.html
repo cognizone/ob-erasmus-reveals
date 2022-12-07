@@ -1,5 +1,5 @@
 <header *transloco="let t" class="container d-flex align-items-center">
-  <img class="my-logo" src="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')" />
+  <a routerLink="/"><img width="158" height="36" ngSrc="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')"/></a>
   <div class="flex-grow-1"></div>
   <nav>
     <ul>
@@ -17,8 +17,8 @@
   </button>
 
   <div class="my-auth-links">
-    <a class="app-button">{{ t('header.sign_in') }}</a>
-    <a class="app-button" color="primary">{{ t('header.get_started') }}</a>
+    <a routerLink="/login" class="app-button">{{ t('header.sign_in') }}</a>
+    <a routerLink="/signup" class="app-button" color="primary">{{ t('header.get_started') }}</a>
   </div>
 
   <mat-menu #menu="matMenu">

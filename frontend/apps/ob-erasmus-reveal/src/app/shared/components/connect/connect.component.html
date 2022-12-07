@@ -1,0 +1,25 @@
+<ng-container *transloco="let t">
+  <header class="container d-flex align-items-center">
+    <a routerLink="/"><img width="158" height="36" ngSrc="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')"/></a>
+    <div class="flex-grow-1"></div>
+    <div class="d-flex" *transloco="let t; read: 'join_now'">
+      <p class="mr-3 mb-0"> {{ t(getStarted ? 'already_member' : 'not_a_member') }}</p>
+      <a class="app-anchor" color="primary"
+         [routerLink]="getStarted ? ['/login'] : ['/signup']">{{ t(getStarted ? 'connect' : 'join_now') }}</a>
+    </div>
+  </header>
+
+  <div class="d-flex justify-content-between container mt-5">
+    <ng-container *ngIf="getStarted">
+      <img src="assets/images/Illustrations-svgs/wfh_1-text.svg" [alt]="t('global.sign_up_alt')"/>
+      <ob-erasmus-reveal-join-now></ob-erasmus-reveal-join-now>
+    </ng-container>
+    <ng-container *ngIf="!getStarted">
+    <img src="assets/images/Illustrations-svgs/wfh_9-text.svg" [alt]="t('global.login_alt')"/>
+      <div>
+        <h1 class="text-center"> {{ t('join_now.connect') }} </h1>
+        <ob-erasmus-reveal-signup [login]="true"></ob-erasmus-reveal-signup>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

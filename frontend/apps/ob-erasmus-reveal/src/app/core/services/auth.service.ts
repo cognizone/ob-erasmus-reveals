@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, Injectable, Provider } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 
 import { User } from '../models';
@@ -13,6 +13,7 @@ export class AuthService implements Initializer {
   }
 
   private readonly storageKey: string = 'auth';
+  private readonly temporaryStorageKey: string = 'temp'; // Using this till the user is not registered and logged in
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
   constructor(private userService: UserService, private configService: ConfigService) {}
@@ -38,7 +39,16 @@ export class AuthService implements Initializer {
 
   // TODO send email api
   register(email: string): Observable<unknown> {
+    this.setTemporaryEmail(email);
     return randomDelay(email);
+  }
+
+  getTemporaryEmailState(): string {
+    return localStorage.getItem(this.temporaryStorageKey) as string;
+  }
+
+  private setTemporaryEmail(email: string): void {
+    localStorage.setItem(this.temporaryStorageKey, email);
   }
 
   private getState(): string | null {
@@ -48,6 +58,7 @@ export class AuthService implements Initializer {
   private setState(email: string | null): void {
     if (email) {
       localStorage.setItem(this.storageKey, email);
+      localStorage.removeItem(this.temporaryStorageKey);
     } else {
       localStorage.removeItem(this.storageKey);
     }

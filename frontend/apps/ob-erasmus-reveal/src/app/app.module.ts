@@ -21,6 +21,18 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule),
       },
       {
+        path: 'signup',
+        loadChildren: () => import('./features/get-started/get-started.module').then(m => m.GetStartedModule),
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('./features/login/login.module').then(m => m.LoginModule),
+      },
+      {
+        path: 'complete-profile',
+        loadChildren: () => import('./features/complete-profile/complete-profile.module').then(m => m.CompleteProfileModule),
+      }, // TODO - remove me after email template is ready.
+      {
         path: 'feedback-request',
         loadChildren: () => import('./features/feedback-request/feedback-request.module').then(m => m.FeedbackRequestModule),
       },

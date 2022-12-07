@@ -1,0 +1,10 @@
+<ng-container *transloco="let t; read: 'email_confirmation'">
+  <button class="app-dialog-close-button" (click)="dialogRef.close()"><mat-icon>close</mat-icon></button>
+  <div class="my-dialog-content">
+    <img ngSrc="assets/images/Illustrations-svgs/mail-mail.svg" width="290" height="200" [alt]="t('check_inbox')" />
+    <h1>{{ t('check_inbox') }}</h1>
+    <p class="my-get-started">{{ t('get_started') }}</p>
+    <p class="my-email">{{ this.data.email }}</p>
+    <a class="app-anchor" color="primary">{{ t('send_again') }}</a>
+  </div>
+</ng-container>

@@ -4,10 +4,6 @@ footer {
   background-color: var(--footer-bg-color);
 }
 
-.my-logo {
-  @include app-images(158px);
-}
-
 .my-footer {
   padding-top: 2rem;
   padding-bottom: 2rem;

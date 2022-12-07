@@ -1,0 +1,27 @@
+h1 {
+  color: var(--primary-violet);
+  font-size: 4.5rem;
+  font-weight: 600;
+  margin-top: 4rem;
+}
+
+h2, h3 {
+  margin-top: 3rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-black-eerie);
+}
+
+.my-profile-description, h4 {
+  font-size: 1.5rem;
+  color: var(--color-black-eerie);
+  p{
+    margin-bottom: 0
+  }
+}
+
+.my-information {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--color-gainsboro);
+  margin-bottom: 1.5rem;
+}
