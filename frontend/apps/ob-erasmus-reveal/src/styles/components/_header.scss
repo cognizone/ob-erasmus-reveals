@@ -1,0 +1,9 @@
+@mixin app-header {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  @include app-header
+}

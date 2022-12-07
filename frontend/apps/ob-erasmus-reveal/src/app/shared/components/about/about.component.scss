@@ -1,13 +1,7 @@
-@import "abstracts";
-
 .my-heading {
   font-size: 3.75rem;
   color: var(--color-primary-text);
   margin-bottom: 0;
-}
-
-img {
-  @include app-images(550px);
 }
 
 .my-left-column {

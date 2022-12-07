@@ -27,12 +27,8 @@
   border: 1px solid var(--primary-violet);
 }
 
-@mixin app-images($width) {
-  height: auto;
-  width: $width;
-}
-
 @mixin reset-ul {
+  margin: 0;
   padding-left: 0;
   list-style-type: none;
 }

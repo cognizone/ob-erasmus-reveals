@@ -23,6 +23,47 @@
       }
     }
   },
+  "complete_profile": {
+    "complete_now": "Complete your profile now",
+    "description_1": "You can ask endorsements right now for all your skills, even the ones you think are not worth sharing!",
+    "description_2": "You'd be surprised to find out how people around you use the knowledge they have gained from years of experience in the workplace and in private life.",
+    "get_started": {
+      "description": "Complete your profile to have a more personalized experience.",
+      "heading": "Let’s get you started",
+      "start": "Start"
+    },
+    "greetings": "Hello!",
+    "information": {
+      "heading": "Tell us about you",
+      "point_1": {
+        "description": "Complete your profile to make yourself known in the community and connect with other skilled people.",
+        "label": "Who are you?"
+      },
+      "point_2": {
+        "description": "Choose your areas of expertise and let us guide through the « tags ». ",
+        "label": "How skilled are you?"
+      },
+      "point_3": {
+        "description": "Give endorsements to people you know about their skills and help them to be better recognised.",
+        "label": "Who do you want to reveal?"
+      }
+    },
+    "step_1": {
+      "description": "This additional information will help us to give you more personalized experience",
+      "heading": "Complete your profile"
+    },
+    "step_2": {
+      "description": "This additional information will help us improve the << skills >> page.",
+      "heading": "Share your location"
+    },
+    "welcome_to_reveal": "Welcome to the Reveal community, where you can share your skills, ask for and give endorsements."
+  },
+  "email_confirmation": {
+    "check_inbox": "Check your inbox",
+    "close": "Close dialog",
+    "get_started": "Get started by clicking on the link we sent to",
+    "send_again": "Send again"
+  },
   "feedback_request": {
     "creation": {
       "cancel": "{{global.cancel}}",
@@ -61,10 +102,17 @@
     "about_tags": "About tags",
     "application_name": "Reveal",
     "cancel": "Cancel",
+    "country": "Country",
+    "email": "Email address",
+    "email_invalid_error": "Your email address seems to be incorrect. Please try again.",
     "email_placeholder": "Enter your email",
     "join": "Join",
+    "login_alt": "Login",
     "logo_alt": "Application logo",
-    "next": "Next"
+    "name": "Name",
+    "next": "Next",
+    "sign_up_alt": "Sign up",
+    "surname": "Surname"
   },
   "header": {
     "get_started": "Get started",
@@ -104,7 +152,9 @@
     "already_member": "Already a member?",
     "connect": "Connect",
     "description": "Join the people using Reveal to get credit for your skills",
-    "heading": "Up your game, join Reveal"
+    "heading": "Up your game, join Reveal",
+    "join_now": "Join now",
+    "not_a_member": "Not a member?"
   },
   "login": {}
 }

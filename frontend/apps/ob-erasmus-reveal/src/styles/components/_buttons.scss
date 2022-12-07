@@ -46,6 +46,16 @@
   border: 2px solid var(--primary-violet);
 }
 
+@mixin app-anchor {
+  text-decoration: underline;
+  font-weight: bold;
+  color: var(--color-white);
+
+  &[color='primary'] {
+    color: var(--primary-violet);
+  }
+}
+
 a,
 button {
   &.app-button {
@@ -54,5 +64,9 @@ button {
 
   &.app-button-stroked {
     @include app-button-stroked();
+  }
+
+  &.app-anchor {
+    @include app-anchor;
   }
 }

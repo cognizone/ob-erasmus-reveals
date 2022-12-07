@@ -11,6 +11,7 @@
     font-size: 1.5rem;
     color: var(--color-primary-text);
     margin-bottom: 2.5rem;
+    font-weight: 500;
   }
 
   a {
@@ -29,11 +30,6 @@
 
 .my-user-skills {
   margin-top: -6.5rem; // TODO - check in the channel for mobile device usage
-
-  img {
-    height: 1000px;
-    width: 680px;
-  }
 }
 
 .my-join-now {
@@ -59,4 +55,20 @@
 
 .my-target-description {
   color: var(--primary-violet);
+}
+
+.my-join-now-content {
+  text-align: center;
+  width: 400px;
+  height: 850px;
+
+
+  .my-member {
+    display: flex;
+
+    p {
+      font-size: 1rem;
+      margin-right: 1rem;
+    }
+  }
 }
