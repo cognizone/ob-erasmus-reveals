@@ -1,0 +1,2 @@
+rootProject.name = 'ob-erasmus-reveals'
+include "backend", "frontend"

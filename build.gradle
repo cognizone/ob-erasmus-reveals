@@ -1,0 +1,156 @@
+import pl.allegro.tech.build.axion.release.domain.properties.TagProperties
+import pl.allegro.tech.build.axion.release.domain.scm.ScmPosition
+
+buildscript {
+  ext {
+    commonsCollectionsVersion = "4.4"
+    commonsLang3Version = "3.12.0"
+  }
+}
+
+plugins {
+  id "pl.allegro.tech.build.axion-release" version "1.13.6"
+//  id "pl.allegro.tech.build.axion-release" version "1.14.3"
+  id 'org.springframework.boot' version '2.6.14' apply false
+  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'java'
+  id "idea"
+  id 'maven-publish'
+  id "io.freefair.lombok" version "6.6"
+  id "com.github.node-gradle.node" version "3.5.0"
+}
+repositories {
+  maven { url "https://plugins.gradle.org/m2/" }
+}
+
+scmVersion {
+  tag {
+    prefix = "v"
+    versionSeparator = ""
+    branchPrefix = [
+            'release/.*': 'release-v',
+            'hotfix/.*' : 'hotfix-v'
+    ]
+    initialVersion = { final TagProperties rules, final ScmPosition position -> "0.0.1" }
+  }
+  nextVersion {
+    suffix = "SNAPSHOT"
+    separator = "-"
+  }
+}
+
+idea {
+  project {
+    jdkName = "11"
+    languageLevel = "11"
+  }
+}
+
+subprojects {
+  apply plugin: "java"
+  apply plugin: "idea"
+  apply plugin: "io.spring.dependency-management"
+  apply plugin: "io.freefair.lombok"
+
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://repo.spring.io/release" }
+    maven { url "https://archiva.cogni.zone/repository/public" }
+  }
+  dependencyManagement {
+    imports {
+      mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+      //mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+    dependencies {
+      dependency("org.apache.commons:commons-collections4:${commonsCollectionsVersion}")
+      dependency("org.apache.commons:commons-lang3:${commonsLang3Version}")
+      dependency("javax.inject:javax.inject:1")
+    }
+  }
+  dependencies {
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+  }
+
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
+
+  group = "zone.cogni"
+  //version = scmVersion.version
+
+  compileJava.options.encoding = "UTF-8"
+  compileTestJava.options.encoding = "UTF-8"
+}
+
+project('frontend') {
+  apply plugin: 'com.github.node-gradle.node'
+
+  jar.setEnabled(false)
+
+  node {
+    version = "16.18.1"
+    npmVersion = "6.14.17"
+    download = true
+  }
+
+  task build(overwrite: true) {
+    if (project.hasProperty("skipFrontend")) {
+      println("Frontend build skipped")
+    }
+    else {
+      dependsOn 'npm_run_build'
+    }
+  }
+}
+
+project("backend") {
+  apply plugin: "io.spring.dependency-management"
+  apply plugin: "org.springframework.boot"
+  apply plugin: "maven-publish"
+
+  springBoot {
+    mainClass = "zone.cogni.reveal.app.RevealApplication"
+    buildInfo()
+  }
+  dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
+
+  }
+
+  test {
+    useJUnitPlatform()
+  }
+  bootJar {
+    dependsOn(":frontend:build")
+
+    into("/public") {
+      from "${project(":frontend").projectDir}/dist/apps/ob-erasmus-reveal"
+    }
+  }
+  publishing {
+    publications {
+      mavenWeb(MavenPublication) {
+        artifact(bootJar)
+        groupId = System.properties['project.groupID']
+        artifactId = System.properties['project.artifactID']
+        version = scmVersion.version
+      }
+    }
+    repositories {
+      maven {
+        credentials {
+          username = System.properties["archiva.user"]
+          password = System.properties["archiva.password"]
+        }
+        name = 'public'
+        url = System.properties['archiva.url']
+      }
+    }
+  }
+}
+
+
