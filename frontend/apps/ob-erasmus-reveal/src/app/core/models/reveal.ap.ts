@@ -39,6 +39,7 @@ export interface Skill extends JsonModel {
   '@type': JsonModelType<'Skill'>;
   description?: LangString;
   prefLabel?: LangString;
+  quote?: LangString;
 }
 
 export interface User extends JsonModel {

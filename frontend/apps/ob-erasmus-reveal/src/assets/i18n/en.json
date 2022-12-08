@@ -23,13 +23,48 @@
       }
     }
   },
+  "feedback_request": {
+    "creation": {
+      "cancel": "{{global.cancel}}",
+      "description": "This form allows you to request credit for your skills.",
+      "heading": "Skill endorsement request",
+      "next": "{{global.next}}",
+      "select_skills": "Select the 1 or more skills for which you want to be endorsed:",
+      "selected": "selected",
+      "skill_selected": "{{count}} skill selected",
+      "skills_selected": "{{count}} skills selected",
+      "unselected": "unselected"
+    },
+    "creation_modal": {
+      "email_heading": "Send the request",
+      "email_tab": "By email",
+      "link_heading": "Send the form",
+      "link_tab": "With a link"
+    }
+  },
+  "footer": {
+    "accessibility": "Accessibility",
+    "discover": "Discover",
+    "follow": "Follow us",
+    "help": "Help",
+    "join_now": "Join and start right away to share your skills",
+    "privacy_policy": "Privacy Policy",
+    "social_media": {
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    },
+    "terms_of_use": "Terms of Use"
+  },
   "global": {
     "about": "What's Reveal?",
     "about_tags": "About tags",
     "application_name": "Reveal",
+    "cancel": "Cancel",
     "email_placeholder": "Enter your email",
     "join": "Join",
-    "logo_alt": "Application logo"
+    "logo_alt": "Application logo",
+    "next": "Next"
   },
   "header": {
     "get_started": "Get started",
@@ -71,19 +106,5 @@
     "description": "Join the people using Reveal to get credit for your skills",
     "heading": "Up your game, join Reveal"
   },
-  "login": {},
-  "footer": {
-    "accessibility": "Accessibility",
-    "discover": "Discover",
-    "follow": "Follow us",
-    "help": "Help",
-    "join_now": "Join and start right away to share your skills",
-    "privacy_policy": "Privacy Policy",
-    "social_media": {
-      "facebook": "Facebook",
-      "linkedin": "Linkedin",
-      "twitter": "Twitter"
-    },
-    "terms_of_use": "Terms of Use"
-  }
+  "login": {}
 }

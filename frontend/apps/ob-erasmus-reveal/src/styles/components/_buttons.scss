@@ -1,4 +1,4 @@
-@mixin app-button {
+%app-button-base {
   padding: 0 1rem;
   display: flex;
   align-items: center;
@@ -10,25 +10,49 @@
   background-color: transparent;
   border: none;
   border-radius: 8px;
-  color: var(--color-gray-60);
   text-decoration: none;
 
   mat-icon {
     margin-right: 0.5rem;
   }
+}
+
+%app-button-medium-text {
+  font-size: 0.875rem;
+  letter-spacing: 0.25px;
+  line-height: 1rem;
+}
+
+@mixin app-button {
+  @extend %app-button-base;
+  color: var(--color-gray-60);
 
   &[color='primary'] {
+    @extend %app-button-medium-text;
     background-color: var(--primary-violet);
     color: var(--color-white);
-    font-size: 0.875rem; // maybe specific to header?
-    letter-spacing: 0.25px;
-    line-height: 1rem;
+
+    &[disabled] {
+      background-color: var(--color-ghost-white);
+      color: var(--color-gray-50);
+    }
   }
+}
+
+@mixin app-button-stroked {
+  @extend %app-button-base;
+  @extend %app-button-medium-text;
+  color: var(--primary-violet);
+  border: 2px solid var(--primary-violet);
 }
 
 a,
 button {
   &.app-button {
     @include app-button();
+  }
+
+  &.app-button-stroked {
+    @include app-button-stroked();
   }
 }

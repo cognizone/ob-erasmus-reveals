@@ -7,7 +7,17 @@ import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, translocoConfig } from '@ngneat/tra
 import { TranslocoLocaleModule } from '@ngneat/transloco-locale';
 
 import { environment } from '../../environments/environment';
-import { AuthService, ConfigService, CountriesService, customIdGeneratorProvider, LanguageService, TranslocoHttpLoader } from './services';
+import {
+  AuthService,
+  ConfigService,
+  CountriesService,
+  customIdGeneratorProvider,
+  FeedbacksService,
+  LanguageService,
+  SkillsService,
+  TranslocoHttpLoader,
+  UserService,
+} from './services';
 import { getInitializerProvider } from './utils';
 
 @NgModule({
@@ -17,6 +27,9 @@ import { getInitializerProvider } from './utils';
     getInitializerProvider(ConfigService),
     getInitializerProvider(AuthService),
     getInitializerProvider(CountriesService),
+    getInitializerProvider(SkillsService),
+    getInitializerProvider(FeedbacksService),
+    getInitializerProvider(UserService),
     getInitializerProvider(LanguageService),
     customIdGeneratorProvider,
     // we don't need the full module
