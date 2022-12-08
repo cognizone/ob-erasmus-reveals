@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { APP_INITIALIZER, Injectable, Provider } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 import { shareReplay, tap } from 'rxjs/operators';
 

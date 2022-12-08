@@ -1,0 +1,121 @@
+$my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0.16);
+
+.my-heading {
+  color: var(--color-secondary-text);
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.my-description {
+  color: var(--color-secondary-text);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.my-prompt {
+  color: var(--color-primary-text);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+}
+
+.my-count {
+  color: var(--color-gray-60);
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  &.is-filled {
+    color: var(--primary-violet);
+    font-weight: bold;
+  }
+}
+
+.my-skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 6rem;
+}
+
+.my-skill {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 112px;
+  padding: 0.5rem;
+  border: 2px solid var(--border-color-secondary);
+  border-radius: 0 16px 0 16px;
+  box-shadow: $my-shadow;
+  background-color: transparent;
+
+  &.is-selected {
+    border-color: var(--primary-violet);
+    mat-icon {
+      display: initial;
+      color: var(--primary-violet);
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  mat-icon {
+    display: none;
+  }
+}
+
+.my-skill-heading {
+  display: flex;
+  align-items: flex-start;
+  color: var(--color-tertiary-text);
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+}
+
+.my-icon {
+  display: flex;
+  align-items: baseline;
+  margin-right: 1rem;
+  position: relative;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+}
+
+.my-skill-description {
+  margin-top: 0.5rem;
+  text-align: start;
+  color: var(--color-secondary-text);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.25px;
+  line-height: 1rem;
+}
+
+.my-footer {
+  width: 100vw;
+  height: 68px;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--border-color);
+  box-shadow: $my-shadow;
+
+  div {
+    height: 100%;
+  }
+}
+
+.my-footer-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}

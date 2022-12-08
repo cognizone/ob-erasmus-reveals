@@ -6,7 +6,7 @@ import { ItemService } from './item.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends ItemService<User> {
-  index: string = 'user';
+  collectionName: string = 'users';
 
   getByEmail(email: string): Observable<User | undefined> {
     const user = this.getState().find(u => u.email === email);

@@ -1,1 +1,355 @@
-[]
+{
+  "data": [
+    {
+      "@id": "http://reveal.org/data/skill/01",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Acceptance of criticism"]
+      },
+      "quote": {
+        "en": ["I accept comments in order to improve my work"]
+      },
+      "description": {
+        "en": ["Ability to receive feedback and comments to improve work"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/02",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Adaptability"]
+      },
+      "quote": {
+        "en": ["I'm tuning in"]
+      },
+      "description": {
+        "en": ["Ability to accept and integrate changes; to adapt to people and the environment in a positive way"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/03",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Analytical skills"]
+      },
+      "quote": {
+        "en": ["I analyse problems to find solutions"]
+      },
+      "description": {
+        "en": ["Ability to reflect, use logic and judgement in decision-making and problem evaluation"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/04",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Assertiveness"]
+      },
+      "quote": {
+        "en": ["Neither aggression, nor submission, nor manipulation"]
+      },
+      "description": {
+        "en": ["Ability to express oneself and defend one's rights without infringing on those of others"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/05",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Attendance"]
+      },
+      "quote": {
+        "en": ["I am faithful to the post"]
+      },
+      "description": {
+        "en": ["Ability to provide a regular and sustained active presence"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/06",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Attention"]
+      },
+      "quote": {
+        "en": ["I am focused on my task"]
+      },
+      "description": {
+        "en": ["Ability to voluntarily focus one's mind on a specific object or task"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/07",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Autonomy"]
+      },
+      "quote": {
+        "en": ["I'm in charge"]
+      },
+      "description": {
+        "en": ["Ability to take responsibility for oneself in order to take action at the appropriate time in a given context"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/08",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Care"]
+      },
+      "quote": {
+        "en": ["My work is neat, clean and tidy"]
+      },
+      "description": {
+        "en": ["Ability to care for the cleanliness, neatness and thoroughness of the tasks performed"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/09",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Communication"]
+      },
+      "quote": {
+        "en": ["Message received! Transmitter ok receiver ok"]
+      },
+      "description": {
+        "en": ["Ability to relate to others, to convey a message by adapting to the person and the circumstances"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/10",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Compliance with the rules"]
+      },
+      "quote": {
+        "en": ["I take into account the regulations"]
+      },
+      "description": {
+        "en": ["Ability to comply with requirements, regulations, administrative procedures and operating rules"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/11",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Decision-making capacity"]
+      },
+      "quote": {
+        "en": ["I slice"]
+      },
+      "description": {
+        "en": ["Ability to make a decision when faced with a set of facts"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/12",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Efficiency"]
+      },
+      "quote": {
+        "en": ["I achieve my objectives on time with the given means"]
+      },
+      "description": {
+        "en": ["Ability to produce the expected results on time and to achieve the set objectives"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/13",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Initiative"]
+      },
+      "quote": {
+        "en": ["I dare to be proactive"]
+      },
+      "description": {
+        "en": ["Ability to be proactive in anticipating needs and demands independently, without instructions or guidelines."]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/14",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Innovation"]
+      },
+      "quote": {
+        "en": ["I solve problems in an original and effective way"]
+      },
+      "description": {
+        "en": ["Ability to introduce novelty in problem solving"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/15",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Intellectual curiosity"]
+      },
+      "quote": {
+        "en": ["I am intellectually curious about my job"]
+      },
+      "description": {
+        "en": ["Ability to be open-minded, to continuously acquire new knowledge and learn from previous experiences"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/16",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Motivation"]
+      },
+      "quote": {
+        "en": ["I am enthusiastic in carrying out my tasks"]
+      },
+      "description": {
+        "en": ["Ability to have energy, vitality, to show interest and enthusiasm in a professional task"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/17",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Order"]
+      },
+      "quote": {
+        "en": ["Everything in its place and a place for everything"]
+      },
+      "description": {
+        "en": ["Ability to put things in a specific place in an organised and systematic way"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/18",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Organisational skills"]
+      },
+      "quote": {
+        "en": ["I plan, prepare and organise my work to meet deadlines"]
+      },
+      "description": {
+        "en": ["Ability to effectively and efficiently manage one's work and plan tasks to be completed within a prescribed timeframe"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/19",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Perseverance"]
+      },
+      "quote": {
+        "en": ["I make the effort to complete my work"]
+      },
+      "description": {
+        "en": ["Ability to perform a task over the long term, making extra efforts and not giving up when faced with obstacles"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/20",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Personal hygiene"]
+      },
+      "quote": {
+        "en": ["I take care of myself"]
+      },
+      "description": {
+        "en": ["Ability to take care of personal hygiene and cleanliness of clothing"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/21",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Presentation"]
+      },
+      "quote": {
+        "en": ["I have the look of the job"]
+      },
+      "description": {
+        "en": ["Ability to dress and groom in a manner appropriate to the work environment and the trade"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/22",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Reliability"]
+      },
+      "quote": {
+        "en": ["I inspire confidence"]
+      },
+      "description": {
+        "en": ["Ability to inspire confidence in others through actions"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/23",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Self-control"]
+      },
+      "quote": {
+        "en": ["I keep my cool in all circumstances"]
+      },
+      "description": {
+        "en": ["Ability to deal with particular situations, to show composure without being overly emotional or defensive"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/24",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Sense of ethics"]
+      },
+      "quote": {
+        "en": ["I am faithful to the values of my profession"]
+      },
+      "description": {
+        "en": ["Abitlity to act according to the professions values in order to seek the most appropriate decision in a given situation"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/25",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Sense of responsibility"]
+      },
+      "quote": {
+        "en": ["I take responsibility for the consequences of decisions related to my tasks"]
+      },
+      "description": {
+        "en": ["Ability to act responsibly and make appropriate decisions within one's capacity to act"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/26",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Team spirit"]
+      },
+      "quote": {
+        "en": ["One for all, all for one!"]
+      },
+      "description": {
+        "en": ["Ability to connect with team members with a common goal of collaboration, while focusing on the success of the group"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/skill/27",
+      "@type": "Skill",
+      "prefLabel": {
+        "en": ["Tolerance"]
+      },
+      "quote": {
+        "en": ["I accept the difference"]
+      },
+      "description": {
+        "en": ["Ability to respect the freedom of others, their ways of thinking, acting, political and religious opinions"]
+      }
+    }
+  ]
+}

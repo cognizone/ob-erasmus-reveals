@@ -1,4 +1,9 @@
 {
   "baseUri": "http://reveal.org/data",
-  "baseUriForNewItems": "http://resource"
+  "baseUriForNewItems": "http://resource",
+  "dataVersions": {
+    "countries": 1,
+    "users": 1,
+    "skills": 1
+  }
 }

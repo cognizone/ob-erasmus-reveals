@@ -1,0 +1,12 @@
+<ng-container *transloco="let t; read: 'feedback_request.creation_modal'">
+  <div class="my-header">
+    <h1 class="my-heading">{{ t(currentTabMode + '_heading') }}</h1>
+    <button class="my-close-button"><mat-icon>close</mat-icon></button>
+  </div>
+  <div class="my-tabs">
+    <button *ngFor="let tab of tabs" class="my-tab" [class.is-active]="tab.mode === currentTabMode" (click)="currentTabMode = tab.mode">
+      <mat-icon>{{ tab.icon }}</mat-icon>
+      {{ t(tab.mode + '_tab') }}
+    </button>
+  </div>
+</ng-container>
