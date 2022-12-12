@@ -10,7 +10,7 @@ import { ItemService } from './item.service';
 import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
-export class FeedbacksService extends ItemService<User> {
+export class FeedbacksService extends ItemService<Feedback> {
   collectionName: string = 'feedbacks';
 
   constructor(

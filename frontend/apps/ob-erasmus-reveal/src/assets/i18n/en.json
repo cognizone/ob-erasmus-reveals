@@ -77,10 +77,19 @@
       "unselected": "unselected"
     },
     "creation_modal": {
+      "cancel": "{{global.cancel}}",
+      "copy": "Copy",
+      "default_message": "Hello, \nin order to credit my skills, could you give me some feedback? \nThank you.",
       "email_heading": "Send the request",
       "email_tab": "By email",
+      "from": "From",
+      "link": "Link",
       "link_heading": "Send the form",
-      "link_tab": "With a link"
+      "link_tab": "With a link",
+      "message": "Message",
+      "send": "Send",
+      "to": "To",
+      "to_caption": "Separate emails with a comma."
     }
   },
   "footer": {

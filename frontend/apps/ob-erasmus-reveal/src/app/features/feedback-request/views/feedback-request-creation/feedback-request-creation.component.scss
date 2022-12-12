@@ -1,5 +1,10 @@
 $my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0.16);
 
+:host {
+  display: block;
+  margin-top: 4rem;
+}
+
 .my-heading {
   color: var(--color-secondary-text);
   font-size: 2rem;
@@ -103,6 +108,7 @@ $my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0
   width: 100vw;
   height: 68px;
   position: fixed;
+  z-index: 1;
   bottom: 0;
   background-color: var(--color-white);
   border-top: 1px solid var(--border-color);

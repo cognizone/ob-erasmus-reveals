@@ -1,11 +1,6 @@
-// TODO move style elsewhere for other modals
 :host {
   display: block;
   width: 780px;
-  background-color: var(--color-white);
-  padding: 1.5rem;
-  border-radius: 26px;
-  box-shadow: 0 2px 8px 0 rgba(40, 41, 61, 0.08), 0 20px 32px 0 rgba(96, 97, 112, 0.24);
 }
 
 .my-header {
@@ -17,29 +12,16 @@
 
 .my-heading {
   color: var(--color-secondary-text);
+  margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 0;
 }
 
-.my-close-button {
-  background-color: transparent;
-  border-radius: 50%;
-  border: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  mat-icon {
-    font-size: 1.75rem;
-    line-height: 1.5rem;
-  }
-}
-
 .my-tabs {
   display: flex;
   gap: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .my-tab {
@@ -59,4 +41,63 @@
     font-weight: 600;
     border-color: var(--primary-violet);
   }
+}
+
+.my-grid {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 1.5rem 1rem;
+}
+
+.my-label {
+  color: var(--color-gray-60);
+}
+
+.my-email {
+  color: var(--color-gray-60);
+  font-weight: 600;
+}
+
+.my-link {
+  color: var(--color-gray-60);
+}
+
+.my-form-field {
+  padding: 0.25rem 0.75rem;
+
+  min-height: 2.25rem;
+  outline: 1px solid var(--color-gray-50);
+  border-radius: 8px;
+
+  &:focus-within {
+    outline-width: 2px;
+  }
+
+  &.has-error {
+    outline-color: var(--color-red);
+  }
+
+  input,
+  textarea {
+    color: var(--color-primary-text);
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+}
+
+.my-caption {
+  margin-top: 0.5rem;
+  color: var(--color-gray-50);
+  font-size: 0.75rem;
+  letter-spacing: 0.25px;
+  line-height: 1rem;
+}
+
+.my-footer {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
 }

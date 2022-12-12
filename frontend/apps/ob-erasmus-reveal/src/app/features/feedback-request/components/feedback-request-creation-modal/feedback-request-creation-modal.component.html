@@ -1,12 +1,58 @@
 <ng-container *transloco="let t; read: 'feedback_request.creation_modal'">
   <div class="my-header">
     <h1 class="my-heading">{{ t(currentTabMode + '_heading') }}</h1>
-    <button class="my-close-button"><mat-icon>close</mat-icon></button>
+    <button class="app-dialog-close-button" [disabled]="loading" (click)="dialogRef.close(false)"><mat-icon>close</mat-icon></button>
   </div>
   <div class="my-tabs">
     <button *ngFor="let tab of tabs" class="my-tab" [class.is-active]="tab.mode === currentTabMode" (click)="currentTabMode = tab.mode">
       <mat-icon>{{ tab.icon }}</mat-icon>
       {{ t(tab.mode + '_tab') }}
+    </button>
+  </div>
+
+  <div class="my-grid" [formGroup]="form">
+    <ng-container *ngIf="currentTabMode === 'email'">
+      <p class="my-label">{{ t('from') }}</p>
+      <p class="my-email">{{ authService.currentUser.email }}</p>
+      <label class="my-label" for="frc-emails">{{ t('to') }}</label>
+      <div>
+        <div class="my-form-field" [class.has-error]="form.controls['emails'].touched && !!form.controls['emails'].errors">
+          <input id="frc-emails" type="text" formControlName="emails" />
+        </div>
+        <div class="my-caption">{{ t('to_caption') }}</div>
+      </div>
+      <label class="my-label" for="frc-message">{{ t('message') }}</label>
+      <div>
+        <div class="my-form-field"><textarea id="frc-message" formControlName="message" cdkTextareaAutosize></textarea></div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentTabMode === 'link'">
+      <p class="my-label">{{ t('link') }}</p>
+      <p class="my-link">{{ link }}</p>
+    </ng-container>
+  </div>
+
+  <div class="my-footer">
+    <button class="app-button-stroked" [disabled]="loading" (click)="dialogRef.close(false)">{{ t('cancel') }}</button>
+    <button
+      *ngIf="currentTabMode === 'email'"
+      class="app-button"
+      color="primary"
+      [disabled]="form.invalid || loading"
+      (click)="sendEmail()"
+    >
+      {{ t('send') }}
+    </button>
+    <button
+      *ngIf="currentTabMode === 'link'"
+      class="app-button"
+      color="primary"
+      [disabled]="loading"
+      [cdkCopyToClipboard]="link"
+      (click)="dialogRef.close(true)"
+    >
+      {{ t('copy') }}
     </button>
   </div>
 </ng-container>
