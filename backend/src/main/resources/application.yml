@@ -12,3 +12,11 @@ management:
 #server:
 #  servlet:
 #    context-path: /
+
+cognizone:
+  proxy:
+    url: /ob-erasmus-reveals-elastic-proxy
+  elastic:
+    index:
+      name: data
+      url: http://ob-erasmus-reveals-dev-elastic.cz-aws.net:9200/
