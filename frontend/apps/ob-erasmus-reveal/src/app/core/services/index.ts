@@ -4,6 +4,7 @@ export * from './countries.service';
 export * from './custom-id-generator.service';
 export * from './feedbacks.service';
 export * from './item.service';
+export * from './initializers-handler.service';
 export * from './language.service';
 export * from './skills.service';
 export * from './transloco-http-loader.service';

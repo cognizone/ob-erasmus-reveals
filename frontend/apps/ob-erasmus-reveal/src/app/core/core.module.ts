@@ -9,28 +9,29 @@ import { TranslocoLocaleModule } from '@ngneat/transloco-locale';
 import { environment } from '../../environments/environment';
 import {
   AuthService,
-  ConfigService,
   CountriesService,
   customIdGeneratorProvider,
   FeedbacksService,
+  InitializersHandlerService,
   LanguageService,
+  provideAppInitializer,
+  provideInitializer,
   SkillsService,
   TranslocoHttpLoader,
   UserService,
 } from './services';
-import { getInitializerProvider } from './utils';
 
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule, TranslocoLocaleModule.forRoot(), I18nTranslocoModule.forRoot()],
   providers: [
-    getInitializerProvider(ConfigService),
-    getInitializerProvider(AuthService),
-    getInitializerProvider(CountriesService),
-    getInitializerProvider(SkillsService),
-    getInitializerProvider(FeedbacksService),
-    getInitializerProvider(UserService),
-    getInitializerProvider(LanguageService),
+    provideAppInitializer(InitializersHandlerService),
+    provideInitializer(AuthService),
+    provideInitializer(CountriesService),
+    provideInitializer(SkillsService),
+    provideInitializer(FeedbacksService),
+    provideInitializer(UserService),
+    provideInitializer(LanguageService),
     customIdGeneratorProvider,
     // we don't need the full module
     JsonModelService,

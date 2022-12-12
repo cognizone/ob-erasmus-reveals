@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 
 import { User } from '../models';
-import { Initializer, randomDelay } from '../utils';
-import { ConfigService } from './config.service';
+import { randomDelay } from '../utils';
+import { Initializer } from './initializers-handler.service';
 import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
@@ -16,12 +16,11 @@ export class AuthService implements Initializer {
   private readonly temporaryStorageKey: string = 'temp'; // Using this till the user is not registered and logged in
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
-  constructor(private userService: UserService, private configService: ConfigService) {}
+  constructor(private userService: UserService) {}
 
   async init(): Promise<void> {
     const email = this.getState();
     if (!email) return;
-    await this.configService.init();
     await firstValueFrom(this.login(email));
   }
 

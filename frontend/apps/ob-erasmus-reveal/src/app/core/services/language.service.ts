@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Initializer } from '../utils';
+import { Initializer } from './initializers-handler.service';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService implements Initializer {

@@ -5,9 +5,10 @@ import produce, { Draft } from 'immer';
 import { firstValueFrom, Observable } from 'rxjs';
 import { DataFile } from '../models';
 
-import { Initializer, randomDelay } from '../utils';
+import { randomDelay } from '../utils';
 import { ConfigService, getConfig } from './config.service';
 import { CustomIdGenerator } from './custom-id-generator.service';
+import { Initializer } from './initializers-handler.service';
 
 @Injectable()
 export abstract class ItemService<T extends JsonModel> implements Initializer {
@@ -21,9 +22,6 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
   ) {}
 
   async init(): Promise<void> {
-    // waiting to have config available to have version numbers
-    await this.configService.init();
-
     if (!this.needDataInit()) return;
 
     const { data } = await firstValueFrom(this.http.get<DataFile<T>>(`assets/data/${this.collectionName}.json`));
