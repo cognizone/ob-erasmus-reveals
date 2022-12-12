@@ -3,6 +3,7 @@ import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 
 import { User } from '../models';
 import { Initializer, randomDelay } from '../utils';
+import { ConfigService } from './config.service';
 import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
@@ -14,11 +15,12 @@ export class AuthService implements Initializer {
   private readonly storageKey: string = 'auth';
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private configService: ConfigService) {}
 
   async init(): Promise<void> {
     const email = this.getState();
     if (!email) return;
+    await this.configService.init();
     await firstValueFrom(this.login(email));
   }
 
