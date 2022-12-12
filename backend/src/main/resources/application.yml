@@ -18,5 +18,5 @@ cognizone:
     url: /ob-erasmus-reveals-elastic-proxy
   elastic:
     index:
-      name: data
-      url: http://ob-erasmus-reveals-dev-elastic.cz-aws.net:9200/
+      name: ${env.reveals.elastic.index.name}
+      url: ${env.reveals.elastic.index.url}
