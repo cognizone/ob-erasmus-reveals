@@ -1,3 +1,4 @@
+export * from './color';
 export * from './config';
 export * from './data-file';
 export * from './feedback.facets';

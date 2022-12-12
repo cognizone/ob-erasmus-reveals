@@ -11,7 +11,14 @@
       },
       "description": {
         "en": ["Ability to receive feedback and comments to improve work"]
-      }
+      },
+      "itemStyle": {
+        "color": "#54c98d"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/02",
@@ -24,7 +31,14 @@
       },
       "description": {
         "en": ["Ability to accept and integrate changes; to adapt to people and the environment in a positive way"]
-      }
+      },
+      "itemStyle": {
+        "color": "#3d48b7"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/03",
@@ -37,7 +51,14 @@
       },
       "description": {
         "en": ["Ability to reflect, use logic and judgement in decision-making and problem evaluation"]
-      }
+      },
+      "itemStyle": {
+        "color": "#c0f2ef"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 199
     },
     {
       "@id": "http://reveal.org/data/skill/04",
@@ -50,7 +71,14 @@
       },
       "description": {
         "en": ["Ability to express oneself and defend one's rights without infringing on those of others"]
-      }
+      },
+      "itemStyle": {
+        "color": "#e6dc29"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 115
     },
     {
       "@id": "http://reveal.org/data/skill/05",
@@ -63,7 +91,14 @@
       },
       "description": {
         "en": ["Ability to provide a regular and sustained active presence"]
-      }
+      },
+      "itemStyle": {
+        "color": "#b3d8e5"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/06",
@@ -76,7 +111,14 @@
       },
       "description": {
         "en": ["Ability to voluntarily focus one's mind on a specific object or task"]
-      }
+      },
+      "itemStyle": {
+        "color": "#f3da9a"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 172
     },
     {
       "@id": "http://reveal.org/data/skill/07",
@@ -89,7 +131,14 @@
       },
       "description": {
         "en": ["Ability to take responsibility for oneself in order to take action at the appropriate time in a given context"]
-      }
+      },
+      "itemStyle": {
+        "color": "#c0f2cb"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 142
     },
     {
       "@id": "http://reveal.org/data/skill/08",
@@ -102,7 +151,14 @@
       },
       "description": {
         "en": ["Ability to care for the cleanliness, neatness and thoroughness of the tasks performed"]
-      }
+      },
+      "itemStyle": {
+        "color": "#c365d2"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 172
     },
     {
       "@id": "http://reveal.org/data/skill/09",
@@ -115,7 +171,14 @@
       },
       "description": {
         "en": ["Ability to relate to others, to convey a message by adapting to the person and the circumstances"]
-      }
+      },
+      "itemStyle": {
+        "color": "#8acaff"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 199
     },
     {
       "@id": "http://reveal.org/data/skill/10",
@@ -128,7 +191,14 @@
       },
       "description": {
         "en": ["Ability to comply with requirements, regulations, administrative procedures and operating rules"]
-      }
+      },
+      "itemStyle": {
+        "color": "#ed944d"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 199
     },
     {
       "@id": "http://reveal.org/data/skill/11",
@@ -141,7 +211,14 @@
       },
       "description": {
         "en": ["Ability to make a decision when faced with a set of facts"]
-      }
+      },
+      "itemStyle": {
+        "color": "#d6e5db"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 172
     },
     {
       "@id": "http://reveal.org/data/skill/12",
@@ -154,7 +231,14 @@
       },
       "description": {
         "en": ["Ability to produce the expected results on time and to achieve the set objectives"]
-      }
+      },
+      "itemStyle": {
+        "color": "#0c6e6a"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 142
     },
     {
       "@id": "http://reveal.org/data/skill/13",
@@ -167,7 +251,14 @@
       },
       "description": {
         "en": ["Ability to be proactive in anticipating needs and demands independently, without instructions or guidelines."]
-      }
+      },
+      "itemStyle": {
+        "color": "#74c954"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 105
     },
     {
       "@id": "http://reveal.org/data/skill/14",
@@ -180,7 +271,14 @@
       },
       "description": {
         "en": ["Ability to introduce novelty in problem solving"]
-      }
+      },
+      "itemStyle": {
+        "color": "#627712"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 199
     },
     {
       "@id": "http://reveal.org/data/skill/15",
@@ -193,7 +291,14 @@
       },
       "description": {
         "en": ["Ability to be open-minded, to continuously acquire new knowledge and learn from previous experiences"]
-      }
+      },
+      "itemStyle": {
+        "color": "#b98ca4"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 199
     },
     {
       "@id": "http://reveal.org/data/skill/16",
@@ -206,7 +311,14 @@
       },
       "description": {
         "en": ["Ability to have energy, vitality, to show interest and enthusiasm in a professional task"]
-      }
+      },
+      "itemStyle": {
+        "color": "#b9b692"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/17",
@@ -219,7 +331,14 @@
       },
       "description": {
         "en": ["Ability to put things in a specific place in an organised and systematic way"]
-      }
+      },
+      "itemStyle": {
+        "color": "#8f008a"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 140
     },
     {
       "@id": "http://reveal.org/data/skill/18",
@@ -232,7 +351,14 @@
       },
       "description": {
         "en": ["Ability to effectively and efficiently manage one's work and plan tasks to be completed within a prescribed timeframe"]
-      }
+      },
+      "itemStyle": {
+        "color": "#7b52c7"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/19",
@@ -245,7 +371,14 @@
       },
       "description": {
         "en": ["Ability to perform a task over the long term, making extra efforts and not giving up when faced with obstacles"]
-      }
+      },
+      "itemStyle": {
+        "color": "#92b995"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 115
     },
     {
       "@id": "http://reveal.org/data/skill/20",
@@ -258,7 +391,14 @@
       },
       "description": {
         "en": ["Ability to take care of personal hygiene and cleanliness of clothing"]
-      }
+      },
+      "itemStyle": {
+        "color": "#8e2655"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/21",
@@ -271,7 +411,14 @@
       },
       "description": {
         "en": ["Ability to dress and groom in a manner appropriate to the work environment and the trade"]
-      }
+      },
+      "itemStyle": {
+        "color": "#80310f"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 142
     },
     {
       "@id": "http://reveal.org/data/skill/22",
@@ -284,7 +431,14 @@
       },
       "description": {
         "en": ["Ability to inspire confidence in others through actions"]
-      }
+      },
+      "itemStyle": {
+        "color": "#c0ccf2"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 138
     },
     {
       "@id": "http://reveal.org/data/skill/23",
@@ -297,7 +451,14 @@
       },
       "description": {
         "en": ["Ability to deal with particular situations, to show composure without being overly emotional or defensive"]
-      }
+      },
+      "itemStyle": {
+        "color": "#f2c0e9"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 115
     },
     {
       "@id": "http://reveal.org/data/skill/24",
@@ -310,7 +471,14 @@
       },
       "description": {
         "en": ["Abitlity to act according to the professions values in order to seek the most appropriate decision in a given situation"]
-      }
+      },
+      "itemStyle": {
+        "color": "#114490"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 140
     },
     {
       "@id": "http://reveal.org/data/skill/25",
@@ -323,7 +491,14 @@
       },
       "description": {
         "en": ["Ability to act responsibly and make appropriate decisions within one's capacity to act"]
-      }
+      },
+      "itemStyle": {
+        "color": "#eebf17"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 120
     },
     {
       "@id": "http://reveal.org/data/skill/26",
@@ -336,7 +511,14 @@
       },
       "description": {
         "en": ["Ability to connect with team members with a common goal of collaboration, while focusing on the success of the group"]
-      }
+      },
+      "itemStyle": {
+        "color": "#fff4b8"
+      },
+      "label": {
+        "color": "#000"
+      },
+      "symbolSize": 199
     },
     {
       "@id": "http://reveal.org/data/skill/27",
@@ -349,7 +531,14 @@
       },
       "description": {
         "en": ["Ability to respect the freedom of others, their ways of thinking, acting, political and religious opinions"]
-      }
+      },
+      "itemStyle": {
+        "color": "#1856a5"
+      },
+      "label": {
+        "color": "#fff"
+      },
+      "symbolSize": 115
     }
   ]
 }

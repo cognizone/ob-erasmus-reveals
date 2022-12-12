@@ -20,3 +20,8 @@ button {
   padding: 1rem 1.5rem;
   margin: auto;
 }
+
+:host {
+  display: block;
+  width: 750px;
+}

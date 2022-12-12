@@ -1,0 +1,19 @@
+<ng-container *transloco="let t;">
+  <div class="my-dialog-content">
+    <img ngSrc="assets/images/logo/reveal-logo.svg" width="140" height="32" [alt]="t('global.logo_alt')"/>
+    <div class="d-flex mt-5 mb-5">
+      <h1>{{ t('join_now.skills_description') }}</h1>
+      <img ngSrc="assets/images/Illustrations-svgs/wfh_9.svg" width="280" height="224" [alt]="t('global.sign_up_alt')"/>
+    </div>
+    <p class="text-center">{{ t('join_now.unlock_access') }}</p>
+
+    <div class="d-flex flex-column align-items-center">
+      <ob-erasmus-reveal-signup></ob-erasmus-reveal-signup>
+
+      <div class="d-flex mt-5" *transloco="let t">
+        <p class="mr-3 mb-0"> {{ t('join_now.already_member') }}</p>
+        <a class="app-anchor" color="primary" routerLink="/login">{{ t('join_now.connect') }}</a>
+      </div>
+    </div>
+  </div>
+</ng-container>

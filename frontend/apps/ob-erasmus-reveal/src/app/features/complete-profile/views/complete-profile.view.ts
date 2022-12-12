@@ -41,7 +41,6 @@ export class CompleteProfileView {
 
   onClick(): void {
     this.dialog.open(GettingStartedComponent, {
-      width: '750px',
       disableClose: true
     })
   }

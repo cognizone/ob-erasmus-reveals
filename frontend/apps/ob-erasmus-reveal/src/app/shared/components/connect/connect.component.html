@@ -11,11 +11,11 @@
 
   <div class="d-flex justify-content-between container mt-5">
     <ng-container *ngIf="getStarted">
-      <img src="assets/images/Illustrations-svgs/wfh_1-text.svg" [alt]="t('global.sign_up_alt')"/>
+      <img ngSrc="assets/images/Illustrations-svgs/wfh_1-text.svg" width="598" height="501" [alt]="t('global.sign_up_alt')"/>
       <ob-erasmus-reveal-join-now></ob-erasmus-reveal-join-now>
     </ng-container>
     <ng-container *ngIf="!getStarted">
-    <img src="assets/images/Illustrations-svgs/wfh_9-text.svg" [alt]="t('global.login_alt')"/>
+    <img width="601" height="486" ngSrc="assets/images/Illustrations-svgs/wfh_9-text.svg" [alt]="t('global.login_alt')"/>
       <div>
         <h1 class="text-center"> {{ t('join_now.connect') }} </h1>
         <ob-erasmus-reveal-signup [login]="true"></ob-erasmus-reveal-signup>
