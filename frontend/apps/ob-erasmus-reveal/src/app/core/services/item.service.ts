@@ -47,9 +47,21 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
     return randomDelay(item['@id']);
   }
 
-  getByUri(uri: string): Observable<T | undefined> {
+  delete(uri: string): Observable<unknown> {
+    const newState = produce(this.getState(), draft => {
+      const currentIndex = draft.findIndex(i => i['@id'] === uri);
+      if (currentIndex > -1) {
+        draft.splice(currentIndex, 1);
+      }
+    });
+
+    this.setState(newState);
+    return randomDelay(null);
+  }
+
+  getByUri(uri: string): Observable<T> {
     const item = this.getState().find(i => i['@id'] === uri);
-    return randomDelay(item);
+    return randomDelay(item!);
   }
 
   // TODO cache it once fetching trough http

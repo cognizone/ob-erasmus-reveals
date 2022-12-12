@@ -4,14 +4,18 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { Skill, SkillsService } from '@app/core';
+import { FeedbackRequestsService, Skill, SkillsService } from '@app/core';
 import { SkillImageUrlPipeModule } from '@app/shared/pipes';
 import { I18nModule } from '@cognizone/i18n';
-import { OnDestroy$ } from '@cognizone/ng-core';
+import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { TranslocoModule } from '@ngneat/transloco';
 import produce from 'immer';
+import { map, of, switchMap } from 'rxjs';
 
-import { FeedbackRequestCreationModalComponent } from '../../components/feedback-request-creation-modal/feedback-request-creation-modal.component';
+import {
+  FeedbackRequestCreationModalComponent,
+  FeedbackRequestCreationModalData,
+} from '../../components/feedback-request-creation-modal/feedback-request-creation-modal.component';
 
 // TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
 // TODO hide global footer, but guessing this will be handled in general with connected users.
@@ -30,6 +34,7 @@ import { FeedbackRequestCreationModalComponent } from '../../components/feedback
     RouterModule,
     DialogModule,
   ],
+  providers: [LoadingService],
   templateUrl: './feedback-request-creation.component.html',
   styleUrls: ['./feedback-request-creation.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,7 +43,13 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
   selectedSkills: string[] = [];
   skills: Skill[] = [];
 
-  constructor(private skillsService: SkillsService, private cdr: ChangeDetectorRef, public dialog: Dialog) {
+  constructor(
+    private skillsService: SkillsService,
+    private cdr: ChangeDetectorRef,
+    private dialog: Dialog,
+    private feedbackRequestsService: FeedbackRequestsService,
+    public loadingService: LoadingService
+  ) {
     super();
   }
 
@@ -65,10 +76,24 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
   }
 
   openModal(): void {
-    // TODO create the item in DB before opening the modal
-    // TODO remove the item from DB on cancel
-    this.dialog.open<string>(FeedbackRequestCreationModalComponent, {
-      data: { name: 'yo', animal: 'this.animal' },
-    });
+    this.subSink = this.feedbackRequestsService
+      .createBase({ skills: this.selectedSkills })
+      .pipe(
+        switchMap(request =>
+          this.dialog
+            .open<boolean>(FeedbackRequestCreationModalComponent, {
+              data: { feedbackRequest: request } as FeedbackRequestCreationModalData,
+            })
+            .closed.pipe(map(confirmed => ({ confirmed, request })))
+        ),
+        switchMap(({ confirmed, request }) => {
+          if (confirmed) return of(null);
+          return this.feedbackRequestsService.delete(request['@id']);
+        }),
+        this.loadingService.asOperator()
+      )
+      .subscribe(() => {
+        // TODO go back to profile page
+      });
   }
 }

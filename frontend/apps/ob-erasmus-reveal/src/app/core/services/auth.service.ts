@@ -12,6 +12,11 @@ export class AuthService implements Initializer {
     return this._currentUser$.asObservable();
   }
 
+  get currentUser(): User {
+    // TODO remove fake user when login is implemented
+    return this._currentUser$.value ?? { '@id': 'http://reveal.org/data/user/mario', '@type': 'User', email: 'mario.mario@nintendo.com' };
+  }
+
   private readonly storageKey: string = 'auth';
   private readonly temporaryStorageKey: string = 'temp'; // Using this till the user is not registered and logged in
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);

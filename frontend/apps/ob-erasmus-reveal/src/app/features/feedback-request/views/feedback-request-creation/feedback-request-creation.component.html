@@ -38,7 +38,14 @@
         <div class="col-8 mx-auto my-footer-content">
           <!-- TODO back to profile page -->
           <button class="app-button-stroked" routerLink="/">{{ t('cancel') }}</button>
-          <button class="app-button" color="primary" [disabled]="selectedSkills.length === 0" (click)="openModal()">{{ t('next') }}</button>
+          <button
+            class="app-button"
+            color="primary"
+            [disabled]="selectedSkills.length === 0 || (loadingService.loading$ | async)"
+            (click)="openModal()"
+          >
+            {{ t('next') }}
+          </button>
         </div>
       </div>
     </div>
