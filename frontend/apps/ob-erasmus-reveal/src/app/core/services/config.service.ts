@@ -4,7 +4,7 @@ import { firstValueFrom, Observable } from 'rxjs';
 import { shareReplay, tap } from 'rxjs/operators';
 
 import { Config } from '../models';
-import { Initializer } from '../utils';
+import { Initializer } from './initializers-handler.service';
 
 let config: Config;
 
