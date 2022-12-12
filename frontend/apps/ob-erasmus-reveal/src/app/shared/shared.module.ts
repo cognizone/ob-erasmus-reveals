@@ -16,6 +16,9 @@ import { ConnectComponent } from './components/connect/connect.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { DialogModule } from '@angular/cdk/dialog';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { SkillsVisualizationComponent } from './components/skills-visualization/skills-visualization.component';
+import { SignUpModalComponent } from './components/sign-up-modal/sign-up-modal.component';
 
 const vendors = [MatIconModule, MatMenuModule, I18nModule, NgOptimizedImage, DialogModule];
 
@@ -28,8 +31,20 @@ const vendors = [MatIconModule, MatMenuModule, I18nModule, NgOptimizedImage, Dia
     SignupComponent,
     ConnectComponent,
     ConfirmationDialogComponent,
+    SkillsVisualizationComponent,
+    SignUpModalComponent,
   ],
-  imports: [...vendors, CommonModule, TranslocoModule, RouterModule, MatButtonModule, ReactiveFormsModule],
+  imports: [
+    ...vendors,
+    CommonModule,
+    TranslocoModule,
+    RouterModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+  ],
   exports: [
     ...vendors,
     HeaderComponent,
@@ -39,6 +54,7 @@ const vendors = [MatIconModule, MatMenuModule, I18nModule, NgOptimizedImage, Dia
     AboutComponent,
     JoinNowComponent,
     ConnectComponent,
+    SkillsVisualizationComponent,
   ],
 })
 export class SharedModule {

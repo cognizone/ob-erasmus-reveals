@@ -121,7 +121,16 @@
     "name": "Name",
     "next": "Next",
     "sign_up_alt": "Sign up",
+    "skills": {
+      "heading_1": "Explore the 27 skills",
+      "heading_2": "used by more than 12’000 people",
+      "heading_3": "across 21 countries"
+    },
     "surname": "Surname"
+  },
+  "global_skills_visualization": {
+    "description": "Explore more the 27 skills of the Projet Européen Léonardo Transfert de l’innovation - OPC-SFC / tableau des SFC  used by more than 12’000 people",
+    "heading": "{{header.skills}}"
   },
   "header": {
     "get_started": "Get started",
@@ -163,7 +172,9 @@
     "description": "Join the people using Reveal to get credit for your skills",
     "heading": "Up your game, join Reveal",
     "join_now": "Join now",
-    "not_a_member": "Not a member?"
+    "not_a_member": "Not a member?",
+    "skills_description": "Join us and start right away to share your skills, ask for endorsements and give feedbacks.",
+    "unlock_access": "Unlock unlimited access to Reveal in just one click"
   },
   "login": {}
 }

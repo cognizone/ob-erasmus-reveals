@@ -9,7 +9,7 @@
           <p class="my-text mb-0">{{ t('skills.part_1.description_1') }}</p>
           <p>{{ t('skills.part_1.description_2') }}</p>
           <p><strong>{{ t('skills.part_1.description_3') }}</strong></p>
-          <img width="550" height="464" ngSrc="assets/images/homepage/home-skills-1.webp" [alt]="t('skills.part_1.logo_alt')" />
+          <img priority width="550" height="464" ngSrc="assets/images/homepage/home-skills-1.webp" [alt]="t('skills.part_1.logo_alt')" />
         </article>
       </section>
       <section class="my-skills">
@@ -17,7 +17,10 @@
           <h2 class="my-heading">{{ t('skills.part_2.heading_1') }}</h2>
           <p class="my-text">{{ t('skills.part_2.description_1') }}</p>
           <p><strong>{{ t('skills.part_2.description_2') }}</strong></p>
-          <img width="550" height="352" [src]="'assets/images/homepage/home-skills-smiling_' + i18nService.getActiveLang() +  '.webp'" [alt]="t('skills.part_2.logo_alt')" />
+          <!-- Using *ngFor to force re-render on lang change -->
+          <img *ngFor="let lang of [i18nService.getActiveLang()]" width="550" height="352"
+               [ngSrc]="'assets/images/homepage/home-skills-smiling_' + lang +  '.webp'"
+               [alt]="t('skills.part_2.logo_alt')"/>
         </article>
       </section>
     </div>
@@ -27,7 +30,10 @@
           <h2 class="my-heading">{{ t('skills.part_3.heading_1') }}</h2>
           <p class="my-text"><strong>{{ t('skills.part_3.description_1') }}</strong></p>
           <p>{{ t('skills.part_3.description_2') }}</p>
-          <img width="550" height="352" [src]="'assets/images/homepage/home-skills-woodworking_' + i18nService.getActiveLang() +  '.webp'" [alt]="t('skills.part_3.logo_alt')" />
+          <!-- Using *ngFor to force re-render on lang change -->
+          <img *ngFor="let lang of [i18nService.getActiveLang()]" width="550" height="352"
+               [src]="'assets/images/homepage/home-skills-woodworking_' + lang +  '.webp'"
+               [alt]="t('skills.part_3.logo_alt')"/>
         </article>
       </section>
     </div>

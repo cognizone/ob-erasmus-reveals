@@ -3,6 +3,7 @@
 import { JsonModel, JsonModelType } from '@cognizone/json-model';
 import { LangString } from '@cognizone/model-utils';
 import { FeedbackFacets } from './feedback.facets';
+import { Color } from './color';
 
 export interface Country extends JsonModel {
   '@type': JsonModelType<'Country'>;
@@ -40,6 +41,9 @@ export interface Skill extends JsonModel {
   description?: LangString;
   prefLabel?: LangString;
   quote?: LangString;
+  symbolSize: number; // TODO - remove me
+  label: Color;
+  itemStyle: Color;
 }
 
 export interface User extends JsonModel {

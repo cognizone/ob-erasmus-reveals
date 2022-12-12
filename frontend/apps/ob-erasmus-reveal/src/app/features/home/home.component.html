@@ -27,16 +27,26 @@
 
     <!-- right image on homepage -->
     <div class="col-12 col-lg-5 my-user-skills">
-      <!--ngSrc doesn't get rendered once it is initialized, for quick fix changing to src, TODO - find a better solution for later -->
-      <!-- Angular issue https://github.com/angular/angular/issues/47813 -->
-      <img [src]="'assets/images/homepage/cover_' + i18nService.getActiveLang() + '.webp'" height="1000"
-           width="800" [alt]="t('skills_alt')"/>
+      <!-- Using *ngFor to force re-render on lang change -->
+      <img
+          *ngFor="let lang of [i18nService.getActiveLang()]"
+          priority
+          [ngSrc]="'assets/images/homepage/cover_' + lang + '.webp'"
+          height="1000"
+          width="800" [alt]="t('skills_alt')"/>
     </div>
   </div>
 </section>
 <!-- Introduction ends here -->
 
-<!-- TODO charts, Next PR -->
+<!-- Skills Chart -->
+<section class="container my-global-skills" *transloco="let t;">
+  <h2>{{t('global.skills.heading_1')}}</h2>
+  <h3>{{t('global.skills.heading_2')}}</h3>
+  <h4>{{t('global.skills.heading_3')}}</h4>
+  <ob-erasmus-reveal-skills-visualization></ob-erasmus-reveal-skills-visualization>
+</section>
+<!-- Skill Chart ends here -->
 
 <!--about section -->
 <ob-erasmus-reveal-about></ob-erasmus-reveal-about>
