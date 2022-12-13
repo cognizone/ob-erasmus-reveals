@@ -27,8 +27,10 @@
 
     <!-- right image on homepage -->
     <div class="col-12 col-lg-5 my-user-skills">
-      <img priority [ngSrc]="'assets/images/homepage/home-cover-BG_' + this.i18nService.getActiveLang() + '.webp'" height="1000"
-           width="630" [alt]="t('skills_alt')"/>
+      <!--ngSrc doesn't get rendered once it is initialized, for quick fix changing to src, TODO - find a better solution for later -->
+      <!-- Angular issue https://github.com/angular/angular/issues/47813 -->
+      <img [src]="'assets/images/homepage/cover_' + i18nService.getActiveLang() + '.webp'" height="1000"
+           width="800" [alt]="t('skills_alt')"/>
     </div>
   </div>
 </section>
