@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'create',
     loadComponent: () =>
-      import('./views/feedback-request-creation/feedback-request-creation.component').then(m => m.FeedbackRequestCreationView),
+      import('./views/feedback-request-creation/feedback-request-creation.view').then(m => m.FeedbackRequestCreationView),
   },
 ];
 

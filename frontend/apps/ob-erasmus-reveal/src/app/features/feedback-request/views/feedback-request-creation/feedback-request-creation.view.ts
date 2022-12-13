@@ -13,9 +13,9 @@ import produce from 'immer';
 import { map, of, switchMap } from 'rxjs';
 
 import {
-  FeedbackRequestCreationModalComponent,
+  FeedbackRequestCreationModal,
   FeedbackRequestCreationModalData,
-} from '../../components/feedback-request-creation-modal/feedback-request-creation-modal.component';
+} from '../../components/feedback-request-creation/feedback-request-creation.modal';
 
 // TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
 // TODO hide global footer, but guessing this will be handled in general with connected users.
@@ -35,8 +35,8 @@ import {
     DialogModule,
   ],
   providers: [LoadingService],
-  templateUrl: './feedback-request-creation.component.html',
-  styleUrls: ['./feedback-request-creation.component.scss'],
+  templateUrl: './feedback-request-creation.view.html',
+  styleUrls: ['./feedback-request-creation.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
@@ -81,7 +81,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
       .pipe(
         switchMap(request =>
           this.dialog
-            .open<boolean>(FeedbackRequestCreationModalComponent, {
+            .open<boolean>(FeedbackRequestCreationModal, {
               data: { feedbackRequest: request } as FeedbackRequestCreationModalData,
             })
             .closed.pipe(map(confirmed => ({ confirmed, request })))

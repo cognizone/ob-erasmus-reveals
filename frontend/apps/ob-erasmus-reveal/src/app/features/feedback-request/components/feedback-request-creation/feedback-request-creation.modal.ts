@@ -18,11 +18,11 @@ import { combineLatest } from 'rxjs';
   standalone: true,
   imports: [CommonModule, MatIconModule, TranslocoModule, ReactiveFormsModule, TextFieldModule, ClipboardModule],
   providers: [LoadingService],
-  templateUrl: './feedback-request-creation-modal.component.html',
-  styleUrls: ['./feedback-request-creation-modal.component.scss'],
+  templateUrl: './feedback-request-creation.modal.html',
+  styleUrls: ['./feedback-request-creation.modal.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedbackRequestCreationModalComponent extends OnDestroy$ implements OnInit {
+export class FeedbackRequestCreationModal extends OnDestroy$ implements OnInit {
   currentTabMode: TabMode = 'email';
   tabs: Tab[] = [
     {
