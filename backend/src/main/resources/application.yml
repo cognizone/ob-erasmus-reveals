@@ -14,9 +14,13 @@ management:
 #    context-path: /
 
 cognizone:
+  vinz:
+    routes:
+      - name: elastic
+        path: ${cognizone.proxy.url}
+        url: ${env.reveals.elastic.scheme}://${env.reveals.elastic.host}:${env.reveals.elastic.jsonApiPort}/
   proxy:
     url: /ob-erasmus-reveals-elastic-proxy
   elastic:
-    index:
-      name: ${env.reveals.elastic.index.name}
-      url: ${env.reveals.elastic.index.url}
+    url: ${env.reveals.elastic.url}
+    index: ${env.reveals.elastic.index}
