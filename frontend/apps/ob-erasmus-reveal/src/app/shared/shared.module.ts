@@ -2,7 +2,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+import { CdkMenuModule } from '@angular/cdk/menu';
 import { RouterModule } from '@angular/router';
 import { I18nModule } from '@cognizone/i18n';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -20,7 +20,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { SkillsVisualizationComponent } from './components/skills-visualization/skills-visualization.component';
 import { SignUpModalComponent } from './components/sign-up-modal/sign-up-modal.component';
 
-const vendors = [MatIconModule, MatMenuModule, I18nModule, NgOptimizedImage, DialogModule];
+const vendors = [MatIconModule, I18nModule, NgOptimizedImage, DialogModule, CdkMenuModule];
 
 @NgModule({
   declarations: [

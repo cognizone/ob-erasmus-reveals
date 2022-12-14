@@ -11,7 +11,8 @@
       </li>
     </ul>
   </nav>
-  <button class="app-button ml-3" [matMenuTriggerFor]="menu">
+  <!-- TODO , make this a component maybe -->
+  <button class="app-button ml-3" [cdkMenuTriggerFor]="menu">
     <mat-icon>language</mat-icon>
     {{ t('langs.' + i18nService.getActiveLang()) }}
   </button>
@@ -21,14 +22,16 @@
     <a routerLink="/signup" class="app-button" color="primary">{{ t('header.get_started') }}</a>
   </div>
 
-  <mat-menu #menu="matMenu">
-    <button
-      *ngFor="let lang of i18nService.getAvailableLangs()"
-      mat-menu-item
-      [class.is-active]="lang === i18nService.getActiveLang()"
-      (click)="languageService.setActiveLang(lang)"
-    >
-      {{ t('langs.' + lang) }}
-    </button>
-  </mat-menu>
+  <ng-template #menu>
+    <div class="app-cdk-menu" cdkMenu>
+      <button
+          cdkMenuItem
+          *ngFor="let lang of i18nService.getAvailableLangs()"
+          [class.is-active]="lang === i18nService.getActiveLang()"
+          (click)="languageService.setActiveLang(lang)"
+      >
+        {{ t('langs.' + lang) }}
+      </button>
+    </div>
+  </ng-template>
 </header>

@@ -1,0 +1,21 @@
+.app-cdk-menu {
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 0 1px 0 rgb(40 41 61 / 4%), 0 2px 4px 0 rgb(96 97 112 / 16%);
+  color: var(--color-gray-60);
+  background-color: var(--color-white);
+
+  button {
+    font-weight: 600;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    line-height: 36px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+  }
+}

@@ -176,5 +176,19 @@
     "skills_description": "Join us and start right away to share your skills, ask for endorsements and give feedbacks.",
     "unlock_access": "Unlock unlimited access to Reveal in just one click"
   },
-  "login": {}
+  "login": {},
+  "my_profile": {
+    "add_new_description": "To add new skills to your profile, you need to ask endorsement from your peers, friends and colleagues.",
+    "add_new_heading": "All set! Now add some skills",
+    "ask_for_endorsement": "Ask for endorsement",
+    "endorsements": "{{count}} endorsements",
+    "skills": "{{count}} {{header.skills}}"
+  },
+  "my_profile_header": {
+    "ask_endorsement": "Ask endorsement",
+    "heading": "My profile",
+    "logout": "Log out",
+    "settings": "Settings",
+    "skills": "{{header.skills}}"
+  }
 }

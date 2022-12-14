@@ -1,13 +1,5 @@
 @use 'abstracts/mixins' as *;
 
-nav {
-  ul {
-    @include reset-ul;
-    display: flex;
-    gap: 1rem;
-  }
-}
-
 a,
 button {
   &.is-active {
