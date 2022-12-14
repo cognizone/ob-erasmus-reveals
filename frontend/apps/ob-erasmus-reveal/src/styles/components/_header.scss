@@ -5,5 +5,13 @@
 }
 
 header {
-  @include app-header
+  @include app-header;
+
+  nav {
+    ul {
+      @include reset-ul;
+      display: flex;
+      gap: 1rem;
+    }
+  }
 }

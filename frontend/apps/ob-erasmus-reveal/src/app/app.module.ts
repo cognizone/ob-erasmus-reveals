@@ -34,7 +34,12 @@ import { RouterModule } from '@angular/router';
       }, // TODO - remove me after email template is ready.
       {
         path: 'global-skills',
-        loadChildren: () => import('./features/global-skills-visualization/global-skills-visualization.module').then(m => m.GlobalSkillsVisualizationModule),
+        loadChildren: () =>
+          import('./features/global-skills-visualization/global-skills-visualization.module').then(m => m.GlobalSkillsVisualizationModule),
+      },
+      {
+        path: 'my-profile',
+        loadChildren: () => import('./features/my-profile/my-profile.module').then(m => m.MyProfileModule),
       },
       {
         path: 'feedback-request',

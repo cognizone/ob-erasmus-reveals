@@ -16,6 +16,7 @@ import {
   FeedbackRequestCreationModal,
   FeedbackRequestCreationModalData,
 } from '../../components/feedback-request-creation/feedback-request-creation.modal';
+import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header/components/my-profile-header.component';
 
 // TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
 // TODO hide global footer, but guessing this will be handled in general with connected users.
@@ -33,6 +34,7 @@ import {
     MatIconModule,
     RouterModule,
     DialogModule,
+    MyProfileHeaderComponent
   ],
   providers: [LoadingService],
   templateUrl: './feedback-request-creation.view.html',

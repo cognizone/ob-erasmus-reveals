@@ -1,0 +1,32 @@
+@use 'abstracts/mixins' as *;
+
+ul {
+  @include reset-ul;
+}
+
+.is-active {
+  color: var(--primary-violet);
+}
+
+.my-primary-button {
+  background-color: var(--primary-violet);
+  color: var(--color-white);
+
+  &.is-active {
+    color: var(--color-white)
+  }
+}
+
+.app-cdk-menu {
+  width: 150px;
+
+  mat-icon {
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+    margin-right: 1rem;
+  }
+}
+
+.my-menu-item {
+  border-bottom: 1px solid var(--border-color-secondary);
+}

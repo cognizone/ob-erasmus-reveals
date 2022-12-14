@@ -1,10 +1,5 @@
 $my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0.16);
 
-:host {
-  display: block;
-  margin-top: 4rem;
-}
-
 .my-heading {
   color: var(--color-secondary-text);
   font-size: 2rem;
@@ -77,7 +72,7 @@ $my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0
 
 .my-skill-heading {
   display: flex;
-  align-items: flex-start;
+  text-align: left;
   color: var(--color-tertiary-text);
   font-weight: bold;
   letter-spacing: 0;
@@ -85,11 +80,9 @@ $my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0
 }
 
 .my-icon {
-  display: flex;
   align-items: baseline;
   margin-right: 1rem;
   position: relative;
-  display: inline-block;
   height: 32px;
   width: 32px;
 }
