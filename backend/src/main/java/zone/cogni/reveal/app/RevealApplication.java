@@ -4,7 +4,7 @@ import cogni.zone.vinzclortho.EnableVinzClorthoProxy;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
-import settings.SettingsConfiguration;
+import zone.cogni.reveal.settings.SettingsConfiguration;
 
 @SpringBootApplication
 @EnableVinzClorthoProxy

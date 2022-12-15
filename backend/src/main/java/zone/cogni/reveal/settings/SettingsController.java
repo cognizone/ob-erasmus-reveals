@@ -1,4 +1,4 @@
-package settings;
+package zone.cogni.reveal.settings;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

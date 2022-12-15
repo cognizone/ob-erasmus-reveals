@@ -1,4 +1,4 @@
-package settings;
+package zone.cogni.reveal.settings;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
