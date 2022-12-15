@@ -45,6 +45,11 @@ import { RouterModule } from '@angular/router';
         path: 'feedback-request',
         loadChildren: () => import('./features/feedback-request/feedback-request.module').then(m => m.FeedbackRequestModule),
       },
+      // TODO temporary for testing purposes, to be placed in side panel when available
+      {
+        path: 'map',
+        loadComponent: () => import('./shared-features/countries-map/countries-map.component').then(m => m.CountriesMapComponent),
+      },
     ]),
   ],
   providers: [],
