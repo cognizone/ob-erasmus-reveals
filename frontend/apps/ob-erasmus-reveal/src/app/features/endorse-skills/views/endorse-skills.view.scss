@@ -1,0 +1,42 @@
+@use 'abstracts/mixins' as *;
+
+.my-endorser-details {
+  @include skills-information-container;
+  width: 900px;
+  margin-top: 5rem;
+  height: 700px;
+  padding: 3rem 1.5rem 1rem 1.5rem;
+}
+
+h1 {
+  font-size: 1rem;
+  color: var(--color-gray-60);
+  text-align: center;
+}
+
+h2 {
+  @include skill-header;
+}
+
+.my-form {
+  @include app-form-steps
+}
+
+.my-back-button {
+  border: 0;
+  background-color: transparent;
+  font-size: .875rem;
+  text-decoration: none;
+
+  mat-icon {
+    font-size: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+
+:host::ng-deep {
+  .mat-horizontal-stepper-header-container {
+    display: none !important; // This is needed
+  }
+}

@@ -64,6 +64,29 @@
     "get_started": "Get started by clicking on the link we sent to",
     "send_again": "Send again"
   },
+  "endorse_skills": {
+    "back": "Back",
+    "country": "{{global.country}}",
+    "email": "{{global.email}}",
+    "name": "{{global.name}}",
+    "next": "{{global.next}}",
+    "optional": "(optional)",
+    "relationship_level": "Your level of relationship with {{ user }}",
+    "select_relationship": "Select a relationship",
+    "step_1": {
+      "about": "Tell us more about you",
+      "description": "Thank you for taking the time to answer this endorsement request. It won't take you long to fill it in.",
+      "heading": "Skill endorsement request from {{ user }}"
+    },
+    "step_2": {
+      "description": "We use our users' location data to improve the information on the « skills » page",
+      "heading": "Share your location"
+    },
+    "step_3": {
+      "heading": "Which {{ user }} skills do you endorse?"
+    },
+    "surname": "{{global.surname}}"
+  },
   "feedback_request": {
     "creation": {
       "cancel": "{{global.cancel}}",

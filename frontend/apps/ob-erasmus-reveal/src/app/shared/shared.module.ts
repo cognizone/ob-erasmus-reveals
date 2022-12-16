@@ -19,6 +19,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SkillsVisualizationComponent } from './components/skills-visualization/skills-visualization.component';
 import { SignUpModalComponent } from './components/sign-up-modal/sign-up-modal.component';
+import { AppLogoComponent } from '@app/shared-features/app-logo';
 
 const vendors = [MatIconModule, I18nModule, NgOptimizedImage, DialogModule, CdkMenuModule];
 
@@ -36,6 +37,7 @@ const vendors = [MatIconModule, I18nModule, NgOptimizedImage, DialogModule, CdkM
   ],
   imports: [
     ...vendors,
+    AppLogoComponent,
     CommonModule,
     TranslocoModule,
     RouterModule,

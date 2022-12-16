@@ -16,6 +16,7 @@ import {
   LanguageService,
   provideAppInitializer,
   provideInitializer,
+  RelationshipTypeService,
   SkillsService,
   TranslocoHttpLoader,
   UserService,
@@ -32,6 +33,7 @@ import {
     provideInitializer(FeedbacksService),
     provideInitializer(UserService),
     provideInitializer(LanguageService),
+    provideInitializer(RelationshipTypeService),
     customIdGeneratorProvider,
     // we don't need the full module
     JsonModelService,

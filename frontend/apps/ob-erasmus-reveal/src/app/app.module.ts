@@ -45,6 +45,10 @@ import { RouterModule } from '@angular/router';
         path: 'feedback-request',
         loadChildren: () => import('./features/feedback-request/feedback-request.module').then(m => m.FeedbackRequestModule),
       },
+      {
+        path: 'endorse-skills',
+        loadChildren: () => import('./features/endorse-skills/endorse-skills.module').then(m => m.EndorseSkillsModule),
+      },
       // TODO temporary for testing purposes, to be placed in side panel when available
       {
         path: 'map',

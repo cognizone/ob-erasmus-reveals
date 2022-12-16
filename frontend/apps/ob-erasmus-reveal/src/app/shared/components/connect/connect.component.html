@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <header class="container d-flex align-items-center">
-    <a routerLink="/"><img width="158" height="36" ngSrc="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')"/></a>
+    <ob-erasmus-reveal-app-logo></ob-erasmus-reveal-app-logo>
     <div class="flex-grow-1"></div>
     <div class="d-flex" *transloco="let t; read: 'join_now'">
       <p class="mr-3 mb-0"> {{ t(getStarted ? 'already_member' : 'not_a_member') }}</p>
