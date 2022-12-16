@@ -1,5 +1,5 @@
 .my-skills-chart {
-  height: 150vh;
+  height: calc(100vh + 120px);
 }
 
 :host::ng-deep {
