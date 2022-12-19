@@ -1,7 +1,7 @@
 env:
   reveals:
     elastic:
-      index: data
+      scheme: http
       host: ob-erasmus-reveals-dev-elastic.cz-aws.net
       jsonApiPort: 9200
-      scheme: http
+      index: aws-dev-reveals-data

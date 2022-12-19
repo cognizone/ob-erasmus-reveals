@@ -10,9 +10,9 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 public class SettingsController {
-  @Value("${cognizone.proxy.url}")
+  @Value("${reveals.proxy.url}")
   private final String elasticProxyUrl;
-  @Value("${cognizone.elastic.index}")
+  @Value("${reveals.elastic.index}")
   private final String index;
 
   @GetMapping("/api/settings")

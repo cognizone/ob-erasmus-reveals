@@ -13,14 +13,18 @@ management:
 #  servlet:
 #    context-path: /
 
+reveals:
+  proxy:
+    url: /ob-erasmus-reveals-elastic-proxy
+  elastic:
+    scheme: ${env.reveals.elastic.scheme}
+    host: ${env.reveals.elastic.host}
+    jsonApiPort: ${env.reveals.elastic.jsonApiPort}
+    index: ${env.reveals.elastic.index}
+
 cognizone:
   vinz:
     routes:
       - name: elastic
-        path: ${cognizone.proxy.url}
-        url: ${env.reveals.elastic.scheme}://${env.reveals.elastic.host}:${env.reveals.elastic.jsonApiPort}/
-  proxy:
-    url: /ob-erasmus-reveals-elastic-proxy
-  elastic:
-    url: ${env.reveals.elastic.url}
-    index: ${env.reveals.elastic.index}
+        path: ${reveals.proxy.url}/**
+        url: ${reveals.elastic.scheme}://${reveals.elastic.host}:${reveals.elastic.jsonApiPort}/
