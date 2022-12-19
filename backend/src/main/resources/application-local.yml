@@ -1,0 +1,7 @@
+env:
+  reveals:
+    elastic:
+      scheme: http
+      host: localhost
+      jsonApiPort: 9200
+      index: reveals-data

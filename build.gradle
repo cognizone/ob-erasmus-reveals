@@ -5,6 +5,7 @@ buildscript {
   ext {
     commonsCollectionsVersion = "4.4"
     commonsLang3Version = "3.12.0"
+    vinzClorthoVersion = "0.1.1"
   }
 }
 
@@ -67,6 +68,7 @@ subprojects {
       dependency("org.apache.commons:commons-collections4:${commonsCollectionsVersion}")
       dependency("org.apache.commons:commons-lang3:${commonsLang3Version}")
       dependency("javax.inject:javax.inject:1")
+      dependency("zone.cogni.vinz-clortho:vinz-clortho:${vinzClorthoVersion}")
     }
   }
   dependencies {
@@ -119,6 +121,7 @@ project("backend") {
 
     implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
 
+    implementation("zone.cogni.vinz-clortho:vinz-clortho")
   }
 
   test {

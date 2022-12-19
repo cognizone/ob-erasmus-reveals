@@ -1,0 +1,7 @@
+env:
+  reveals:
+    elastic:
+      scheme: http
+      host: ob-erasmus-reveals-dev-elastic.sysadmin.garden
+      jsonApiPort: 9200
+      index: aws-dev-reveals-data

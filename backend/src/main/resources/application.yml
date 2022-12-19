@@ -12,3 +12,19 @@ management:
 #server:
 #  servlet:
 #    context-path: /
+
+reveals:
+  proxy:
+    url: /ob-erasmus-reveals-elastic-proxy
+  elastic:
+    scheme: ${env.reveals.elastic.scheme}
+    host: ${env.reveals.elastic.host}
+    jsonApiPort: ${env.reveals.elastic.jsonApiPort}
+    index: ${env.reveals.elastic.index}
+
+cognizone:
+  vinz:
+    routes:
+      - name: elastic
+        path: ${reveals.proxy.url}/**
+        url: ${reveals.elastic.scheme}://${reveals.elastic.host}:${reveals.elastic.jsonApiPort}/
