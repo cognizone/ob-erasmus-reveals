@@ -6,12 +6,19 @@ import { GetStartedRoutingModule } from './get-started-routing.module';
 import { GetStartedComponent } from './get-started.component';
 import { SharedModule } from '@app/shared';
 import { MatButtonModule } from '@angular/material/button';
-import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer/components/my-profile-footer.component';
+import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer';
 
 const routes: Routes = [{ path: '', component: GetStartedComponent }];
 
 @NgModule({
   declarations: [GetStartedComponent],
-  imports: [GetStartedRoutingModule, RouterModule.forChild(routes), TranslocoLocaleModule, SharedModule, MatButtonModule, MyProfileFooterComponent],
+  imports: [
+    GetStartedRoutingModule,
+    RouterModule.forChild(routes),
+    TranslocoLocaleModule,
+    SharedModule,
+    MatButtonModule,
+    MyProfileFooterComponent,
+  ],
 })
 export class GetStartedModule {}

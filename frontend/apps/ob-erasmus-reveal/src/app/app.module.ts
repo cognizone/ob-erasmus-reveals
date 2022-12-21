@@ -48,7 +48,7 @@ import { RouterModule } from '@angular/router';
       // TODO temporary for testing purposes, to be placed in side panel when available
       {
         path: 'map',
-        loadComponent: () => import('./shared-features/countries-map/countries-map.component').then(m => m.CountriesMapComponent),
+        loadComponent: () => import('./shared-features/countries-map').then(m => m.CountriesMapComponent),
       },
     ]),
   ],

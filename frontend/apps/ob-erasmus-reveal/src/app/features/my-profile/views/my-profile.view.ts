@@ -4,8 +4,8 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { AuthService } from '@app/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header/components/my-profile-header.component';
-import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer/components/my-profile-footer.component';
+import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header';
+import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer';
 
 @Component({
   selector: 'ob-erasmus-reveal-my-profile',
@@ -17,7 +17,7 @@ import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer
     NgOptimizedImage,
     RouterModule,
     MatIconModule,
-    MyProfileFooterComponent
+    MyProfileFooterComponent,
   ],
   templateUrl: './my-profile.view.html',
   styleUrls: ['./my-profile.view.scss'],
