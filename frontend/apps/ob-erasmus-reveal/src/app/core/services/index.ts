@@ -2,6 +2,7 @@ export * from './auth.service';
 export * from './config.service';
 export * from './countries.service';
 export * from './custom-id-generator.service';
+export * from './elastic.service';
 export * from './email.service';
 export * from './feedback-requests.service';
 export * from './feedbacks.service';
