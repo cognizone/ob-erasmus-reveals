@@ -8,7 +8,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "transform-data": "ts-node tools/transform.ts"
+    "transform-data": "ts-node tools/transform.ts",
+    "generate-data": "ts-node tools/generate.ts"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +48,7 @@
     "@angular/compiler-cli": "~15.0.0",
     "@angular/language-service": "~15.0.0",
     "@cognizone/prettier-config": "^2.7.6",
+    "@faker-js/faker": "^7.6.0",
     "@nrwl/cli": "15.2.1",
     "@nrwl/cypress": "15.2.1",
     "@nrwl/eslint-plugin-nx": "15.2.1",
