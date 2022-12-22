@@ -15,10 +15,7 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/ob-erasmus-reveal/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/ob-erasmus-reveal/src/favicon.ico",
-          "apps/ob-erasmus-reveal/src/assets"
-        ],
+        "assets": ["apps/ob-erasmus-reveal/src/favicon.ico", "apps/ob-erasmus-reveal/src/assets"],
         "styles": ["apps/ob-erasmus-reveal/src/styles/main.scss"],
         "stylePreprocessorOptions": {
           "includePaths": ["apps/ob-erasmus-reveal/src/styles"]
@@ -59,7 +56,8 @@
           "browserTarget": "ob-erasmus-reveal:build:production"
         },
         "development": {
-          "browserTarget": "ob-erasmus-reveal:build:development"
+          "browserTarget": "ob-erasmus-reveal:build:development",
+          "proxyConfig": "apps/ob-erasmus-reveal/proxy.conf-local.js"
         }
       },
       "defaultConfiguration": "development"
@@ -73,10 +71,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/ob-erasmus-reveal/**/*.ts",
-          "apps/ob-erasmus-reveal/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/ob-erasmus-reveal/**/*.ts", "apps/ob-erasmus-reveal/**/*.html"]
       }
     },
     "test": {
