@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { CountriesService, Country } from '@app/core';
-import { getRandomInt } from '@app/core/utils';
+import { CountriesService, Country, Counts, FeedbacksService } from '@app/core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
 import { OnDestroy$ } from '@cognizone/ng-core';
@@ -20,14 +19,19 @@ import { combineLatest } from 'rxjs';
 })
 export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
   @Input()
-  skillUri!: string;
+  skillUri: string = 'http://reveal.org/data/skill/02'; // TODO remove default when connected to skill cloud click
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
 
   private chart?: echarts.ECharts;
 
-  constructor(private http: HttpClient, private countriesService: CountriesService, private i18nService: I18nService) {
+  constructor(
+    private http: HttpClient,
+    private countriesService: CountriesService,
+    private i18nService: I18nService,
+    private feedbacksService: FeedbacksService
+  ) {
     super();
   }
 
@@ -35,20 +39,23 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
     const geoJson$ = this.http.get<any>('assets/data/world.json');
 
     // need to regen map on lang change to update country labels
-    this.subSink = combineLatest([geoJson$, this.countriesService.getAll(), this.i18nService.selectActiveLang()]).subscribe(
-      ([geoJson, countries]) => {
-        this.createChart(geoJson, countries);
-      }
-    );
+    this.subSink = combineLatest([
+      geoJson$,
+      this.countriesService.getAll(),
+      this.feedbacksService.getCountsPerCountry(this.skillUri),
+      this.i18nService.selectActiveLang(),
+    ]).subscribe(([geoJson, countries, counts]) => {
+      this.createChart(geoJson, countries, counts);
+    });
   }
 
-  private createChart(geoJson: any, countries: Country[]): void {
+  private createChart(geoJson: any, countries: Country[], counts: Counts): void {
     if (!this.chart) {
       const chartDom = this.container.nativeElement;
       this.chart = echarts.init(chartDom);
     }
 
-    const data = this.generateData(countries);
+    const data = this.generateData(countries, counts);
     const geoJsonId = 'WORLD';
 
     echarts.registerMap(geoJsonId, geoJson);
@@ -103,11 +110,11 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
     });
   }
 
-  private generateData(countries: Country[]): SeriesData {
+  private generateData(countries: Country[], counts: Counts): SeriesData {
     let min = Number.POSITIVE_INFINITY;
     let max = Number.NEGATIVE_INFINITY;
     const data = countries.map<Data>(country => {
-      const value = getRandomInt(0, 2500);
+      const value = counts[country['@id']] ?? 0;
       min = value < min ? value : min;
       max = value > max ? value : max;
 

@@ -1,5 +1,6 @@
 export * from './color';
 export * from './config';
+export * from './counts';
 export * from './data-file';
 export * from './elastic-state';
 export * from './feedback.facets';
