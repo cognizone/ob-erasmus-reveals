@@ -149,7 +149,7 @@ project("backend") {
           username = System.properties["archiva.user"]
           password = System.properties["archiva.password"]
         }
-        name = 'public'
+        name = 'cognizone'
         url = System.properties['archiva.url']
       }
     }
