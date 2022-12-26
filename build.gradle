@@ -80,7 +80,7 @@ subprojects {
   targetCompatibility = JavaVersion.VERSION_11
 
   group = "zone.cogni"
-  //version = scmVersion.version
+  version = scmVersion.version
 
   compileJava.options.encoding = "UTF-8"
   compileTestJava.options.encoding = "UTF-8"
