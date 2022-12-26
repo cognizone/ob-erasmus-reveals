@@ -1,6 +1,3 @@
-import pl.allegro.tech.build.axion.release.domain.properties.TagProperties
-import pl.allegro.tech.build.axion.release.domain.scm.ScmPosition
-
 buildscript {
   ext {
     commonsCollectionsVersion = "4.4"
@@ -32,7 +29,7 @@ scmVersion {
             'release/.*': 'release-v',
             'hotfix/.*' : 'hotfix-v'
     ]
-    initialVersion = { final TagProperties rules, final ScmPosition position -> "0.0.1" }
+    //manually added version tag// initialVersion = { final TagProperties rules, final ScmPosition position -> "0.0.1" }
   }
   nextVersion {
     suffix = "SNAPSHOT"
