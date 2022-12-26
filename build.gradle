@@ -133,7 +133,7 @@ project("backend") {
   }
   publishing {
     publications {
-      mavenWeb(MavenPublication) {
+      mavenJava(MavenPublication) {   //why mavenWeb?
         artifact(bootJar)
         groupId = System.properties['project.groupID']
         artifactId = System.properties['project.artifactID']
