@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Ciao!</title>
+</head>
+<body>
+<div>
+    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
+    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
+</div>
+
+<h1 style="color: #5B43B1;font-family: Archivo;">Ciao!</h1>
+
+<h3 th:text="${user + ' ha bisogno del tuo aiuto:'} "></h3>
+<p th:text="${message}"></p>
+<button style="
+        color: white;
+        font-family: Archivo;
+        background-color:#5B43B1;
+        border:none;
+        border-radius:10px;
+        padding:15px;
+        min-width: 120px">
+    <a th:href="${url}" style="text-decoration: none;color: white">
+        <span>Dai la tua approvazione</span>
+    </a>
+</button>
+</body>
+</html>

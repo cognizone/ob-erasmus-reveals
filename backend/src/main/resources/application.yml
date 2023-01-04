@@ -21,6 +21,9 @@ reveals:
     host: ${env.reveals.elastic.host}
     jsonApiPort: ${env.reveals.elastic.jsonApiPort}
     index: ${env.reveals.elastic.index}
+  url:
+    completeProfile: ${env.reveals.server.scheme}://${env.reveals.server.host}/complete-profile?email=
+    endorse: ${env.reveals.server.scheme}://${env.reveals.server.host}/endorse-skills?email=
 
 cognizone:
   vinz:
@@ -28,3 +31,30 @@ cognizone:
       - name: elastic
         path: ${reveals.proxy.url}/**
         url: ${reveals.elastic.scheme}://${reveals.elastic.host}:${reveals.elastic.jsonApiPort}/
+
+mail:
+  fromAddress: 'Reveals'
+  fromDescription: ''
+  fromEmail: reveals.project.cz@gmail.com # password for gmail account is revealsproject
+  password: xgpnlbopbaevzmiz
+  subject:
+    fr: Message de l'administrateur de reveals.
+    gr: Μήνυμα από τον διαχειριστή του reveals.
+    en: Message from reveals' admin.
+    it: Messaggio dall'amministratore reveals.
+    nl: Bericht van reveals beheerder
+    sl: Správa od reveals admina
+  #SMTP host
+  smtp:
+    host: smtp.gmail.com
+    # TLS Port 587 / SSL Port 465
+    port: 465
+    # enable authentication
+    auth: true
+    starttls:
+      # enable TLS
+      enable: true
+    socketFactory:
+      # SSL Factory Class
+      port: 465
+      class: javax.net.ssl.SSLSocketFactory

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div>
+    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
+    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
+</div>
+
+<h1 style="color: #5B43B1;font-family: Archivo;">Ahoj!</h1>
+<p>Vitajte v komunite Reveal, kde sa môžete podeliť o svoje zručnosti, žiadať a dávať odporúčania. Práve teraz môžete
+    požiadať o schválenie všetkých svojich zručností, dokonca aj tých, o ktorých si myslíte, že nestojí za to ich
+    zdieľať! Boli by ste prekvapení, keby ste zistili, ako ľudia okolo seba využívajú poznatky, ktoré nadobudli
+    dlhoročnými skúsenosťami na pracovisku aj v súkromnom živote.
+</p>
+<button style="
+        color: white;
+        font-family: Archivo;
+        background-color:#5B43B1;
+        border:none;
+        border-radius:10px;
+        padding:15px;
+        min-width: 120px">
+    <a th:href="${url}" style="text-decoration: none;color: white">
+        <span>Vyplňte svoj profil</span>
+    </a>
+</button>
+</body>
+</html>

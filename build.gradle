@@ -66,6 +66,8 @@ subprojects {
       dependency("org.apache.commons:commons-lang3:${commonsLang3Version}")
       dependency("javax.inject:javax.inject:1")
       dependency("zone.cogni.vinz-clortho:vinz-clortho:${vinzClorthoVersion}")
+      dependency("org.springframework:spring-context-support:6.0.3")
+      dependency("com.sun.mail:javax.mail:1.6.2")
     }
   }
   dependencies {
@@ -115,10 +117,14 @@ project("backend") {
   }
   dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 
     implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
 
     implementation("zone.cogni.vinz-clortho:vinz-clortho")
+
+    implementation("com.sun.mail:javax.mail")
+
   }
 
   test {

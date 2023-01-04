@@ -5,3 +5,6 @@ env:
       host: localhost
       jsonApiPort: 9200
       index: reveals-data
+    server:
+      scheme: http
+      host: localhost:4200
