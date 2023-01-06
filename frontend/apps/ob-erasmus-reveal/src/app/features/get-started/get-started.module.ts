@@ -6,7 +6,7 @@ import { GetStartedRoutingModule } from './get-started-routing.module';
 import { GetStartedComponent } from './get-started.component';
 import { SharedModule } from '@app/shared';
 import { MatButtonModule } from '@angular/material/button';
-import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer';
+import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
 
 const routes: Routes = [{ path: '', component: GetStartedComponent }];
 
@@ -18,7 +18,7 @@ const routes: Routes = [{ path: '', component: GetStartedComponent }];
     TranslocoLocaleModule,
     SharedModule,
     MatButtonModule,
-    MyProfileFooterComponent,
+    ProfileFooterComponent,
   ],
 })
 export class GetStartedModule {}

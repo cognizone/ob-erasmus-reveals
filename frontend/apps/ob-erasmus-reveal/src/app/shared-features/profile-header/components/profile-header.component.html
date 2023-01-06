@@ -1,5 +1,5 @@
 <header *transloco="let t" class="container d-flex align-items-center">
-  <a routerLink="/">
+  <a routerLink="/profile">
     <img priority width="158" height="36" ngSrc="assets/images/logo/reveal-logo-square.svg" [alt]="t('global.logo_alt')"/>
   </a>
   <div class="flex-grow-1"></div>
@@ -19,11 +19,11 @@
     <div class="app-cdk-menu" cdkMenu>
       <button class="my-menu-item" cdkMenuItem>
         <mat-icon>settings</mat-icon>
-        {{ t('my_profile_header.settings') }}
+        {{ t('profile_header.settings') }}
       </button>
       <button cdkMenuItem>
         <mat-icon>logout</mat-icon>
-        {{ t('my_profile_header.logout') }}
+        {{ t('profile_header.logout') }}
       </button>
     </div>
   </ng-template>

@@ -6,26 +6,26 @@ import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'ob-erasmus-reveal-my-profile-header',
+  selector: 'ob-erasmus-reveal-profile-header',
   standalone: true,
   imports: [CommonModule, NgOptimizedImage, TranslocoModule, RouterModule, CdkMenuModule, MatIconModule],
-  templateUrl: './my-profile-header.component.html',
-  styleUrls: ['./my-profile-header.component.scss'],
+  templateUrl: './profile-header.component.html',
+  styleUrls: ['./profile-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MyProfileHeaderComponent {
+export class ProfileHeaderComponent {
   header: Items[] = [
     {
-      'label': 'my_profile_header.heading',
-      'path': '/my-profile'
+      'label': 'profile_header.heading',
+      'path': '/profile'
     },
     {
-      'label': 'my_profile_header.skills',
+      'label': 'profile_header.skills',
       'path': '/global-skills' // TODO should not be global skills
     },
     {
       'className': 'my-primary-button',
-      'label': 'my_profile_header.ask_endorsement',
+      'label': 'profile_header.ask_endorsement',
       'path': '/feedback-request/create'
     }
   ]

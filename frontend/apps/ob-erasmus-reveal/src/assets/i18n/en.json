@@ -200,14 +200,14 @@
     "unlock_access": "Unlock unlimited access to Reveal in just one click"
   },
   "login": {},
-  "my_profile": {
+  "profile": {
     "add_new_description": "To add new skills to your profile, you need to ask endorsement from your peers, friends and colleagues.",
     "add_new_heading": "All set! Now add some skills",
     "ask_for_endorsement": "Ask for endorsement",
     "endorsements": "{{count}} endorsements",
     "skills": "{{count}} {{header.skills}}"
   },
-  "my_profile_header": {
+  "profile_header": {
     "ask_endorsement": "Ask endorsement",
     "heading": "My profile",
     "logout": "Log out",

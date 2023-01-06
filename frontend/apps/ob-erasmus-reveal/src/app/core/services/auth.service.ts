@@ -13,8 +13,7 @@ export class AuthService implements Initializer {
   }
 
   get currentUser(): User {
-    // TODO remove fake user when login is implemented
-    return this._currentUser$.value ?? { '@id': 'http://reveal.org/data/user/mario', '@type': 'User', email: 'mario.mario@nintendo.com' };
+    return this._currentUser$.value as User;
   }
 
   private readonly storageKey: string = 'auth';

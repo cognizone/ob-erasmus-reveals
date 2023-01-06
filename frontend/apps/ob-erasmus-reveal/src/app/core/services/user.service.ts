@@ -17,9 +17,9 @@ export class UserService extends ItemService<User> {
           bool: {
             filter: {
               term: {
-                email,
-              },
-            },
+                'email.keyword': email
+              }
+            }
           },
         },
       })

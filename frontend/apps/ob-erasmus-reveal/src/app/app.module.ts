@@ -38,8 +38,8 @@ import { RouterModule } from '@angular/router';
           import('./features/global-skills-visualization/global-skills-visualization.module').then(m => m.GlobalSkillsVisualizationModule),
       },
       {
-        path: 'my-profile',
-        loadChildren: () => import('./features/my-profile/my-profile.module').then(m => m.MyProfileModule),
+        path: 'profile',
+        loadChildren: () => import('./features/profile/profile.module').then(m => m.ProfileModule),
       },
       {
         path: 'feedback-request',

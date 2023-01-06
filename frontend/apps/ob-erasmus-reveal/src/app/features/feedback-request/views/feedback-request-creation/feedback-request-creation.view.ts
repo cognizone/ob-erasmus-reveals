@@ -3,7 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FeedbackRequestsService, Skill, SkillsService } from '@app/core';
 import { SkillImageUrlPipeModule } from '@app/shared/pipes';
 import { I18nModule } from '@cognizone/i18n';
@@ -16,7 +16,7 @@ import {
   FeedbackRequestCreationModal,
   FeedbackRequestCreationModalData,
 } from '../../components/feedback-request-creation/feedback-request-creation.modal';
-import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header';
+import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
 
 // TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
 // TODO hide global footer, but guessing this will be handled in general with connected users.
@@ -34,7 +34,7 @@ import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header
     MatIconModule,
     RouterModule,
     DialogModule,
-    MyProfileHeaderComponent,
+    ProfileHeaderComponent,
   ],
   providers: [LoadingService],
   templateUrl: './feedback-request-creation.view.html',
@@ -50,6 +50,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
     private cdr: ChangeDetectorRef,
     private dialog: Dialog,
     private feedbackRequestsService: FeedbackRequestsService,
+    private router: Router,
     public loadingService: LoadingService
   ) {
     super();
@@ -95,7 +96,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
         this.loadingService.asOperator()
       )
       .subscribe(() => {
-        // TODO go back to profile page
+        this.router.navigate(['profile']);
       });
   }
 }

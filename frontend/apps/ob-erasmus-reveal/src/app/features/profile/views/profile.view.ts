@@ -4,25 +4,26 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { AuthService } from '@app/core';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header';
-import { MyProfileFooterComponent } from '@app/shared-features/my-profile-footer';
+import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
+import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
 
 @Component({
-  selector: 'ob-erasmus-reveal-my-profile',
+  selector: 'ob-erasmus-reveal-profile',
   standalone: true,
   imports: [
     CommonModule,
     TranslocoModule,
-    MyProfileHeaderComponent,
+    ProfileHeaderComponent,
     NgOptimizedImage,
     RouterModule,
     MatIconModule,
-    MyProfileFooterComponent,
+    ProfileFooterComponent,
   ],
-  templateUrl: './my-profile.view.html',
-  styleUrls: ['./my-profile.view.scss'],
+  templateUrl: './profile.view.html',
+  styleUrls: ['./profile.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MyProfileView {
+export class ProfileView {
+  userInfo: string = `${this.authService.currentUser.firstName} ${this.authService.currentUser.lastName}` ?? this.authService.currentUser.email as string;
   constructor(public authService: AuthService) {}
 }
