@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '', // should have userID
     loadComponent: () =>
-      import('./views/my-profile.view').then(m => m.MyProfileView),
+      import('./views/profile.view').then(m => m.ProfileView),
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MyProfileRoutingModule {}
+export class ProfileRoutingModule {}

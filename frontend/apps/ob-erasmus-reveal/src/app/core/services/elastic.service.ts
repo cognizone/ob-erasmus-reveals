@@ -2,10 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModel } from '@cognizone/json-model';
 import { ElasticSearchResponse } from '@cognizone/model-utils';
-import { combineLatest, map, Observable, of, shareReplay } from 'rxjs';
+import { map, Observable, of, shareReplay } from 'rxjs';
 
 import { ElasticState } from '../models';
-import { getRandomInt } from '../utils';
 import { getConfig } from './config.service';
 
 @Injectable({
