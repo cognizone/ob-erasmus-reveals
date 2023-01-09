@@ -28,7 +28,7 @@ export interface FeedbackRequest extends JsonModel {
   emails?: string[];
   message?: string;
   skills?: string[];
-  user: string;
+  user: User;
 }
 
 export interface RelationshipType extends JsonModel {

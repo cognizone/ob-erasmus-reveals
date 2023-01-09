@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AuthService } from '@app/core';
@@ -23,7 +23,15 @@ import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
   styleUrls: ['./profile.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileView {
-  userInfo: string = `${this.authService.currentUser.firstName} ${this.authService.currentUser.lastName}` ?? this.authService.currentUser.email as string;
+export class ProfileView implements OnInit {
+  userInfo!: string;
   constructor(public authService: AuthService) {}
+
+  ngOnInit() {
+    if (this.authService.currentUser?.firstName || this.authService.currentUser?.lastName) {
+      this.userInfo = `${this.authService.currentUser?.firstName} ${this.authService.currentUser?.lastName}`
+    } else {
+      this.userInfo = this.authService.currentUser?.email as string
+    }
+  }
 }

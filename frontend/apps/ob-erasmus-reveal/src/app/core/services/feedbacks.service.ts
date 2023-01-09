@@ -27,7 +27,7 @@ export class FeedbacksService extends ItemService<Feedback> {
   }
 
   create(feedback: JsonModelFields<Feedback>, request: FeedbackRequest): Observable<string> {
-    return this.userService.getByUri(request.user).pipe(
+    return this.userService.getByUri(request.user['@id']).pipe(
       switchMap(user => {
         const facets: FeedbackFacets = {
           requestingUser: user?.['@id'],

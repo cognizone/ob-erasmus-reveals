@@ -42,7 +42,7 @@ export class ElasticService {
     const body =
       docs
         .reduce((acc, doc) => {
-          acc.push({ create: { _id: doc['@id'] } }, doc);
+          acc.push({ create: { _id: btoa(encodeURIComponent(doc['@id'])) } }, doc);
           return acc;
         }, [] as unknown[])
         .map(s => JSON.stringify(s))
@@ -56,15 +56,17 @@ export class ElasticService {
   }
 
   createOneDoc(index: string, doc: JsonModel): Observable<unknown> {
-    return this.http.post(`${this.getBaseUrl()}/${index}/_doc`, doc);
+    return this.createDocuments(index, [doc]);
   }
 
+  // Note - Having issues with using only the ecoded uris, so using btoa for both update and delete
   updateDocument(index: string, doc: JsonModel): Observable<unknown> {
-    return this.http.post(`${this.getBaseUrl()}/${index}/_update/${doc['@id']}`, doc);
+    return this.http.post(`${this.getBaseUrl()}/${index}/_update/${btoa(encodeURIComponent(doc['@id']))}`, {doc});
   }
 
+  // Note - Having issues with using only the ecoded uris, so using btoa for both update and delete
   deleteDocument(index: string, uri: string): Observable<unknown> {
-    return this.http.delete(`${this.getBaseUrl()}/${index}/_doc/${uri}`);
+    return this.http.delete(`${this.getBaseUrl()}/${index}/_doc/${btoa(encodeURIComponent(uri))}`);
   }
 
   search<T>(index: string, body: {}): Observable<ElasticSearchResponse<T>> {
