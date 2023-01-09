@@ -50,13 +50,13 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
 
   getByUri(uri: string): Observable<T> {
     return this.elasticService
-      .search<T>(this.elasticService.getSearchUrl(this.getIndex()), {
+      .search<T>(this.getIndex(), {
         size: 1,
         query: {
           bool: {
             filter: {
               term: {
-                '@id': uri,
+                '@id.keyword': uri,
               },
             },
           },
