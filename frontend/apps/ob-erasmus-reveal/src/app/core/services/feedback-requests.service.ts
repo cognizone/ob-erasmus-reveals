@@ -32,6 +32,10 @@ export class FeedbackRequestsService extends ItemService<FeedbackRequest> {
     return this.save(request).pipe(delay(1000),switchMap(uri => this.getByUri(uri)));
   }
 
+  getFeedbackRequest(uri: string): Observable<FeedbackRequest> {
+    return this.getByUri(uri);
+  }
+
   override getAll(): Observable<FeedbackRequest[]> {
     throw new Error('Should not be called for this model');
   }

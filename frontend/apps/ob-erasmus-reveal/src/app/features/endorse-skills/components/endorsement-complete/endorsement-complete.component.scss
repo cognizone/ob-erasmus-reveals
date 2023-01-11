@@ -1,0 +1,18 @@
+.my-feedback-given {
+  display: flex;
+  text-align: center;
+  gap: 10rem;
+  padding: 2.5rem;
+}
+
+.my-homepage, mat-icon {
+  font-size: 0.875rem;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+mat-icon {
+  height: 12px;
+}

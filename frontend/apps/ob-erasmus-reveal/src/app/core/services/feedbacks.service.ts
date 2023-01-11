@@ -2,14 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModelService } from '@cognizone/json-model';
 import { Dictionary } from '@cognizone/model-utils';
-import { map, Observable, switchMap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
-import { Counts, Feedback, FeedbackFacets, FeedbackRequest, JsonModelFields, User } from '../models';
+import { Counts, Feedback, JsonModelFields } from '../models';
 import { ConfigService } from './config.service';
 import { CustomIdGenerator } from './custom-id-generator.service';
 import { ElasticService } from './elastic.service';
 import { ItemService } from './item.service';
-import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class FeedbacksService extends ItemService<Feedback> {
@@ -20,28 +19,17 @@ export class FeedbacksService extends ItemService<Feedback> {
     jsonModelService: JsonModelService,
     idGenerator: CustomIdGenerator,
     configService: ConfigService,
-    elasticService: ElasticService,
-    private userService: UserService
+    elasticService: ElasticService
   ) {
     super(http, jsonModelService, idGenerator, configService, elasticService);
   }
 
-  create(feedback: JsonModelFields<Feedback>, request: FeedbackRequest): Observable<string> {
-    return this.userService.getByUri(request.user['@id']).pipe(
-      switchMap(user => {
-        const facets: FeedbackFacets = {
-          requestingUser: user?.['@id'],
-          requestingUserCountry: user?.country,
-        };
-        const fullFeedback = {
-          ...this.jsonModelService.createNewBareboneJsonModel('Feedback'),
-          ...feedback,
-          '@facets': facets,
-          request: request['@id'],
-        };
-        return this.save(fullFeedback);
-      })
-    );
+  create(feedback: JsonModelFields<Feedback>): Observable<string> {
+    const fullFeedback = {
+      ...this.jsonModelService.createNewBareboneJsonModel('Feedback'),
+      ...feedback
+    };
+    return this.save(fullFeedback);
   }
 
   getCountsPerCountry(skillUri: string): Observable<Counts> {

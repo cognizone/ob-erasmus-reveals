@@ -13,6 +13,13 @@
       "prefLabel": {
         "en": ["Friend"]
       }
+    },
+    {
+      "@id": "http://reveal.org/data/relation/03",
+      "@type": "RelationshipType",
+      "prefLabel": {
+        "en": ["Other"]
+      }
     }
   ]
 }

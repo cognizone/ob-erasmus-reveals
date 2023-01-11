@@ -65,6 +65,23 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
       .pipe(map(extractOneSourceFromElasticResponse));
   }
 
+  // maybe the name can be better
+  getByUrisMulti(uris: string[]): Observable<T[]> {
+    return this.elasticService
+    .search<T>(this.getIndex(), {
+      query: {
+        bool: {
+          filter: {
+            terms: {
+              '@id.keyword': uris,
+            },
+          },
+        },
+      },
+    })
+    .pipe(map(extractSourcesFromElasticResponse));
+  }
+
   getAll(): Observable<T[]> {
     if (this.all$) return this.all$;
     return (this.all$ = this.elasticService
