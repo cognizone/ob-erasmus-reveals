@@ -11,4 +11,9 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "mail")
 public class EmailProperties {
   private Map<String, String> subject;
+  private String fromAddress;
+  private String fromDescription;
+  private String fromEmail;
+  private String password;
+  private Map<String, String> smtp;
 }

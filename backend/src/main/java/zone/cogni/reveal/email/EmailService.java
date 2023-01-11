@@ -2,9 +2,7 @@ package zone.cogni.reveal.email;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
@@ -28,57 +26,33 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
 public class EmailService {
-
   private final TemplateEngine templateEngine;
-  @Value("${mail.fromAddress}")
-  private String fromAddress;
-  @Value("${mail.fromDescription}")
-  private String fromDescription;
-  @Value("${mail.fromEmail}")
-  private String fromEmail;
-  @Value("${mail.password}")
-  private String password;
-  @Value("${mail.smtp.host}")
-  private String smtpHost;
-  @Value("${mail.smtp.port}")
-  private String smtpPort;
-  @Value("${mail.smtp.auth}")
-  private String smtpAuth;
-  @Value("${mail.smtp.starttls.enable}")
-  private String starttlsEnable;
-  @Value("${mail.smtp.socketFactory.port}")
-  private String socketFactoryPort;
-  @Value("${mail.smtp.socketFactory.class}")
-  private String socketFactoryClass;
+  private final EmailProperties emailProperties;
 
   public void sendMessage(String email,
                           String subject,
                           String templateName,
-                          Context context) throws MessagingException,
-    IOException {
+                          Context context) throws MessagingException, IOException {
     Properties props = new Properties();
-    props.put("mail.smtp.host", smtpHost);
-    props.put("mail.smtp.port", smtpPort);
-    props.put("mail.smtp.auth", smtpAuth);
-    props.put("mail.smtp.starttls.enable", starttlsEnable);
-    props.put("mail.smtp.socketFactory.port", socketFactoryPort);
-    props.put("mail.smtp.socketFactory.class", socketFactoryClass);
+    props.put("mail.smtp.host", emailProperties.getSmtp().get("host"));
+    props.put("mail.smtp.port", emailProperties.getSmtp().get("port"));
+    props.put("mail.smtp.auth", emailProperties.getSmtp().get("auth"));
+    props.put("mail.smtp.starttls.enable", emailProperties.getSmtp().get("starttls.enable"));
+    props.put("mail.smtp.socketFactory.port", emailProperties.getSmtp().get("socketFactory.port"));
+    props.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().get("socketFactory.class"));
 
-    log.info("mail.smtp.host {}, " +
-      "mail.smtp.port {}, " +
-      "mail.smtp.auth {}, " +
-      "mail.smtp.starttls.enable {}," +
-      "mail.smtp.socketFactory.por {}," +
-      "mail.smtp.socketFactory.class {}", smtpHost, smtpPort, smtpAuth, starttlsEnable, socketFactoryPort, socketFactoryClass);
+    log.info("mail.smtp.host {}, mail.smtp.port {}, mail.smtp.auth {}, mail.smtp.starttls.enable {}, mail.smtp.socketFactory.port {},mail.smtp.socketFactory.class {}",
+      emailProperties.getSmtp().get("host"), emailProperties.getSmtp().get("port"), emailProperties.getSmtp().get("auth"),
+      emailProperties.getSmtp().get("starttls.enable"), emailProperties.getSmtp().get("socketFactory.port"),
+      emailProperties.getSmtp().get("socketFactory.class"));
 
     Authenticator auth = new Authenticator() {
       @Override
       protected PasswordAuthentication getPasswordAuthentication() {
-        return new PasswordAuthentication(fromEmail, password);
+        return new PasswordAuthentication(emailProperties.getFromEmail(), emailProperties.getPassword());
       }
     };
 
@@ -124,8 +98,8 @@ public class EmailService {
     UnsupportedEncodingException {
     mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
     mimeMessage.setSubject(subject);
-    mimeMessage.setFrom(new InternetAddress(fromAddress, fromDescription));
-    mimeMessage.setReplyTo(InternetAddress.parse(fromAddress, false));
+    mimeMessage.setFrom(new InternetAddress(emailProperties.getFromAddress(), emailProperties.getFromDescription()));
+    mimeMessage.setReplyTo(InternetAddress.parse(emailProperties.getFromAddress(), false));
     mimeMessage.setSentDate(new Date());
     mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false));
     return mimeMessage;
