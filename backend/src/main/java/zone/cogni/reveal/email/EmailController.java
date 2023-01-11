@@ -1,48 +1,99 @@
 package zone.cogni.reveal.email;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.thymeleaf.context.Context;
+import zone.cogni.reveal.app.model.FeedbackModel;
+import zone.cogni.reveal.app.model.SignupModel;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
+import java.io.IOException;
 
 @RestController
+@RequiredArgsConstructor
 @Slf4j
 public class EmailController {
   private final EmailService emailService;
-  private final EmailConfig emailConfig;
+  private final EmailProperties emailProperties;
 
-  public EmailController(EmailService emailService, EmailConfig emailConfig) {
-    this.emailService = emailService;
-    this.emailConfig = emailConfig;
-  }
+  @PostMapping(path = "/api/feedback")
+  public ResponseEntity<?> sendMailFeedback(@RequestBody ObjectNode body, HttpServletRequest request) {
+    ObjectMapper mapper = new ObjectMapper();
+    ObjectReader reader = mapper.readerFor(new TypeReference<FeedbackModel>() {
+    });
 
-  @PostMapping(path = "/api/sendmail")
-  public ResponseEntity<?> sendmail(HttpServletRequest request,
-                                    @RequestParam String user,
-                                    @RequestParam String email,
-                                    @RequestParam String id,
-                                    @RequestParam(required = false) String language,
-                                    @RequestParam(required = false) String message) {
-
-    if (StringUtils.isBlank(language)) {
-      language = "en";
-    }
-    String subject = emailConfig.getSubject().get(language);
-    String templateName = id + "_" + language;
     try {
-      emailService.sendMessage(email, subject, user, templateName, id, Optional.of(message));
-      log.info("Email to {}, subject {} send successfully", email, subject);
+      FeedbackModel feedbackModel = reader.readValue(body);
+      String subject = emailProperties.getSubject().get(feedbackModel.getLanguage());
+
+      feedbackModel.getEmails().forEach(email -> {
+        try {
+          emailService.sendMessage(email, subject,
+            feedbackModel.getTemplate(),
+            getContextForFeedback(email,feedbackModel, request));
+          log.info("Email to {}, subject {} send successfully", email, subject);
+        }
+        catch (Exception e) {
+          log.info("Failed to send email to {}, subject {}", email, subject);
+        }
+      });
       return ResponseEntity.ok(HttpStatus.OK);
     }
-    catch (Exception e) {
-      log.info("Failed to send email to {}, subject {}", email, subject);
+    catch (IOException e) {
+      log.error("Could not ready body {}", e.getMessage());
       return ResponseEntity.ok(HttpStatus.BAD_GATEWAY);
     }
+  }
+
+
+  @PostMapping(path = "/api/signup")
+  public ResponseEntity<?> sendMailSignup(@RequestBody ObjectNode body, HttpServletRequest request) throws IOException {
+    ObjectMapper mapper = new ObjectMapper();
+    ObjectReader reader = mapper.readerFor(new TypeReference<SignupModel>() {
+    });
+    SignupModel signupModel = reader.readValue(body);
+    String subject = emailProperties.getSubject().get(signupModel.getLanguage());
+
+    try {
+      emailService.sendMessage(signupModel.getEmail(), subject, signupModel.getTemplate(),
+        getContextForSignup(signupModel.getEmail(), request));
+      log.info("Email to {}, subject {} send successfully", signupModel.getEmail(), subject);
+    }
+    catch (Exception e) {
+      log.info("Failed to send email to {}, subject {}", signupModel.getEmail(), subject);
+      return ResponseEntity.ok(HttpStatus.BAD_GATEWAY);
+    }
+    return ResponseEntity.ok(HttpStatus.OK);
+  }
+
+  private Context getContextForFeedback(String email,FeedbackModel feedbackModel, HttpServletRequest request) {
+    Context context = new Context();
+    context.setVariable("imageName", "logo");
+    context.setVariable("url",
+      "http://" + request.getServerName() + ":" + request.getServerPort()
+        + "/endorse-skills"
+        + "?email=" + email +
+        "&feedbackRequestId=" + feedbackModel.getId());
+    context.setVariable("user",  feedbackModel.fullName());
+    context.setVariable("message", feedbackModel.getMessage());
+    return context;
+  }
+
+  private Context getContextForSignup(String email, HttpServletRequest request) {
+    Context context = new Context();
+    context.setVariable("imageName", "logo");
+    context.setVariable("url",
+      "http://" + request.getServerName() + ":" + request.getServerPort() +
+      "/complete-profile?email=" + email);
+    return context;
   }
 }

@@ -22,10 +22,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
-import java.util.Optional;
 import java.util.Properties;
 
 @Service
@@ -54,17 +54,11 @@ public class EmailService {
   private String socketFactoryPort;
   @Value("${mail.smtp.socketFactory.class}")
   private String socketFactoryClass;
-  @Value("${reveals.url.completeProfile}")
-  private String completeProfile;
-  @Value("${reveals.url.endorse}")
-  private String endorse;
 
   public void sendMessage(String email,
                           String subject,
-                          String user,
                           String templateName,
-                          String id,
-                          Optional<String> message) throws MessagingException,
+                          Context context) throws MessagingException,
     IOException {
     Properties props = new Properties();
     props.put("mail.smtp.host", smtpHost);
@@ -90,19 +84,17 @@ public class EmailService {
 
     Session session = Session.getInstance(props, auth);
 
-    sendEmail(session, email, subject, user, templateName, id, message);
+    sendEmail(session, email, subject, templateName, context);
   }
 
   public void sendEmail(Session session,
                         String email,
                         String subject,
-                        String user,
                         String templateName,
-                        String id,
-                        Optional<String> message) throws IOException, MessagingException {
+                        Context context) throws IOException, MessagingException {
     log.info("Sending email to {}, subject {}", email, subject);
 
-    String body = templateEngine.process(templateName, getContext(id, email, user, message));
+    String body = templateEngine.process(templateName, context);
     Message mimeMessage = new MimeMessage(session);
     setMimeMessage(mimeMessage, email, subject);
 
@@ -115,7 +107,9 @@ public class EmailService {
 
     // second part adding the inline image
     BodyPart messageBodyPartImage = new MimeBodyPart();
-    DataSource fds = new FileDataSource(new ClassPathResource("static/img/reveals_logo.png").getFile().getAbsolutePath());
+    File logo = new ClassPathResource("static/img/reveals_logo.png").getFile();
+    DataSource fds = new FileDataSource(logo);
+
     messageBodyPartImage.setDataHandler(new DataHandler(fds));
     messageBodyPartImage.setHeader("Content-ID", "<logo>");
     multipart.addBodyPart(messageBodyPartImage);
@@ -124,22 +118,6 @@ public class EmailService {
     mimeMessage.setContent(multipart);
     // send message
     Transport.send(mimeMessage);
-  }
-
-  private Context getContext(String id, String email, String user, Optional<String> message) {
-    Context context = new Context();
-    context.setVariable("imageName", "logo");
-    if (id.equalsIgnoreCase("feedback")) {
-      // in case of feedback we have a message that we need to send from one user to the other
-      context.setVariable("url", endorse + email);
-      context.setVariable("user", user);
-      context.setVariable("message", message.get());
-    } else if (id.equalsIgnoreCase("signup")) {
-      context.setVariable("url", completeProfile + email);
-    } else {
-      throw new RuntimeException("The id provided is not valid , id = " + id);
-    }
-    return context;
   }
 
   private Message setMimeMessage(Message mimeMessage, String email, String subject) throws MessagingException,

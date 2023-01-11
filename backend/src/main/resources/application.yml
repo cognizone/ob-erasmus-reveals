@@ -21,9 +21,6 @@ reveals:
     host: ${env.reveals.elastic.host}
     jsonApiPort: ${env.reveals.elastic.jsonApiPort}
     index: ${env.reveals.elastic.index}
-  url:
-    completeProfile: ${env.reveals.server.scheme}://${env.reveals.server.host}/complete-profile?email=
-    endorse: ${env.reveals.server.scheme}://${env.reveals.server.host}/endorse-skills?email=
 
 cognizone:
   vinz:

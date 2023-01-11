@@ -3,6 +3,8 @@ buildscript {
     commonsCollectionsVersion = "4.4"
     commonsLang3Version = "3.12.0"
     vinzClorthoVersion = "0.1.1"
+    javaxMail = "1.6.2"
+    springContext = "6.0.3"
   }
 }
 
@@ -66,8 +68,8 @@ subprojects {
       dependency("org.apache.commons:commons-lang3:${commonsLang3Version}")
       dependency("javax.inject:javax.inject:1")
       dependency("zone.cogni.vinz-clortho:vinz-clortho:${vinzClorthoVersion}")
-      dependency("org.springframework:spring-context-support:6.0.3")
-      dependency("com.sun.mail:javax.mail:1.6.2")
+      dependency("org.springframework:spring-context-support:${springContext}")
+      dependency("com.sun.mail:javax.mail:${javaxMail}")
     }
   }
   dependencies {
