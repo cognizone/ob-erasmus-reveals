@@ -1,0 +1,81 @@
+.my-skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 6rem;
+}
+
+.my-skill {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 112px;
+  padding: 0.5rem;
+  border: 2px solid var(--border-color-secondary);
+  border-radius: 0 16px 0 16px;
+  box-shadow: var(--app-box-shadow);
+  background-color: transparent;
+
+  &.is-selected {
+    border-color: var(--primary-violet);
+    mat-icon {
+      display: initial;
+      color: var(--primary-violet);
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  mat-icon {
+    display: none;
+  }
+}
+
+.my-skill-heading {
+  display: flex;
+  text-align: left;
+  color: var(--color-tertiary-text);
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+}
+
+.my-icon {
+  align-items: baseline;
+  margin-right: 1rem;
+  position: relative;
+  height: 32px;
+  width: 32px;
+}
+
+.my-skill-description {
+  margin-top: 0.5rem;
+  text-align: start;
+  color: var(--color-secondary-text);
+  font-size: 0.75rem;
+  font-style: italic;
+  letter-spacing: 0.25px;
+  line-height: 1rem;
+}
+
+.my-prompt {
+  color: var(--color-primary-text);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5rem;
+}
+
+.my-count {
+  color: var(--color-gray-60);
+  font-size: 1rem;
+  line-height: 1.5rem;
+
+  &.is-filled {
+    color: var(--primary-violet);
+    font-weight: bold;
+  }
+}

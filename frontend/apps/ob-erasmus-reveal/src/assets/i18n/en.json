@@ -23,6 +23,10 @@
       }
     }
   },
+  "answer_sent": {
+    "heading": "Your answers have been sent to {{ user }}",
+    "thank_you": "Thank you for your time!"
+  },
   "complete_profile": {
     "complete_now": "Complete your profile now",
     "description_1": "You can ask endorsements right now for all your skills, even the ones you think are not worth sharing!",
@@ -68,6 +72,9 @@
     "back": "Back",
     "country": "{{global.country}}",
     "email": "{{global.email}}",
+    "feedback_given": {
+      "homepage": "Go to homepage"
+    },
     "name": "{{global.name}}",
     "next": "{{global.next}}",
     "optional": "(optional)",
@@ -85,6 +92,11 @@
     "step_3": {
       "heading": "Which {{ user }} skills do you endorse?"
     },
+    "step_4": {
+      "heading": "Why do you endorse these skills for {{ user }}?",
+      "placeholder_text": "Enter your feedback",
+      "send_answers": "Send your answers"
+    },
     "surname": "{{global.surname}}"
   },
   "feedback_request": {
@@ -93,11 +105,7 @@
       "description": "This form allows you to request credit for your skills.",
       "heading": "Skill endorsement request",
       "next": "{{global.next}}",
-      "select_skills": "Select the 1 or more skills for which you want to be endorsed:",
-      "selected": "selected",
-      "skill_selected": "{{count}} skill selected",
-      "skills_selected": "{{count}} skills selected",
-      "unselected": "unselected"
+      "selected": "selected"
     },
     "creation_modal": {
       "cancel": "{{global.cancel}}",
@@ -191,9 +199,11 @@
       "point_4": "Grow in your career"
     },
     "already_member": "Already a member?",
+    "and": "and",
     "connect": "Connect",
-    "description": "Join the people using Reveal to get credit for your skills",
+    "description": "the people using Reveal to get credit for your skills",
     "heading": "Up your game, join Reveal",
+    "join": "Join",
     "join_now": "Join now",
     "not_a_member": "Not a member?",
     "skills_description": "Join us and start right away to share your skills, ask for endorsements and give feedbacks.",
@@ -213,5 +223,11 @@
     "logout": "Log out",
     "settings": "Settings",
     "skills": "{{header.skills}}"
+  },
+  "skills_feedback": {
+    "select_skills": "Select the 1 or more skills for which you want to be endorsed:",
+    "skill_selected": "{{count}} skill selected",
+    "skills_selected": "{{count}} skills selected",
+    "unselected": "unselected"
   }
 }

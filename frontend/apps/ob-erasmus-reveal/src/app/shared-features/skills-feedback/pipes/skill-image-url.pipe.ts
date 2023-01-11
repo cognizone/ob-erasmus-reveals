@@ -1,9 +1,9 @@
-import { Pipe, PipeTransform, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Pipe, PipeTransform } from '@angular/core';
 import { Skill } from '@app/core';
 
 @Pipe({
   name: 'skillImageUrl',
+  standalone: true
 })
 export class SkillImageUrlPipe implements PipeTransform {
   transform(value: Skill | string): string {
@@ -11,10 +11,3 @@ export class SkillImageUrlPipe implements PipeTransform {
     return `assets/images/skills/${uri.split('/').pop()}.png`;
   }
 }
-
-@NgModule({
-  imports: [CommonModule],
-  declarations: [SkillImageUrlPipe],
-  exports: [SkillImageUrlPipe],
-})
-export class SkillImageUrlPipeModule {}

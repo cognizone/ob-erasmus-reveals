@@ -1,9 +1,11 @@
 <ng-container *transloco="let t; read: 'join_now'">
   <div class="my-join-now text-center mb-5">
     <div>
-      <h4>{{ t('heading') }}</h4>
-      <p>{{ t('description') }}</p>
+      <h4 *ngIf="!requestingUser">{{ t('heading') }}</h4>
+      <p>{{ t('join') }} <span *ngIf="requestingUser"> <span
+          class="my-user"> {{ requestingUser }} </span> {{ t('and') }} </span> {{ t('description') }}</p>
     </div>
+    <img ngSrc="assets/images/icon-svgs/icon-group-users.svg" width="350" height="40" [alt]="t('get_started.heading')" />
     <ob-erasmus-reveal-signup></ob-erasmus-reveal-signup>
     <ul>
       <li *ngFor="let point of points">

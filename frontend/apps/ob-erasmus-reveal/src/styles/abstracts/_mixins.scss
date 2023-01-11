@@ -76,3 +76,18 @@
     margin: auto;
   }
 }
+
+@mixin form-field($height) {
+  padding: 0.25rem 0.75rem;
+
+  min-height: $height;
+  outline: 1px solid var(--color-gray-50);
+  border-radius: 8px;
+
+  input, textarea {
+    color: var(--color-primary-text);
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+}

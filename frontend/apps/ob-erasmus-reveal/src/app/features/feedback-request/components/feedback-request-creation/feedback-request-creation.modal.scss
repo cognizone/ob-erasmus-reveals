@@ -1,3 +1,5 @@
+@use 'abstracts/mixins' as *;
+
 :host {
   display: block;
   width: 780px;
@@ -63,11 +65,7 @@
 }
 
 .my-form-field {
-  padding: 0.25rem 0.75rem;
-
-  min-height: 2.25rem;
-  outline: 1px solid var(--color-gray-50);
-  border-radius: 8px;
+  @include form-field(2.25rem);
 
   &:focus-within {
     outline-width: 2px;
@@ -77,13 +75,6 @@
     outline-color: var(--color-red);
   }
 
-  input,
-  textarea {
-    color: var(--color-primary-text);
-    border: none;
-    outline: none;
-    width: 100%;
-  }
 }
 
 .my-caption {

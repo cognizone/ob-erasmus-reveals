@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ob-erasmus-reveal-join-now',
@@ -7,6 +7,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JoinNowComponent {
+  @Input()
+  requestingUser!: string;
   points: Point[] = [...new Array(4)].map((k, index) => ({ label: `action_points.point_${index + 1}` }));
 }
 

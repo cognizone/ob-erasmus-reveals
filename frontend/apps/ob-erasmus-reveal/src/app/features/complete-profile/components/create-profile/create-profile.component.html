@@ -35,17 +35,8 @@
             </select>
           </div>
         </div>
-        <button type="submit" class="app-button" color="primary" matStepperNext>{{ t('global.next') }}</button>
+        <button [disabled]="!formGroup.value.step2?.country" type="submit" class="app-button" color="primary" matStepperNext>{{ t('global.next') }}</button>
       </mat-step>
-      <!-- Might need this after discussion -->
-      <!--<mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-      </mat-step>-->
     </mat-stepper>
   </div>
 </form>
