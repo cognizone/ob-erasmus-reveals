@@ -5,6 +5,3 @@ env:
       host: ob-erasmus-reveals-dev-elastic.sysadmin.garden
       jsonApiPort: 9200
       index: aws-dev-reveals-data
-    server:
-      scheme: https
-      host: ob-erasmus-reveals-dev.cogni.zone
