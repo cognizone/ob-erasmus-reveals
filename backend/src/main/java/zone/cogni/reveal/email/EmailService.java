@@ -32,10 +32,7 @@ public class EmailService {
   private final TemplateEngine templateEngine;
   private final EmailProperties emailProperties;
 
-  public void sendMessage(String email,
-                          String subject,
-                          String templateName,
-                          Context context) throws MessagingException, IOException {
+  public void sendMessage(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
     Properties props = new Properties();
     props.put("mail.smtp.host", emailProperties.getSmtp().get("host"));
     props.put("mail.smtp.port", emailProperties.getSmtp().get("port"));
@@ -61,11 +58,7 @@ public class EmailService {
     sendEmail(session, email, subject, templateName, context);
   }
 
-  public void sendEmail(Session session,
-                        String email,
-                        String subject,
-                        String templateName,
-                        Context context) throws IOException, MessagingException {
+  public void sendEmail(Session session, String email, String subject, String templateName, Context context) throws IOException, MessagingException {
     log.info("Sending email to {}, subject {}", email, subject);
 
     String body = templateEngine.process(templateName, context);
