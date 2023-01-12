@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.context.Context;
-import zone.cogni.reveal.app.model.FeedbackModel;
-import zone.cogni.reveal.app.model.SignupModel;
+import zone.cogni.reveal.model.FeedbackModel;
+import zone.cogni.reveal.model.SignupModel;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;

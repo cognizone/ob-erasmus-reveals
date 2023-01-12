@@ -1,4 +1,4 @@
-package zone.cogni.reveal.app.model;
+package zone.cogni.reveal.model;
 
 import lombok.Getter;
 import lombok.Setter;
