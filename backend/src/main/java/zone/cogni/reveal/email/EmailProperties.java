@@ -1,19 +1,42 @@
 package zone.cogni.reveal.email;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import lombok.Data;
+import lombok.ToString;
 
 import java.util.Map;
 
-@Setter
-@Getter
-@ConfigurationProperties(prefix = "mail")
+@Data
+@ToString
 public class EmailProperties {
   private Map<String, String> subject;
   private String fromAddress;
   private String fromDescription;
   private String fromEmail;
+  @ToString.Exclude
   private String password;
-  private Map<String, String> smtp;
+  private Smtp smtp;
+
+  public String getSubject(String language) {
+    return getSubject().get(language);
+  }
+}
+
+@Data
+class Smtp {
+  private String host;
+  private String auth;
+  private int port;
+  private Starttls starttls;
+  private SocketFactory socketFactory;
+}
+
+@Data
+class SocketFactory {
+  private int port;
+  private String clazz;
+}
+
+@Data
+class Starttls {
+  private boolean enable;
 }

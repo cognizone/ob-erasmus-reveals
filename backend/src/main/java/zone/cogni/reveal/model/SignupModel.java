@@ -1,10 +1,8 @@
 package zone.cogni.reveal.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class SignupModel {
   public String email;
   public String language;

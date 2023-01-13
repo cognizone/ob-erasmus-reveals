@@ -1,10 +1,8 @@
 package zone.cogni.reveal.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 public class User {
   public String firstName;
   public String lastName;

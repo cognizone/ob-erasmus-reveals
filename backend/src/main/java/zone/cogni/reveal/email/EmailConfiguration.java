@@ -1,5 +1,6 @@
 package zone.cogni.reveal.email;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -15,6 +16,7 @@ public class EmailConfiguration {
   }
 
   @Bean
+  @ConfigurationProperties(prefix = "mail")
   public EmailProperties emailProperties() {
     return new EmailProperties();
   }

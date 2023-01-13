@@ -3,12 +3,13 @@ package zone.cogni.reveal.email;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import zone.cogni.reveal.model.FeedbackModel;
+import zone.cogni.reveal.model.SignupModel;
 
 import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -20,8 +21,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.io.File;
+import javax.mail.util.ByteArrayDataSource;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
@@ -32,19 +35,40 @@ public class EmailService {
   private final TemplateEngine templateEngine;
   private final EmailProperties emailProperties;
 
-  public void sendMessage(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
-    Properties props = new Properties();
-    props.put("mail.smtp.host", emailProperties.getSmtp().get("host"));
-    props.put("mail.smtp.port", emailProperties.getSmtp().get("port"));
-    props.put("mail.smtp.auth", emailProperties.getSmtp().get("auth"));
-    props.put("mail.smtp.starttls.enable", emailProperties.getSmtp().get("starttls.enable"));
-    props.put("mail.smtp.socketFactory.port", emailProperties.getSmtp().get("socketFactory.port"));
-    props.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().get("socketFactory.class"));
+  public void sendFeedbackMail(FeedbackModel feedbackModel, HttpServletRequest request) {
+    String subject = emailProperties.getSubject(feedbackModel.getLanguage());
+    feedbackModel.getEmails().forEach(email -> {
+      try {
+        sendMessage(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, request));
+        log.info("Message sent with email to {}, subject {}", email, subject);
+      }
+      catch (Exception e) {
+        log.error("Failed to send email to {}, subject {} - {}", email, subject, e);
+      }
+    });
+  }
 
-    log.info("mail.smtp.host {}, mail.smtp.port {}, mail.smtp.auth {}, mail.smtp.starttls.enable {}, mail.smtp.socketFactory.port {},mail.smtp.socketFactory.class {}",
-      emailProperties.getSmtp().get("host"), emailProperties.getSmtp().get("port"), emailProperties.getSmtp().get("auth"),
-      emailProperties.getSmtp().get("starttls.enable"), emailProperties.getSmtp().get("socketFactory.port"),
-      emailProperties.getSmtp().get("socketFactory.class"));
+  public void sendSignupMail(SignupModel signupModel, HttpServletRequest request) {
+    String subject = emailProperties.getSubject(signupModel.getLanguage());
+    try {
+      sendMessage(signupModel.getEmail(), subject, signupModel.getTemplate(), getContextForSignup(signupModel.getEmail(), request));
+      log.info("Message sent with email to {}, subject {}", signupModel.getEmail(), subject);
+    }
+    catch (Exception e) {
+      log.error("Failed to send email to {}, subject {} - {}", signupModel.getEmail(), subject, e);
+    }
+  }
+
+  private void sendMessage(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
+    Properties props = new Properties();
+    props.put("mail.smtp.host", emailProperties.getSmtp().getHost());
+    props.put("mail.smtp.port", emailProperties.getSmtp().getPort());
+    props.put("mail.smtp.auth", emailProperties.getSmtp().getAuth());
+    props.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().isEnable());
+    props.put("mail.smtp.socketFactory.port", emailProperties.getSmtp().getSocketFactory().getPort());
+    props.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
+
+    log.info(emailProperties.getSmtp().toString());
 
     Authenticator auth = new Authenticator() {
       @Override
@@ -74,10 +98,10 @@ public class EmailService {
 
     // second part adding the inline image
     BodyPart messageBodyPartImage = new MimeBodyPart();
-    File logo = new ClassPathResource("static/img/reveals_logo.png").getFile();
-    DataSource fds = new FileDataSource(logo);
+    InputStream logoStream = new ClassPathResource("static/img/reveals_logo.png").getInputStream();
+    ByteArrayDataSource ds = new ByteArrayDataSource(logoStream, "image/jpg");
 
-    messageBodyPartImage.setDataHandler(new DataHandler(fds));
+    messageBodyPartImage.setDataHandler(new DataHandler(ds));
     messageBodyPartImage.setHeader("Content-ID", "<logo>");
     multipart.addBodyPart(messageBodyPartImage);
 
@@ -96,6 +120,36 @@ public class EmailService {
     mimeMessage.setSentDate(new Date());
     mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false));
     return mimeMessage;
+  }
+
+  private Context getContextForFeedback(String email, FeedbackModel feedbackModel, HttpServletRequest request) {
+    Context context = new Context();
+    context.setVariable("imageName", "logo");
+    context.setVariable("url",
+      UriComponentsBuilder.newInstance()
+        .scheme("http")
+        .host(request.getServerName())
+        .port(8080)
+        .path("/endorse-skills")
+        .queryParam("email", email)
+        .queryParam("feedbackRequestId", feedbackModel.getId()).build());
+    context.setVariable("user", feedbackModel.fullName());
+    context.setVariable("message", feedbackModel.getMessage());
+    return context;
+  }
+
+  private Context getContextForSignup(String email, HttpServletRequest request) {
+    Context context = new Context();
+    context.setVariable("imageName", "logo");
+    context.setVariable("url",
+      UriComponentsBuilder.newInstance()
+        .scheme("http")
+        .host(request.getServerName())
+        .port(8080)
+        .path("/complete-profile")
+        .queryParam("email", email)
+        .build());
+    return context;
   }
 }
 

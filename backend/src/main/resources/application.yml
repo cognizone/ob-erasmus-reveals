@@ -32,7 +32,9 @@ cognizone:
 mail:
   fromAddress: 'Reveals'
   fromDescription: ''
-  fromEmail: reveals.project.cz@gmail.com # password for gmail account is revealsproject
+  fromEmail: reveals.project.cz@gmail.com # password for gmail account is revealsproject but as gmail has blocked less secure apps
+  #we need to allow 2-Step Verification and generate an app specific password
+  #howto: https://support.google.com/mail/answer/185833?hl=en
   password: xgpnlbopbaevzmiz
   subject:
     fr: Message de l'administrateur de reveals.
@@ -54,4 +56,4 @@ mail:
     socketFactory:
       # SSL Factory Class
       port: 465
-      class: javax.net.ssl.SSLSocketFactory
+      clazz: javax.net.ssl.SSLSocketFactory
