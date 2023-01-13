@@ -12,6 +12,7 @@ public class EmailProperties {
   private String fromAddress;
   private String fromDescription;
   private String fromEmail;
+  @ToString.Exclude
   private String password;
   private Smtp smtp;
 

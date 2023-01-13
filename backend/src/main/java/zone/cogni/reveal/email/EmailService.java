@@ -67,7 +67,7 @@ public class EmailService {
     props.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().isEnable());
     props.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
 
-    log.info(emailProperties.getSmtp().toString());
+    log.info(emailProperties.toString());
 
     Authenticator auth = new Authenticator() {
       @Override
