@@ -32,7 +32,6 @@ class Smtp {
 
 @Data
 class SocketFactory {
-  private int port;
   private String clazz;
 }
 

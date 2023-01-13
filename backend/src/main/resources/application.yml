@@ -55,5 +55,4 @@ mail:
       enable: true
     socketFactory:
       # SSL Factory Class
-      port: 465
       clazz: javax.net.ssl.SSLSocketFactory

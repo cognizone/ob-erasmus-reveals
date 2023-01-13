@@ -65,7 +65,6 @@ public class EmailService {
     props.put("mail.smtp.port", emailProperties.getSmtp().getPort());
     props.put("mail.smtp.auth", emailProperties.getSmtp().getAuth());
     props.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().isEnable());
-    props.put("mail.smtp.socketFactory.port", emailProperties.getSmtp().getSocketFactory().getPort());
     props.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
 
     log.info(emailProperties.getSmtp().toString());
