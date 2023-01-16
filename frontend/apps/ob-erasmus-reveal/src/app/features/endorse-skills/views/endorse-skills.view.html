@@ -2,7 +2,7 @@
 <header class="d-flex" *transloco="let t;">
   <ob-erasmus-reveal-app-logo class="mx-auto"></ob-erasmus-reveal-app-logo>
 </header>
-
+<mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
 <ng-container *transloco="let t;read: 'endorse_skills'">
   <div *ngIf="!endorsementComplete" class="container my-endorser-details">
     <form class="my-form" [formGroup]="formGroup" (submit)="onSubmit()">

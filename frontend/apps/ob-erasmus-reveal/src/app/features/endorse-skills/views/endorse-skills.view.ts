@@ -20,7 +20,7 @@ import {
   SkillsService
 } from '@app/core';
 import { I18nModule } from '@cognizone/i18n';
-import { OnDestroy$ } from '@cognizone/ng-core';
+import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
@@ -32,6 +32,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import {
   FeedbackSentToProfileModal
 } from '../components/feedback-sent-to-profile/feedback-sent-to-profile.modal';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'ob-erasmus-reveal-endorse-skills',
@@ -49,8 +50,10 @@ import {
     AppLogoComponent,
     SkillsFeedbackComponent,
     EndorsementCompleteComponent,
-    FeedbackSentToProfileModal
+    FeedbackSentToProfileModal,
+    MatProgressBarModule
   ],
+  providers: [LoadingService],
   templateUrl: './endorse-skills.view.html',
   styleUrls: ['./endorse-skills.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -80,6 +83,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
   skills$!: Observable<Skill[]>;
   feedbackRequest!: FeedbackRequest;
   endorsementComplete: boolean = false;
+  loading$: Observable<boolean> = this.loadingService.loading$;
 
   constructor(
     private fb: FormBuilder,
@@ -92,7 +96,8 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     private endorseSkillsService: EndorseSkillsService,
     private router: Router,
     private authService: AuthService,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private loadingService: LoadingService
   ) {
     super();
   }
@@ -109,7 +114,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     });
 
     // TODO - test once email is ready to be sure
-    this.subSink = this.feedbackRequestService.getFeedbackRequest(this.endorseSkillsParams['feedbackRequestId']).subscribe(request => {
+    this.subSink = this.feedbackRequestService.getFeedbackRequest(this.endorseSkillsParams['feedbackRequestId']).pipe(this.loadingService.asOperator()).subscribe(request => {
       if (request.user?.firstName || request.user?.lastName) {
         this.requestingUser = request.user.firstName as string;
       } else {
@@ -139,7 +144,8 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
       endorsedSkills: this.selectedSkills,
       '@facets': facets,
       request: this.feedbackRequest?.['@id'],
-      text: this.formGroup.value.step4?.['text']
+      text: this.formGroup.value.step4?.['text'],
+      created: new Date()
     } as JsonModelFields<Feedback>;
 
     this.subSink = this.feedbackService.create(feedback).pipe(

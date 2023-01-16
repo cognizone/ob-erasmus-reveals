@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModelService } from '@cognizone/json-model';
-import { Dictionary } from '@cognizone/model-utils';
+import { Dictionary, extractSourcesFromElasticResponse } from '@cognizone/model-utils';
 import { map, Observable } from 'rxjs';
 
 import { Counts, Feedback, JsonModelFields } from '../models';
@@ -32,14 +32,43 @@ export class FeedbacksService extends ItemService<Feedback> {
     return this.save(fullFeedback);
   }
 
+  // TODO - modify the params to `as const`
   getCountsPerCountry(skillUri: string): Observable<Counts> {
+    return this.getCounts( 'endorsedSkills', skillUri, '@facets.requestingUserCountry');
+  }
+
+  getSkillsCountsPerUser(userUri: string): Observable<Counts> {
+    return this.getCounts( '@facets.requestingUser', userUri, 'endorsedSkills');
+  }
+
+  getFeedbacksForUser(uri: string): Observable<Feedback[]> {
+    return this.elasticService
+    .search<Feedback>(this.getIndex(), {
+      query: {
+        bool: {
+          filter: {
+            terms: {
+              '@facets.requestingUser.keyword': [uri],
+            },
+          },
+        },
+      },
+    })
+    .pipe(map(extractSourcesFromElasticResponse));
+  }
+
+  override getAll(): Observable<Feedback[]> {
+    throw new Error('Should not be called for this model');
+  }
+
+  private getCounts(term: string, uri: string, field: string): Observable<Counts> {
     const query = {
       size: 0,
       query: {
         bool: {
           filter: {
             term: {
-              'endorsedSkills.keyword': skillUri,
+              [`${term}.keyword`]: uri,
             },
           },
         },
@@ -47,11 +76,11 @@ export class FeedbacksService extends ItemService<Feedback> {
       aggs: {
         counts: {
           terms: {
-            field: '@facets.requestingUserCountry.keyword',
+            field: `${field}.keyword`,
             size: 10_000,
-          },
-        },
-      },
+          }
+        }
+      }
     };
 
     return this.elasticService.search(this.getIndex(), query).pipe(
@@ -61,9 +90,5 @@ export class FeedbacksService extends ItemService<Feedback> {
         return counts;
       })
     );
-  }
-
-  override getAll(): Observable<Feedback[]> {
-    throw new Error('Should not be called for this model');
   }
 }

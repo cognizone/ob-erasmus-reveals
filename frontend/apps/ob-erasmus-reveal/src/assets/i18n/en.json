@@ -211,11 +211,21 @@
   },
   "login": {},
   "profile": {
+    "across": "Across",
     "add_new_description": "To add new skills to your profile, you need to ask endorsement from your peers, friends and colleagues.",
     "add_new_heading": "All set! Now add some skills",
+    "alt_image": "profile alternate image",
+    "ask_endorsement_skill": "Ask endorsement for this skill",
     "ask_for_endorsement": "Ask for endorsement",
-    "endorsements": "{{count}} endorsements",
-    "skills": "{{count}} {{header.skills}}"
+    "description": "Description",
+    "endorsement_count": "{{ count }} endorsement",
+    "endorsements_count": "{{count}} endorsements",
+    "last_endorsement_from": "Last endorsement from",
+    "skill_alt_logo": "Skill logo",
+    "skill_count": "{{ count }} skill",
+    "skills_count": "{{count}} {{header.skills}}",
+    "total": "Total",
+    "used_by": "Used by"
   },
   "profile_header": {
     "ask_endorsement": "Ask endorsement",

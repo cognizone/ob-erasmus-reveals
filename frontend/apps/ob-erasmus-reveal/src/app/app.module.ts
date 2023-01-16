@@ -48,12 +48,7 @@ import { RouterModule } from '@angular/router';
       {
         path: 'endorse-skills',
         loadChildren: () => import('./features/endorse-skills/endorse-skills.module').then(m => m.EndorseSkillsModule),
-      },
-      // TODO temporary for testing purposes, to be placed in side panel when available
-      {
-        path: 'map',
-        loadComponent: () => import('./shared-features/countries-map').then(m => m.CountriesMapComponent),
-      },
+      }
     ]),
   ],
   providers: [],
