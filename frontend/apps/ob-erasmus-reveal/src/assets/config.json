@@ -3,7 +3,7 @@
   "baseUriForNewItems": "http://resource",
   "dataVersions": {
     "countries": 3,
-    "feedbacks": 3,
+    "feedbacks": 4,
     "feedback-requests": 3,
     "relationship-types": 2,
     "users": 3,

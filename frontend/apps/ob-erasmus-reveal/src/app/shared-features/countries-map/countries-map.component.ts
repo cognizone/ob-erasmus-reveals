@@ -19,7 +19,7 @@ import { combineLatest } from 'rxjs';
 })
 export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
   @Input()
-  skillUri: string = 'http://reveal.org/data/skill/02'; // TODO remove default when connected to skill cloud click
+  skillUri!: string;
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
