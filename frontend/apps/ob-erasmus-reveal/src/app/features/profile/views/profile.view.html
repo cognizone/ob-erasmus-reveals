@@ -2,7 +2,7 @@
 <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
 <ng-container *transloco="let t;read: 'profile'">
   <div class="container my-profile">
-    <img width="96" height="96" priority ngSrc="assets/images/icon-svgs/icon-fullcircle-smile_gray.svg" [alt]="t('alt_logo')>
+    <img width="96" height="96" priority ngSrc="assets/images/icon-svgs/icon-fullcircle-smile_gray.svg" [alt]="t('alt_logo')">
     <div class="ml-5">
       <h1>{{ userInfo }}</h1>
       <h2 *ngIf="userEmail"> {{ userEmail }} </h2>
