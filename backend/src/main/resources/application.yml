@@ -46,13 +46,9 @@ mail:
   #SMTP host
   smtp:
     host: ${env.reveals.mail.smtp.host}
-    # TLS Port 587 / SSL Port 465
     port: ${env.reveals.mail.smtp.port}
-    # enable authentication
     auth: ${env.reveals.mail.smtp.auth}
     starttls:
-      # enable TLS
       enable: ${env.reveals.mail.smtp.starttls.enable}
     socketFactory:
-      # SSL Factory Class
       clazz: ${env.reveals.mail.smtp.socketFactory.clazz}

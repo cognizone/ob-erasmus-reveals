@@ -13,13 +13,9 @@ env:
       #SMTP host
       smtp:
         host: smtp.gmail.com
-        # TLS Port 587 / SSL Port 465
         port: 465
-        # enable authentication
         auth: true
         starttls:
-          # enable TLS
           enable: true
         socketFactory:
-          # SSL Factory Class
           clazz: javax.net.ssl.SSLSocketFactory

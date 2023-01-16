@@ -23,7 +23,6 @@ public class EmailController {
     return ResponseEntity.ok(HttpStatus.OK);
   }
 
-
   @PostMapping(path = "/api/signup")
   public ResponseEntity<?> sendMailSignup(@RequestBody SignupModel signupModel) {
     String baseUrl = String.valueOf(ServletUriComponentsBuilder.fromCurrentContextPath().build());
