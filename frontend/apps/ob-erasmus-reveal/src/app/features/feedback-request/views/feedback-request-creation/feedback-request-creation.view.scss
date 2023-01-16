@@ -1,4 +1,4 @@
-$my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0.16);
+@use 'abstracts/mixins' as *;
 
 .my-heading {
   color: var(--color-secondary-text);
@@ -16,18 +16,7 @@ $my-shadow: 0 2px 4px 0 rgba(40, 41, 61, 0.04), 0 8px 16px 0 rgba(96, 97, 112, 0
 }
 
 .my-footer {
-  width: 100vw;
-  height: 68px;
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  background-color: var(--color-white);
-  border-top: 1px solid var(--border-color);
-  box-shadow: var(--app-box-shadow);
-
-  div {
-    height: 100%;
-  }
+  @include fixed-footer(100vw);
 }
 
 .my-footer-content {

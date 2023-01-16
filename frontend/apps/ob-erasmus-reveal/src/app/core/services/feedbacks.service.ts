@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModelService } from '@cognizone/json-model';
-import { Dictionary, extractSourcesFromElasticResponse } from '@cognizone/model-utils';
+import { Dictionary, extractSourcesFromElasticResponse, notNil } from '@cognizone/model-utils';
 import { map, Observable } from 'rxjs';
 
 import { Counts, Feedback, JsonModelFields } from '../models';
@@ -9,6 +9,7 @@ import { ConfigService } from './config.service';
 import { CustomIdGenerator } from './custom-id-generator.service';
 import { ElasticService } from './elastic.service';
 import { ItemService } from './item.service';
+import { ElasticBucket } from '@cognizone/model-utils/src/lib/models/elastic-search-response';
 
 @Injectable({ providedIn: 'root' })
 export class FeedbacksService extends ItemService<Feedback> {
@@ -34,7 +35,7 @@ export class FeedbacksService extends ItemService<Feedback> {
 
   // TODO - modify the params to `as const`
   getCountsPerCountry(skillUri: string): Observable<Counts> {
-    return this.getCounts( 'endorsedSkills', skillUri, '@facets.requestingUserCountry');
+    return this.getCounts( 'endorsedSkills', skillUri, '@facets.requestingUserCountry', true);
   }
 
   getSkillsCountsPerUser(userUri: string): Observable<Counts> {
@@ -57,11 +58,36 @@ export class FeedbacksService extends ItemService<Feedback> {
     .pipe(map(extractSourcesFromElasticResponse));
   }
 
+  getUsersForSkills(uri: string, skillUri: string): Observable<string[]> {
+    return this.elasticService
+    .search<Feedback>(this.getIndex(), {
+      query: {
+        bool: {
+          must: [
+            {
+              term: {
+                '@facets.requestingUserCountry.keyword': uri,
+              },
+            },
+            {
+              term: {
+                'endorsedSkills.keyword': skillUri,
+              },
+            },
+          ],
+        },
+      }
+    })
+    .pipe(map(extractSourcesFromElasticResponse), map(response => {
+      return response.map(res => res?.["@facets"]?.requestingUser).filter(notNil) as string[]
+    }));
+  }
+
   override getAll(): Observable<Feedback[]> {
     throw new Error('Should not be called for this model');
   }
 
-  private getCounts(term: string, uri: string, field: string): Observable<Counts> {
+  private getCounts(term: string, uri: string, field: string, uniqueCount: boolean = false): Observable<Counts> {
     const query = {
       size: 0,
       query: {
@@ -78,6 +104,13 @@ export class FeedbacksService extends ItemService<Feedback> {
           terms: {
             field: `${field}.keyword`,
             size: 10_000,
+          },
+          aggs: {
+            unique_count: {
+              cardinality: {
+                field: 'request.keyword'
+              }
+            }
           }
         }
       }
@@ -86,9 +119,15 @@ export class FeedbacksService extends ItemService<Feedback> {
     return this.elasticService.search(this.getIndex(), query).pipe(
       map(response => {
         const counts: Dictionary<number> = {};
-        response.aggregations['counts'].buckets?.forEach(b => (counts[b.key] = b.doc_count));
+        response.aggregations['counts'].buckets?.forEach((b: ElasticBucketUnique) => (counts[b.key] = uniqueCount ? b.unique_count?.value as number : b.doc_count));
         return counts;
       })
     );
+  }
+}
+
+interface ElasticBucketUnique extends ElasticBucket {
+  unique_count?: {
+    value: number
   }
 }
