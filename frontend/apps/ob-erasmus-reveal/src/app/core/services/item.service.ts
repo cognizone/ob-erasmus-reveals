@@ -69,6 +69,7 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
   getByUrisMulti(uris: string[]): Observable<T[]> {
     return this.elasticService
     .search<T>(this.getIndex(), {
+      size: 10_000,
       query: {
         bool: {
           filter: {

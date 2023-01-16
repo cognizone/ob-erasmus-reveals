@@ -91,3 +91,30 @@
     width: 100%;
   }
 }
+
+@mixin back-button {
+  border: 0;
+  background-color: transparent;
+  font-size: .875rem;
+  text-decoration: none;
+
+  mat-icon {
+    font-size: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+@mixin fixed-footer($width) {
+  width: $width;
+  height: 68px;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--border-color);
+  box-shadow: var(--app-box-shadow);
+
+  div {
+    height: 100%;
+  }
+}

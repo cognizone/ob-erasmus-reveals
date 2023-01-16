@@ -8,14 +8,14 @@ import {
 import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { combineLatest } from 'rxjs';
-import { AuthService, Counts, Feedback, FeedbacksService, Skill, SkillsService } from '@app/core';
+import { Counts, Feedback, FeedbacksService, Skill, SkillsService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { LangString } from '@cognizone/model-utils';
 import { I18nService } from '@cognizone/i18n';
 import { TranslocoService } from '@ngneat/transloco';
 import { EChartsOption } from 'echarts';
 import { Dialog } from '@angular/cdk/dialog';
-import { SkillsDetailMapVisualizationComponent } from '../skills-detail-map-visualization/skills-detail-map-visualization.component';
+import { SkillsDetailMapVisualizationModal } from '../skills-detail-map-visualization/skills-detail-map-visualization.modal';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-cloud-visualization',
@@ -30,13 +30,14 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
   skillsUris!: string[];
   @Input()
   counts!: Counts;
+  @Input()
+  userId!: string;
   options!: EChartsOption;
 
   constructor(
     private skillsService: SkillsService,
     private i18nService: I18nService,
     private feedbackService: FeedbacksService,
-    private authService: AuthService,
     private transloco: TranslocoService,
     private cdr: ChangeDetectorRef,
     private dialog: Dialog
@@ -47,7 +48,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
   ngOnInit(): void {
     this.subSink = combineLatest([
       this.skillsService.getSkillForEndorsement(this.skillsUris),
-      this.feedbackService.getFeedbacksForUser(this.authService.currentUser['@id']),
+      this.feedbackService.getFeedbacksForUser(this.userId),
       this.i18nService.selectActiveLang()
     ]).subscribe(([skills, feedbacks]) => {
       this.options = this.createChart(skills, feedbacks) as EChartsOption;
@@ -57,7 +58,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
 
   // TODO - see if the event can have a type.
   onChartClick(event: any): void {
-    this.dialog.open(SkillsDetailMapVisualizationComponent, {
+    this.dialog.open(SkillsDetailMapVisualizationModal, {
       data: event.data,
     })
   }
@@ -84,7 +85,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
             layout: 'force',
             data: data,
             force: {
-              repulsion: 250,
+              repulsion: 250, // TODO - make it smarter
             },
           },
         ],
@@ -95,7 +96,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
   private generateData(skills: Skill[], feedback: Feedback[], counts: Counts): Data[] {
     return skills.map<Data>(skill => {
       return {
-        symbolSize: counts[skill['@id']] < 3 ? 120 : 180, // make it dynamic, add more conditions
+        symbolSize: counts[skill['@id']] < 3 ? 120 : 180, // TODO - make it dynamic, add more conditions using switch
         skillId: skill['@id'],
         name: this.i18nService.czLabelToString(skill.prefLabel as LangString),
         endorsementCount: counts[skill['@id']] ?? 0,

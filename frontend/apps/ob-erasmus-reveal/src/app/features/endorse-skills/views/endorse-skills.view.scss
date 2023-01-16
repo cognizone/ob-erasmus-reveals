@@ -31,15 +31,7 @@ h2, .my-label {
 }
 
 .my-back-button {
-  border: 0;
-  background-color: transparent;
-  font-size: .875rem;
-  text-decoration: none;
-
-  mat-icon {
-    font-size: 0.75rem;
-    height: 0.75rem;
-  }
+  @include back-button
 }
 
 .my-form-field {

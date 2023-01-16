@@ -21,7 +21,7 @@
   </div>
 
   <ng-container *ngIf="endorsedSkillsUris.length > 0">
-    <ob-erasmus-reveal-skills-cloud-visualization [skillsUris]="endorsedSkillsUris" [counts]="endorsedSkillCounts"></ob-erasmus-reveal-skills-cloud-visualization>
+    <ob-erasmus-reveal-skills-cloud-visualization [skillsUris]="endorsedSkillsUris" [counts]="endorsedSkillCounts" [userId]="user['@id']"></ob-erasmus-reveal-skills-cloud-visualization>
   </ng-container>
 
 </ng-container>

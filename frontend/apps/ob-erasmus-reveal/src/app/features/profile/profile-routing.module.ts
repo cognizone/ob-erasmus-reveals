@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileViewResolver } from './resolvers/profile-view.resolver';
 
 const routes: Routes = [
   {
-    path: '', // should have userID
+    path: '',
     loadComponent: () =>
       import('./views/profile.view').then(m => m.ProfileView),
   },
+  {
+    path: ':profileId',
+    loadComponent: () =>
+      import('./views/profile.view').then(m => m.ProfileView),
+    resolve: {
+      user: ProfileViewResolver
+    }
+  }
 ];
 
 @NgModule({
