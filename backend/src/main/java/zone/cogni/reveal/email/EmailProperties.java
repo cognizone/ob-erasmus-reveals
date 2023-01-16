@@ -6,7 +6,6 @@ import lombok.ToString;
 import java.util.Map;
 
 @Data
-@ToString
 public class EmailProperties {
   private Map<String, String> subject;
   private String fromAddress;
@@ -17,25 +16,28 @@ public class EmailProperties {
   private Smtp smtp;
 
   public String getSubject(String language) {
-    return getSubject().get(language);
+    if(language.isBlank()){
+      language = "en"; //in case of invalid language we should choose en
+    }
+    return subject.get(language);
   }
-}
 
-@Data
-class Smtp {
-  private String host;
-  private String auth;
-  private int port;
-  private Starttls starttls;
-  private SocketFactory socketFactory;
-}
+  @Data
+  static class Smtp {
+    private String host;
+    private String auth;
+    private int port;
+    private Starttls starttls;
+    private SocketFactory socketFactory;
+  }
 
-@Data
-class SocketFactory {
-  private String clazz;
-}
+  @Data
+  static class SocketFactory {
+    private String clazz;
+  }
 
-@Data
-class Starttls {
-  private boolean enable;
+  @Data
+  static class Starttls {
+    private boolean enable;
+  }
 }

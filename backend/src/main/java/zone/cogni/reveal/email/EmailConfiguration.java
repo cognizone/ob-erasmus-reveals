@@ -11,8 +11,8 @@ import org.thymeleaf.TemplateEngine;
 public class EmailConfiguration {
 
   @Bean
-  public EmailService emailService(TemplateEngine templateEngine, EmailProperties emailProperties) {
-    return new EmailService(templateEngine, emailProperties);
+  public EmailService emailService(TemplateEngine templateEngine) {
+    return new EmailService(templateEngine, emailProperties());
   }
 
   @Bean

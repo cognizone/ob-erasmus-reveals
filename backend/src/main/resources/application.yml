@@ -30,9 +30,9 @@ cognizone:
         url: ${reveals.elastic.scheme}://${reveals.elastic.host}:${reveals.elastic.jsonApiPort}/
 
 mail:
-  fromAddress: 'Reveals'
-  fromDescription: ''
-  fromEmail: reveals.project.cz@gmail.com # password for gmail account is revealsproject but as gmail has blocked less secure apps
+  fromAddress: ${env.reveals.mail.fromAddress}
+  fromDescription: ${env.reveals.mail.fromDescription}
+  fromEmail: ${env.reveals.mail.fromEmail} # password for gmail account is revealsproject but as gmail has blocked less secure apps
   #we need to allow 2-Step Verification and generate an app specific password
   #howto: https://support.google.com/mail/answer/185833?hl=en
   password: xgpnlbopbaevzmiz
@@ -45,14 +45,14 @@ mail:
     sl: Správa od reveals admina
   #SMTP host
   smtp:
-    host: smtp.gmail.com
+    host: ${env.reveals.mail.smtp.host}
     # TLS Port 587 / SSL Port 465
-    port: 465
+    port: ${env.reveals.mail.smtp.port}
     # enable authentication
-    auth: true
+    auth: ${env.reveals.mail.smtp.auth}
     starttls:
       # enable TLS
-      enable: true
+      enable: ${env.reveals.mail.smtp.starttls.enable}
     socketFactory:
       # SSL Factory Class
-      clazz: javax.net.ssl.SSLSocketFactory
+      clazz: ${env.reveals.mail.smtp.socketFactory.clazz}

@@ -14,6 +14,7 @@ import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -22,7 +23,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -35,31 +35,31 @@ public class EmailService {
   private final TemplateEngine templateEngine;
   private final EmailProperties emailProperties;
 
-  public void sendFeedbackMail(FeedbackModel feedbackModel, HttpServletRequest request) {
+  public void sendFeedbackMail(FeedbackModel feedbackModel, String baseUrl) {
     String subject = emailProperties.getSubject(feedbackModel.getLanguage());
     feedbackModel.getEmails().forEach(email -> {
       try {
-        sendMessage(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, request));
+        sendEmail(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, baseUrl));
         log.info("Message sent with email to {}, subject {}", email, subject);
       }
       catch (Exception e) {
-        log.error("Failed to send email to {}, subject {} - {}", email, subject, e);
+        log.error("Failed to send email to {}, subject {}", email, subject, e);
       }
     });
   }
 
-  public void sendSignupMail(SignupModel signupModel, HttpServletRequest request) {
+  public void sendSignupMail(SignupModel signupModel, String baseUrl) {
     String subject = emailProperties.getSubject(signupModel.getLanguage());
     try {
-      sendMessage(signupModel.getEmail(), subject, signupModel.getTemplate(), getContextForSignup(signupModel.getEmail(), request));
+      sendEmail(signupModel.getEmail(), subject, signupModel.getTemplate(), getContextForSignup(signupModel.getEmail(), baseUrl));
       log.info("Message sent with email to {}, subject {}", signupModel.getEmail(), subject);
     }
     catch (Exception e) {
-      log.error("Failed to send email to {}, subject {} - {}", signupModel.getEmail(), subject, e);
+      log.error("Failed to send email to {}, subject {}", signupModel.getEmail(), subject, e);
     }
   }
 
-  private void sendMessage(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
+  private void sendEmail(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
     Properties props = new Properties();
     props.put("mail.smtp.host", emailProperties.getSmtp().getHost());
     props.put("mail.smtp.port", emailProperties.getSmtp().getPort());
@@ -78,40 +78,22 @@ public class EmailService {
 
     Session session = Session.getInstance(props, auth);
 
-    sendEmail(session, email, subject, templateName, context);
-  }
-
-  public void sendEmail(Session session, String email, String subject, String templateName, Context context) throws IOException, MessagingException {
     log.info("Sending email to {}, subject {}", email, subject);
 
     String body = templateEngine.process(templateName, context);
-    Message mimeMessage = new MimeMessage(session);
-    setMimeMessage(mimeMessage, email, subject);
-
-    // adds an inline image with a content id , in this case it is adding the logo
-    MimeMultipart multipart = new MimeMultipart("related");
+    Message mimeMessage = setMimeMessage(session, email, subject);
     // first part adding the html template
-    BodyPart messageBodyPartHtml = new MimeBodyPart();
-    messageBodyPartHtml.setContent(body, "text/html; charset=UTF-8");
-    multipart.addBodyPart(messageBodyPartHtml);
-
+    Multipart multipart = addHtmlTemplate(body);
     // second part adding the inline image
-    BodyPart messageBodyPartImage = new MimeBodyPart();
-    InputStream logoStream = new ClassPathResource("static/img/reveals_logo.png").getInputStream();
-    ByteArrayDataSource ds = new ByteArrayDataSource(logoStream, "image/jpg");
-
-    messageBodyPartImage.setDataHandler(new DataHandler(ds));
-    messageBodyPartImage.setHeader("Content-ID", "<logo>");
-    multipart.addBodyPart(messageBodyPartImage);
-
+    addLogo(multipart);
     // put everything together
     mimeMessage.setContent(multipart);
     // send message
     Transport.send(mimeMessage);
   }
 
-  private Message setMimeMessage(Message mimeMessage, String email, String subject) throws MessagingException,
-    UnsupportedEncodingException {
+  private Message setMimeMessage(Session session, String email, String subject) throws MessagingException, UnsupportedEncodingException {
+    Message mimeMessage = new MimeMessage(session);
     mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
     mimeMessage.setSubject(subject);
     mimeMessage.setFrom(new InternetAddress(emailProperties.getFromAddress(), emailProperties.getFromDescription()));
@@ -121,34 +103,55 @@ public class EmailService {
     return mimeMessage;
   }
 
-  private Context getContextForFeedback(String email, FeedbackModel feedbackModel, HttpServletRequest request) {
+  private MimeMultipart addHtmlTemplate(String body) throws MessagingException {
+    // adds an inline image with a content id , in this case it is adding the logo
+    MimeMultipart multipart = new MimeMultipart("related");
+    BodyPart messageBodyPartHtml = new MimeBodyPart();
+    messageBodyPartHtml.setContent(body, "text/html; charset=UTF-8");
+    multipart.addBodyPart(messageBodyPartHtml);
+    return multipart;
+  }
+
+  private void addLogo(Multipart multipart) throws IOException, MessagingException {
+    BodyPart messageBodyPartImage = new MimeBodyPart();
+    InputStream logoStream = new ClassPathResource("static/img/reveals_logo.png").getInputStream();
+    ByteArrayDataSource ds = new ByteArrayDataSource(logoStream, "image/png");
+
+    messageBodyPartImage.setDataHandler(new DataHandler(ds));
+    messageBodyPartImage.setHeader("Content-ID", "<logo>");
+    multipart.addBodyPart(messageBodyPartImage);
+  }
+
+  private Context getContextForFeedback(String email, FeedbackModel feedbackModel, String baseUrl) {
     Context context = new Context();
-    context.setVariable("imageName", "logo");
+    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
     context.setVariable("url",
-      UriComponentsBuilder.newInstance()
-        .scheme("http")
-        .host(request.getServerName())
-        .port(8080)
+      builder
         .path("/endorse-skills")
         .queryParam("email", email)
         .queryParam("feedbackRequestId", feedbackModel.getId()).build());
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
+    getContextAdditionalProperties(context, builder, email);
     return context;
   }
 
-  private Context getContextForSignup(String email, HttpServletRequest request) {
+  private Context getContextForSignup(String email, String baseUrl) {
     Context context = new Context();
-    context.setVariable("imageName", "logo");
+    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
     context.setVariable("url",
-      UriComponentsBuilder.newInstance()
-        .scheme("http")
-        .host(request.getServerName())
-        .port(8080)
+      builder
+        .path(baseUrl)
         .path("/complete-profile")
         .queryParam("email", email)
         .build());
+    getContextAdditionalProperties(context, builder, email);
     return context;
+  }
+
+  private void getContextAdditionalProperties(Context context, UriComponentsBuilder builder, String email) {
+    context.setVariable("imageName", "logo");
+    context.setVariable("url", builder.queryParam("email", email).build());
   }
 }
 
