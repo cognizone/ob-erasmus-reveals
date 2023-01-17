@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { combineLatest } from 'rxjs';
-import { Counts, Feedback, FeedbacksService, Skill, SkillsService } from '@app/core';
+import { ChartMetaData, Counts, Feedback, FeedbacksService, Skill, SkillsService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { LangString } from '@cognizone/model-utils';
 import { I18nService } from '@cognizone/i18n';
@@ -15,6 +15,8 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Dialog } from '@angular/cdk/dialog';
 import * as echarts from 'echarts';
 import { SkillsDetailMapVisualizationModal } from '@app/shared-features/skills-detail-map-visualization';
+import { OptionDataItem } from 'echarts/types/src/util/types';
+import { ECElementEvent } from 'echarts/types/dist/echarts';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-cloud-visualization',
@@ -67,23 +69,24 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
       /*this.chart.on('mouseover', 'series.graph', (e) => {
         this.chart?.dispatchAction({ type: 'downplay' });
       })*/
-      this.chart.on('click', 'series.graph', (e) => {
+      this.chart.on('click', 'series.graph', (event) => {
+        const data = event.data as Data;
         this.dialog.open(SkillsDetailMapVisualizationModal, {
-          data: e.data,
+          data: data.metaData as ChartMetaData,
         })
       });
     }
-    const data = this.generateData(skills, feedbacks, this.counts);
+
     this.chart.setOption({
       tooltip: {
         className: 'app-tooltip',
         formatter: ({ data }: FormatterArg) => {
-          return `<p class="tooltip-heading">${data.name}</p> 
-                  <p class="tooltip-description">${data.description}</p>
+          return `<p class="tooltip-heading">${data.name}</p>
+                  <p class="tooltip-description">${data.metaData.description}</p>
                   <p class="tooltip-label">${this.transloco.translate('profile.total')}</p>
-                  <p class="tooltip-meta-details">${data.endorsementCount} ${data.endorsementCount > 1 ? this.transloco.translate('profile.endorsements_count') : this.transloco.translate('profile.endorsement_count')}</p>
+                  <p class="tooltip-meta-details">${data.metaData.endorsementCount} ${data.metaData.endorsementCount > 1 ? this.transloco.translate('profile.endorsements_count') : this.transloco.translate('profile.endorsement_count')}</p>
                   <p class="tooltip-label">${this.transloco.translate('profile.last_endorsement_from')}</p>
-                  <p class="tooltip-meta-details">${data.lastEndorsedBy?.fromFirstName || data.lastEndorsedBy?.fromEmail}</p>
+                  <p class="tooltip-meta-details">${data.metaData.lastEndorsedBy?.fromFirstName || data.metaData.lastEndorsedBy?.fromEmail}</p>
                   `;
         },
       },
@@ -91,7 +94,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         {
           type: 'graph',
           layout: 'force',
-          data: data,
+          data: this.generateData(skills, feedbacks, this.counts),
           force: {
             repulsion: 250, // TODO - make it smarter
           },
@@ -117,8 +120,6 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         symbolSize: counts[skill['@id']] < 3 ? 120 : 180, // TODO - make it dynamic, add more conditions using switch
         skillId: skill['@id'],
         name: this.i18nService.czLabelToString(skill.prefLabel as LangString),
-        endorsementCount: counts[skill['@id']] ?? 0,
-        description: this.i18nService.czLabelToString(skill.description as LangString),
         label: {
           show: true,
           fontSize: counts[skill['@id']] < 3 ? 12 : 16,
@@ -128,8 +129,14 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         itemStyle: {
           color: skill.itemStyle.color
         },
-        lastEndorsedBy: feedback.filter(f => f.endorsedSkills?.includes(skill['@id'])).sort((a, b) => new Date(a?.created as Date).getTime() - new Date(b?.created as Date).getTime()).pop(),
-        feedback: feedback.filter(f => f.endorsedSkills?.includes(skill['@id']))
+        metaData: {
+          lastEndorsedBy: feedback.filter(f => f.endorsedSkills?.includes(skill['@id'])).sort((a, b) => new Date(a?.created as string).getTime() - new Date(b?.created as string).getTime()).pop(),
+          feedbacks: feedback.filter(f => f.endorsedSkills?.includes(skill['@id'])),
+          skillUri: skill['@id'],
+          endorsementCount: counts[skill['@id']] ?? 0,
+          description: this.i18nService.czLabelToString(skill.description as LangString),
+          name: this.i18nService.czLabelToString(skill.prefLabel as LangString),
+        }
       };
     });
   }
@@ -137,7 +144,6 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
 
 interface Data {
   name: string;
-  description: string;
   label: {
     show: boolean,
     fontSize: number,
@@ -147,10 +153,7 @@ interface Data {
   itemStyle: {
     color: string;
   };
-  lastEndorsedBy?: Feedback;
-  endorsementCount: number;
-  skillId: string;
-  feedback: Feedback[]
+  metaData: ChartMetaData
 }
 
 interface FormatterArg {

@@ -13,7 +13,7 @@ export interface Country extends JsonModel {
 export interface Feedback extends JsonModel {
   '@type': JsonModelType<'Feedback'>;
   '@facets'?: FeedbackFacets;
-  created?: Date;
+  created?: string;
   endorsedSkills?: string[];
   fromCountry?: string;
   fromEmail?: string;

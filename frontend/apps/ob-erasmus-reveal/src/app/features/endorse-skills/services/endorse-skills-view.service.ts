@@ -2,8 +2,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { OnDestroy$ } from '@cognizone/ng-core';
 
-@Injectable({ providedIn: 'root' })
-export class EndorseSkillsService extends OnDestroy$ implements OnDestroy {
+@Injectable()
+export class EndorseSkillsViewService extends OnDestroy$ implements OnDestroy {
   endorseSkillsParams!: Params;
 
   constructor(private route: ActivatedRoute) {

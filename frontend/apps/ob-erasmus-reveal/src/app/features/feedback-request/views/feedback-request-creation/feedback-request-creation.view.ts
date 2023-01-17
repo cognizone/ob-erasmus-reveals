@@ -76,7 +76,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
       });
   }
 
-  getSelectedSkills(skills: string[]): void {
+  setSelectedSkills(skills: string[]): void {
     this.selectedSkills = skills;
   }
 }

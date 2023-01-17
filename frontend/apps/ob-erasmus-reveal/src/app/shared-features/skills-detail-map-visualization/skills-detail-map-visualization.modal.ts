@@ -4,8 +4,8 @@ import { CountriesMapComponent } from '@app/shared-features/countries-map';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule } from '@ngneat/transloco';
-import { SkillImageUrlPipe } from '@app/shared-features/skills-feedback/pipes/skill-image-url.pipe';
-import { FeedbacksService, RelationshipType, RelationshipTypeService, User, UserService } from '@app/core';
+import { SkillImageUrlPipe } from '@app/shared-features/skills-feedback';
+import { ChartMetaData, FeedbacksService, RelationshipTypeService, User, UserService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
@@ -34,12 +34,11 @@ import { SerializeUriPipe } from './pipes/serialize-uri.pipe';
 })
 export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnInit {
   @ViewChild('stepper') stepper!: MatStepper;
-  relation!: Relation[];
+  relation!: Relation;
   users!: User[];
-
   constructor(
     public dialogRef: DialogRef,
-    @Inject(DIALOG_DATA) public data: any,
+    @Inject(DIALOG_DATA) public data: ChartMetaData,
     private relationshipTypeService: RelationshipTypeService,
     private cdr: ChangeDetectorRef,
     private i18nService: I18nService,
@@ -51,17 +50,13 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
 
   ngOnInit() {
     this.subSink = this.relationshipTypeService.getAll().subscribe(relations => {
-      this.relation = Object.assign({}, ...relations.map(r => {
-        return {
-          [r['@id']]: this.i18nService.czLabelToString(r.prefLabel as LangString)
-        }
-      }));
+      this.relation = relations.reduce((a,b) => ({...a, [b['@id']]:( this.i18nService.czLabelToString(b.prefLabel as LangString)) || []}), {})
       this.cdr.markForCheck();
     })
   }
 
   countrySelected(name: string): void {
-    this.subSink = this.feedbackService.getUsersForSkills(name, this.data.skillId).pipe(
+    this.subSink = this.feedbackService.getUsersForSkills(name, this.data.skillUri).pipe(
       switchMap(response => this.userService.getByUrisMulti(response))
     ).subscribe(users => {
       this.users = users;
@@ -72,5 +67,5 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
 }
 
 interface Relation {
-  [uri: string]: RelationshipType
+  [uri: string]: string
 }
