@@ -5,7 +5,7 @@
       <div class="col-8 mx-auto">
         <h1 class="my-heading">{{ t('heading') }}</h1>
         <p class="my-description">{{ t('description') }}</p>
-        <ob-erasmus-reveal-skills-feedback [skills]="skills" (selectSkills)="getSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
+        <ob-erasmus-reveal-skills-feedback [skills]="skills" (selectSkills)="setSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
       </div>
     </div>
   </div>
