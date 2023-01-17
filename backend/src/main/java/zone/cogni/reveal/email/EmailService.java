@@ -92,13 +92,13 @@ public class EmailService {
     properties.put("mail.smtp.host", emailProperties.getSmtp().getHost());
     properties.put("mail.smtp.port", emailProperties.getSmtp().getPort());
     // optional properties
-    if (!StringUtils.isBlank(emailProperties.getSmtp().getAuth())) {
+    if (StringUtils.isNotBlank(emailProperties.getSmtp().getAuth())) {
       properties.put("mail.smtp.auth", emailProperties.getSmtp().getAuth());
     }
-    if (!StringUtils.isBlank((emailProperties.getSmtp().getStarttls().getEnable()))) {
+    if (StringUtils.isNotBlank((emailProperties.getSmtp().getStarttls().getEnable()))) {
       properties.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().getEnable());
     }
-    if (!StringUtils.isBlank((emailProperties.getSmtp().getSocketFactory().getClazz()))) {
+    if (StringUtils.isNotBlank((emailProperties.getSmtp().getSocketFactory().getClazz()))) {
       properties.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
     }
     log.info(emailProperties.toString());
@@ -138,13 +138,12 @@ public class EmailService {
   private Context getContextForFeedback(String email, FeedbackModel feedbackModel, String baseUrl) {
     Context context = new Context();
     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
+    getContextAdditionalProperties(context, builder, email);
     String url = builder
       .path("/endorse-skills")
-      .queryParam("email", email)
       .queryParam("feedbackRequestId", feedbackModel.getId())
       .build()
       .toString();
-    getContextAdditionalProperties(context, builder, email);
     context.setVariable("url", url);
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
