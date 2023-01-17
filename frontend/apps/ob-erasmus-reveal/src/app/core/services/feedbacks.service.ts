@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModelService } from '@cognizone/json-model';
-import { Dictionary, extractSourcesFromElasticResponse, notNil } from '@cognizone/model-utils';
+import { Dictionary, extractSourcesFromElasticResponse, ElasticBucket, notNil } from '@cognizone/model-utils';
 import { map, Observable } from 'rxjs';
 
 import { Counts, Feedback, JsonModelFields } from '../models';
@@ -9,7 +9,6 @@ import { ConfigService } from './config.service';
 import { CustomIdGenerator } from './custom-id-generator.service';
 import { ElasticService } from './elastic.service';
 import { ItemService } from './item.service';
-import { ElasticBucket } from '@cognizone/model-utils';
 
 @Injectable({ providedIn: 'root' })
 export class FeedbacksService extends ItemService<Feedback> {

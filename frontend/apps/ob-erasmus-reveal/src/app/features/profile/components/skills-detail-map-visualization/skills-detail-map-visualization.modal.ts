@@ -9,12 +9,10 @@ import { FeedbacksService, RelationshipType, RelationshipTypeService, User, User
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
-import { ECElementEvent } from 'echarts';
 import { switchMap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { SerializeUriPipe } from '../../pipes/serialize-uri.pipe';
-import { ProfileViewService } from '@app/features/profile/services/profile-view.service';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-detail-map-visualization',
@@ -46,8 +44,7 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
     private cdr: ChangeDetectorRef,
     private i18nService: I18nService,
     private userService: UserService,
-    private feedbackService: FeedbacksService,
-    public profileViewService: ProfileViewService
+    private feedbackService: FeedbacksService
   ) {
     super();
   }
@@ -71,11 +68,6 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
       this.stepper.next();
       this.cdr.markForCheck();
     })
-  }
-
-  onClick(): void {
-    this.dialogRef.close();
-    this.profileViewService.refresh()
   }
 }
 
