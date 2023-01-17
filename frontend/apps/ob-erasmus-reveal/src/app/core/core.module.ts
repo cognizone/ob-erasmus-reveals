@@ -8,7 +8,6 @@ import { TranslocoLocaleModule } from '@ngneat/transloco-locale';
 
 import { environment } from '../../environments/environment';
 import {
-  AppRouteReuseStrategyService,
   AuthService,
   CountriesService,
   customIdGeneratorProvider,
@@ -22,7 +21,6 @@ import {
   TranslocoHttpLoader,
   UserService,
 } from './services';
-import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [],
@@ -51,10 +49,6 @@ import { RouteReuseStrategy } from '@angular/router';
       }),
     },
     { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader },
-    {
-      provide: RouteReuseStrategy,
-      useClass: AppRouteReuseStrategyService,
-    },
   ],
 })
 export class CoreModule {}

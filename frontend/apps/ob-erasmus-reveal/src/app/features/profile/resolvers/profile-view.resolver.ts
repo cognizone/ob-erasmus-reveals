@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { User, UserService } from '@app/core';
+import { EncodeUriService, User, UserService } from '@app/core';
 import { firstValueFrom } from 'rxjs';
-import { EncodeUriService } from '../services/encode-uri-service';
 
 @Injectable({
   providedIn: 'root',

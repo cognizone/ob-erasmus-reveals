@@ -9,7 +9,7 @@ import { ConfigService } from './config.service';
 import { CustomIdGenerator } from './custom-id-generator.service';
 import { ElasticService } from './elastic.service';
 import { ItemService } from './item.service';
-import { ElasticBucket } from '@cognizone/model-utils/src/lib/models/elastic-search-response';
+import { ElasticBucket } from '@cognizone/model-utils';
 
 @Injectable({ providedIn: 'root' })
 export class FeedbacksService extends ItemService<Feedback> {
@@ -79,7 +79,7 @@ export class FeedbacksService extends ItemService<Feedback> {
       }
     })
     .pipe(map(extractSourcesFromElasticResponse), map(response => {
-      return response.map(res => res?.["@facets"]?.requestingUser).filter(notNil) as string[]
+      return response.map(res => res?.["@facets"]?.requestingUser).filter(notNil) ?? []
     }));
   }
 

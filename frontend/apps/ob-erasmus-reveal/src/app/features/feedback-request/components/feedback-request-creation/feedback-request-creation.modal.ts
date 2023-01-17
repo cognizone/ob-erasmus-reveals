@@ -41,10 +41,10 @@ export class FeedbackRequestCreationModal extends OnDestroy$ implements OnInit {
   });
   loading: boolean = false;
 
-  /*get link(): string {
+  get link(): string {
     // TODO real link
     return this.data.feedbackRequest['@id'];
-  }*/
+  }
 
   constructor(
     public authService: AuthService,

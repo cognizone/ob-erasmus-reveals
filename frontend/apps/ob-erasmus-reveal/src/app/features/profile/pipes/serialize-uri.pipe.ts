@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { EncodeUriService } from '../services/encode-uri-service';
+import { EncodeUriService } from '@app/core';
 import { JsonModel } from '@cognizone/json-model';
 
 @Pipe({

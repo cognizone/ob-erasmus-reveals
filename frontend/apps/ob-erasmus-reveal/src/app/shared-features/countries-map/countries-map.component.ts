@@ -17,7 +17,6 @@ import { OnDestroy$ } from '@cognizone/ng-core';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { combineLatest } from 'rxjs';
-import { ECElementEvent } from 'echarts';
 
 @Component({
   selector: 'ob-erasmus-reveal-countries-map',
@@ -32,7 +31,7 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
   skillUri!: string;
 
   @Output()
-  selectedCountry: EventEmitter<ECElementEvent> = new EventEmitter();
+  countrySelected: EventEmitter<string> = new EventEmitter();
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
@@ -67,7 +66,7 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
       const chartDom = this.container.nativeElement;
       this.chart = echarts.init(chartDom);
       this.chart.on('click', 'series.map', (e) => {
-        this.selectedCountry.emit(e);
+        this.countrySelected.emit(e.name);
       });
     }
 
