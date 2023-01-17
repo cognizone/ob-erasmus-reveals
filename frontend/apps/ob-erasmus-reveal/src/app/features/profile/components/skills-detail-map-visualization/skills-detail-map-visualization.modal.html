@@ -91,7 +91,7 @@
       <div class="d-flex mb-3 my-users align-items-center" *ngFor="let user of users">
         <img width="32" height="32" priority ngSrc="assets/images/icon-svgs/icon-fullcircle-smile_gray.svg"
              [alt]="t('alt_logo')">
-        <a class="app-anchor" color="primary" [routerLink]="['../', 'profile', user['@id'] | serializeUri]" (click)="onClick()">
+        <a class="app-anchor" color="primary" [routerLink]="['../', 'profile', user['@id'] | serializeUri]" (click)="dialogRef.close()">
           {{ user.firstName ? user.firstName + ' ' + user.lastName : user.email }}
         </a>
       </div>

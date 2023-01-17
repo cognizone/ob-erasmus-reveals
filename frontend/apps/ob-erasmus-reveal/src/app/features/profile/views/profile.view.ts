@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { Counts, FeedbacksService } from '@app/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
 import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
@@ -15,7 +15,7 @@ import { ProfileViewService } from '../services/profile-view.service';
 @Component({
   selector: 'ob-erasmus-reveal-profile',
   standalone: true,
-  providers: [LoadingService],
+  providers: [LoadingService, ProfileViewService],
   imports: [
     CommonModule,
     TranslocoModule,
@@ -44,14 +44,13 @@ export class ProfileView extends OnDestroy$ implements OnInit {
     private feedbackService: FeedbacksService,
     private cdr: ChangeDetectorRef,
     private loadingService: LoadingService,
-    private profileViewService: ProfileViewService,
-    private route: ActivatedRoute
+    private profileViewService: ProfileViewService
   ) {
     super();
   }
 
   ngOnInit() {
-    this.subSink = this.profileViewService.getUser(this.route)
+    this.subSink = this.profileViewService.user$
     .pipe(switchMap(user => this.feedbackService.getSkillsCountsPerUser(user?.['@id'])
     .pipe(this.loadingService.asOperator(),map(result => ({ user, result })))))
     .subscribe(({ user, result }) => {

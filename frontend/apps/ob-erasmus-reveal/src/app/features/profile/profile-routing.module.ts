@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileViewResolver } from './resolvers/profile-view.resolver';
-import { AuthGuard } from '@app/core';
+import { ProfileGuard, OtherUserProfileGuard } from './guards';
 
 const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
       import('./views/profile.view').then(m => m.ProfileView),
-    canActivate: [AuthGuard]
+    canActivate: [ProfileGuard]
   },
   {
     path: ':profileId',
@@ -17,7 +17,7 @@ const routes: Routes = [
     resolve: {
       user: ProfileViewResolver
     },
-    canActivate: [AuthGuard]
+    canActivate: [OtherUserProfileGuard]
   }
 ];
 
