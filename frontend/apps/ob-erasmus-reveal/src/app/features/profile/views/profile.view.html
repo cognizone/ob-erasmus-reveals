@@ -20,8 +20,8 @@
     <a routerLink="/feedback-request/create" class="app-button" color="primary">{{ t('ask_for_endorsement') }}</a>
   </div>
 
-  <ng-container *ngIf="endorsedSkillsUris.length > 0">
-    <ob-erasmus-reveal-skills-cloud-visualization [skillsUris]="endorsedSkillsUris" [counts]="endorsedSkillCounts" [userId]="user['@id']"></ob-erasmus-reveal-skills-cloud-visualization>
+  <ng-container *ngIf="(endorsedSkillsUris.length > 0 && (loading$ | async) === false)">
+    <ob-erasmus-reveal-skills-cloud-visualization [skillsUris]="endorsedSkillsUris" [counts]="endorsedSkillCounts" [userId]="userId"></ob-erasmus-reveal-skills-cloud-visualization>
   </ng-container>
 
 </ng-container>

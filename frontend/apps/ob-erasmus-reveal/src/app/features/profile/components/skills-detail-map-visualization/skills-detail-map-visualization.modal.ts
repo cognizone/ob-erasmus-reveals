@@ -14,6 +14,7 @@ import { switchMap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { SerializeUriPipe } from '../../pipes/serialize-uri.pipe';
+import { ProfileViewService } from '@app/features/profile/services/profile-view.service';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-detail-map-visualization',
@@ -45,7 +46,8 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
     private cdr: ChangeDetectorRef,
     private i18nService: I18nService,
     private userService: UserService,
-    private feedbackService: FeedbacksService
+    private feedbackService: FeedbacksService,
+    public profileViewService: ProfileViewService
   ) {
     super();
   }
@@ -61,14 +63,19 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
     })
   }
 
-  selectedCountry(event: ECElementEvent): void {
-    this.subSink = this.feedbackService.getUsersForSkills(event.name, this.data.skillId).pipe(
+  countrySelected(name: string): void {
+    this.subSink = this.feedbackService.getUsersForSkills(name, this.data.skillId).pipe(
       switchMap(response => this.userService.getByUrisMulti(response))
     ).subscribe(users => {
       this.users = users;
       this.stepper.next();
       this.cdr.markForCheck();
     })
+  }
+
+  onClick(): void {
+    this.dialogRef.close();
+    this.profileViewService.refresh()
   }
 }
 
