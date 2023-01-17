@@ -2,6 +2,7 @@ package zone.cogni.reveal.email;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.thymeleaf.TemplateEngine;
@@ -60,23 +61,7 @@ public class EmailService {
   }
 
   private void sendEmail(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
-    Properties props = new Properties();
-    props.put("mail.smtp.host", emailProperties.getSmtp().getHost());
-    props.put("mail.smtp.port", emailProperties.getSmtp().getPort());
-    props.put("mail.smtp.auth", emailProperties.getSmtp().getAuth());
-    props.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().isEnable());
-    props.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
-
-    log.info(emailProperties.toString());
-
-    Authenticator auth = new Authenticator() {
-      @Override
-      protected PasswordAuthentication getPasswordAuthentication() {
-        return new PasswordAuthentication(emailProperties.getFromEmail(), emailProperties.getPassword());
-      }
-    };
-
-    Session session = Session.getInstance(props, auth);
+    Session session = initSession();
 
     log.info("Sending email to {}, subject {}", email, subject);
 
@@ -90,6 +75,34 @@ public class EmailService {
     mimeMessage.setContent(multipart);
     // send message
     Transport.send(mimeMessage);
+  }
+
+  private Session initSession() {
+    Authenticator auth = new Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication(emailProperties.getFromEmail(), emailProperties.getPassword());
+      }
+    };
+    return Session.getInstance(initProperties(), auth);
+  }
+
+  private Properties initProperties() {
+    Properties properties = new Properties();
+    properties.put("mail.smtp.host", emailProperties.getSmtp().getHost());
+    properties.put("mail.smtp.port", emailProperties.getSmtp().getPort());
+    // optional properties
+    if (!StringUtils.isBlank(emailProperties.getSmtp().getAuth())) {
+      properties.put("mail.smtp.auth", emailProperties.getSmtp().getAuth());
+    }
+    if (!StringUtils.isBlank((emailProperties.getSmtp().getStarttls().getEnable()))) {
+      properties.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().getEnable());
+    }
+    if (!StringUtils.isBlank((emailProperties.getSmtp().getSocketFactory().getClazz()))) {
+      properties.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
+    }
+    log.info(emailProperties.toString());
+    return properties;
   }
 
   private Message setMimeMessage(Session session, String email, String subject) throws MessagingException, UnsupportedEncodingException {
@@ -125,33 +138,36 @@ public class EmailService {
   private Context getContextForFeedback(String email, FeedbackModel feedbackModel, String baseUrl) {
     Context context = new Context();
     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
-    context.setVariable("url",
-      builder
-        .path("/endorse-skills")
-        .queryParam("email", email)
-        .queryParam("feedbackRequestId", feedbackModel.getId()).build());
+    String url = builder
+      .path("/endorse-skills")
+      .queryParam("email", email)
+      .queryParam("feedbackRequestId", feedbackModel.getId())
+      .build()
+      .toString();
+    getContextAdditionalProperties(context, builder, email);
+    context.setVariable("url", url);
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
-    getContextAdditionalProperties(context, builder, email);
     return context;
   }
 
   private Context getContextForSignup(String email, String baseUrl) {
     Context context = new Context();
     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
-    context.setVariable("url",
-      builder
-        .path(baseUrl)
-        .path("/complete-profile")
-        .queryParam("email", email)
-        .build());
     getContextAdditionalProperties(context, builder, email);
+    String url = builder
+      .path(baseUrl)
+      .path("/complete-profile")
+      .queryParam("email", email)
+      .build()
+      .toString();
+    context.setVariable("url", url);
     return context;
   }
 
   private void getContextAdditionalProperties(Context context, UriComponentsBuilder builder, String email) {
     context.setVariable("imageName", "logo");
-    context.setVariable("url", builder.queryParam("email", email).build());
+    context.setVariable("url", builder.queryParam("email", email));
   }
 }
 

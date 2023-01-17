@@ -35,7 +35,7 @@ mail:
   fromEmail: ${env.reveals.mail.fromEmail} # password for gmail account is revealsproject but as gmail has blocked less secure apps
   #we need to allow 2-Step Verification and generate an app specific password
   #howto: https://support.google.com/mail/answer/185833?hl=en
-  password: xgpnlbopbaevzmiz
+  password: xgpnlbopbaevzmiz #app specific password for gmail login through reveals
   subject:
     fr: Message de l'administrateur de reveals.
     gr: Μήνυμα από τον διαχειριστή του reveals.

@@ -16,10 +16,8 @@ public class EmailProperties {
   private Smtp smtp;
 
   public String getSubject(String language) {
-    if(language.isBlank()){
-      language = "en"; //in case of invalid language we should choose en
-    }
-    return subject.get(language);
+    //in case of invalid language we should choose en
+    return subject.getOrDefault(language, subject.get("en"));
   }
 
   @Data
@@ -38,6 +36,6 @@ public class EmailProperties {
 
   @Data
   static class Starttls {
-    private boolean enable;
+    private String enable;
   }
 }
