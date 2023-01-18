@@ -3,6 +3,9 @@ package zone.cogni.reveal.email;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Map;
 
 @Data
@@ -13,6 +16,7 @@ public class EmailProperties {
   private String fromEmail;
   @ToString.Exclude
   private String password;
+  @NotNull
   private Smtp smtp;
 
   public String getSubject(String language) {
@@ -21,21 +25,23 @@ public class EmailProperties {
   }
 
   @Data
-  static class Smtp {
+  public static class Smtp {
+    @NotBlank
     private String host;
-    private String auth;
+    @Positive
     private int port;
+    private String auth;
     private Starttls starttls;
     private SocketFactory socketFactory;
   }
 
   @Data
-  static class SocketFactory {
+  public static class SocketFactory {
     private String clazz;
   }
 
   @Data
-  static class Starttls {
+  public static class Starttls {
     private String enable;
   }
 }

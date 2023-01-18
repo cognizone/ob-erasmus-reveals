@@ -1,6 +1,7 @@
 package zone.cogni.reveal.email;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.ClassPathResource;
@@ -14,7 +15,6 @@ import javax.activation.DataHandler;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -24,9 +24,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
 
@@ -60,7 +58,8 @@ public class EmailService {
     }
   }
 
-  private void sendEmail(String email, String subject, String templateName, Context context) throws MessagingException, IOException {
+  @SneakyThrows
+  private void sendEmail(String email, String subject, String templateName, Context context) {
     Session session = initSession();
 
     log.info("Sending email to {}, subject {}", email, subject);
@@ -89,23 +88,25 @@ public class EmailService {
 
   private Properties initProperties() {
     Properties properties = new Properties();
-    properties.put("mail.smtp.host", emailProperties.getSmtp().getHost());
-    properties.put("mail.smtp.port", emailProperties.getSmtp().getPort());
+    EmailProperties.Smtp smtp = emailProperties.getSmtp();
+    properties.put("mail.smtp.host", smtp.getHost());
+    properties.put("mail.smtp.port", smtp.getPort());
     // optional properties
-    if (StringUtils.isNotBlank(emailProperties.getSmtp().getAuth())) {
-      properties.put("mail.smtp.auth", emailProperties.getSmtp().getAuth());
+    if (StringUtils.isNotBlank(smtp.getAuth())) {
+      properties.put("mail.smtp.auth", smtp.getAuth());
     }
-    if (StringUtils.isNotBlank((emailProperties.getSmtp().getStarttls().getEnable()))) {
-      properties.put("mail.smtp.starttls.enable", emailProperties.getSmtp().getStarttls().getEnable());
+    if (null != smtp.getStarttls() && StringUtils.isNotBlank(smtp.getStarttls().getEnable())) {
+      properties.put("mail.smtp.starttls.enable", smtp.getStarttls().getEnable());
     }
-    if (StringUtils.isNotBlank((emailProperties.getSmtp().getSocketFactory().getClazz()))) {
-      properties.put("mail.smtp.socketFactory.class", emailProperties.getSmtp().getSocketFactory().getClazz());
+    if (null != smtp.getSocketFactory() && StringUtils.isNotBlank(smtp.getSocketFactory().getClazz())) {
+      properties.put("mail.smtp.socketFactory.class", smtp.getSocketFactory().getClazz());
     }
     log.info(emailProperties.toString());
     return properties;
   }
 
-  private Message setMimeMessage(Session session, String email, String subject) throws MessagingException, UnsupportedEncodingException {
+  @SneakyThrows
+  private Message setMimeMessage(Session session, String email, String subject) {
     Message mimeMessage = new MimeMessage(session);
     mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
     mimeMessage.setSubject(subject);
@@ -116,7 +117,8 @@ public class EmailService {
     return mimeMessage;
   }
 
-  private MimeMultipart addHtmlTemplate(String body) throws MessagingException {
+  @SneakyThrows
+  private MimeMultipart addHtmlTemplate(String body) {
     // adds an inline image with a content id , in this case it is adding the logo
     MimeMultipart multipart = new MimeMultipart("related");
     BodyPart messageBodyPartHtml = new MimeBodyPart();
@@ -125,7 +127,8 @@ public class EmailService {
     return multipart;
   }
 
-  private void addLogo(Multipart multipart) throws IOException, MessagingException {
+  @SneakyThrows
+  private void addLogo(Multipart multipart) {
     BodyPart messageBodyPartImage = new MimeBodyPart();
     InputStream logoStream = new ClassPathResource("static/img/reveals_logo.png").getInputStream();
     ByteArrayDataSource ds = new ByteArrayDataSource(logoStream, "image/png");
@@ -143,7 +146,7 @@ public class EmailService {
       .path("/endorse-skills")
       .queryParam("feedbackRequestId", feedbackModel.getId())
       .build()
-      .toString();
+      .toUriString();
     context.setVariable("url", url);
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
@@ -159,7 +162,7 @@ public class EmailService {
       .path("/complete-profile")
       .queryParam("email", email)
       .build()
-      .toString();
+      .toUriString();
     context.setVariable("url", url);
     return context;
   }

@@ -1,10 +1,8 @@
 buildscript {
   ext {
-    commonsCollectionsVersion = "4.4"
-    commonsLang3Version = "3.12.0"
     vinzClorthoVersion = "0.1.1"
     javaxMailVersion = "1.6.2"
-    springContextVersion = "6.0.3"
+    springDocVersion = "1.6.13"
   }
 }
 
@@ -64,12 +62,9 @@ subprojects {
       //mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
     dependencies {
-      dependency("org.apache.commons:commons-collections4:${commonsCollectionsVersion}")
-      dependency("org.apache.commons:commons-lang3:${commonsLang3Version}")
-      dependency("javax.inject:javax.inject:1")
       dependency("zone.cogni.vinz-clortho:vinz-clortho:${vinzClorthoVersion}")
-      dependency("org.springframework:spring-context-support:${springContextVersion}")
       dependency("com.sun.mail:javax.mail:${javaxMailVersion}")
+      dependency("org.springdoc:springdoc-openapi-ui:${springDocVersion}")
     }
   }
   dependencies {
@@ -120,8 +115,9 @@ project("backend") {
   dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.13")
+    implementation("org.springdoc:springdoc-openapi-ui")
 
     implementation("zone.cogni.vinz-clortho:vinz-clortho")
 
