@@ -15,13 +15,12 @@ import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import * as echarts from 'echarts';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ob-erasmus-reveal-countries-map',
   standalone: true,
-  imports: [CommonModule, NgxEchartsModule],
+  imports: [CommonModule],
   templateUrl: './countries-map.component.html',
   styleUrls: ['./countries-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

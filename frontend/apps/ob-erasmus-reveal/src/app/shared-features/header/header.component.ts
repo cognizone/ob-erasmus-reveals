@@ -2,9 +2,17 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { LanguageService } from '@app/core';
 import { I18nService } from '@cognizone/i18n';
 import { OnDestroy$ } from '@cognizone/ng-core';
+import { CommonModule } from '@angular/common';
+import { TranslocoModule } from '@ngneat/transloco';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { CdkMenuModule } from '@angular/cdk/menu';
+import { AppLogoComponent } from '../app-logo';
 
 @Component({
   selector: 'ob-erasmus-reveal-header',
+  standalone: true,
+  imports: [CommonModule, TranslocoModule, MatIconModule, RouterModule, CdkMenuModule, AppLogoComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

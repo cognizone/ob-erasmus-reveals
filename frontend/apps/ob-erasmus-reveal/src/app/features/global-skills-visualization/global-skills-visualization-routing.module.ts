@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GlobalSkillsVisualizationComponent } from './global-skills-visualization.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: GlobalSkillsVisualizationComponent
+    loadComponent: () =>
+      import('./views/global-skills-visualization.view').then(m => m.GlobalSkillsVisualizationView),
   },
 ];
 

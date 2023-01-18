@@ -8,8 +8,6 @@
   section {
     margin-bottom: 2.5rem;
     background-color: var(--color-ghost-white);
-    // TODO - find a way to use the same variable and assign different colors based on sections
-
     &:nth-child(2) {
       background-color: var(--color-floral-white);
     }
