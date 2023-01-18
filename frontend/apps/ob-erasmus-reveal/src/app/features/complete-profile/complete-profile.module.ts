@@ -11,11 +11,12 @@ import { CreateProfileComponent } from './components/create-profile/create-profi
 import { MatStepperModule } from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
+import { LanguageSelectionComponent } from '@app/shared-features/language-selection';
 
 const routes: Routes = [{ path: '', component: CompleteProfileView }];
 
 @NgModule({
   declarations: [CompleteProfileView, GettingStartedComponent, CreateProfileComponent],
-  imports: [CompleteProfileRoutingModule, RouterModule.forChild(routes), TranslocoLocaleModule, SharedModule, CommonModule, MatStepperModule, ReactiveFormsModule, AppLogoComponent],
+  imports: [CompleteProfileRoutingModule, RouterModule.forChild(routes), TranslocoLocaleModule, SharedModule, CommonModule, MatStepperModule, ReactiveFormsModule, AppLogoComponent, LanguageSelectionComponent],
 })
 export class CompleteProfileModule {}

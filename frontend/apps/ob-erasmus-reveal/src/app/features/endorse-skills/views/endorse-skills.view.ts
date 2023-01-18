@@ -25,7 +25,7 @@ import {
 } from '@app/core';
 import { I18nModule } from '@cognizone/i18n';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
 import { map, Observable, of, switchMap } from 'rxjs';
@@ -37,6 +37,7 @@ import {
   FeedbackSentToProfileModal
 } from '../components/feedback-sent-to-profile/feedback-sent-to-profile.modal';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LanguageSelectionComponent } from '@app/shared-features/language-selection';
 
 @Component({
   selector: 'ob-erasmus-reveal-endorse-skills',
@@ -55,7 +56,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     SkillsFeedbackComponent,
     EndorsementCompleteComponent,
     FeedbackSentToProfileModal,
-    MatProgressBarModule
+    MatProgressBarModule,
+    LanguageSelectionComponent
   ],
   providers: [LoadingService, EndorseSkillsViewService],
   templateUrl: './endorse-skills.view.html',
@@ -102,7 +104,8 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     private router: Router,
     private authService: AuthService,
     private dialog: Dialog,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private transloco: TranslocoService
   ) {
     super();
   }

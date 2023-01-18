@@ -39,6 +39,20 @@ h2, .my-label {
   margin-bottom: 3rem;
 }
 
+.my-welcome {
+  padding: 5rem;
+  h1 {
+    font-size: 2rem;
+    color: var(--color-gray-70);
+    margin-bottom: 4rem;
+  }
+  p {
+    color: var(--color-gray-60);
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+}
+
 
 :host::ng-deep {
   .mat-horizontal-stepper-header-container {

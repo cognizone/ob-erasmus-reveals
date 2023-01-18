@@ -80,6 +80,11 @@
     "optional": "(optional)",
     "relationship_level": "Your level of relationship with {{ user }}",
     "select_relationship": "Select a relationship",
+    "start": "Start",
+    "step_0": {
+      "description": "Thank you for taking the time to answer this endorsement request. Don't worry, it won't take you long to complete it.",
+      "heading": "Welcome"
+    },
     "step_1": {
       "about": "Tell us more about you",
       "description": "Thank you for taking the time to answer this endorsement request. It won't take you long to fill it in.",
@@ -208,6 +213,9 @@
     "not_a_member": "Not a member?",
     "skills_description": "Join us and start right away to share your skills, ask for endorsements and give feedbacks.",
     "unlock_access": "Unlock unlimited access to Reveal in just one click"
+  },
+  "language_selection": {
+    "heading": "Language"
   },
   "login": {},
   "profile": {
