@@ -1,22 +1,19 @@
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FeedbackRequestsService, Skill, SkillsService } from '@app/core';
-import { SkillImageUrlPipeModule } from '@app/shared/pipes';
-import { I18nModule } from '@cognizone/i18n';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { TranslocoModule } from '@ngneat/transloco';
-import produce from 'immer';
 import { map, of, switchMap } from 'rxjs';
 
 import {
   FeedbackRequestCreationModal,
   FeedbackRequestCreationModalData,
 } from '../../components/feedback-request-creation/feedback-request-creation.modal';
-import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header';
+import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
+import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
 
 // TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
 // TODO hide global footer, but guessing this will be handled in general with connected users.
@@ -28,13 +25,10 @@ import { MyProfileHeaderComponent } from '@app/shared-features/my-profile-header
     CommonModule,
     TranslocoModule,
     ReactiveFormsModule,
-    I18nModule,
-    SkillImageUrlPipeModule,
-    NgOptimizedImage,
-    MatIconModule,
     RouterModule,
     DialogModule,
-    MyProfileHeaderComponent,
+    ProfileHeaderComponent,
+    SkillsFeedbackComponent
   ],
   providers: [LoadingService],
   templateUrl: './feedback-request-creation.view.html',
@@ -50,6 +44,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
     private cdr: ChangeDetectorRef,
     private dialog: Dialog,
     private feedbackRequestsService: FeedbackRequestsService,
+    private router: Router,
     public loadingService: LoadingService
   ) {
     super();
@@ -60,21 +55,6 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
       this.skills = skills;
       this.cdr.markForCheck();
     });
-  }
-
-  toggleSelection(skill: Skill): void {
-    const index = this.selectedSkills.findIndex(s => s === skill['@id']);
-    this.selectedSkills = produce(this.selectedSkills, draft => {
-      if (index >= 0) {
-        draft.splice(index, 1);
-      } else {
-        draft.push(skill['@id']);
-      }
-    });
-  }
-
-  isSelected(skill: Skill): boolean {
-    return this.selectedSkills.includes(skill['@id']);
   }
 
   openModal(): void {
@@ -95,7 +75,11 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
         this.loadingService.asOperator()
       )
       .subscribe(() => {
-        // TODO go back to profile page
+        this.router.navigate(['profile']);
       });
+  }
+
+  getSelectedSkills(skills: string[]): void {
+    this.selectedSkills = skills;
   }
 }

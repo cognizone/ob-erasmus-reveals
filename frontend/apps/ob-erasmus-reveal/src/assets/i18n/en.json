@@ -23,6 +23,10 @@
       }
     }
   },
+  "answer_sent": {
+    "heading": "Your answers have been sent to {{ user }}",
+    "thank_you": "Thank you for your time!"
+  },
   "complete_profile": {
     "complete_now": "Complete your profile now",
     "description_1": "You can ask endorsements right now for all your skills, even the ones you think are not worth sharing!",
@@ -64,17 +68,44 @@
     "get_started": "Get started by clicking on the link we sent to",
     "send_again": "Send again"
   },
+  "endorse_skills": {
+    "back": "Back",
+    "country": "{{global.country}}",
+    "email": "{{global.email}}",
+    "feedback_given": {
+      "homepage": "Go to homepage"
+    },
+    "name": "{{global.name}}",
+    "next": "{{global.next}}",
+    "optional": "(optional)",
+    "relationship_level": "Your level of relationship with {{ user }}",
+    "select_relationship": "Select a relationship",
+    "step_1": {
+      "about": "Tell us more about you",
+      "description": "Thank you for taking the time to answer this endorsement request. It won't take you long to fill it in.",
+      "heading": "Skill endorsement request from {{ user }}"
+    },
+    "step_2": {
+      "description": "We use our users' location data to improve the information on the « skills » page",
+      "heading": "Share your location"
+    },
+    "step_3": {
+      "heading": "Which {{ user }} skills do you endorse?"
+    },
+    "step_4": {
+      "heading": "Why do you endorse these skills for {{ user }}?",
+      "placeholder_text": "Enter your feedback",
+      "send_answers": "Send your answers"
+    },
+    "surname": "{{global.surname}}"
+  },
   "feedback_request": {
     "creation": {
       "cancel": "{{global.cancel}}",
       "description": "This form allows you to request credit for your skills.",
       "heading": "Skill endorsement request",
       "next": "{{global.next}}",
-      "select_skills": "Select the 1 or more skills for which you want to be endorsed:",
-      "selected": "selected",
-      "skill_selected": "{{count}} skill selected",
-      "skills_selected": "{{count}} skills selected",
-      "unselected": "unselected"
+      "selected": "selected"
     },
     "creation_modal": {
       "cancel": "{{global.cancel}}",
@@ -168,27 +199,47 @@
       "point_4": "Grow in your career"
     },
     "already_member": "Already a member?",
+    "and": "and",
     "connect": "Connect",
-    "description": "Join the people using Reveal to get credit for your skills",
+    "description": "the people using Reveal to get credit for your skills",
     "heading": "Up your game, join Reveal",
+    "join": "Join",
     "join_now": "Join now",
     "not_a_member": "Not a member?",
     "skills_description": "Join us and start right away to share your skills, ask for endorsements and give feedbacks.",
     "unlock_access": "Unlock unlimited access to Reveal in just one click"
   },
   "login": {},
-  "my_profile": {
+  "profile": {
+    "across": "Across",
     "add_new_description": "To add new skills to your profile, you need to ask endorsement from your peers, friends and colleagues.",
     "add_new_heading": "All set! Now add some skills",
+    "alt_logo": "profile logo",
+    "ask_endorsement_skill": "Ask endorsement for this skill",
     "ask_for_endorsement": "Ask for endorsement",
-    "endorsements": "{{count}} endorsements",
-    "skills": "{{count}} {{header.skills}}"
+    "back": "Back",
+    "description": "Description",
+    "endorsement_count": "{{ count }} endorsement",
+    "endorsements_count": "{{count}} endorsements",
+    "last_endorsement_from": "Last endorsement from",
+    "people_count": "{{ count }} people",
+    "skill_alt_logo": "Skill logo",
+    "skill_count": "{{ count }} skill",
+    "skills_count": "{{count}} {{header.skills}}",
+    "total": "Total",
+    "used_by": "Used by"
   },
-  "my_profile_header": {
+  "profile_header": {
     "ask_endorsement": "Ask endorsement",
     "heading": "My profile",
     "logout": "Log out",
     "settings": "Settings",
     "skills": "{{header.skills}}"
+  },
+  "skills_feedback": {
+    "select_skills": "Select the 1 or more skills for which you want to be endorsed:",
+    "skill_selected": "{{count}} skill selected",
+    "skills_selected": "{{count}} skills selected",
+    "unselected": "unselected"
   }
 }

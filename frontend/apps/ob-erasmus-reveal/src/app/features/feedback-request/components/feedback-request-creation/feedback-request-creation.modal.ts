@@ -28,11 +28,11 @@ export class FeedbackRequestCreationModal extends OnDestroy$ implements OnInit {
     {
       mode: 'email',
       icon: 'mail',
-    },
+    }/*,
     {
       mode: 'link',
       icon: 'link',
-    },
+    },*/
   ];
 
   form: FormGroup = this.fb.group({
@@ -69,7 +69,7 @@ export class FeedbackRequestCreationModal extends OnDestroy$ implements OnInit {
 
   sendEmail(): void {
     const updatedRequest = produce(this.data.feedbackRequest, draft => {
-      draft.emails = this.form.value.emails;
+      draft.emails = this.form.value.emails.split(',').map((email: string) => email.trim());
       draft.message = this.form.value.message;
     });
 

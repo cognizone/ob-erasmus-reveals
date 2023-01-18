@@ -1,1 +1,25 @@
-{ "data": [] }
+{
+  "data": [
+    {
+      "@id": "http://reveal.org/data/relation/01",
+      "@type": "RelationshipType",
+      "prefLabel": {
+        "en": ["Colleague"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/relation/02",
+      "@type": "RelationshipType",
+      "prefLabel": {
+        "en": ["Friend"]
+      }
+    },
+    {
+      "@id": "http://reveal.org/data/relation/03",
+      "@type": "RelationshipType",
+      "prefLabel": {
+        "en": ["Other"]
+      }
+    }
+  ]
+}

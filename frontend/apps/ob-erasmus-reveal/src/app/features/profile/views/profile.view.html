@@ -1,0 +1,28 @@
+<ob-erasmus-reveal-profile-header></ob-erasmus-reveal-profile-header>
+<mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
+<ng-container *transloco="let t;read: 'profile'">
+  <div class="container my-profile">
+    <img width="96" height="96" priority ngSrc="assets/images/icon-svgs/icon-fullcircle-smile_gray.svg" [alt]="t('alt_logo')">
+    <div class="ml-5">
+      <h1>{{ userInfo }}</h1>
+      <h2 *ngIf="userEmail"> {{ userEmail }} </h2>
+      <div class="d-flex my-meta-information">
+        <p>{{ t(endorsedSkillsUris.length > 0 ? 'skills_count' : 'skill_count', {count: endorsedSkillsUris.length}) }} </p>
+        <p class="pl-5">{{ t(endorsementsCount > 0 ? 'endorsements_count' : 'endorsement_count', {count: endorsementsCount}) }} </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-endorsements-details" *ngIf="(endorsedSkillsUris.length === 0 && (loading$ | async) === false)">
+    <mat-icon>more_horiz</mat-icon>
+    <h1>{{ t('add_new_heading') }}</h1>
+    <p>{{ t('add_new_description') }}</p>
+    <a routerLink="/feedback-request/create" class="app-button" color="primary">{{ t('ask_for_endorsement') }}</a>
+  </div>
+
+  <ng-container *ngIf="(endorsedSkillsUris.length > 0 && (loading$ | async) === false)">
+    <ob-erasmus-reveal-skills-cloud-visualization [skillsUris]="endorsedSkillsUris" [counts]="endorsedSkillCounts" [userId]="userId"></ob-erasmus-reveal-skills-cloud-visualization>
+  </ng-container>
+
+</ng-container>
+<ob-erasmus-reveal-profile-footer></ob-erasmus-reveal-profile-footer>

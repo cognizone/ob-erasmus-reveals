@@ -1,0 +1,13 @@
+<ng-container *transloco="let t;read: 'endorse_skills'">
+  <div class="my-feedback-given">
+    <div>
+      <ob-erasmus-reveal-answer-sent [requestingUser]="requestingUser"></ob-erasmus-reveal-answer-sent>
+      <h3 class="my-homepage">
+        <a routerLink="/" class="app-anchor" color="primary">{{ t('feedback_given.homepage') }}
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </a>
+      </h3>
+    </div>
+    <ob-erasmus-reveal-join-now [requestingUser]="requestingUser"></ob-erasmus-reveal-join-now>
+  </div>
+</ng-container>

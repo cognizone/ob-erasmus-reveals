@@ -7,7 +7,7 @@ import { AuthService } from '../services';
 })
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService) {}
-  // TODO - change me after email is ready....
+  // TODO - Can be used for other profile features, to be modified
   canActivate(): boolean {
     return !! this.authService.getTemporaryEmailState();
   }

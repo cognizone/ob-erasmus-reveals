@@ -28,8 +28,8 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements OnInit {
       map((data) => {
         return {
           tooltip: {
-            className: 'my-tooltip',
-            formatter: '<p class="my-tooltip-heading">{b0}</p> <p class="my-tooltip-description">{c0}</p>'
+            className: 'app-tooltip',
+            formatter: '<p class="tooltip-heading">{b0}</p> <p class="tooltip-description">{c0}</p>'
           },
           series: [
             {

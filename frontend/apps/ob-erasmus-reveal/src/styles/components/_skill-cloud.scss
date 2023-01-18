@@ -1,0 +1,36 @@
+.app-charts {
+  .app-tooltip {
+    width: 400px;
+    border: 1px solid var(--border-color-secondary);
+    border-radius: 0 16px 0 16px !important; // getting overwritten without this
+  }
+
+  .tooltip-heading {
+    color: var(--color-tertiary-text);
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 24px;
+  }
+
+  .tooltip-description {
+    color: var(--color-gray-70);
+    font-size: 0.75rem;
+    font-style: italic;
+    letter-spacing: 0.25px;
+    line-height: 16px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  .tooltip-label {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+    color: var(--color-gray-70);
+  }
+
+  .tooltip-meta-details {
+    color: var(--primary-violet);
+    font-weight: 600;
+  }
+}

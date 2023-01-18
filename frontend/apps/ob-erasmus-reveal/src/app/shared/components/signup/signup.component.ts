@@ -37,7 +37,7 @@ export class SignupComponent extends OnDestroy$ {
 
       if (this.login) {
         this.subSink = this.authService.login(email).subscribe(userValid => {
-          // on true navigate to profile page
+          if (userValid) this.router.navigate(['profile']);
         })
       } else {
         // TODO make the API call for register and send email;

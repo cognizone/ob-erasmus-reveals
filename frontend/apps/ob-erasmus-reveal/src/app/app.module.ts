@@ -38,18 +38,17 @@ import { RouterModule } from '@angular/router';
           import('./features/global-skills-visualization/global-skills-visualization.module').then(m => m.GlobalSkillsVisualizationModule),
       },
       {
-        path: 'my-profile',
-        loadChildren: () => import('./features/my-profile/my-profile.module').then(m => m.MyProfileModule),
+        path: 'profile',
+        loadChildren: () => import('./features/profile/profile.module').then(m => m.ProfileModule),
       },
       {
         path: 'feedback-request',
         loadChildren: () => import('./features/feedback-request/feedback-request.module').then(m => m.FeedbackRequestModule),
       },
-      // TODO temporary for testing purposes, to be placed in side panel when available
       {
-        path: 'map',
-        loadComponent: () => import('./shared-features/countries-map').then(m => m.CountriesMapComponent),
-      },
+        path: 'endorse-skills',
+        loadChildren: () => import('./features/endorse-skills/endorse-skills.module').then(m => m.EndorseSkillsModule),
+      }
     ]),
   ],
   providers: [],

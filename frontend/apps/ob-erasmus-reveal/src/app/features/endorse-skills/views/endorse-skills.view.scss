@@ -1,0 +1,47 @@
+@use 'abstracts/mixins' as *;
+
+.my-endorser-details, .my-endorser-signup {
+  @include skills-information-container;
+  margin-top: 5rem;
+  height: 700px;
+  padding: 3rem 1.5rem 1rem 1.5rem;
+  margin-bottom: 5rem;
+}
+
+.my-endorser-details {
+  width: 900px;
+}
+
+.my-endorser-signup {
+  width: 1200px;
+}
+
+h1 {
+  font-size: 1rem;
+  color: var(--color-gray-60);
+  text-align: center;
+}
+
+h2, .my-label {
+  @include skill-header;
+}
+
+.my-form {
+  @include app-form-steps
+}
+
+.my-back-button {
+  @include back-button
+}
+
+.my-form-field {
+  @include form-field(10rem);
+  margin-bottom: 3rem;
+}
+
+
+:host::ng-deep {
+  .mat-horizontal-stepper-header-container {
+    display: none !important; // This is needed
+  }
+}

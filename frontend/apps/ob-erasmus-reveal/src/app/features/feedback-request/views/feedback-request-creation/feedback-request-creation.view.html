@@ -1,34 +1,11 @@
-<ob-erasmus-reveal-my-profile-header></ob-erasmus-reveal-my-profile-header>
+<ob-erasmus-reveal-profile-header></ob-erasmus-reveal-profile-header>
 <ng-container *transloco="let t; read: 'feedback_request.creation'">
   <div class="container mt-5">
     <div class="row">
       <div class="col-8 mx-auto">
         <h1 class="my-heading">{{ t('heading') }}</h1>
         <p class="my-description">{{ t('description') }}</p>
-        <div class="d-flex justify-content-between">
-          <span class="my-prompt">{{ t('select_skills') }}</span>
-          <!-- FIXME for some reason, was not able to make messageformat work with transloco 🤷 -->
-          <span class="my-count" [class.is-filled]="selectedSkills.length > 0">{{
-            t(selectedSkills.length > 1 ? 'skills_selected' : 'skill_selected', { count: selectedSkills.length })
-          }}</span>
-        </div>
-
-        <div class="my-skills">
-          <button *ngFor="let skill of skills" class="my-skill" [class.is-selected]="isSelected(skill)" (click)="toggleSelection(skill)">
-            <div class="my-skill-heading">
-              <div class="my-icon">
-                <mat-icon color="primary">check_box</mat-icon>
-                <img [ngSrc]="skill | skillImageUrl" fill [alt]="t('unselected')" />
-              </div>
-              <span>
-                {{ skill.prefLabel | czLabel }}
-              </span>
-            </div>
-            <div class="my-skill-description">
-              {{ skill.description | czLabel }}
-            </div>
-          </button>
-        </div>
+        <ob-erasmus-reveal-skills-feedback [skills]="skills" (selectSkills)="getSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
       </div>
     </div>
   </div>
@@ -37,8 +14,7 @@
     <div class="container">
       <div class="row">
         <div class="col-8 mx-auto my-footer-content">
-          <!-- TODO back to profile page, for now -->
-          <button class="app-button-stroked" routerLink="/my-profile">{{ t('cancel') }}</button>
+          <button class="app-button-stroked" routerLink="/profile">{{ t('cancel') }}</button>
           <button
             class="app-button"
             color="primary"

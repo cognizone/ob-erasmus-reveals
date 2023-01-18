@@ -1,8 +1,8 @@
 buildscript {
   ext {
-    vinzClorthoVersion = "0.1.1"
     javaxMailVersion = "1.6.2"
     springDocVersion = "1.6.13"
+    vinzClorthoVersion = "0.1.2"
   }
 }
 

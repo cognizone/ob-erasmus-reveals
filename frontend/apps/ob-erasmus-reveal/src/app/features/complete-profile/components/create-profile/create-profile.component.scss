@@ -1,3 +1,5 @@
+@use 'abstracts/mixins' as *;
+
 :host {
   display: block;
   width: 750px;
@@ -5,35 +7,11 @@
 }
 
 h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--color-gray-70);
-  margin-top: 2.5rem;
-  text-align: center;
-  margin-bottom: 3rem;
+  @include skill-header;
 }
 
-p {
-  color: var(--color-gray-60);
-  margin-bottom: 2rem;
-}
-
-label {
-  color: var(--color-primary-text);
-}
-
-input, select {
-  border: 1px solid var(--color-gray-50);
-  border-radius: 8px;
-  background-color: var(--color-white);
-  height: 36px;
-  padding-left: 0.5rem;
-}
-
-button {
-  font-size: 1.5rem;
-  padding: 1rem 1.5rem;
-  margin: auto;
+.my-form {
+  @include app-form-steps
 }
 
 :host::ng-deep {

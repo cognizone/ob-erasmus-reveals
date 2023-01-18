@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CreateProfileComponent } from '../create-profile/create-profile.component';
-import { map, switchMap } from 'rxjs';
+import { delay, map, switchMap } from 'rxjs';
 import { AuthService, JsonModelFields, User, UserService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { Dialog, DialogRef } from '@angular/cdk/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ob-erasmus-reveal-getting-started',
@@ -12,7 +13,7 @@ import { Dialog, DialogRef } from '@angular/cdk/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GettingStartedComponent extends OnDestroy$ {
-  constructor(private dialog: Dialog, private authService: AuthService, private userService: UserService, private dialogRef: DialogRef) {
+  constructor(private dialog: Dialog, private authService: AuthService, private userService: UserService, private dialogRef: DialogRef, private router: Router) {
     super();
   }
 
@@ -26,13 +27,14 @@ export class GettingStartedComponent extends OnDestroy$ {
       switchMap(response => {
         return this.userService.create(response as JsonModelFields<User>).pipe(map(() => response));
       }),
+      delay(1000),
       switchMap(data => {
         return this.authService.login(data?.email as string);
       })
     )
     .subscribe(() => {
       this.dialog.closeAll();
-      // TODO - navigate to profile creation page;
+      this.router.navigate(['profile']);
     })
   }
 }
