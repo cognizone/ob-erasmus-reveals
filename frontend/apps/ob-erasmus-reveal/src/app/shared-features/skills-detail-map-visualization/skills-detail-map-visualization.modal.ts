@@ -12,7 +12,7 @@ import { LangString } from '@cognizone/model-utils';
 import { switchMap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
-import { SerializeUriPipe } from '../../pipes/serialize-uri.pipe';
+import { SerializeUriPipe } from './pipes/serialize-uri.pipe';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-detail-map-visualization',

@@ -1,0 +1,17 @@
+<ng-container *ngIf="isConnected; else headerTemplate">
+  <ob-erasmus-reveal-profile-header></ob-erasmus-reveal-profile-header>
+</ng-container>
+<ng-template #headerTemplate>
+  <ob-erasmus-reveal-header></ob-erasmus-reveal-header>
+</ng-template>
+<section class="container mt-5" *transloco="let t;read: 'global_skills_visualization'">
+  <h1>{{ t('heading') }}</h1>
+  <p>{{ t('description') }}</p>
+  <ob-erasmus-reveal-skills-visualization [isConnected]="isConnected"></ob-erasmus-reveal-skills-visualization>
+</section>
+<ng-container *ngIf="isConnected; else footerTemplate">
+  <ob-erasmus-reveal-profile-footer></ob-erasmus-reveal-profile-footer>
+</ng-container>
+<ng-template #footerTemplate>
+  <ob-erasmus-reveal-footer></ob-erasmus-reveal-footer>
+</ng-template>

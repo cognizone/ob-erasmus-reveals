@@ -15,9 +15,6 @@ import {
 import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
 
-// TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
-// TODO hide global footer, but guessing this will be handled in general with connected users.
-
 @Component({
   selector: 'ob-erasmus-reveal-feedback-request-creation',
   standalone: true,

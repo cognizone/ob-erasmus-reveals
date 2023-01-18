@@ -1,26 +1,25 @@
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
+  Component, ElementRef,
   Input,
-  OnInit
+  OnInit, ViewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { combineLatest } from 'rxjs';
 import { Counts, Feedback, FeedbacksService, Skill, SkillsService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { LangString } from '@cognizone/model-utils';
 import { I18nService } from '@cognizone/i18n';
 import { TranslocoService } from '@ngneat/transloco';
-import { EChartsOption } from 'echarts';
 import { Dialog } from '@angular/cdk/dialog';
-import { SkillsDetailMapVisualizationModal } from '../skills-detail-map-visualization/skills-detail-map-visualization.modal';
+import * as echarts from 'echarts';
+import { SkillsDetailMapVisualizationModal } from '@app/shared-features/skills-detail-map-visualization';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-cloud-visualization',
   standalone: true,
-  imports: [CommonModule, NgxEchartsModule],
+  imports: [CommonModule, SkillsDetailMapVisualizationModal],
   templateUrl: './skills-cloud-visualization.component.html',
   styleUrls: ['./skills-cloud-visualization.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,7 +31,11 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
   counts!: Counts;
   @Input()
   userId!: string;
-  options!: EChartsOption;
+
+  @ViewChild('myChart')
+  container!: ElementRef<HTMLElement>;
+
+  private chart?: echarts.ECharts;
 
   constructor(
     private skillsService: SkillsService,
@@ -51,46 +54,61 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
       this.feedbackService.getFeedbacksForUser(this.userId),
       this.i18nService.selectActiveLang()
     ]).subscribe(([skills, feedbacks]) => {
-      this.options = this.createChart(skills, feedbacks) as EChartsOption;
+      this.createChart(skills, feedbacks);
       this.cdr.markForCheck();
     })
   }
 
-  // TODO - see if the event can have a type.
-  onChartClick(event: any): void {
-    this.dialog.open(SkillsDetailMapVisualizationModal, {
-      data: event.data,
-    })
-  }
-
-  private createChart(skills: Skill[], feedbacks: Feedback[]): EChartsOption {
+  private createChart(skills: Skill[], feedbacks: Feedback[]): void {
+    if (!this.chart) {
+      const chartDom = this.container.nativeElement;
+      this.chart = echarts.init(chartDom);
+      // TODO - commenting this for now, need to add this for highlighting and downplaying the newly endorsed skill :grin
+      /*this.chart.on('mouseover', 'series.graph', (e) => {
+        this.chart?.dispatchAction({ type: 'downplay' });
+      })*/
+      this.chart.on('click', 'series.graph', (e) => {
+        this.dialog.open(SkillsDetailMapVisualizationModal, {
+          data: e.data,
+        })
+      });
+    }
     const data = this.generateData(skills, feedbacks, this.counts);
-    {
-      return {
-        tooltip: {
-          className: 'app-tooltip',
-          formatter: ({ data }: FormatterArg) => {
-            return `<p class="tooltip-heading">${data.name}</p> 
+    this.chart.setOption({
+      tooltip: {
+        className: 'app-tooltip',
+        formatter: ({ data }: FormatterArg) => {
+          return `<p class="tooltip-heading">${data.name}</p> 
                   <p class="tooltip-description">${data.description}</p>
                   <p class="tooltip-label">${this.transloco.translate('profile.total')}</p>
                   <p class="tooltip-meta-details">${data.endorsementCount} ${data.endorsementCount > 1 ? this.transloco.translate('profile.endorsements_count') : this.transloco.translate('profile.endorsement_count')}</p>
                   <p class="tooltip-label">${this.transloco.translate('profile.last_endorsement_from')}</p>
                   <p class="tooltip-meta-details">${data.lastEndorsedBy?.fromFirstName || data.lastEndorsedBy?.fromEmail}</p>
                   `;
-          },
         },
-        series: [
-          {
-            type: 'graph',
-            layout: 'force',
-            data: data,
-            force: {
-              repulsion: 250, // TODO - make it smarter
-            },
+      },
+      series: [
+        {
+          type: 'graph',
+          layout: 'force',
+          data: data,
+          force: {
+            repulsion: 250, // TODO - make it smarter
           },
-        ],
-      } as unknown as EChartsOption
-    }
+          // Need this for future :)
+          /*itemStyle: {
+            emphasis: {
+              borderColor: 'red',
+              borderWidth: 5
+            },
+          }*/
+        },
+      ]
+    });
+    // TODO - commenting this for now, need to add this
+    // Find which skill has been recently endorsed for the user, should go away when user clicks on it.
+    // This can be handled with localStorage
+    /*this.chart?.dispatchAction({ type: 'highlight', dataIndex: 0 })*/
   }
 
   private generateData(skills: Skill[], feedback: Feedback[], counts: Counts): Data[] {
