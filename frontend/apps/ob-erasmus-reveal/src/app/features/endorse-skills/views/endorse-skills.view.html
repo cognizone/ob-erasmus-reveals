@@ -9,8 +9,22 @@
       <div class="my-dialog-content">
         <!-- Since we are using 1 formGroup -->
         <mat-stepper #stepper linear>
+          <!-- Step 0 for language selection -->
+          <mat-step>
+            <div class="my-welcome mx-auto">
+              <h1>{{ t('step_0.heading') }}</h1>
+              <p>{{ t('step_0.description') }}</p>
+              <ob-erasmus-reveal-language-selection></ob-erasmus-reveal-language-selection>
+              <button type="button" class="app-button" color="primary" matStepperNext>{{ t('start') }}</button>
+            </div>
+          </mat-step>
+          <!-- step 0 ends here -->
           <!-- Step 1 -->
           <mat-step formGroupName="step1">
+            <button class="app-anchor my-back-button" color="primary" matStepperPrevious>
+              <mat-icon>arrow_forward_ios</mat-icon>
+              {{ t('back') }}
+            </button>
             <h1>{{ t('step_1.heading', {user: requestingUser}) }}</h1>
             <h2>{{ t('step_1.about') }}</h2>
             <p>{{ t('step_1.description') }}</p>
@@ -30,8 +44,7 @@
 
               <div class="col-lg-12 d-flex flex-column mb-5">
                 <label for="relationshipType">{{ t('relationship_level', {user: requestingUser}) }}</label>
-                <select class="w-50" name="relationshipType" id="relationshipType" formControlName="relationshipType"
-                        pl>
+                <select class="w-50" name="relationshipType" id="relationshipType" formControlName="relationshipType">
                   <option value="" selected>{{ t('select_relationship') }}</option>
                   <option *ngFor="let relation of relationType"
                           [value]="relation['@id']"> {{ relation.prefLabel | czLabel }}
