@@ -5,3 +5,17 @@ env:
       host: ob-erasmus-reveals-dev-elastic.sysadmin.garden
       jsonApiPort: 9200
       index: aws-dev-reveals-data
+    mail:
+      fromAddress: 'Reveals'
+      fromDescription: ''
+      fromEmail: reveals.project.cz@gmail.com
+      password: xgpnlbopbaevzmiz
+      #SMTP host
+      smtp:
+        host: smtp.gmail.com
+        port: 465
+        auth: true
+        starttls:
+          enable: true
+        socketFactory:
+          clazz: javax.net.ssl.SSLSocketFactory

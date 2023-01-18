@@ -28,3 +28,27 @@ cognizone:
       - name: elastic
         path: ${reveals.proxy.url}/**
         url: ${reveals.elastic.scheme}://${reveals.elastic.host}:${reveals.elastic.jsonApiPort}/
+
+mail:
+  fromAddress: ${env.reveals.mail.fromAddress}
+  fromDescription: ${env.reveals.mail.fromDescription}
+  fromEmail: ${env.reveals.mail.fromEmail} # password for gmail account is revealsproject but as gmail has blocked less secure apps
+  #we need to allow 2-Step Verification and generate an app specific password
+  #howto: https://support.google.com/mail/answer/185833?hl=en
+  password: xgpnlbopbaevzmiz #app specific password for gmail login through reveals
+  subject:
+    fr: Message de l'administrateur de reveals.
+    gr: Μήνυμα από τον διαχειριστή του reveals.
+    en: Message from reveals' admin.
+    it: Messaggio dall'amministratore reveals.
+    nl: Bericht van reveals beheerder
+    sl: Správa od reveals admina
+  #SMTP host
+  smtp:
+    host: ${env.reveals.mail.smtp.host}
+    port: ${env.reveals.mail.smtp.port}
+    auth: ${env.reveals.mail.smtp.auth}
+    starttls:
+      enable: ${env.reveals.mail.smtp.starttls.enable}
+    socketFactory:
+      clazz: ${env.reveals.mail.smtp.socketFactory.clazz}
