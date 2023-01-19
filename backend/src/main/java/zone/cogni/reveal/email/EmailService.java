@@ -139,35 +139,35 @@ public class EmailService {
   }
 
   private Context getContextForFeedback(String email, FeedbackModel feedbackModel, String baseUrl) {
-    Context context = new Context();
-    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
-    getContextAdditionalProperties(context, builder, email);
-    String url = builder
-      .path("/endorse-skills")
-      .queryParam("feedbackRequestId", feedbackModel.getId())
-      .build()
-      .toUriString();
-    context.setVariable("url", url);
+    String url = UriComponentsBuilder
+            .fromHttpUrl(baseUrl)
+            .path("/endorse-skills")
+            .queryParam("feedbackRequestId", feedbackModel.getId())
+            .queryParam("email", email)
+            .build()
+            .toUriString();
+    Context context = initContext(url);
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
     return context;
   }
 
   private Context getContextForSignup(String email, String baseUrl) {
+    String url = UriComponentsBuilder
+            .fromHttpUrl(baseUrl)
+            .path("/complete-profile")
+            .queryParam("email", email)
+            .build()
+            .toUriString();
+    return initContext(url);
+  }
+
+  private Context initContext(String url) {
     Context context = new Context();
-    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
-    getContextAdditionalProperties(context, builder, email);
-    String url = builder
-      .path("/complete-profile")
-      .build()
-      .toUriString();
     context.setVariable("url", url);
+    context.setVariable("imageName", "logo");
     return context;
   }
 
-  private void getContextAdditionalProperties(Context context, UriComponentsBuilder builder, String email) {
-    context.setVariable("imageName", "logo");
-    context.setVariable("url", builder.queryParam("email", email));
-  }
 }
 
