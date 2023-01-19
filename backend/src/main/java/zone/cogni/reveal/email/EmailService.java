@@ -158,9 +158,7 @@ public class EmailService {
     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl);
     getContextAdditionalProperties(context, builder, email);
     String url = builder
-      .path(baseUrl)
       .path("/complete-profile")
-      .queryParam("email", email)
       .build()
       .toUriString();
     context.setVariable("url", url);
