@@ -16,19 +16,19 @@
         <h2 class="">{{ t('description') }}</h2>
         <p class="my-skill-description">{{ data.description }}</p>
 
-        <div class="my-skill-information">
+        <div class="my-skill-information" *ngIf="countriesPerSkill && countriesPerSkill?.length as countryCount">
           <div>
             <h3 class="my-skill-label">{{ t('used_by') }}</h3>
-            <!--<p class="my-target-description">{{ t(target.content) }}</p>-->
+            <p class="my-target-description">{{ t('people_count', { count: userCountPerSkill }) }}</p>
           </div>
           <div>
             <h4 class="my-skill-label">{{ t('across') }}</h4>
-            <!--<p class="my-target-description">{{ t(target.content) }}</p>-->
+            <p class="my-target-description">{{ t(countryCount > 0 ? 'countries_count' : 'country_count', {count: countryCount}) }}</p>
           </div>
         </div>
       </section>
       <section class="mt-3 mb-3">
-        <ob-erasmus-reveal-countries-map [skillUri]="data.skillUri" (countrySelected)="countrySelected($event)"></ob-erasmus-reveal-countries-map>
+        <ob-erasmus-reveal-countries-map [skillUri]="data.skillUri" (userCountryCountComputed)="onUserCountryCountComputed($event)" (countrySelected)="onCountrySelected($event)"></ob-erasmus-reveal-countries-map>
       </section>
       <section class="my-endorsements-section">
         <p>{{ data.endorsementCount }}  {{ t(data.endorsementCount > 1 ? 'endorsements_count' : 'endorsement_count') }}</p>

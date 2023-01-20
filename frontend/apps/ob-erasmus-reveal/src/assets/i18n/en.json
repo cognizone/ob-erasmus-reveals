@@ -231,6 +231,8 @@
     "ask_endorsement_skill": "Ask endorsement for this skill",
     "ask_for_endorsement": "Ask for endorsement",
     "back": "Back",
+    "countries_count": "{{ count }} countries",
+    "country_count": "{{ count }} country",
     "description": "Description",
     "endorsement_count": "{{ count }} endorsement",
     "endorsements_count": "{{count}} endorsements",

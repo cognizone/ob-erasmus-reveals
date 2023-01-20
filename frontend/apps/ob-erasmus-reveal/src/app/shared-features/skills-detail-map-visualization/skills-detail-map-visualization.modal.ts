@@ -5,7 +5,7 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule } from '@ngneat/transloco';
 import { SkillImageUrlPipe } from '@app/shared-features/skills-feedback';
-import { ChartMetaData, FeedbacksService, RelationshipTypeService, User, UserService } from '@app/core';
+import { ChartMetaData, Counts, FeedbacksService, RelationshipTypeService, User, UserService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
@@ -36,6 +36,9 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
   @ViewChild('stepper') stepper!: MatStepper;
   relation!: Relation;
   users!: User[];
+
+  userCountPerSkill: number = 0;
+  countriesPerSkill!: string[]
   constructor(
     public dialogRef: DialogRef,
     @Inject(DIALOG_DATA) public data: ChartMetaData,
@@ -55,7 +58,7 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
     })
   }
 
-  countrySelected(name: string): void {
+  onCountrySelected(name: string): void {
     this.subSink = this.feedbackService.getUsersForSkills(name, this.data.skillUri).pipe(
       switchMap(response => this.userService.getByUrisMulti(response))
     ).subscribe(users => {
@@ -63,6 +66,13 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
       this.stepper.next();
       this.cdr.markForCheck();
     })
+  }
+
+  onUserCountryCountComputed(counts: Counts): void {
+    this.countriesPerSkill = Object.keys(counts);
+    if (this.countriesPerSkill.length > 0) {
+      this.userCountPerSkill = Object.values(counts).reduce((a, b) => a + b);
+    }
   }
 }
 
