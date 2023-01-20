@@ -1,27 +1,34 @@
+@use 'abstracts/mixins' as *;
+
+.my-form {
+  @include form-container;
+  @include app-form-steps;
+  margin-top: 5rem;
+  height: 700px;
+  margin-bottom: 5rem;
+  width: 900px;
+  padding: 6.5rem 2rem;
+}
+
 h1 {
-  color: var(--primary-violet);
-  font-size: 4.5rem;
-  font-weight: 600;
-  margin-top: 4rem;
-}
-
-h2, h3 {
-  margin-top: 3rem;
+  margin-top: 2rem;
   font-size: 2rem;
-  font-weight: 500;
-  color: var(--color-black-eerie);
+  margin-bottom: 2.5rem;
+  color: var(--color-gray-70);
+  text-align: center;
 }
 
-.my-profile-description, h4 {
-  font-size: 1.5rem;
-  color: var(--color-black-eerie);
-  p{
-    margin-bottom: 0
+p {
+  color: var(--color-gray-60);
+  margin-bottom: 2.5rem;
+}
+
+.my-back-button {
+  @include back-button
+}
+
+:host::ng-deep {
+  .mat-horizontal-stepper-header-container {
+    display: none !important; // This is needed
   }
-}
-
-.my-information {
-  margin-top: 1.5rem;
-  border-top: 1px solid var(--color-gainsboro);
-  margin-bottom: 1.5rem;
 }

@@ -5,6 +5,6 @@
     <h1>{{ t('check_inbox') }}</h1>
     <p class="my-get-started">{{ t('get_started') }}</p>
     <p class="my-email">{{ this.data.email }}</p>
-    <a class="app-anchor" color="primary">{{ t('send_again') }}</a>
+    <button [disabled]="isDisabled" class="app-anchor my-send-again" color="primary" (click)="onClick()">{{ t('send_again') }}</button>
   </div>
 </ng-container>

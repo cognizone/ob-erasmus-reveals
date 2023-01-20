@@ -34,7 +34,7 @@
 }
 
 // This can be used to replace the details here - https://github.com/cognizone/ob-erasmus-reveals/pull/12/files
-@mixin skills-information-container {
+@mixin form-container {
   border-radius: 26px;
   background-color: var(--color-white);
   box-shadow: 0 2px 8px 0 rgba(40, 41, 61, 0.08), 0 20px 32px 0 rgba(96, 97, 112, 0.24);
@@ -121,4 +121,9 @@
   div {
     height: 100%;
   }
+}
+
+@mixin app-disabled-button {
+  background-color: var(--color-ghost-white);
+  color: var(--color-gray-50);
 }

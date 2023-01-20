@@ -9,6 +9,6 @@ export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService) {}
   // TODO - Can be used for other profile features, to be modified
   canActivate(): boolean {
-    return !! this.authService.getTemporaryEmailState();
+    return !! this.authService.currentUser;
   }
 }

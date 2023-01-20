@@ -6,7 +6,7 @@
 <ng-container *transloco="let t;read: 'endorse_skills'">
   <div *ngIf="!endorsementComplete" class="container my-endorser-details">
     <form class="my-form" [formGroup]="formGroup" (submit)="onSubmit()">
-      <div class="my-dialog-content">
+      <div>
         <!-- Since we are using 1 formGroup -->
         <mat-stepper #stepper linear>
           <!-- Step 0 for language selection -->

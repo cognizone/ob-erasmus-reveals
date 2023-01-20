@@ -1,0 +1,11 @@
+.user-prompt-success {
+  color: var(--color-primary-text);
+  background-color: var(--color-success);
+  font-weight: bold;
+}
+
+.user-prompt-error {
+  color: var(--color-red);
+  background-color: var(--color-error);
+}
+

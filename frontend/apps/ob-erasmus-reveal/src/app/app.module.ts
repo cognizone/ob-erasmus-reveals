@@ -31,7 +31,7 @@ import { RouterModule } from '@angular/router';
       {
         path: 'complete-profile',
         loadChildren: () => import('./features/complete-profile/complete-profile.module').then(m => m.CompleteProfileModule),
-      }, // TODO - remove me after email template is ready.
+      },
       {
         path: 'global-skills',
         loadChildren: () =>

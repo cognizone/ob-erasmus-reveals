@@ -20,14 +20,15 @@ export class FeedbackRequestsService extends ItemService<FeedbackRequest> {
     idGenerator: CustomIdGenerator,
     configService: ConfigService,
     elasticService: ElasticService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {
     super(http, jsonModelService, idGenerator, configService, elasticService);
   }
 
   createBase(requestBase: Pick<FeedbackRequest, 'skills'>): Observable<FeedbackRequest> {
     const request = { ...this.jsonModelService.createNewBareboneJsonModel('FeedbackRequest'), ...requestBase } as FeedbackRequest;
-    request.user = this.authService.currentUser;
+    request.user = this.authService.currentUser['@id'];
+    request['@facets'] = this.authService.currentUser;
 
     return this.save(request).pipe(delay(1000),switchMap(uri => this.getByUri(uri)));
   }
