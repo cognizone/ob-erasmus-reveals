@@ -1,4 +1,5 @@
 <ob-erasmus-reveal-profile-header></ob-erasmus-reveal-profile-header>
+<mat-progress-bar *ngIf="loadingService.loading$ | async" mode="indeterminate"></mat-progress-bar>
 <ng-container *transloco="let t; read: 'feedback_request.creation'">
   <div class="container mt-5">
     <div class="row">

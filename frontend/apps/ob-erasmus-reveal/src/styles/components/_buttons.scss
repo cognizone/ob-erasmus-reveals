@@ -33,8 +33,7 @@
     color: var(--color-white);
 
     &[disabled] {
-      background-color: var(--color-ghost-white);
-      color: var(--color-gray-50);
+      @include app-disabled-button
     }
   }
 }

@@ -15,6 +15,11 @@ form {
 
   button {
     @include join-now-button;
+
+    &[disabled] {
+      background: var(--color-ghost-white);
+      color: var(--color-gray-50);
+    }
   }
 }
 

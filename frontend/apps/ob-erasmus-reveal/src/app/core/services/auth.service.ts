@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 
 import { User } from '../models';
-import { randomDelay } from '../utils';
 import { Initializer } from './initializers-handler.service';
 import { UserService } from './user.service';
+import { I18nService } from '@cognizone/i18n';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService implements Initializer {
@@ -17,10 +18,9 @@ export class AuthService implements Initializer {
   }
 
   private readonly storageKey: string = 'auth';
-  private readonly temporaryStorageKey: string = 'temp'; // Using this till the user is not registered and logged in
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private i18nService: I18nService, private http: HttpClient) {}
 
   async init(): Promise<void> {
     const email = this.getState();
@@ -40,18 +40,12 @@ export class AuthService implements Initializer {
     );
   }
 
-  // TODO send email api
-  register(email: string): Observable<unknown> {
-    this.setTemporaryEmail(email);
-    return randomDelay(email);
-  }
-
-  getTemporaryEmailState(): string {
-    return localStorage.getItem(this.temporaryStorageKey) as string;
-  }
-
-  private setTemporaryEmail(email: string): void {
-    localStorage.setItem(this.temporaryStorageKey, email);
+  register(email: string): Observable<string> {
+    const body = {
+      email: email,
+      language: this.i18nService.getActiveLang()
+    };
+    return this.http.post('api/signup', body) as Observable<string>;
   }
 
   private getState(): string | null {
@@ -61,7 +55,6 @@ export class AuthService implements Initializer {
   private setState(email: string | null): void {
     if (email) {
       localStorage.setItem(this.storageKey, email);
-      localStorage.removeItem(this.temporaryStorageKey);
     } else {
       localStorage.removeItem(this.storageKey);
     }

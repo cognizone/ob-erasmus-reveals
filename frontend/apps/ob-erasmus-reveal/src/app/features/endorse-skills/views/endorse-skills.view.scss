@@ -1,7 +1,7 @@
 @use 'abstracts/mixins' as *;
 
 .my-endorser-details, .my-endorser-signup {
-  @include skills-information-container;
+  @include form-container;
   margin-top: 5rem;
   height: 700px;
   padding: 3rem 1.5rem 1rem 1.5rem;

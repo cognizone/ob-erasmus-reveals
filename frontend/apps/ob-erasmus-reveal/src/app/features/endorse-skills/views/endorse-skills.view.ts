@@ -25,7 +25,7 @@ import {
 } from '@app/core';
 import { I18nModule } from '@cognizone/i18n';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
-import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { TranslocoModule } from '@ngneat/transloco';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
 import { map, Observable, of, switchMap } from 'rxjs';
@@ -104,8 +104,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     private router: Router,
     private authService: AuthService,
     private dialog: Dialog,
-    private loadingService: LoadingService,
-    private transloco: TranslocoService
+    private loadingService: LoadingService
   ) {
     super();
   }
@@ -126,11 +125,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     .pipe(this.loadingService.asOperator(), switchMap((request) => this.skillsService.getSkillForEndorsement(request.skills as string[])
     .pipe(map(skills => ({ request, skills })))))
     .subscribe(({ request, skills }) => {
-      if (request.user?.firstName || request.user?.lastName) {
-        this.requestingUser = request.user.firstName as string;
-      } else {
-        this.requestingUser = request.user?.email as string;
-      }
+      this.requestingUser = request['@facets']?.firstName || request['@facets']?.email as string;
       this.skills = skills;
       this.feedbackRequest = request;
       this.cdr.markForCheck();
@@ -151,8 +146,8 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
 
   onSubmit(): void {
     const facets: FeedbackFacets = {
-      requestingUser: this.feedbackRequest.user?.['@id'],
-      requestingUserCountry: this.feedbackRequest.user?.country,
+      requestingUser: this.feedbackRequest.user,
+      requestingUserCountry: this.feedbackRequest?.['@facets']?.country,
     };
     const feedback = {
       fromEmail: this.endorseSkillsParams['email'],

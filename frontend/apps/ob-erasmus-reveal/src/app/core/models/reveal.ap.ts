@@ -3,6 +3,7 @@
 import { JsonModel, JsonModelType } from '@cognizone/json-model';
 import { LangString } from '@cognizone/model-utils';
 import { FeedbackFacets } from './feedback.facets';
+import { FeedbackRequestFacets } from './feedback-request.facets';
 import { Color } from './color';
 
 export interface Country extends JsonModel {
@@ -26,10 +27,11 @@ export interface Feedback extends JsonModel {
 
 export interface FeedbackRequest extends JsonModel {
   '@type': JsonModelType<'FeedbackRequest'>;
+  '@facets'?: FeedbackRequestFacets;
   emails?: string[];
   message?: string;
   skills?: string[];
-  user: User;
+  user: string;
 }
 
 export interface RelationshipType extends JsonModel {

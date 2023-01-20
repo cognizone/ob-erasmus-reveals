@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CompleteProfileView } from './views/complete-profile.view';
 
-const routes: Routes = [{ path: '', component: CompleteProfileView }];
+const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () => import('./views/complete-profile.view').then(m => m.CompleteProfileView)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

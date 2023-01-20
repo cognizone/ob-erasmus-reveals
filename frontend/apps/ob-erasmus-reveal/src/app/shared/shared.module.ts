@@ -10,10 +10,10 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { AboutComponent } from './components/about/about.component';
 import { JoinNowComponent } from './components/join-now/join-now.component';
 import { ConnectComponent } from './components/connect/connect.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from '@angular/cdk/dialog';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
 import { SignupComponent } from '@app/shared-features/signup';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const vendors = [MatIconModule, I18nModule, NgOptimizedImage, DialogModule, CdkMenuModule];
 
@@ -31,7 +31,7 @@ const vendors = [MatIconModule, I18nModule, NgOptimizedImage, DialogModule, CdkM
     TranslocoModule,
     RouterModule,
     MatButtonModule,
-    ReactiveFormsModule
+    MatSnackBarModule
   ],
   exports: [
     ...vendors,

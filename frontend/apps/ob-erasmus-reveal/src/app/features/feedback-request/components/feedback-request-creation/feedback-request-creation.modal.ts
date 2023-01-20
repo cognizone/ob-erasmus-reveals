@@ -5,18 +5,19 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService, EmailService, FeedbackRequest, FeedbackRequestsService } from '@app/core';
+import { AuthService, EmailService, FeedbackRequest, FeedbackRequestsService, UserPromptService } from '@app/core';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import produce from 'immer';
 import { combineLatest } from 'rxjs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 // TODO finish the component
 
 @Component({
   selector: 'ob-erasmus-reveal-feedback-request-creation-modal',
   standalone: true,
-  imports: [CommonModule, MatIconModule, TranslocoModule, ReactiveFormsModule, TextFieldModule, ClipboardModule],
+  imports: [CommonModule, MatIconModule, TranslocoModule, ReactiveFormsModule, TextFieldModule, ClipboardModule, MatProgressBarModule],
   providers: [LoadingService],
   templateUrl: './feedback-request-creation.modal.html',
   styleUrls: ['./feedback-request-creation.modal.scss'],
@@ -55,7 +56,8 @@ export class FeedbackRequestCreationModal extends OnDestroy$ implements OnInit {
     private feedbackRequestsService: FeedbackRequestsService,
     private loadingService: LoadingService,
     private cdr: ChangeDetectorRef,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private userPrompt: UserPromptService
   ) {
     super();
   }
@@ -75,7 +77,12 @@ export class FeedbackRequestCreationModal extends OnDestroy$ implements OnInit {
 
     this.subSink = combineLatest([this.feedbackRequestsService.save(updatedRequest), this.emailService.sendFeedbackRequest(updatedRequest)])
       .pipe(this.loadingService.asOperator())
-      .subscribe(() => this.dialogRef.close(true));
+      .subscribe(() => {
+        this.dialogRef.close(true);
+        this.userPrompt.success(this.transloco.translate('feedback_request.creation_modal.feedback_sent'));
+      }, () => {
+        this.userPrompt.error();
+      });
   }
 
   private getEmailsValidator(): ValidatorFn {

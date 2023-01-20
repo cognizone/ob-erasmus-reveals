@@ -28,6 +28,7 @@
     "thank_you": "Thank you for your time!"
   },
   "complete_profile": {
+    "back": "Back",
     "complete_now": "Complete your profile now",
     "description_1": "You can ask endorsements right now for all your skills, even the ones you think are not worth sharing!",
     "description_2": "You'd be surprised to find out how people around you use the knowledge they have gained from years of experience in the workplace and in private life.",
@@ -65,6 +66,7 @@
   "email_confirmation": {
     "check_inbox": "Check your inbox",
     "close": "Close dialog",
+    "email_sent": "Email has been correctly sent",
     "get_started": "Get started by clicking on the link we sent to",
     "send_again": "Send again"
   },
@@ -118,6 +120,7 @@
       "default_message": "Hello, \nin order to credit my skills, could you give me some feedback? \nThank you.",
       "email_heading": "Send the request",
       "email_tab": "By email",
+      "feedback_sent": "Your request has been correctly sent",
       "from": "From",
       "link": "Link",
       "link_heading": "Send the form",
@@ -162,7 +165,9 @@
       "heading_2": "used by more than 12’000 people",
       "heading_3": "across 21 countries"
     },
-    "surname": "Surname"
+    "success": "Success",
+    "surname": "Surname",
+    "unknown_error": "Unknown error"
   },
   "global_skills_visualization": {
     "description": "Explore more the 27 skills of the Projet Européen Léonardo Transfert de l’innovation - OPC-SFC / tableau des SFC  used by more than 12’000 people",
