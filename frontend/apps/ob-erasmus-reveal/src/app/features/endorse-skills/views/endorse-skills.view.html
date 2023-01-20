@@ -81,7 +81,7 @@
               {{ t('back') }}
             </button>
             <h2 class="mt-3">{{ t('step_3.heading', {user: requestingUser}) }}</h2>
-            <ob-erasmus-reveal-skills-feedback [skills]="skills" (selectSkills)="setSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
+            <ob-erasmus-reveal-skills-feedback [skills]="skills" (skillsSelected)="setSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
             <button type="button" [disabled]="formGroup.controls.step3.controls.selectedSkills.invalid" class="app-button" color="primary" matStepperNext>{{ t('next') }}</button>
           </mat-step>
 

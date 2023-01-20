@@ -31,6 +31,8 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
 
   @Output()
   countrySelected: EventEmitter<string> = new EventEmitter();
+  @Output()
+  userCountryCountComputed: EventEmitter<Counts> = new EventEmitter<Counts>();
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
@@ -57,6 +59,7 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
       this.i18nService.selectActiveLang(),
     ]).subscribe(([geoJson, countries, counts]) => {
       this.createChart(geoJson, countries, counts);
+      this.userCountryCountComputed.emit(counts);
     });
   }
 
