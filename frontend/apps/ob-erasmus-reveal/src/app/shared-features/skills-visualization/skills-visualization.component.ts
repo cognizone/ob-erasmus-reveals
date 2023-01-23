@@ -10,13 +10,14 @@ import {
 import { combineLatest } from 'rxjs';
 import { Skill, SkillsService } from '@app/core';
 import { I18nService } from '@cognizone/i18n';
-import { LangString } from '@cognizone/model-utils';
 import { Dialog } from '@angular/cdk/dialog';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { SignUpModalComponent } from '../signup';
 import { CommonModule } from '@angular/common';
 import { SkillsDetailMapVisualizationModal } from '../skills-detail-map-visualization';
-import * as echarts from 'echarts'; // William, I hope these imports are fine
+import * as echarts from 'echarts';
+import { ChartDataService } from './services/chart-data.service';
+import { ChartData, ChartMetaData } from './models';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-visualization',
@@ -34,7 +35,7 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
   container!: ElementRef<HTMLElement>;
   private chart?: echarts.ECharts;
 
-  constructor(private skillsService: SkillsService, private i18nService: I18nService, private dialog: Dialog, private cdr: ChangeDetectorRef) {
+  constructor(private skillsService: SkillsService, private i18nService: I18nService, private dialog: Dialog, private cdr: ChangeDetectorRef, private chartDataService: ChartDataService) {
     super();
   }
 
@@ -55,14 +56,12 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
       this.chart = echarts.init(chartDom);
       this.chart.on('click', 'series.graph', (e) => {
         if(this.isConnected) {
+          const data = e.data as ChartData;
           this.dialog.open(SkillsDetailMapVisualizationModal, {
-            data: { data: e.data, isConnected: this.isConnected } // TODO - After the Refactor PR gets merged https://github.com/cognizone/ob-erasmus-reveals/pull/23, modify this
+            data: data['metaData'] as ChartMetaData,
           })
         } else {
-          // TODO - Complete this part
-          /*this.dialog.open(SignUpModalComponent).closed.subscribe(o => {
-            // close the dialog(should close on join or even connect) and navigate to complete profile page from here;
-          })*/
+          this.dialog.open(SignUpModalComponent)
         }
       });
     }
@@ -76,22 +75,7 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
         {
           type: 'graph',
           layout: 'force',
-          data: skills.map((a: Skill) => {
-            return {
-              symbolSize: a.symbolSize,
-              name: this.i18nService.czLabelToString(a.prefLabel as LangString),
-              label: {
-                show: true,
-                fontSize: (a?.symbolSize as number) > 140 ? 16 : 12,
-                fontWeight: 600,
-                color: a.label.color
-              },
-              itemStyle: {
-                color: a.itemStyle.color
-              },
-              value: this.i18nService.czLabelToString(a.description as LangString),
-            }
-          }),
+          data: this.chartDataService.generateData(skills),
           force: {
             repulsion: 500,
           },

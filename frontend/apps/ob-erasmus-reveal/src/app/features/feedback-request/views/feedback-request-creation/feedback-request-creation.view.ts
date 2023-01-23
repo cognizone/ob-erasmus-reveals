@@ -15,6 +15,7 @@ import {
 import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FeedbackRequestCreationViewService } from '../../services/feedback-request-creation.view.service';
 
 @Component({
   selector: 'ob-erasmus-reveal-feedback-request-creation',
@@ -29,7 +30,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     SkillsFeedbackComponent,
     MatProgressBarModule
   ],
-  providers: [LoadingService],
+  providers: [LoadingService, FeedbackRequestCreationViewService],
   templateUrl: './feedback-request-creation.view.html',
   styleUrls: ['./feedback-request-creation.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,13 +38,14 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
   selectedSkills: string[] = [];
   skills: Skill[] = [];
-
+  skillUris!: string[]
   constructor(
     private skillsService: SkillsService,
     private cdr: ChangeDetectorRef,
     private dialog: Dialog,
     private feedbackRequestsService: FeedbackRequestsService,
     private router: Router,
+    private feedbackRequestCreationViewService: FeedbackRequestCreationViewService,
     public loadingService: LoadingService
   ) {
     super();
@@ -54,6 +56,12 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
       this.skills = skills;
       this.cdr.markForCheck();
     });
+
+    this.subSink = this.feedbackRequestCreationViewService.skillsUris.subscribe(skillUris => {
+      this.skillUris = skillUris;
+      this.selectedSkills = skillUris;
+      this.cdr.markForCheck();
+    })
   }
 
   openModal(): void {

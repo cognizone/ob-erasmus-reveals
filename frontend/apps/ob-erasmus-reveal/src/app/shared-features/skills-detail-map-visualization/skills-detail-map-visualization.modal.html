@@ -23,7 +23,7 @@
           </div>
           <div>
             <h4 class="my-skill-label">{{ t('across') }}</h4>
-            <p class="my-target-description">{{ t(countryCount > 0 ? 'countries_count' : 'country_count', {count: countryCount}) }}</p>
+            <p class="my-target-description">{{ t(countryCount > 1 ? 'countries_count' : 'country_count', {count: countryCount}) }}</p>
           </div>
         </div>
       </section>
@@ -63,14 +63,15 @@
         <div class="container">
           <div class="row">
             <div class="col-8 mx-auto my-footer-content">
-              <button
-                  class="app-button"
-                  color="primary"
-                  routerLink="/feedback-request/create"
-                  (click)="dialogRef.close()"
+              <a
+                class="app-button"
+                color="primary"
+                routerLink="feedback-request/create"
+                [queryParams]="{ skillUri: data.skillUri | serializeUri }"
+                (click)="dialogRef.close()"
               >
                 {{ t('ask_endorsement_skill') }}
-              </button>
+              </a>
             </div>
           </div>
         </div>

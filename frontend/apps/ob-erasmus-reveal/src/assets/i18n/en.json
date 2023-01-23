@@ -215,14 +215,18 @@
     "heading": "Up your game, join Reveal",
     "join": "Join",
     "join_now": "Join now",
+    "must_be_connected": "You must be connected to use this feature",
     "not_a_member": "Not a member?",
     "skills_description": "Join us and start right away to share your skills, ask for endorsements and give feedbacks.",
-    "unlock_access": "Unlock unlimited access to Reveal in just one click"
+    "unlock_access": "Unlock unlimited access to Reveal in just one click",
+    "user_exists": "User already exists, please enter a new email"
   },
   "language_selection": {
     "heading": "Language"
   },
-  "login": {},
+  "login": {
+    "no_user_found": "Error: User does not exist, Please head to signup."
+  },
   "profile": {
     "across": "Across",
     "add_new_description": "To add new skills to your profile, you need to ask endorsement from your peers, friends and colleagues.",

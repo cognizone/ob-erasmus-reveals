@@ -5,7 +5,7 @@
       <p>{{ t('join') }} <span *ngIf="requestingUser"> <span
           class="my-user"> {{ requestingUser }} </span> {{ t('and') }} </span> {{ t('description') }}</p>
     </div>
-    <img ngSrc="assets/images/icon-svgs/icon-group-users.svg" width="350" height="40" [alt]="t('get_started.heading')" />
+    <img ngSrc="assets/images/icon-svgs/icon-group-users.svg" width="350" height="40" [alt]="t('description')" />
     <ob-erasmus-reveal-signup></ob-erasmus-reveal-signup>
     <ul>
       <li *ngFor="let point of points">
