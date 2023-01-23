@@ -1,4 +1,5 @@
 env:
+  name: aws-dev
   reveals:
     elastic:
       scheme: http
