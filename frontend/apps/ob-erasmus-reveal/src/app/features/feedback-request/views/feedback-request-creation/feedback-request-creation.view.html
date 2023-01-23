@@ -1,11 +1,12 @@
 <ob-erasmus-reveal-profile-header></ob-erasmus-reveal-profile-header>
+<mat-progress-bar *ngIf="loadingService.loading$ | async" mode="indeterminate"></mat-progress-bar>
 <ng-container *transloco="let t; read: 'feedback_request.creation'">
   <div class="container mt-5">
     <div class="row">
       <div class="col-8 mx-auto">
         <h1 class="my-heading">{{ t('heading') }}</h1>
         <p class="my-description">{{ t('description') }}</p>
-        <ob-erasmus-reveal-skills-feedback [skills]="skills" (selectSkills)="getSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
+        <ob-erasmus-reveal-skills-feedback [skills]="skills" (skillsSelected)="setSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
       </div>
     </div>
   </div>

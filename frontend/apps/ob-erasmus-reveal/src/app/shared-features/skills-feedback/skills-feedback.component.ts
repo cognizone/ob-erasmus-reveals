@@ -20,7 +20,7 @@ export class SkillsFeedbackComponent {
   skills: Skill[] = [];
 
   @Output()
-  selectSkills: EventEmitter<string[]> = new EventEmitter();
+  skillsSelected: EventEmitter<string[]> = new EventEmitter();
   selectedSkills: string[] = [];
 
   toggleSelection(skill: Skill): void {
@@ -32,7 +32,7 @@ export class SkillsFeedbackComponent {
         draft.push(skill['@id']);
       }
     });
-    this.selectSkills.emit(this.selectedSkills);
+    this.skillsSelected.emit(this.selectedSkills);
   }
 
   isSelected(skill: Skill): boolean {

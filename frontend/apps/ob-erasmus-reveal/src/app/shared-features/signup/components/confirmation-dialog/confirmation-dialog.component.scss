@@ -1,0 +1,41 @@
+@use 'abstracts/mixins' as *;
+
+:host {
+  width: 600px;
+  display: block;
+}
+
+.app-dialog-close-button {
+  display: flex;
+  margin-left: auto;
+  color: var(--color-black-eerie);
+}
+
+.my-dialog-content {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+h1 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  color: var(--color-gray-70)
+}
+
+.my-email {
+  color: var(--color-black-eerie);
+  font-weight: bold;
+}
+
+.my-send-again {
+  background-color: transparent;
+  border: none;
+
+  &[disabled] {
+    @include app-disabled-button
+  }
+}

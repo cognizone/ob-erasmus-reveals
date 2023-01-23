@@ -14,9 +14,7 @@ import {
 } from '../../components/feedback-request-creation/feedback-request-creation.modal';
 import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
-
-// TODO not reachable from UI, to be plugged to profile page. Accessible manually trough http://localhost:4200/feedback-request/create.
-// TODO hide global footer, but guessing this will be handled in general with connected users.
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'ob-erasmus-reveal-feedback-request-creation',
@@ -28,7 +26,8 @@ import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
     RouterModule,
     DialogModule,
     ProfileHeaderComponent,
-    SkillsFeedbackComponent
+    SkillsFeedbackComponent,
+    MatProgressBarModule
   ],
   providers: [LoadingService],
   templateUrl: './feedback-request-creation.view.html',
@@ -51,7 +50,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subSink = this.skillsService.getAll().subscribe(skills => {
+    this.subSink = this.skillsService.getAll().pipe(this.loadingService.asOperator()).subscribe(skills => {
       this.skills = skills;
       this.cdr.markForCheck();
     });
@@ -61,6 +60,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
     this.subSink = this.feedbackRequestsService
       .createBase({ skills: this.selectedSkills })
       .pipe(
+        this.loadingService.asOperator(),
         switchMap(request =>
           this.dialog
             .open<boolean>(FeedbackRequestCreationModal, {
@@ -72,14 +72,13 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
           if (confirmed) return of(null);
           return this.feedbackRequestsService.delete(request['@id']);
         }),
-        this.loadingService.asOperator()
       )
       .subscribe(() => {
         this.router.navigate(['profile']);
       });
   }
 
-  getSelectedSkills(skills: string[]): void {
+  setSelectedSkills(skills: string[]): void {
     this.selectedSkills = skills;
   }
 }

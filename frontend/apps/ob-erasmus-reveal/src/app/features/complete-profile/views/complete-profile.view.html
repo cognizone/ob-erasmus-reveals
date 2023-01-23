@@ -1,30 +1,63 @@
-<div class="container mb-5">
-  <ng-container *transloco="let t">
-    <header class="d-flex align-items-center">
-      <ob-erasmus-reveal-app-logo></ob-erasmus-reveal-app-logo>
-    </header>
-  </ng-container>
-
-  <ng-container *transloco="let t; read:'complete_profile'">
-    <h1>{{ t('greetings') }}</h1>
-    <h2 class="mb-5">{{ t('welcome_to_reveal') }}</h2>
-
-    <div class="my-profile-description">
-      <p>{{ t('description_1') }}</p>
-      <p>{{ t('description_2') }}</p>
-    </div>
-
-    <div class="my-information">
-      <h3>{{ t('information.heading') }}</h3>
-      <div *ngFor="let info of information" class="d-flex pt-4">
-        <img [ngSrc]="info.imgSrc" [alt]="t(info.imgAlt)" [width]="info.imgWidth" [height]="info.imgHeight" />
-        <div class="pl-5">
-          <h4> {{ t(info.heading) }} </h4>
-          <p> {{ t(info.content) }} </p>
+<form class="container my-form" [formGroup]="formGroup" *transloco="let t;" (submit)="onSubmit()">
+  <div>
+    <!-- Since we are using 1 formGroup -->
+    <mat-stepper #stepper linear>
+      <!-- step 0 starts here -->
+      <mat-step *transloco="let t;read: 'complete_profile'">
+        <div class="d-flex flex-column align-items-center">
+          <img ngSrc="assets/images/icon-svgs/icon-bubble-check.svg" width="64" height="64"
+               [alt]="t('get_started.heading')"/>
+          <h1>{{ t('get_started.heading') }}</h1>
+          <p>{{ t('get_started.description') }}</p>
+          <ob-erasmus-reveal-language-selection></ob-erasmus-reveal-language-selection>
+          <button type="button" class="app-button mt-5" color="primary" matStepperNext>{{ t('get_started.start') }}</button>
         </div>
-      </div>
-    </div>
-    <button class="app-button" color="primary" (click)="onClick()"> {{ t('complete_now') }} </button>
-  </ng-container>
-</div>
-<!-- TODO add the new footer, 3 different footers in this application -->
+      </mat-step>
+      <!-- step 0 ends here -->
+      <!-- Step 1 -->
+      <mat-step formGroupName="step1">
+        <button class="app-anchor my-back-button" color="primary" matStepperPrevious>
+          <mat-icon>arrow_forward_ios</mat-icon>
+          {{ t('complete_profile.back') }}
+        </button>
+        <h1>{{ t('complete_profile.step_1.heading') }}</h1>
+        <p>{{ t('complete_profile.step_1.description') }}</p>
+        <div class="row">
+          <div class="col-lg-12 d-flex flex-column mb-4">
+            <label for="email">{{ t('global.email') }}</label>
+            <input class="w-50" id="email" formControlName="email">
+          </div>
+          <div class="col-lg-6 d-flex flex-column mb-5">
+            <label for="lastName">{{ t('global.surname') }}</label>
+            <input id="lastName" formControlName="lastName">
+          </div>
+          <div class="col-lg-6 d-flex flex-column mb-5">
+            <label for="firstName">{{ t('global.name') }}</label>
+            <input id="firstName" formControlName="firstName">
+          </div>
+        </div>
+        <button type="button" class="app-button mt-5" color="primary" matStepperNext>{{ t('global.next') }}</button>
+      </mat-step>
+      <!-- Step 2 -->
+      <mat-step formGroupName="step2">
+        <button class="app-anchor my-back-button" color="primary" matStepperPrevious>
+          <mat-icon>arrow_forward_ios</mat-icon>
+          {{ t('complete_profile.back') }}
+        </button>
+        <h1>{{ t('complete_profile.step_2.heading') }}</h1>
+        <p>{{ t('complete_profile.step_2.description') }}</p>
+        <div class="row">
+          <div class="col-lg-6 d-flex flex-column mb-4">
+            <label for="country">{{ t('global.country') }}</label>
+            <select name="country" id="country" formControlName="country">
+              <option *ngFor="let country of countries"
+                      [value]="country['@id']"> {{ country.prefLabel | czLabel }}</option>
+            </select>
+          </div>
+        </div>
+        <button [disabled]="!formGroup.value.step2?.country || (loadingService.loading$ | async)" type="submit" class="app-button mt-5" color="primary">{{ t('global.next') }}</button>
+        <mat-progress-bar *ngIf="loadingService.loading$ | async" mode="indeterminate"></mat-progress-bar>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</form>

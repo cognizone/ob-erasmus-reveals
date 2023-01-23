@@ -1,0 +1,8 @@
+<ng-container *transloco="let t;">
+  <div class="d-flex flex-column align-items-center mb-5">
+    <label for="language">{{ t('language_selection.heading') }}</label>
+    <select [formControl]="langFormControl" name="language" id="language">
+      <option *ngFor="let lang of i18nService.getAvailableLangs()" [value]="lang">{{ t('langs.' + lang) }}</option>
+    </select>
+  </div>
+</ng-container>

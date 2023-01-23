@@ -1,0 +1,10 @@
+<form [formGroup]="userEmail" *transloco="let t;" (submit)="onSubmit($event)">
+  <div class="my-signup">
+    <input [class.is-invalid]="userEmail.get('email')?.invalid && userEmail.get('email')?.touched" name="email" formControlName="email" type="email" [placeholder]="t('global.email_placeholder')" />
+    <button type="submit" [disabled]="loading$ | async">{{ t(isLogin ? 'join_now.connect': 'global.join') }}</button>
+  </div>
+  <p *ngIf="userEmail.get('email')?.invalid && userEmail.get('email')?.touched" class="my-email-error">
+    {{ t('global.email_invalid_error')  }}
+  </p>
+</form>
+<mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
