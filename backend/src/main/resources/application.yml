@@ -9,6 +9,16 @@ management:
     env:
       enabled: true
 
+logging:
+  file:
+    name: logs/ob-erasmus-reveals-${env.name}.log
+  pattern:
+    console:
+  logback:
+    rollingpolicy:
+      max-history: 100
+      max-file-size: 100MB
+
 #server:
 #  servlet:
 #    context-path: /
