@@ -8,8 +8,8 @@ import { TranslocoService } from '@ngneat/transloco';
 export class UserPromptService {
   constructor(private snack: MatSnackBar, private transloco: TranslocoService) {}
 
-  error(): void {
-    this.snack.open(this.transloco.translate('global.unknown_error'), undefined, {
+  error(message: string = 'global.unknown_error'): void {
+    this.snack.open(this.transloco.translate(message), undefined, {
       duration: 10_000,
       horizontalPosition: 'center',
       verticalPosition: 'top',

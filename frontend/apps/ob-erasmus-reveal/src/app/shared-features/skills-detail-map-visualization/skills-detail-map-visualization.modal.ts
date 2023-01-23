@@ -5,7 +5,7 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule } from '@ngneat/transloco';
 import { SkillImageUrlPipe } from '@app/shared-features/skills-feedback';
-import { ChartMetaData, Counts, FeedbacksService, RelationshipTypeService, User, UserService } from '@app/core';
+import { Counts, FeedbacksService, RelationshipTypeService, User, UserService } from '@app/core';
 import { OnDestroy$ } from '@cognizone/ng-core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
@@ -13,6 +13,7 @@ import { switchMap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { SerializeUriPipe } from './pipes/serialize-uri.pipe';
+import { ChartMetaData } from '@app/shared-features/skills-visualization';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-detail-map-visualization',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, map, Observable, of, switchMap } from 'rxjs';
 
 import { User } from '../models';
 import { Initializer } from './initializers-handler.service';
@@ -38,6 +38,11 @@ export class AuthService implements Initializer {
         return !!user;
       })
     );
+  }
+
+  userExists(email: string): Observable<boolean> {
+    return this.userService.getByEmail(email).pipe(
+      map(user => !!user));
   }
 
   register(email: string): Observable<string> {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { Skill } from '@app/core';
@@ -15,13 +15,21 @@ import { I18nModule } from '@cognizone/i18n';
   styleUrls: ['./skills-feedback.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SkillsFeedbackComponent {
+export class SkillsFeedbackComponent implements OnInit {
   @Input()
   skills: Skill[] = [];
+  @Input()
+  skillUris!: string[]
 
   @Output()
   skillsSelected: EventEmitter<string[]> = new EventEmitter();
   selectedSkills: string[] = [];
+
+  ngOnInit(): void {
+    if ((this.skillUris?.length ?? 0) > 0) {
+      this.selectedSkills = this.skillUris;
+    }
+  }
 
   toggleSelection(skill: Skill): void {
     const index = this.selectedSkills.findIndex(s => s === skill['@id']);

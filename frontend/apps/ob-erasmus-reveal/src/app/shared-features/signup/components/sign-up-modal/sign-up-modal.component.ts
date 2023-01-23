@@ -3,6 +3,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from '../signup/signup.component';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'ob-erasmus-reveal-sign-up-modal',
@@ -12,4 +13,6 @@ import { SignupComponent } from '../signup/signup.component';
   styleUrls: ['./sign-up-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignUpModalComponent {}
+export class SignUpModalComponent {
+  constructor(public dialogRef: DialogRef) {}
+}

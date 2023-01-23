@@ -1,14 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Optional } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { AuthService, UserPromptService } from '@app/core';
-import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
+import { LoadingService, Logger, OnDestroy$ } from '@cognizone/ng-core';
 import { Router } from '@angular/router';
-import { Dialog } from '@angular/cdk/dialog';
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { Observable } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'ob-erasmus-reveal-signup',
@@ -35,7 +35,10 @@ export class SignupComponent extends OnDestroy$ {
     private dialog: Dialog,
     private router: Router,
     private loadingService: LoadingService,
-    private userPrompt: UserPromptService
+    private userPrompt: UserPromptService,
+    private transloco: TranslocoService,
+    private logger: Logger,
+    @Optional() public dialogRef?: DialogRef
   ) {
     super();
   }
@@ -48,16 +51,36 @@ export class SignupComponent extends OnDestroy$ {
       if (this.isLogin) {
         this.subSink = this.authService.login(email).pipe(this.loadingService.asOperator()).subscribe(userValid => {
           if (userValid) this.router.navigate(['profile']);
+          else {
+            this.userPrompt.error(this.transloco.translate('login.no_user_found'));
+            this.logger.error('User not found');
+          }
+        }, (error) => {
+          this.userPrompt.error();
+          this.logger.error(error);
         })
       } else {
-        this.subSink = this.authService.register(email)
-        .pipe(this.loadingService.asOperator()).subscribe(() => {
-          this.dialog
-          .open(ConfirmationDialogComponent, {
-            data: { email },
+        this.subSink = this.authService.userExists(email).pipe(
+          switchMap(userExists => {
+            if (!userExists) {
+              return this.authService.register(email).pipe(this.loadingService.asOperator())
+            }
+            return of(null);
           })
-        }, () => {
+        ).subscribe((user) => {
+          if (user) {
+            this.dialogRef?.close();
+            this.dialog
+            .open(ConfirmationDialogComponent, {
+              data: { email },
+            })
+          } else {
+            this.userPrompt.error('join_now.user_exists');
+            this.logger.error('User already exists');
+          }
+        }, (error) => {
           this.userPrompt.error();
+          this.logger.error(error);
         })
       }
     }

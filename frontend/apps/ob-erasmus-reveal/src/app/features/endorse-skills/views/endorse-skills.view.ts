@@ -120,7 +120,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
       this.cdr.markForCheck();
     });
 
-    // TODO - test once email is ready to be sure
+
     this.subSink = this.feedbackRequestService.getFeedbackRequest(this.endorseSkillsParams['feedbackRequestId'])
     .pipe(this.loadingService.asOperator(), switchMap((request) => this.skillsService.getSkillForEndorsement(request.skills as string[])
     .pipe(map(skills => ({ request, skills })))))
