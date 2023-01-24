@@ -10,6 +10,7 @@ export * from './feedbacks.service';
 export * from './initializers-handler.service';
 export * from './item.service';
 export * from './language.service';
+export * from './notification.service';
 export * from './relationship-type.service';
 export * from './skills.service';
 export * from './transloco-http-loader.service';

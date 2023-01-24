@@ -14,6 +14,7 @@ import {
   FeedbacksService,
   InitializersHandlerService,
   LanguageService,
+  NotificationService,
   provideAppInitializer,
   provideInitializer,
   RelationshipTypeService,
@@ -34,6 +35,7 @@ import {
     provideInitializer(UserService),
     provideInitializer(LanguageService),
     provideInitializer(RelationshipTypeService),
+    provideInitializer(NotificationService),
     customIdGeneratorProvider,
     // we don't need the full module
     JsonModelService,
