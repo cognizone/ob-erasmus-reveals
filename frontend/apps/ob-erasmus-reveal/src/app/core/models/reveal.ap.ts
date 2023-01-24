@@ -55,3 +55,11 @@ export interface User extends JsonModel {
   firstName?: string;
   lastName?: string;
 }
+
+export interface Notification extends JsonModel{
+  '@type': JsonModelType<'Notification'>;
+  endorsedSkill: string;
+  acknowledged: boolean;
+  feedback: string;
+  endorsedUser: string;
+}

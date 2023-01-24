@@ -18,6 +18,7 @@ import {
   FeedbackRequestsService,
   FeedbacksService,
   JsonModelFields,
+  NotificationService,
   RelationshipType,
   RelationshipTypeService,
   Skill,
@@ -28,7 +29,7 @@ import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
 import { SkillsFeedbackComponent } from '@app/shared-features/skills-feedback';
-import { map, Observable, of, switchMap } from 'rxjs';
+import { forkJoin, map, Observable, of, switchMap } from 'rxjs';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { EndorseSkillsViewService } from '../services/endorse-skills-view.service';
 import { EndorsementCompleteComponent } from '../components/endorsement-complete/endorsement-complete.component';
@@ -104,7 +105,8 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     private router: Router,
     private authService: AuthService,
     private dialog: Dialog,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private notificationService: NotificationService
   ) {
     super();
   }
@@ -163,6 +165,15 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     } as JsonModelFields<Feedback>;
 
     this.subSink = this.feedbackService.create(feedback).pipe(
+      switchMap(feedback => forkJoin(this.selectedSkills.map(skill => {
+        return this.notificationService.create({
+          endorsedSkill: skill,
+          feedback,
+          acknowledged: false,
+          endorsedUser: this.feedbackRequest.user
+        })
+      }))),
+      this.loadingService.asOperator(),
       switchMap(() => {
         if (this.endorseSkillsParams['email'] === this.authService.currentUser?.email) {
           this.dialog.open(FeedbackSentToProfileModal, {

@@ -98,7 +98,7 @@
                         cdkTextareaAutosize></textarea>
             </div>
 
-            <button type="submit" [disabled]="formGroup.controls.step4.invalid" class="app-button" color="primary"
+            <button type="submit" [disabled]="(formGroup.controls.step4.invalid) || (loading$ | async)" class="app-button" color="primary"
                     matStepperNext>{{ t('step_4.send_answers') }}</button>
           </mat-step>
         </mat-stepper>

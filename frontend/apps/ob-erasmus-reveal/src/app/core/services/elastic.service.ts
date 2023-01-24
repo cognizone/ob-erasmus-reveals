@@ -59,12 +59,12 @@ export class ElasticService {
     return this.createDocuments(index, [doc]);
   }
 
-  // Note - Having issues with using only the ecoded uris, so using btoa for both update and delete
+  // Note - Having issues with using only the encoded uris, so using btoa for both update and delete
   updateDocument(index: string, doc: JsonModel): Observable<unknown> {
     return this.http.post(`${this.getBaseUrl()}/${index}/_update/${btoa(encodeURIComponent(doc['@id']))}`, {doc});
   }
 
-  // Note - Having issues with using only the ecoded uris, so using btoa for both update and delete
+  // Note - Having issues with using only the encoded uris, so using btoa for both update and delete
   deleteDocument(index: string, uri: string): Observable<unknown> {
     return this.http.delete(`${this.getBaseUrl()}/${index}/_doc/${btoa(encodeURIComponent(uri))}`);
   }
