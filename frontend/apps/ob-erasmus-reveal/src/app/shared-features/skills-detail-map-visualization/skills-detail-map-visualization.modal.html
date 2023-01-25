@@ -30,7 +30,7 @@
       <section class="mt-3 mb-3">
         <ob-erasmus-reveal-countries-map [skillUri]="data.skillUri" (userCountryCountComputed)="onUserCountryCountComputed($event)" (countrySelected)="onCountrySelected($event)"></ob-erasmus-reveal-countries-map>
       </section>
-      <section class="my-endorsements-section">
+      <section class="my-endorsements-section" *ngIf="data.feedbacks">
         <p>{{ data.endorsementCount }}  {{ t(data.endorsementCount > 1 ? 'endorsements_count' : 'endorsement_count') }}</p>
 
         <!-- List of feedbacks -->

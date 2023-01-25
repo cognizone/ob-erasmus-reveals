@@ -44,7 +44,6 @@ export interface Skill extends JsonModel {
   description?: LangString;
   prefLabel?: LangString;
   quote?: LangString;
-  symbolSize: number; // TODO - remove me
   label: Color;
   itemStyle: Color;
 }

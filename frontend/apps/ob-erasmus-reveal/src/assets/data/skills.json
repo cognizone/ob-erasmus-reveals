@@ -17,8 +17,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/02",
@@ -37,8 +36,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/03",
@@ -57,8 +55,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 199
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/04",
@@ -77,8 +74,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 115
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/05",
@@ -97,8 +93,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/06",
@@ -117,8 +112,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 172
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/07",
@@ -137,8 +131,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 142
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/08",
@@ -157,8 +150,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 172
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/09",
@@ -177,8 +169,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 199
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/10",
@@ -197,8 +188,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 199
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/11",
@@ -217,8 +207,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 172
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/12",
@@ -237,8 +226,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 142
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/13",
@@ -257,8 +245,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 105
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/14",
@@ -277,8 +264,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 199
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/15",
@@ -297,8 +283,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 199
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/16",
@@ -317,8 +302,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/17",
@@ -337,8 +321,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 140
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/18",
@@ -357,8 +340,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/19",
@@ -377,8 +359,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 115
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/20",
@@ -397,8 +378,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/21",
@@ -417,8 +397,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 142
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/22",
@@ -437,8 +416,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 138
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/23",
@@ -457,8 +435,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 115
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/24",
@@ -477,8 +454,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 140
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/25",
@@ -497,8 +473,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 120
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/26",
@@ -517,8 +492,7 @@
       },
       "label": {
         "color": "#000"
-      },
-      "symbolSize": 199
+      }
     },
     {
       "@id": "http://reveal.org/data/skill/27",
@@ -537,8 +511,7 @@
       },
       "label": {
         "color": "#fff"
-      },
-      "symbolSize": 115
+      }
     }
   ]
 }

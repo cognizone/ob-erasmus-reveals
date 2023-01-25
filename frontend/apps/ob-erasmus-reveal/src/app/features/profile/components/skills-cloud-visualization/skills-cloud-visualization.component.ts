@@ -93,7 +93,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         {
           type: 'graph',
           layout: 'force',
-          data: this.chartDataService.generateData(skills, feedbacks, this.counts),
+          data: this.chartDataService.generateData(skills, this.counts, feedbacks),
           force: {
             repulsion: skills.length > 6 ? 400 : 250,
           },

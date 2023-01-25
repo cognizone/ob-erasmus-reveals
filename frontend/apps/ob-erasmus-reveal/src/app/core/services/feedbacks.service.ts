@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModelService } from '@cognizone/json-model';
-import { Dictionary, extractSourcesFromElasticResponse, ElasticBucket, notNil } from '@cognizone/model-utils';
+import {
+  Dictionary,
+  extractSourcesFromElasticResponse,
+  ElasticBucket,
+  notNil,
+  ElasticSearchResponse
+} from '@cognizone/model-utils';
 import { map, Observable } from 'rxjs';
 
 import { Counts, Feedback, JsonModelFields } from '../models';
@@ -39,6 +45,24 @@ export class FeedbacksService extends ItemService<Feedback> {
 
   getSkillsCountsPerUser(userUri: string): Observable<Counts> {
     return this.getCounts( '@facets.requestingUser', userUri, 'endorsedSkills');
+  }
+
+  getGlobalSkillCount(): Observable<Counts> {
+    const query = {
+      size: 0,
+      aggs: {
+        counts: {
+          terms: {
+            field: 'endorsedSkills.keyword',
+            size: 10_000,
+          }
+        }
+      }
+    };
+
+    return this.elasticService.search(this.getIndex(), query).pipe(
+      map(response => this.getAggregatedCounts(response))
+    );
   }
 
   getFeedbacksForUser(uri: string): Observable<Feedback[]> {
@@ -107,7 +131,7 @@ export class FeedbacksService extends ItemService<Feedback> {
           aggs: {
             unique_count: {
               cardinality: {
-                field: 'request.keyword'
+                field: '@facets.requestingUser.keyword'
               }
             }
           }
@@ -116,12 +140,14 @@ export class FeedbacksService extends ItemService<Feedback> {
     };
 
     return this.elasticService.search(this.getIndex(), query).pipe(
-      map(response => {
-        const counts: Dictionary<number> = {};
-        response.aggregations['counts'].buckets?.forEach((b: ElasticBucketUnique) => (counts[b.key] = uniqueCount ? b.unique_count?.value as number : b.doc_count));
-        return counts;
-      })
+      map(response => this.getAggregatedCounts(response, uniqueCount))
     );
+  }
+
+  private getAggregatedCounts(response: ElasticSearchResponse<unknown>, uniqueCount: boolean = false): Counts {
+    const counts: Dictionary<number> = {};
+    response.aggregations['counts'].buckets?.forEach((b: ElasticBucketUnique) => (counts[b.key] = uniqueCount ? b.unique_count?.value as number : b.doc_count));
+    return counts;
   }
 }
 

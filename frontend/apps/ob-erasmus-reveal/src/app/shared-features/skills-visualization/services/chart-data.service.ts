@@ -8,15 +8,18 @@ import { Injectable } from '@angular/core';
 export class ChartDataService {
   constructor(private i18nService: I18nService) {}
 
-  generateData(skills: Skill[], feedback?: Feedback[], counts?: Counts): ChartData[] {
+  generateData(skills: Skill[], counts?: Counts, feedback?: Feedback[]): ChartData[] {
+    const maxCount = Object.values(counts ?? {}).reduce((a, b) => Math.max(a, b), 0);
     return skills.map<ChartData>(skill => {
+      const count = counts?.[skill['@id']] ?? 0;
+      const size = 120 + (count / maxCount) * 60;
       return {
-        symbolSize: (counts && counts?.[skill['@id']] < 3 ? 120 : 180) ?? skill.symbolSize, // TODO - make it dynamic, add more conditions using switch
+        symbolSize: size,
         name: this.i18nService.czLabelToString(skill.prefLabel as LangString),
         value: this.i18nService.czLabelToString(skill.description as LangString),
         label: {
           show: true,
-          fontSize: (counts && counts?.[skill['@id']] < 3 ? 12 : 16) ?? skill?.symbolSize > 140 ? 16 : 12,
+          fontSize: count < 3 ? 12 : 16,
           fontWeight: 600,
           color: skill.label.color
         },
