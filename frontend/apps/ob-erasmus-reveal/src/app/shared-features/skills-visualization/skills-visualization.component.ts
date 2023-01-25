@@ -8,7 +8,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { combineLatest } from 'rxjs';
-import { Skill, SkillsService } from '@app/core';
+import { Counts, FeedbacksService, Skill, SkillsService } from '@app/core';
 import { I18nService } from '@cognizone/i18n';
 import { Dialog } from '@angular/cdk/dialog';
 import { OnDestroy$ } from '@cognizone/ng-core';
@@ -33,9 +33,10 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
+  endorsedSkillCounts!: Counts;
   private chart?: echarts.ECharts;
 
-  constructor(private skillsService: SkillsService, private i18nService: I18nService, private dialog: Dialog, private cdr: ChangeDetectorRef, private chartDataService: ChartDataService) {
+  constructor(private skillsService: SkillsService, private i18nService: I18nService, private dialog: Dialog, private cdr: ChangeDetectorRef, private chartDataService: ChartDataService, private feedbackService: FeedbacksService) {
     super();
   }
 
@@ -43,8 +44,10 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
   ngAfterViewInit(): void {
     this.subSink = combineLatest([
       this.skillsService.getAll(),
+      this.feedbackService.getGlobalSkillCount(),
       this.i18nService.selectActiveLang()
-    ]).subscribe(([skills]) => {
+    ]).subscribe(([skills, counts]) => {
+      this.endorsedSkillCounts = counts;
       this.createChart(skills);
       this.cdr.markForCheck();
     });
@@ -75,7 +78,7 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
         {
           type: 'graph',
           layout: 'force',
-          data: this.chartDataService.generateData(skills),
+          data: this.chartDataService.generateData(skills, this.endorsedSkillCounts),
           force: {
             repulsion: 500,
           },

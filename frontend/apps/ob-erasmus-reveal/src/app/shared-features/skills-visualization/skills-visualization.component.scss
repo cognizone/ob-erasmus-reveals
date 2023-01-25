@@ -1,3 +1,9 @@
 .my-skills-chart {
-  height: calc(100vh + 120px);
+  height: calc(150vh + 120px);
+}
+
+@media only screen and (min-width: 1550px) {
+  .my-skills-chart {
+    height: calc(100vh + 200px);
+  }
 }

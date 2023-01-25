@@ -7,7 +7,7 @@ import {
   User,
   UserService
 } from '@app/core';
-import { map, switchMap } from 'rxjs';
+import { delay, map, of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -72,9 +72,12 @@ export class CompleteProfileView extends OnDestroy$ implements OnInit {
       country: users.step2['country']
     } as JsonModelFields<User>;
 
+    if (this.loadingService.loading) return;
+    // Note - The delay is used here to make the document available after create/index from elasticsearch.
     this.subSink = this.userService.create(user)
-    .pipe(this.loadingService.asOperator(), map(() => user), switchMap(data => {
-      return this.authService.login(data?.email as string);
+    .pipe(map(userId => userId), delay(1000), this.loadingService.asOperator(), switchMap(userId => {
+      if(userId) return this.authService.login(user?.email as string);
+      return of(false)
     })).subscribe((user) => {
       if (user) this.router.navigate(['profile']);
     })
