@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { combineLatest, forkJoin, map } from 'rxjs';
+import { combineLatest, delay, forkJoin, map } from 'rxjs';
 import { AuthService, Counts, Feedback, FeedbacksService, Notification, NotificationService, Skill, SkillsService } from '@app/core';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { I18nService } from '@cognizone/i18n';
@@ -86,11 +86,14 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         }, [] as Notification[]);
 
         if (updatedNotifications.length) {
-          this.subSink = forkJoin(updatedNotifications.map(notification => this.notificationService.save(notification))).subscribe(() => {
-            this.profileViewService.refresh();
-            this.chart?.dispatchAction({ type: 'downplay', dataIndex: this.getIndexesOfSkills(skills, this.notifications) });
-            this.cdr.markForCheck();
-          });
+          // Note - The delay is used here to make the document available after update/index from elasticsearch.
+          this.subSink = forkJoin(updatedNotifications.map(notification => this.notificationService.save(notification)))
+            .pipe(delay(1000))
+            .subscribe(() => {
+              this.profileViewService.refresh();
+              this.chart?.dispatchAction({ type: 'downplay', dataIndex: this.getIndexesOfSkills(skills, this.notifications) });
+              this.cdr.markForCheck();
+            });
         }
 
         this.dialog.open(SkillsDetailMapVisualizationModal, {
