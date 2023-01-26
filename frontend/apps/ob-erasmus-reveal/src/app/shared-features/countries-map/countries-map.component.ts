@@ -3,24 +3,27 @@ import { HttpClient } from '@angular/common/http';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
   Input,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { CountriesService, Country, Counts, FeedbacksService } from '@app/core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
-import { OnDestroy$ } from '@cognizone/ng-core';
+import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import * as echarts from 'echarts';
 import { combineLatest } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'ob-erasmus-reveal-countries-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatProgressSpinnerModule],
+  providers: [LoadingService],
   templateUrl: './countries-map.component.html',
   styleUrls: ['./countries-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,14 +39,15 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
-
   private chart?: echarts.ECharts;
 
   constructor(
     private http: HttpClient,
     private countriesService: CountriesService,
     private i18nService: I18nService,
-    private feedbacksService: FeedbacksService
+    private feedbacksService: FeedbacksService,
+    private cdr: ChangeDetectorRef,
+    public loadingService: LoadingService
   ) {
     super();
   }
@@ -53,13 +57,14 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
 
     // need to regen map on lang change to update country labels
     this.subSink = combineLatest([
-      geoJson$,
-      this.countriesService.getAll(),
-      this.feedbacksService.getCountsPerCountry(this.skillUri),
+      geoJson$.pipe(this.loadingService.asOperator()),
+      this.countriesService.getAll().pipe(this.loadingService.asOperator()),
+      this.feedbacksService.getCountsPerCountry(this.skillUri).pipe(this.loadingService.asOperator()),
       this.i18nService.selectActiveLang(),
     ]).subscribe(([geoJson, countries, counts]) => {
       this.createChart(geoJson, countries, counts);
       this.userCountryCountComputed.emit(counts);
+      this.cdr.markForCheck();
     });
   }
 
@@ -67,7 +72,7 @@ export class CountriesMapComponent extends OnDestroy$ implements AfterViewInit {
     if (!this.chart) {
       const chartDom = this.container.nativeElement;
       this.chart = echarts.init(chartDom);
-      this.chart.on('click', 'series.map', (e) => {
+      this.chart.on('click', 'series.map', e => {
         this.countrySelected.emit(e.name);
       });
     }
