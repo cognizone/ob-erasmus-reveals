@@ -11,11 +11,12 @@ import { SkillsDetailMapVisualizationModal } from '@app/shared-features/skills-d
 import { ChartData, ChartMetaData, ChartDataService, FormatterArg } from '@app/shared-features/skills-visualization';
 import produce from 'immer';
 import { ProfileViewService } from '../../services/profile-view.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-cloud-visualization',
   standalone: true,
-  imports: [CommonModule, SkillsDetailMapVisualizationModal],
+  imports: [CommonModule, SkillsDetailMapVisualizationModal, MatProgressSpinnerModule],
   providers: [ProfileViewService, LoadingService],
   templateUrl: './skills-cloud-visualization.component.html',
   styleUrls: ['./skills-cloud-visualization.component.scss'],
@@ -31,6 +32,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
 
   @ViewChild('myChart')
   container!: ElementRef<HTMLElement>;
+  notifications!: Notification[];
   private chart?: echarts.ECharts;
 
   constructor(
@@ -51,28 +53,29 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
 
   ngOnInit(): void {
     this.subSink = combineLatest([
-      this.skillsService.getSkillForEndorsement(this.skillsUris),
-      this.feedbackService.getFeedbacksForUser(this.userId),
+      this.skillsService.getSkillForEndorsement(this.skillsUris).pipe(this.loadingService.asOperator()),
+      this.feedbackService.getFeedbacksForUser(this.userId).pipe(this.loadingService.asOperator()),
       this.profileViewService.notifications$.pipe(
         map(notifications => (this.userId === this.authService.currentUser['@id'] ? notifications : []))
       ),
       this.i18nService.selectActiveLang(),
     ]).subscribe(([skills, feedbacks, notifications]) => {
-      this.createChart(skills, feedbacks, notifications);
+      this.notifications = notifications;
+      this.createChart(skills, feedbacks);
       this.cdr.markForCheck();
     });
   }
 
-  private createChart(skills: Skill[], feedbacks: Feedback[], notifications: Notification[]): void {
+  private createChart(skills: Skill[], feedbacks: Feedback[]): void {
     if (!this.chart) {
       const chartDom = this.container.nativeElement;
       this.chart = echarts.init(chartDom);
       this.chart.on('click', 'series.graph', event => {
-        const data = event.data as ChartData;
+        const { metaData } = event.data as ChartData;
 
         // updating notifications
-        const updatedNotifications = notifications.reduce((acc, notification) => {
-          if (notification.endorsedSkill === data.metaData?.skillUri) {
+        const updatedNotifications = this.notifications.reduce((acc, notification) => {
+          if (notification.endorsedSkill === metaData?.skillUri) {
             acc.push(
               produce(notification, draft => {
                 draft.acknowledged = true;
@@ -85,13 +88,13 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         if (updatedNotifications.length) {
           this.subSink = forkJoin(updatedNotifications.map(notification => this.notificationService.save(notification))).subscribe(() => {
             this.profileViewService.refresh();
-            this.chart?.dispatchAction({ type: 'downplay', dataIndex: this.getIndexesOfSkills(skills, notifications) });
+            this.chart?.dispatchAction({ type: 'downplay', dataIndex: this.getIndexesOfSkills(skills, this.notifications) });
             this.cdr.markForCheck();
           });
         }
 
         this.dialog.open(SkillsDetailMapVisualizationModal, {
-          data: data.metaData as ChartMetaData,
+          data: metaData as ChartMetaData,
         });
       });
     }
@@ -126,7 +129,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         },
       ],
     });
-    if ((notifications?.length ?? 0) > 0) {
+    if ((this.notifications?.length ?? 0) > 0) {
       this.chart.setOption({
         emphasis: {
           itemStyle: {
@@ -137,7 +140,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
       });
       this.chart.dispatchAction({
         type: 'highlight',
-        dataIndex: this.getIndexesOfSkills(skills, notifications),
+        dataIndex: this.getIndexesOfSkills(skills, this.notifications),
       });
     }
   }

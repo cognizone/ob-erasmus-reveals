@@ -1,2 +1,2 @@
-<!-- TODO - Add a spinner for internal components in the next PR -->
+<mat-spinner diameter="100" *ngIf="loadingService.loading$ | async"></mat-spinner>
 <div #myChart></div>

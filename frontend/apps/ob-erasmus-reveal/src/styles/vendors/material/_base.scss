@@ -21,3 +21,4 @@ $my-theme: mat.define-light-theme(
 
 // Emit theme-dependent styles for common features used across multiple components.
 @include mat.core-theme($my-theme);
+@include mat.progress-spinner-theme($my-theme);
