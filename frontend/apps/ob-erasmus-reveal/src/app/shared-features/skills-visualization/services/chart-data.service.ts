@@ -1,10 +1,10 @@
 import { Counts, Feedback, Skill } from '@app/core';
 import { LangString } from '@cognizone/model-utils';
 import { I18nService } from '@cognizone/i18n';
-import { ChartData } from '../models/chart-data';
+import { ChartData } from '@app/shared-features/meta-visualization';
 import { Injectable } from '@angular/core';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ChartDataService {
   constructor(private i18nService: I18nService) {}
 
@@ -21,19 +21,22 @@ export class ChartDataService {
           show: true,
           fontSize: count < 3 ? 12 : 16,
           fontWeight: 600,
-          color: skill.label.color
+          color: skill.label.color,
         },
         itemStyle: {
-          color: skill.itemStyle.color
+          color: skill.itemStyle.color,
         },
         metaData: {
-          lastEndorsedBy: feedback?.filter(f => f.endorsedSkills?.includes(skill['@id'])).sort((a, b) => new Date(a?.created as string).getTime() - new Date(b?.created as string).getTime()).pop(),
+          lastEndorsedBy: feedback
+            ?.filter(f => f.endorsedSkills?.includes(skill['@id']))
+            .sort((a, b) => new Date(a?.created as string).getTime() - new Date(b?.created as string).getTime())
+            .pop(),
           feedbacks: feedback?.filter(f => f.endorsedSkills?.includes(skill['@id'])),
           skillUri: skill['@id'],
           endorsementCount: counts?.[skill['@id']] ?? 0,
           description: this.i18nService.czLabelToString(skill.description as LangString),
           name: this.i18nService.czLabelToString(skill.prefLabel as LangString),
-        }
+        },
       };
     });
   }

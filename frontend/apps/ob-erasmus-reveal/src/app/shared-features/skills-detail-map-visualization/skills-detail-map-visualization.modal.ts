@@ -1,19 +1,20 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { DialogRef } from '@angular/cdk/dialog';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { CountriesMapComponent } from '@app/shared-features/countries-map';
-import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule } from '@ngneat/transloco';
+import { MatStepperModule } from '@angular/material/stepper';
+import { Router, RouterModule } from '@angular/router';
+import { Counts, RelationshipTypeService, User } from '@app/core';
+import { CountriesMapComponent } from '@app/shared-features/countries-map';
+import { ChartMetaData, SkillUsersService } from '@app/shared-features/meta-visualization';
 import { SkillImageUrlPipe } from '@app/shared-features/skills-feedback';
-import { Counts, FeedbacksService, RelationshipTypeService, User, UserService } from '@app/core';
-import { OnDestroy$ } from '@cognizone/ng-core';
 import { I18nService } from '@cognizone/i18n';
 import { LangString } from '@cognizone/model-utils';
-import { switchMap } from 'rxjs';
-import { RouterModule } from '@angular/router';
-import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+import { OnDestroy$ } from '@cognizone/ng-core';
+import { TranslocoModule } from '@ngneat/transloco';
+import { combineLatest } from 'rxjs';
+
 import { SerializeUriPipe } from './pipes/serialize-uri.pipe';
-import { ChartMetaData } from '@app/shared-features/skills-visualization';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-detail-map-visualization',
@@ -27,46 +28,63 @@ import { ChartMetaData } from '@app/shared-features/skills-visualization';
     NgOptimizedImage,
     RouterModule,
     MatStepperModule,
-    SerializeUriPipe
+    SerializeUriPipe,
   ],
   templateUrl: './skills-detail-map-visualization.modal.html',
   styleUrls: ['./skills-detail-map-visualization.modal.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnInit {
-  @ViewChild('stepper') stepper!: MatStepper;
   relation!: Relation;
-  users!: User[];
+  users: User[] = [];
 
   userCountPerSkill: number = 0;
-  countriesPerSkill!: string[]
+  countriesPerSkill!: string[];
+  currentIndex: number = 0;
+  data?: ChartMetaData;
+  selectedCountryUri?: string;
+
   constructor(
     public dialogRef: DialogRef,
-    @Inject(DIALOG_DATA) public data: ChartMetaData,
     private relationshipTypeService: RelationshipTypeService,
     private cdr: ChangeDetectorRef,
     private i18nService: I18nService,
-    private userService: UserService,
-    private feedbackService: FeedbacksService
+    private router: Router,
+    private skillUsersService: SkillUsersService
   ) {
     super();
   }
 
   ngOnInit() {
-    this.subSink = this.relationshipTypeService.getAll().subscribe(relations => {
-      this.relation = relations.reduce((a,b) => ({...a, [b['@id']]:( this.i18nService.czLabelToString(b.prefLabel as LangString)) || []}), {})
+    this.subSink = combineLatest([
+      this.skillUsersService.selectedUris$,
+      this.skillUsersService.users$,
+      this.skillUsersService.chartsData$,
+    ]).subscribe(([uris, users, data]) => {
+      this.users = users;
+      this.selectedCountryUri = uris.selectedCountryUri;
+      this.data = data.find(d => d.metaData?.skillUri === decodeURIComponent(uris.selectedSkillUri as string))?.metaData;
+      this.currentIndex = this.selectedCountryUri ? 1 : 0;
       this.cdr.markForCheck();
-    })
+    });
+
+    this.subSink = this.relationshipTypeService.getAll().subscribe(relations => {
+      this.relation = relations.reduce(
+        (a, b) => ({ ...a, [b['@id']]: this.i18nService.czLabelToString(b.prefLabel as LangString) || [] }),
+        {}
+      );
+      this.cdr.markForCheck();
+    });
   }
 
-  onCountrySelected(name: string): void {
-    this.subSink = this.feedbackService.getUsersForSkills(name, this.data.skillUri).pipe(
-      switchMap(response => this.userService.getByUrisMulti(response))
-    ).subscribe(users => {
-      this.users = users;
-      this.stepper.next();
-      this.cdr.markForCheck();
-    })
+  onCountrySelected(country: string): void {
+    // empty chart data on country selected.
+    this.router.navigate([], {
+      queryParamsHandling: 'merge',
+      queryParams: {
+        selectedCountryUri: encodeURIComponent(country),
+      },
+    });
   }
 
   onUserCountryCountComputed(counts: Counts): void {
@@ -75,8 +93,25 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
       this.userCountPerSkill = Object.values(counts).reduce((a, b) => a + b);
     }
   }
+
+  onClick(): void {
+    // make sure to close the dialog
+    this.dialogRef.close();
+  }
+
+  onClose(): void {
+    // make sure to close the dialog
+    this.dialogRef.close();
+    this.router.navigate([], { queryParams: {} });
+  }
 }
 
 interface Relation {
-  [uri: string]: string
+  [uri: string]: string;
+}
+
+interface Data {
+  data: ChartMetaData;
+  currentIndex: number;
+  users?: User[];
 }
