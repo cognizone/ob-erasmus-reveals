@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { combineLatest, delay, forkJoin, map } from 'rxjs';
 import { AuthService, Counts, Feedback, FeedbacksService, Notification, NotificationService, Skill, SkillsService } from '@app/core';
@@ -8,16 +8,18 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Dialog } from '@angular/cdk/dialog';
 import * as echarts from 'echarts';
 import { SkillsDetailMapVisualizationModal } from '@app/shared-features/skills-detail-map-visualization';
-import { ChartData, ChartMetaData, ChartDataService, FormatterArg } from '@app/shared-features/skills-visualization';
+import { ChartDataService } from '@app/shared-features/skills-visualization';
 import produce from 'immer';
 import { ProfileViewService } from '../../services/profile-view.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ChartData, FormatterArg, SkillUsersService } from '@app/shared-features/meta-visualization';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-cloud-visualization',
   standalone: true,
   imports: [CommonModule, SkillsDetailMapVisualizationModal, MatProgressSpinnerModule],
-  providers: [ProfileViewService, LoadingService],
+  providers: [ProfileViewService, LoadingService, SkillUsersService],
   templateUrl: './skills-cloud-visualization.component.html',
   styleUrls: ['./skills-cloud-visualization.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,12 +48,26 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
     private chartDataService: ChartDataService,
     private notificationService: NotificationService,
     private profileViewService: ProfileViewService,
+    private skillUserService: SkillUsersService,
+    private router: Router,
+    private injector: Injector,
     public loadingService: LoadingService
   ) {
     super();
   }
 
   ngOnInit(): void {
+    this.subSink = this.skillUserService.selectedUris$.subscribe(params => {
+      if (!params.selectedSkillUri) return;
+      // Need to make sure when the user clicks on country,
+      // the modal doesn't open up again in the background
+      if (this.dialog.openDialogs.length < 1) {
+        this.dialog.open<boolean>(SkillsDetailMapVisualizationModal, {
+          injector: this.injector,
+        });
+      }
+    });
+
     this.subSink = combineLatest([
       this.skillsService.getSkillForEndorsement(this.skillsUris).pipe(this.loadingService.asOperator()),
       this.feedbackService.getFeedbacksForUser(this.userId).pipe(this.loadingService.asOperator()),
@@ -96,11 +112,12 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
             });
         }
 
-        this.dialog.open(SkillsDetailMapVisualizationModal, {
-          data: metaData as ChartMetaData,
-        });
+        this.router.navigate([], { queryParams: { selectedSkillUri: encodeURIComponent(metaData?.skillUri as string) } });
       });
     }
+
+    const data = this.chartDataService.generateData(skills, this.counts, feedbacks);
+    this.skillUserService.chartsData$.next(data);
 
     this.chart.setOption({
       tooltip: {
@@ -125,7 +142,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
         {
           type: 'graph',
           layout: 'force',
-          data: this.chartDataService.generateData(skills, this.counts, feedbacks),
+          data,
           force: {
             repulsion: skills.length > 6 ? 400 : 250,
           },

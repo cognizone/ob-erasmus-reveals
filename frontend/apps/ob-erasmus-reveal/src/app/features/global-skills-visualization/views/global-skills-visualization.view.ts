@@ -11,7 +11,15 @@ import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
 @Component({
   selector: 'ob-erasmus-reveal-global-skills-visualization',
   standalone: true,
-  imports: [CommonModule, TranslocoModule, SkillsVisualizationComponent, ProfileHeaderComponent, HeaderComponent, FooterComponent, ProfileFooterComponent],
+  imports: [
+    CommonModule,
+    TranslocoModule,
+    SkillsVisualizationComponent,
+    ProfileHeaderComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProfileFooterComponent,
+  ],
   templateUrl: './global-skills-visualization.view.html',
   styleUrls: ['./global-skills-visualization.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

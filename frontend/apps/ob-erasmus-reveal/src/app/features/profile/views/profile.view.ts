@@ -1,14 +1,16 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { TranslocoModule } from '@ngneat/transloco';
-import { Counts, FeedbacksService } from '@app/core';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
-import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
-import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
-import { map, Observable, switchMap } from 'rxjs';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { RouterModule } from '@angular/router';
+import { Counts, FeedbacksService } from '@app/core';
+import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
+import { ProfileHeaderComponent } from '@app/shared-features/profile-header';
+import { SkillsDetailMapVisualizationModal } from '@app/shared-features/skills-detail-map-visualization';
+import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
+import { TranslocoModule } from '@ngneat/transloco';
+import { map, Observable, switchMap } from 'rxjs';
+
 import { SkillsCloudVisualizationComponent } from '../components/skills-cloud-visualization/skills-cloud-visualization.component';
 import { ProfileViewService } from '../services/profile-view.service';
 
@@ -25,7 +27,8 @@ import { ProfileViewService } from '../services/profile-view.service';
     MatIconModule,
     ProfileFooterComponent,
     MatProgressBarModule,
-    SkillsCloudVisualizationComponent
+    SkillsCloudVisualizationComponent,
+    SkillsDetailMapVisualizationModal,
   ],
   templateUrl: './profile.view.html',
   styleUrls: ['./profile.view.scss'],
@@ -51,22 +54,28 @@ export class ProfileView extends OnDestroy$ implements OnInit {
 
   ngOnInit() {
     this.subSink = this.profileViewService.user$
-    .pipe(switchMap(user => this.feedbackService.getSkillsCountsPerUser(user?.['@id'])
-    .pipe(this.loadingService.asOperator(),map(result => ({ user, result })))))
-    .subscribe(({ user, result }) => {
-      if (user?.firstName || user?.lastName) {
-        this.userInfo = `${user?.firstName} ${user.lastName}`
-        this.userEmail = user?.email as string;
-      } else {
-        this.userInfo = user?.email as string;
-      }
-      this.userId = user['@id'];
-      this.endorsedSkillsUris = Object.keys(result);
-      if (this.endorsedSkillsUris.length > 0) {
-        this.endorsementsCount = Object.values(result).reduce((a, b) => a + b);
-      }
-      this.endorsedSkillCounts = result;
-      this.cdr.markForCheck();
-    });
+      .pipe(
+        switchMap(user =>
+          this.feedbackService.getSkillsCountsPerUser(user?.['@id']).pipe(
+            this.loadingService.asOperator(),
+            map(result => ({ user, result }))
+          )
+        )
+      )
+      .subscribe(({ user, result }) => {
+        if (user?.firstName || user?.lastName) {
+          this.userInfo = `${user?.firstName} ${user.lastName}`;
+          this.userEmail = user?.email as string;
+        } else {
+          this.userInfo = user?.email as string;
+        }
+        this.userId = user['@id'];
+        this.endorsedSkillsUris = Object.keys(result);
+        if (this.endorsedSkillsUris.length > 0) {
+          this.endorsementsCount = Object.values(result).reduce((a, b) => a + b);
+        }
+        this.endorsedSkillCounts = result;
+        this.cdr.markForCheck();
+      });
   }
 }
