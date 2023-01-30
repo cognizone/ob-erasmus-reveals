@@ -1,3 +1,9 @@
-:host > div {
-  height: 50vh;
+.my-charts {
+  height: calc(120vh + 200px);
+}
+
+@media only screen and (min-width: 1550px) {
+  .my-charts {
+    height: calc(100vh + 200px);
+  }
 }

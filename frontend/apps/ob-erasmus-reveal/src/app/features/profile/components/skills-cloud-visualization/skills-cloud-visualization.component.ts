@@ -144,8 +144,11 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
           layout: 'force',
           data,
           force: {
-            repulsion: skills.length > 6 ? 400 : 250,
+            repulsion: 400,
+            friction: 0.4,
           },
+          top: skills.length > 6 ? '40%' : '20%',
+          height: 150, // This helps to align the component height along with the height provided to the whole chart itself
         },
       ],
     });
