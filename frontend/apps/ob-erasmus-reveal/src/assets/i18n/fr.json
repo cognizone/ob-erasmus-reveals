@@ -1,1 +1,264 @@
-{}
+{
+  "about": {
+    "skills": {
+      "part_1": {
+        "description_1": "Si vous pouvez afficher sans problème vos compétences techniques, directement liées à votre rôle, vos compétences non-techniques peuvent avoir besoin d'un coup de pouce pour être reconnues",
+        "description_2": "Reveal vous aide à obtenir des reconnaissances qui renforceront la confiance dans toutes vos compétences",
+        "description_3": "Avec l'endossement de vos pairs, vos compétences sont mieux reconnues et valorisées.",
+        "heading_1": "Partager ses compétences,",
+        "heading_2": "Partager ses reconnaissances",
+        "logo_alt": "Logo de la partie 1 des compétences"
+      },
+      "part_2": {
+        "description_1": "Donner un feedback spontané sur le lieu de travail est difficile, mais les neurosciences disent qu'une invitation proactive rend la chose beaucoup plus facile.",
+        "description_2": "Chaque fois que vous souhaitez obtenir l'avis de vos collègues, amis ou pairs, il vous suffit de faire une demande d'endossement, et d'apprécier ainsi la valeur de toutes vos compétences.",
+        "heading_1": "Révélez vos compétences et vous-même",
+        "logo_alt": "Logo de la partie 2 des compétences"
+      },
+      "part_3": {
+        "description_1": "Les compétences non techniques sont particulièrement pertinentes pour la rédaction d'un CV, les entretiens et la communication avec les collègues ou dans d'autres domaines de votre vie",
+        "description_2": "Au fur et à mesure que vous progressez dans votre processus de recherche d'emploi, utilisez Reveal pour mettre à jour votre CV et mettre en avant vos soft skills les plus pertinentes.",
+        "heading_1": "Faites savoir aux gens à quel point vous êtes compétent",
+        "logo_alt": "Logo de la partie 3 des compétences"
+      }
+    }
+  },
+  "answer_sent": {
+    "heading": "Vos réponses ont été envoyées à {{ utilisateur }}",
+    "thank_you": "Merci pour votre temps !"
+  },
+  "complete_profile": {
+    "back": "Back",
+    "complete_now": "Complétez votre profil maintenant",
+    "description_1": "Vous pouvez demander des endossements dès maintenant pour toutes vos compétences, même celles que vous pensez ne pas valoir la peine de partager !",
+    "description_2": "Vous seriez surpris de découvrir comment les personnes autour de vous utilisent les connaissances qu'elles ont acquises au cours de leurs années d'expérience sur leur lieu de travail et dans leur vie privée",
+    "get_started": {
+      "description": "Complétez votre profil pour avoir une expérience plus personnalisée",
+      "heading": "Commençons",
+      "start": "Commencer"
+    },
+    "greetings": "Bonjour !",
+    "information": {
+      "heading": "Parlez-nous de vous",
+      "point_1": {
+        "description": "Complétez votre profil pour vous faire connaître dans la communauté et entrer en contact avec d'autres personnes compétentes.",
+        "label": "Qui êtes-vous ?"
+      },
+      "point_2": {
+        "description": " Choisissez vos domaines d'expertise et laissez-nous vous guider à travers les « tags ». ",
+        "label": "À quel point êtes-vous compétent ?"
+      },
+      "point_3": {
+        "description": "Donnez des avis aux personnes que vous connaissez sur leurs compétences et aidez-les à être mieux reconnues.",
+        "label": "Qui souhaitez-vous révéler ?"
+      }
+    },
+    "step_1": {
+      "description": "Ces informations supplémentaires nous aideront à vous offrir une expérience plus personnalisée",
+      "rubrique": "Compléter votre profil"
+    },
+    "step_2": {
+      "description": "Ces informations supplémentaires nous aideront à améliorer la page << compétences >>",
+      "heading": "Partagez votre localisation"
+    },
+    "welcome_to_reveal": "Bienvenue dans la communauté Reveal, où vous pouvez partager vos compétences, demander et donner des endossements."
+  },
+  "email_confirmation": {
+    "check_inbox": "Vérifiez votre boîte de réception",
+    "close": "Fermer le dialogue",
+    "email_sent": "L'e-mail a été correctement envoyé",
+    "get_started": "Commencez en cliquant sur le lien envoyé",
+    "send_again": "Envoyer à nouveau"
+  },
+  "endorse_skills": {
+    "back": "Back",
+    "country": "{{global.country}}",
+    "email": "{{global.email}}",
+    "feedback_given": {
+      "homepage": "Aller à la page d'accueil"
+    },
+    "name": "{{global.name}}",
+    "next": "{{global.next}}",
+    "optional": "(facultatif)",
+    "relationship_level": "Votre niveau de relation avec {{l'utilisateur }}",
+    "select_relationship": "Sélectionnez une relation",
+    "start": "Commencer",
+    "step_0": {
+      "description": "Merci de prendre le temps de répondre à cette demande d'endossement. Ne vous inquiétez pas, cela ne vous prendra pas beaucoup de temps pour la compléter.",
+      "heading": "Welcome"
+    },
+    "step_1": {
+      "about": "Dites-nous en plus sur vous",
+      "description": "Merci de prendre le temps de répondre à cette demande d'endossement. Il ne vous faudra pas beaucoup de temps pour la remplir.",
+      "heading": "Demande de validation de compétences de {{ utilisateur }}"
+    },
+    "step_2": {
+      "description": "Nous utilisons les données de localisation de nos utilisateurs pour améliorer les informations de la page << compétences >>",
+      "heading": "Partagez votre localisation"
+    },
+    "step_3": {
+      "heading": "Quelles compétences {{utilisateur}} approuvez-vous ?"
+    },
+    "step_4": {
+      "heading": "Pourquoi approuvez-vous ces compétences pour {{ l'utilisateur }} ?",
+      "placeholder_text": "Saisissez vos commentaires",
+      "send_answers": "Envoyez vos réponses"
+    },
+    "surname": "{{global.surname}}"
+  },
+  "feedback_request": {
+    "creation": {
+      "cancel": "{{global.cancel}}",
+      "description": "Ce formulaire vous permet de demander une reconnaissance de vos compétences.",
+      "heading": "Demande d'endossement de compétences",
+      "next": "{{global.next}}",
+      "selected": "selected"
+    },
+    "creation_modal": {
+      "cancel": "{{global.cancel}}",
+      "copy": "Copy",
+      "default_message": "Bonjour, afin de valoriser mes compétences, pourriez-vous me faire part de vos commentaires ? \nMerci.",
+      "email_heading": "Envoyer la demande",
+      "email_tab": "Par email",
+      "feedback_sent": "Votre demande a été correctement envoyée",
+      "from": "From",
+      "link": "Link",
+      "link_heading": "Envoyer le formulaire",
+      "link_tab": "Avec un lien",
+      "message": "Message",
+      "send": "Envoyer",
+      "to": "A",
+      "to_caption": "Séparez les e-mails par une virgule."
+    }
+  },
+  "footer": {
+    "accessibility": "Accessibilité",
+    "discover": "Découvrir",
+    "follow": "Suivez-nous",
+    "help": "Aide",
+    "join_now": "Rejoignez-nous et commencez tout de suite à partager vos compétences",
+    "privacy_policy": "Politique de confidentialité",
+    "social_media": {
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    },
+    "terms_of_use": "Conditions d'utilisation"
+  },
+  "global": {
+    "about": "A propos de Reveal ?",
+    "about_tags": "About tags",
+    "application_name": "Reveal",
+    "cancel": "Annuler",
+    "country": "Pays",
+    "email": "Adresse e-mail",
+    "email_invalid_error": "Votre adresse e-mail semble être incorrecte. Veuillez réessayer.",
+    "email_placeholder": "Entrez votre e-mail",
+    "join": "S'inscrire",
+    "login_alt": "Connexion",
+    "logo_alt": "Logo de l'application",
+    "name": "Nom",
+    "next": "Suivant",
+    "sign_up_alt": "S'inscrire",
+    "skills": {
+      "heading_1": "Explorez les 27 compétences",
+      "heading_2": "utilisées par plus de 12,000 personnes",
+      "heading_3": "dans 21 pays"
+    },
+    "success": "Succès",
+    "surname": "Nom de famille",
+    "unknown_error": "Erreur inconnue"
+  },
+  "global_skills_visualization": {
+    "description": "Explorez davantage les 27 compétences du Projet Européen Léonardo Transfert de l'innovation - OPC-SFC / tableau des SFC utilisées par plus de 12,000 personnes",
+    "heading": "{{header.skills}}"
+  },
+  "header": {
+    "get_started": "Commencer",
+    "sign_in": "Inscription",
+    "skills": "Compétences"
+  },
+  "home": {
+    "description": "Reveal vous aide à promouvoir vos compétences et à élargir votre développement personnel",
+    "heading": "Laissez vos compétences faire toute la différence",
+    "promote_skills": "Commencez à promouvoir vos compétences",
+    "skills_alt": "Plusieurs compétences par utilisateur",
+    "skills_meta_description": "Gratuit, commencez dès maintenant à obtenir et offrir des endossements",
+    "target_1": {
+      "description": "votre visibilité",
+      "image_alt": "visibilité",
+      "label": "Améliorer"
+    },
+    "target_2": {
+      "description": "votre réputation",
+      "image_alt": "réputation",
+      "label": "Dynamiser"
+    },
+    "target_3": {
+      "description": "votre reconnaissance",
+      "image_alt": "reconnaissance",
+      "label": "Construire"
+    }
+  },
+  "join_now": {
+    "action_points": {
+      "image_alt": "points à noter",
+      "point_1": " Agir sur votre développement personnel ",
+      "point_2": "Soyez plus confiant dans votre rôle",
+      "point_3": "Mettez en valeur toutes vos compétences",
+      "point_4": "Progressez dans votre carrière"
+    },
+    "already_member": "Déjà membre ?",
+    "and": "et",
+    "connect": "Connecter",
+    "description": "les personnes qui utilisent Reveal pour obtenir la reconnaissance de leurs compétences",
+    "heading": "Améliorez votre jeu, rejoignez Reveal",
+    "join": "Rejoignez",
+    "join_now": "Rejoignez maintenant",
+    "must_be_connected": "Vous devez être connecté pour utiliser cette fonctionnalité",
+    "not_a_member": "Pas encore membre ?",
+    "skills_description": "Rejoignez-nous et commencez tout de suite à partager vos compétences, demander des reconnaissances de celles-ci et offrir des reconnaissances.",
+    "unlock_access": "Débloquez un accès illimité à Reveal en un seul clic",
+    "user_exists": "L'utilisateur existe déjà, veuillez saisir une nouvelle adresse e-mail"
+  },
+  "language_selection": {
+    "heading": "Langue"
+  },
+  "login": {
+    "no_user_found": "Erreur : L'utilisateur n'existe pas, veuillez vous diriger vers l'inscription."
+  },
+  "profile": {
+    "across": "À travers",
+    "add_new_description": "Pour ajouter de nouvelles compétences à votre profil, vous devez demander l'endossement de vos pairs, amis et collègues.",
+    "add_new_heading": "Tout est prêt ! Ajoutez maintenant des compétences",
+    "alt_logo": "logo du profil",
+    "ask_endorsement_skill": "Demander une reconnaissance pour cette compétence",
+    "ask_for_endorsement": "Demande d'approbation",
+    "back": "Retour",
+    "countries_count": "{{compte }} pays",
+    "country_count": "{{ nombre }}} pays",
+    "description": "Description",
+    "endorsement_count": "{{nombre }} d'endossements",
+    "endorsements_count": "{{compte}} endossements",
+    "last_endorsement_from": "Dernier endossement de",
+    "people_count": "{{compte}} personnes",
+    "skill_alt_logo": "Logo de la compétence",
+    "skill_count": "{{ count }}} compétence",
+    "skills_count": "{{count}} {{en-tête.compétences}}",
+    "total": "Total",
+    "used_by": "Utilisé par"
+  },
+  "profile_header": {
+    "ask_endorsement": "Demande d'endossement",
+    "heading": "Mon profile",
+    "logout": "Déconnexion",
+    "settings": "Paramètres",
+    "skills": "{{header.skills}}"
+  },
+  "skills_feedback": {
+    "select_skills": "Sélectionnez une ou plusieurs compétences pour lesquelles vous souhaitez être reconnu.e :",
+    "skill_selected": "{{count}} compétence sélectionnée",
+    "skills_selected": "{{count}} compétences sélectionnées",
+    "unselected": "non sélectionnée"
+  }
+}

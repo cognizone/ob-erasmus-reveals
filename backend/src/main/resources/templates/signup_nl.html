@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="fr">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
-<div>
-    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
-    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
-</div>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
 
-<h1 style="color: #5B43B1;font-family: Archivo;">Halo!</h1>
-<p>Welkom bij de Reveal-community, waar je je vaardigheden kunt delen, om goedkeuring kunt vragen en geven. Je kunt nu
-    goedkeuring vragen voor al je vaardigheden, zelfs die waarvan je denkt dat ze het niet waard zijn om te delen! Je
-    zou verbaasd zijn te ontdekken hoe mensen om je heen gebruiken de kennis die ze hebben opgedaan door jarenlange
-    ervaring op de werkvloer en in het privéleven.
-</p>
-<button style="
+    <h1 style="color: #5b43b1; font-family: Archivo">Hallo!</h1>
+    <p>
+      Welkom bij de Reveal-community, waar je je vaardigheden kunt delen,
+      onderschrijvingen kunt vragen en geven. Je kunt nu een onderschrijving
+      vragen voor al je vaardigheden, zelfs voor die waarvan je denkt dat ze
+      niet de moeite waard zijn om te delen! Je zult verbaasd zijn hoe mensen om
+      je heen de kennis gebruiken die ze hebben opgedaan door jarenlange
+      ervaring op het werk en in het privéleven.
+    </p>
+    <button
+      style="
         color: white;
         font-family: Archivo;
-        background-color:#5B43B1;
-        border:none;
-        border-radius:10px;
-        padding:15px;
-        min-width: 120px">
-    <a th:href="${url}" style="text-decoration: none;color: white">
-        <span>Voltooi uw profiel</span>
-    </a>
-</button>
-</body>
+        background-color: #5b43b1;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        min-width: 120px;
+      "
+    >
+      <a th:href="${url}" style="text-decoration: none; color: white">
+        <span>Maak je profiel compleet</span>
+      </a>
+    </button>
+  </body>
 </html>

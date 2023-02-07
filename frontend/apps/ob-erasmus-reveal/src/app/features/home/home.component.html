@@ -2,22 +2,17 @@
 <!-- Introduction -->
 <section *transloco="let t; read: 'home'" class="container">
   <div class="row">
-
     <!-- left part of homepage -->
     <article class="my-homepage col-12 col-lg-7">
       <h1>{{ t('heading') }}</h1>
-      <p class="my-skills-description"> {{ t('description') }}</p>
-      <!-- TODO - add app-button similar to Language PR merge -->
-      <div class="d-flex">
-        <a class="app-button" color="primary" routerLink="/signup">{{ t('promote_skills') }}</a>
-        <div class="my-skills-meta">
-          <p> {{ t('skills_meta_description') }}</p>
-        </div>
-      </div>
+      <p class="my-skills-description">{{ t('description') }}</p>
+
+      <a class="app-button my-signup" color="primary" routerLink="/signup">{{ t('promote_skills') }}</a>
+      <p class="my-skills-meta">{{ t('skills_meta_description') }}</p>
 
       <div class="my-targets">
         <div *ngFor="let target of targets">
-          <img [width]="target.imgWidth" [height]="target.imgHeight" [ngSrc]="target.imgSrc" [alt]="t(target.imgAlt)"/>
+          <img [width]="target.imgWidth" [height]="target.imgHeight" [ngSrc]="target.imgSrc" [alt]="t(target.imgAlt)" />
           <p class="my-target-label">{{ t(target.heading) }}</p>
           <p class="my-target-description">{{ t(target.content) }}</p>
         </div>
@@ -29,21 +24,23 @@
     <div class="col-12 col-lg-5 my-user-skills">
       <!-- Using *ngFor to force re-render on lang change -->
       <img
-          *ngFor="let lang of [i18nService.getActiveLang()]"
-          priority
-          [ngSrc]="'assets/images/homepage/cover_' + lang + '.webp'"
-          height="1000"
-          width="800" [alt]="t('skills_alt')"/>
+        *ngFor="let lang of [i18nService.getActiveLang()]"
+        priority
+        [ngSrc]="'assets/images/homepage/cover_' + lang + '.webp'"
+        height="1000"
+        width="800"
+        [alt]="t('skills_alt')"
+      />
     </div>
   </div>
 </section>
 <!-- Introduction ends here -->
 
 <!-- Skills Chart -->
-<section class="container my-global-skills" *transloco="let t;">
-  <h2>{{t('global.skills.heading_1')}}</h2>
-  <h3>{{t('global.skills.heading_2')}}</h3>
-  <h4>{{t('global.skills.heading_3')}}</h4>
+<section class="container my-global-skills" *transloco="let t">
+  <h2>{{ t('global.skills.heading_1') }}</h2>
+  <h3>{{ t('global.skills.heading_2') }}</h3>
+  <h4>{{ t('global.skills.heading_3') }}</h4>
   <ob-erasmus-reveal-skills-visualization></ob-erasmus-reveal-skills-visualization>
 </section>
 <!-- Skill Chart ends here -->
@@ -56,7 +53,7 @@
   <div class="container my-join-now-content">
     <ob-erasmus-reveal-join-now></ob-erasmus-reveal-join-now>
     <div class="my-member">
-      <p class="mr-3 mb-0"> {{ t('already_member') }}</p>
+      <p class="mr-3 mb-0">{{ t('already_member') }}</p>
       <a class="app-anchor" routerLink="/login">{{ t('connect') }}</a>
     </div>
   </div>

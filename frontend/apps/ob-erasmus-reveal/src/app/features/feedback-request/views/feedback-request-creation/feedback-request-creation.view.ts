@@ -28,7 +28,7 @@ import { FeedbackRequestCreationViewService } from '../../services/feedback-requ
     DialogModule,
     ProfileHeaderComponent,
     SkillsFeedbackComponent,
-    MatProgressBarModule
+    MatProgressBarModule,
   ],
   providers: [LoadingService, FeedbackRequestCreationViewService],
   templateUrl: './feedback-request-creation.view.html',
@@ -38,7 +38,7 @@ import { FeedbackRequestCreationViewService } from '../../services/feedback-requ
 export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
   selectedSkills: string[] = [];
   skills: Skill[] = [];
-  skillUris!: string[]
+  skillUris?: string[];
   constructor(
     private skillsService: SkillsService,
     private cdr: ChangeDetectorRef,
@@ -52,16 +52,19 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subSink = this.skillsService.getAll().pipe(this.loadingService.asOperator()).subscribe(skills => {
-      this.skills = skills;
+    this.subSink = this.skillsService
+      .getAll()
+      .pipe(this.loadingService.asOperator())
+      .subscribe(skills => {
+        this.skills = skills;
+        this.cdr.markForCheck();
+      });
+
+    this.subSink = this.feedbackRequestCreationViewService.skillsUris$.subscribe(skillUris => {
+      this.skillUris = skillUris;
+      this.selectedSkills = skillUris ?? [];
       this.cdr.markForCheck();
     });
-
-    this.subSink = this.feedbackRequestCreationViewService.skillsUris.subscribe(skillUris => {
-      this.skillUris = skillUris;
-      this.selectedSkills = skillUris;
-      this.cdr.markForCheck();
-    })
   }
 
   openModal(): void {
@@ -79,7 +82,7 @@ export class FeedbackRequestCreationView extends OnDestroy$ implements OnInit {
         switchMap(({ confirmed, request }) => {
           if (confirmed) return of(null);
           return this.feedbackRequestsService.delete(request['@id']);
-        }),
+        })
       )
       .subscribe(() => {
         this.router.navigate(['profile']);

@@ -4,21 +4,36 @@
       "@id": "http://reveal.org/data/relation/01",
       "@type": "RelationshipType",
       "prefLabel": {
-        "en": ["Colleague"]
+        "el": ["Συνεργάτης"],
+        "en": ["Colleague"],
+        "fr": ["Collègue"],
+        "it": ["Collega"],
+        "nl": ["Collega"],
+        "sl": ["Sodelavec"]
       }
     },
     {
       "@id": "http://reveal.org/data/relation/02",
       "@type": "RelationshipType",
       "prefLabel": {
-        "en": ["Friend"]
+        "el": ["Φίλος/η"],
+        "en": ["Friend"],
+        "fr": ["Ami"],
+        "it": ["Amico"],
+        "nl": ["Vriend"],
+        "sl": ["Prijatelj"]
       }
     },
     {
       "@id": "http://reveal.org/data/relation/03",
       "@type": "RelationshipType",
       "prefLabel": {
-        "en": ["Other"]
+        "el": ["Άλλο"],
+        "en": ["Other"],
+        "fr": ["Autre"],
+        "it": ["Altro"],
+        "nl": ["Anders"],
+        "sl": ["Drugo"]
       }
     }
   ]

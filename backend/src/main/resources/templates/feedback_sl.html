@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="sl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Ahoj!</title>
-</head>
-<body>
-<div>
-    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
-    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
-</div>
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
 
-<h1 style="color: #5B43B1;font-family: Archivo;">Ahoj!</h1>
+    <h1 style="color: #5b43b1; font-family: Archivo">Pozdravljeni!</h1>
 
-<h3 th:text="${user + ' potrebuje vašo pomoč:'} "></h3>
-<p th:text="${message}"></p>
-<button style="
+    <h3 th:text="${user + ' potrebuje tvojo pomoč:'} "></h3>
+    <p th:text="${message}"></p>
+    <button
+      style="
         color: white;
         font-family: Archivo;
-        background-color:#5B43B1;
-        border:none;
-        border-radius:10px;
-        padding:15px;
-        min-width: 120px">
-    <a th:href="${url}" style="text-decoration: none;color: white">
-        <span>Podajte svojo odobritev</span>
-    </a>
-</button>
-</body>
+        background-color: #5b43b1;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        min-width: 120px;
+      "
+    >
+      <a th:href="${url}" style="text-decoration: none; color: white">
+        <span>Podajte svoje priporočilo</span>
+      </a>
+    </button>
+  </body>
 </html>
