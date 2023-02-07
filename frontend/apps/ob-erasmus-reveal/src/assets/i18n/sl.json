@@ -1,1 +1,264 @@
-{}
+{
+  "about": {
+    "skills": {
+      "part_1": {
+        "description_1": "Vaše trde veščine je lažje prepoznati, saj so neposredno povezane z vašo vlogo. Mehke veščine pa bodo morda potrebovale dodatno potrditev.",
+        "description_2": "Projekt Reveal vam pomaga pri prejemanju povratnih informacij, s čimer krepite zaupanje v vse svoje spretnosti.",
+        "description_3": "S potrditvijo veščin in znanj s strani vaših vrstnikov so vaše spretnosti bolj prepoznane in dragocene.",
+        "heading_1": "Delite spretnosti,",
+        "heading_2": "Delite priznavanja",
+        "logo_alt": "Logotip spretnosti 1 del"
+      },
+      "part_2": {
+        "description_1": "Dajanje spontanih povratnih informacij na delovnem mestu je težavno, vendar nevroznanost pravi, da je s proaktivnim povabilom to veliko lažje.",
+        "description_2": "Kadar koli želite pridobiti mnenje sodelavcev, prijateljev ali vrstnikov, pošljite prošnjo za povratne informacije in začutite vrednost vseh svojih znanj in spretnosti.",
+        "heading_1": "Razkrijte sebe in svoje spretnosti",
+        "logo_alt": "Logotip spretnosti 2 del"
+      },
+      "part_3": {
+        "description_1": "Mehke veščine so še posebej pomembne pri pisanju življenjepisa, razgovorih in komuniciranju z ljudmi na delovnem mestu ali na drugih področjih življenja.",
+        "description_2": "Ko napredujete v procesu iskanja zaposlitve, uporabite Reveal za posodobitev svojega življenjepisa in izpostavite svoje najpomembnejše mehke veščine.",
+        "heading_1": "Pokažite ljudem, kako spretni ste",
+        "logo_alt": "Logotip spretnosti 3 del"
+      }
+    }
+  },
+  "answer_sent": {
+    "heading": "Vaši odgovori so bili poslani osebi{{ user }}",
+    "thank_you": "Hvala za vaš čas!"
+  },
+  "complete_profile": {
+    "back": "Back",
+    "complete_now": "Izpolnite svoj profil zdaj",
+    "description_1": "Zdaj lahko zaprosite za potrditev vseh svojih spretnosti, tudi tistih, za katere menite, da jih ni vredno deliti!",
+    "description_2": "Presenečeni boste, ko boste izvedeli, kako ljudje okoli vas uporabljajo znanje, ki so ga pridobili z dolgoletnimi izkušnjami na delovnem mestu in v zasebnem življenju.",
+    "get_started": {
+      "description": "Izpolnite svoj profil in si ustvarite še bolj osebno izkušnjo",
+      "heading": "Pa začnimo",
+      "start": "Začnite"
+    },
+    "greetings": "Pozdravljeni!",
+    "information": {
+      "heading": "Pripovedujte nam o sebi",
+      "point_1": {
+        "description": "Izpolnite svoj profil, da se boste predstavili v skupnosti in se povezali z drugimi usposobljenimi ljudmi.",
+        "label": "Kdo ste?"
+      },
+      "point_2": {
+        "description": "Izberite področja vaših spretnosti in nam dovolite, da vas vodimo skozi « oznake ». ",
+        "label": "Kako spretni ste?"
+      },
+      "point_3": {
+        "description": "Potrdite znanja in spretnosti ljudi, ki jih poznate, in jim pomagajte, da postanejo bolj prepoznavni.",
+        "label": "Koga želite razkriti?"
+      }
+    },
+    "step_1": {
+      "description": "Te dodatne informacije nam bodo pomagale, da vam zagotovimo še bolj osebno izkušnjo",
+      "heading": "Izpolnite svoj profil"
+    },
+    "step_2": {
+      "description": "Te dodatne informacije nam bodo pomagale izboljšati stran << spretnosti >>.",
+      "heading": "Delite svojo lokacijo"
+    },
+    "welcome_to_reveal": "Dobrodošli v skupnost Reveal, kjer lahko delite svoje spretnosti, prosite za potrditve in jih tudi dajete."
+  },
+  "email_confirmation": {
+    "check_inbox": "Preverite svoj poštni predal",
+    "close": "Zapri pogovorno okno",
+    "email_sent": "E-poštno sporočilo je bilo pravilno poslano",
+    "get_started": "Začnite s klikom na povezavo, ki smo vam jo poslali",
+    "send_again": "Ponovno pošljite"
+  },
+  "endorse_skills": {
+    "back": "Nazaj",
+    "country": "{{global.country}}",
+    "email": "{{global.email}}",
+    "feedback_given": {
+      "homepage": "Pojdite na začetno stran"
+    },
+    "name": "{{global.name}}",
+    "next": "{{global.next}}",
+    "optional": "(optional)",
+    "relationship_level": "Vaša raven odnosa z {{ user }}",
+    "select_relationship": "Izberite odnos",
+    "start": "Začnite",
+    "step_0": {
+      "description": "Hvala, ker ste si vzeli čas in odgovorili na to prošnjo za potrditev spretosti. Ne skrbite, izpolnjevanje vam ne bo vzelo veliko časa.",
+      "heading": "Dorbodošli"
+    },
+    "step_1": {
+      "about": "Povejte nam več o sebi",
+      "description": "Hvala, ker ste si vzeli čas in odgovorili na to prošnjo za potrditev spretnosti. Izpolnjevanje vam ne bo vzelo veliko časa.",
+      "heading": "Prošnja za potrditev spretnosti od {{ user }}"
+    },
+    "step_2": {
+      "description": "Podatke o lokaciji naših uporabnikov uporabljamo za izboljšanje informacij na strani « spretnosti »",
+      "heading": "Delite svojo lokacijo"
+    },
+    "step_3": {
+      "heading": "Katere {{ user }} spretnosti potrjujete?"
+    },
+    "step_4": {
+      "heading": "Zakaj potrjujete te spretnosti za {{ user }}?",
+      "placeholder_text": "Napišite svoje mnjenje",
+      "send_answers": "Pošljite svoje odgovore"
+    },
+    "surname": "{{global.surname}}"
+  },
+  "feedback_request": {
+    "creation": {
+      "cancel": "{{global.cancel}}",
+      "description": "S tem obrazcem lahko zaprosite za potrditev znanj in spretnosti.",
+      "heading": "Prošnja za potrditev spretnosti",
+      "next": "{{global.next}}",
+      "selected": "izbrano"
+    },
+    "creation_modal": {
+      "cancel": "{{global.cancel}}",
+      "copy": "Kopiraj",
+      "default_message": "Pozdravljeni, \nČe želite potrditi moje sposobnosti, mi lahko podate nekaj povratnih informacij? \nHvala.",
+      "email_heading": "Pošljite prošnjo",
+      "email_tab": "Po elektronski pošti",
+      "feedback_sent": "Vaša prošja je bila pravilno poslana",
+      "from": "Od",
+      "link": "Povezava",
+      "link_heading": "Pošljite obrazec",
+      "link_tab": "Z povezavo",
+      "message": "Sporočilo",
+      "send": "Pošljite",
+      "to": "na naslove",
+      "to_caption": "Elektronska sporočila ločite z vejico."
+    }
+  },
+  "footer": {
+    "accessibility": "Dostopnost",
+    "discover": "Odkrijte",
+    "follow": "Spremljajte nas",
+    "help": "Pomoč",
+    "join_now": "Pridružite se in takoj začnite deliti svoje spretnosti",
+    "privacy_policy": "Politika zasebnosti",
+    "social_media": {
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    },
+    "terms_of_use": "Pogoji uporabe"
+  },
+  "global": {
+    "about": "Kaj je Reveal?",
+    "about_tags": "O oznakah",
+    "application_name": "Reveal",
+    "cancel": "Prekliči",
+    "country": "Država",
+    "email": "Elektronski naslov",
+    "email_invalid_error": "Vaš elektronski naslov se zdi napačen. Prosimo, poskusite znova.",
+    "email_placeholder": "Vpišite svoj elektronski naslov",
+    "join": "Pridružite se",
+    "login_alt": "Prijavite se",
+    "logo_alt": "Logotip prijave",
+    "name": "Ime",
+    "next": "Naslednji",
+    "sign_up_alt": "Registrirajte se",
+    "skills": {
+      "heading_1": "Raziščite 27 spretnosti",
+      "heading_2": "ki jih uporablja več kot 12.000 ljudi.",
+      "heading_3": "v 21 državah"
+    },
+    "success": "Uspeh",
+    "surname": "Priimek",
+    "unknown_error": "Neznana napaka"
+  },
+  "global_skills_visualization": {
+    "description": "Spoznajte več o 27 spretnostih projekta Projet Européen Léonardo Transfert de l'innovation - OPC-SFC / tableau des SFC, ki jih uporablja več kot 12.000 ljudi",
+    "heading": "{{header.skills}}"
+  },
+  "header": {
+    "get_started": "Začnimo",
+    "sign_in": "Prijavite se",
+    "skills": "Spretnosti"
+  },
+  "home": {
+    "description": "Reveal vam pomaga spodbujati vaše spretnosti in krepiti osebni razvoj.",
+    "heading": "Naj bodo vaše spretnosti odločilne",
+    "promote_skills": "Začnite promovirati svoja znanja in spretnosti",
+    "skills_alt": "Več spretnosti za posameznega uporabnika",
+    "skills_meta_description": "Brezplačno, začnite zdaj in zberite potrditve svojih spretnosti s strani drugih oseb.",
+    "target_1": {
+      "description": "Vaša prepoznavnost",
+      "image_alt": "prepoznavnost",
+      "label": "Izboljšajte"
+    },
+    "target_2": {
+      "description": "vaš ugled",
+      "image_alt": "ugled",
+      "label": "Okrepite"
+    },
+    "target_3": {
+      "description": "svoje reference",
+      "image_alt": "reference",
+      "label": "Ustvari"
+    }
+  },
+  "join_now": {
+    "action_points": {
+      "image_alt": "opombe, ki jih je treba upoštevati",
+      "point_1": "Ukrepajte na področju osebnega razvoja",
+      "point_2": "Bodite bolj samozavestni v svoji vlogi",
+      "point_3": "Predstavite vsa svoja znanja in spretnosti",
+      "point_4": "Razvijajte svojo kariero"
+    },
+    "already_member": "Ste že član?",
+    "and": "in",
+    "connect": "Povežite se",
+    "description": "z drugimi, ki uporabljajo Reveal, da bi dobili potrditev svojih spretnosti.",
+    "heading": "Izboljšajte svojo igro, pridružite se projektu Reveal",
+    "join": "Pridružite se",
+    "join_now": "Pridružite se zdaj",
+    "must_be_connected": "Če želite uporabljati to funkcijo, morate biti povezani.",
+    "not_a_member": "Niste član?",
+    "skills_description": "Pridružite se nam in takoj začnite deliti svoje spretnosti, zaprosite za potrditve in podajte povratne informacije.",
+    "unlock_access": "Odklenite neomejen dostop do storitev projekta Reveal z enim samim klikom",
+    "user_exists": "Uporabnik že obstaja, vnesite novo elektronsko pošto"
+  },
+  "language_selection": {
+    "heading": "Jezik"
+  },
+  "login": {
+    "no_user_found": "Napaka: Uporabnik ne obstaja, prosimo, da se registrirate."
+  },
+  "profile": {
+    "across": "Across",
+    "add_new_description": "Če želite v svoj profil dodati nova znanja in spretnosti, morate za potrditev prositi svoje vrstnike, prijatelje in sodelavce.",
+    "add_new_heading": "Vse pripravljeno! Zdaj dodajte še nekaj spretnosti",
+    "alt_logo": "logotip profila",
+    "ask_endorsement_skill": "Zaprosi za potrditev te spretnosti",
+    "ask_for_endorsement": "Zaprosi za potrditev",
+    "back": "Nazaj",
+    "countries_count": "{{ count }} države",
+    "country_count": "{{ count }} država",
+    "description": "Opis",
+    "endorsement_count": "{{ count }} potrditev",
+    "endorsements_count": "{{count}} potrditve",
+    "last_endorsement_from": "Zadnja potrditev od",
+    "people_count": "{{ count }} ljudje",
+    "skill_alt_logo": "Logotip spretnosti",
+    "skill_count": "{{ count }} spretnost",
+    "skills_count": "{{count}} {{header.skills}}",
+    "total": "Skupaj",
+    "used_by": "Uporabljeno s strani"
+  },
+  "profile_header": {
+    "ask_endorsement": "Zaposite za potrditev svojih veščin",
+    "heading": "Moj profil",
+    "logout": "Odjavite se",
+    "settings": "Nastavitve",
+    "skills": "{{header.skills}}"
+  },
+  "skills_feedback": {
+    "select_skills": "Izberite 1 ali več spretnosti, za katere želite potrditev:",
+    "skill_selected": "{{count}} izbrana spretnost",
+    "skills_selected": "{{count}} izbrane spretnosti",
+    "unselected": "neizbrano"
+  }
+}

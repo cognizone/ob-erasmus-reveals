@@ -4,13 +4,28 @@
       "@id": "http://reveal.org/data/skill/01",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Acceptance of criticism"]
+        "el": ["Αποδοχή της κριτικής"],
+        "en": ["Acceptance of criticism"],
+        "fr": ["Acceptation de la critique"],
+        "it": ["Accettazione delle critiche"],
+        "nl": ["Acceptatie van kritiek"],
+        "sl": ["Sprejemanje kritike"]
       },
       "quote": {
-        "en": ["I accept comments in order to improve my work"]
+        "el": ["Δέχομαι σχόλια για να βελτιώσω τη δουλειά μου"],
+        "en": ["I accept comments in order to improve my work"],
+        "fr": ["J'accepte les commentaires afin d'améliorer mon travail"],
+        "it": ["Accetto i commenti per migliorare il mio lavoro"],
+        "nl": ["Ik accepteer opmerkingen om mijn werk te verbeteren"],
+        "sl": ["Sprejmem pripombe, da izboljšam svoje delo"]
       },
       "description": {
-        "en": ["Ability to receive feedback and comments to improve work"]
+        "el": ["Ικανότητα αποδοχής εποικοδομητικής κριτικής και σχολίων για τη βελτίωση της εργασίας"],
+        "en": ["Ability to receive feedback and comments to improve work"],
+        "fr": ["Capacité à recevoir des réactions et des commentaires pour améliorer le travail"],
+        "it": ["Capacità di ricevere feedback e commenti per migliorare il proprio lavoro"],
+        "nl": ["Mogelijkheid om feedback en opmerkingen te ontvangen om het werk te verbeteren"],
+        "sl": ["Sposobnost sprejemanja povratnih informacij in pripomb za izboljšanje dela"]
       },
       "itemStyle": {
         "color": "#54c98d"
@@ -23,13 +38,28 @@
       "@id": "http://reveal.org/data/skill/02",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Adaptability"]
+        "el": ["Προσαρμοστικότητα"],
+        "en": ["Adaptability"],
+        "fr": ["Adaptabilité"],
+        "it": ["Adattabilità"],
+        "nl": ["Aanpassingsvermogen"],
+        "sl": ["Prilagodljivost"]
       },
       "quote": {
-        "en": ["I'm tuning in"]
+        "el": ["Συντονίζομαι"],
+        "en": ["I'm tuning in"],
+        "fr": ["Je suis à l'écoute"],
+        "it": ["Mi so adattare"],
+        "nl": ["Ik luister"],
+        "sl": ["Prilagajam se"]
       },
       "description": {
-        "en": ["Ability to accept and integrate changes; to adapt to people and the environment in a positive way"]
+        "el": ["Ικανότητα αποδοχής και ενσωμάτωσης των αλλαγών και προσαρμογής στους ανθρώπους και το περιβάλλον με θετικό τρόπο"],
+        "en": ["Ability to accept and integrate changes; to adapt to people and the environment in a positive way"],
+        "fr": ["Capacité d'accepter et d'intégrer les changements et de s'adapter aux personnes et à l'environnement de manière positive."],
+        "it": ["Capacità di accettare e integrare i cambiamenti e adattarsi alle persone e all’ambiente in maniera positiva"],
+        "nl": ["Vermogen om veranderingen te accepteren en te integreren en zich op een positieve manier aan te passen aan mens en omgeving."],
+        "sl": ["Sposobnost sprejemanja in vključevanja sprememb ter pozitivnega prilagajanja ljudem in okolju"]
       },
       "itemStyle": {
         "color": "#3d48b7"
@@ -42,13 +72,28 @@
       "@id": "http://reveal.org/data/skill/03",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Analytical skills"]
+        "el": ["Αναλυτικές δεξιότητες"],
+        "en": ["Analytical skills"],
+        "fr": ["Compétences analytiques"],
+        "it": ["Capacità analitiche"],
+        "nl": ["Analytische vaardigheden"],
+        "sl": ["Analitične veščine"]
       },
       "quote": {
-        "en": ["I analyse problems to find solutions"]
+        "el": ["Αναλύω προβλήματα για να βρω λύσεις"],
+        "en": ["I analyse problems to find solutions"],
+        "fr": ["J'analyse les problèmes pour trouver des solutions"],
+        "it": ["Analizzo i problemi per trovare soluzioni"],
+        "nl": ["Ik analyseer problemen om oplossingen te vinden"],
+        "sl": ["Analiziram probleme in iščem rešitve"]
       },
       "description": {
-        "en": ["Ability to reflect, use logic and judgement in decision-making and problem evaluation"]
+        "el": ["Ικανότητα προβληματισμού και χρήσης λογικής και κρίσης κατά τη λήψη αποφάσεων, αξιολόγηση προβλημάτων ή καταστάσεων με έρευνα και αξιολόγηση της κατάστασης.\nανάλυση των διαφόρων στοιχείων\n"],
+        "en": ["Ability to reflect and use logic and judgement in making decisions, evaluate problems or situations by researching and evaluating the situation.\nanalysing the different components\n"],
+        "fr": ["Capacité à réfléchir et à utiliser la logique et le jugement pour prendre des décisions, évaluer des problèmes ou des situations en faisant des recherches et en évaluant la situation.\nl'analyse des différents composants\n"],
+        "it": ["Capacità di riflettere e usare la logica e il giudizio nel prendere decisioni, valutare problemi o situazioni ricercando e valutando la situazione, analizzando le differenti componenti"],
+        "nl": ["Vermogen om dingen door te denken en logica en beoordelingsvermogen te gebruiken om beslissingen te nemen, problemen of situaties te beoordelen door de situatie te onderzoeken en te beoordelen.\nanalyse van de verschillende onderdelen\n"],
+        "sl": ["Sposobnost razmišljanja in uporabe logike ter presoje pri sprejemanju odločitev, ocenjevanja problemov ali situacij z raziskovanjem in ocenjevanjem razmer\nAnaliziranje različnih sestavnih delov\n"]
       },
       "itemStyle": {
         "color": "#c0f2ef"
@@ -61,13 +106,28 @@
       "@id": "http://reveal.org/data/skill/04",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Assertiveness"]
+        "el": ["Αυτοπεποίθηση"],
+        "en": ["Assertiveness"],
+        "fr": ["Assertivité"],
+        "it": ["Assertività"],
+        "nl": ["Assertiviteit"],
+        "sl": ["Asertivnost"]
       },
       "quote": {
-        "en": ["Neither aggression, nor submission, nor manipulation"]
+        "el": ["Ούτε επιθετικότητα, ούτε υποταγή, ούτε χειραγώγηση"],
+        "en": ["Neither aggression, nor submission, nor manipulation"],
+        "fr": ["Ni l'agression, ni la soumission, ni la manipulation"],
+        "it": ["Né aggressività, né sottomissione, né manipolazione"],
+        "nl": ["Noch agressie, noch onderwerping, noch manipulatie"],
+        "sl": ["Ne agresija, ne podrejanje, ne manipulacija"]
       },
       "description": {
-        "en": ["Ability to express oneself and defend one's rights without infringing on those of others"]
+        "el": ["Ικανότητα να εκφράζεται και να υπερασπίζεται τα δικαιώματά του χωρίς να παραβιάζει τα δικαιώματα των άλλων"],
+        "en": ["Ability to express oneself and defend one's rights without infringing on those of others"],
+        "fr": ["Capacité à s'exprimer et à défendre ses droits sans empiéter sur ceux des autres."],
+        "it": ["Capacità di esprimersi e difendere i propri diritti senza infrangere quelli degli altri"],
+        "nl": ["Vermogen om zichzelf uit te drukken en zijn rechten te verdedigen zonder inbreuk te maken op die van anderen."],
+        "sl": ["Sposobnost izražanja in zagovarjanja svojih pravic brez poseganja v pravice drugih."]
       },
       "itemStyle": {
         "color": "#e6dc29"
@@ -80,13 +140,28 @@
       "@id": "http://reveal.org/data/skill/05",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Attendance"]
+        "el": ["Συνέπεια"],
+        "en": ["Attendance"],
+        "fr": ["Présence"],
+        "it": ["Partecipazione"],
+        "nl": ["Aanwezigheid"],
+        "sl": ["Udeležba"]
       },
       "quote": {
-        "en": ["I am faithful to the post"]
+        "el": ["Είμαι αφοσιωμένος/η στη θέση"],
+        "en": ["I am faithful to the post"],
+        "fr": ["Je suis fidèle au poste"],
+        "it": ["Sono devoto al mio lavoro"],
+        "nl": ["Ik ben loyaal aan de positie"],
+        "sl": ["Zvest sem objavi"]
       },
       "description": {
-        "en": ["Ability to provide a regular and sustained active presence"]
+        "el": ["Ικανότητα τακτικής και διαρκούς ενεργού παρουσίας"],
+        "en": ["Ability to provide a regular and sustained active presence"],
+        "fr": ["Capacité à assurer une présence active régulière et soutenue"],
+        "it": ["Capacità di fornire una regolare e attiva presenza al lavoro"],
+        "nl": ["Mogelijkheid om te zorgen voor een regelmatige en aanhoudende actieve aanwezigheid"],
+        "sl": ["Sposobnost zagotavljanja redne in trajne aktivne prisotnosti"]
       },
       "itemStyle": {
         "color": "#b3d8e5"
@@ -99,13 +174,28 @@
       "@id": "http://reveal.org/data/skill/06",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Attention"]
+        "el": ["Προσοχή"],
+        "en": ["Attention"],
+        "fr": ["Attention"],
+        "it": ["Attenzione"],
+        "nl": ["Aandacht"],
+        "sl": ["Pozornost"]
       },
       "quote": {
-        "en": ["I am focused on my task"]
+        "el": ["Είμαι συγκεντρωμένος στην εργασία μου"],
+        "en": ["I am focused on my task"],
+        "fr": ["Je suis concentré sur ma tâche"],
+        "it": ["Sono concentrato/a sulle mie mansioni"],
+        "nl": ["Ik ben gefocust op mijn taak"],
+        "sl": ["Osredotočen sem na svojo nalogo"]
       },
       "description": {
-        "en": ["Ability to voluntarily focus one's mind on a specific object or task"]
+        "el": ["Ικανότητα εκούσιας εστίασης του νου σε ένα συγκεκριμένο αντικείμενο ή έργο"],
+        "en": ["Ability to voluntarily focus one's mind on a specific object or task"],
+        "fr": ["Capacité à concentrer volontairement son esprit sur un objet ou une tâche spécifique."],
+        "it": ["Capacità di concentrare la propria mente su un oggetto o una mansione specifica"],
+        "nl": ["Het vermogen om vrijwillig je geest te richten op een specifiek object of een specifieke taak."],
+        "sl": ["Sposobnost prostovoljnega osredotočanja misli na določen predmet ali nalogo"]
       },
       "itemStyle": {
         "color": "#f3da9a"
@@ -118,13 +208,28 @@
       "@id": "http://reveal.org/data/skill/07",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Autonomy"]
+        "el": ["Αυτονομία"],
+        "en": ["Autonomy"],
+        "fr": ["Autonomie"],
+        "it": ["Autonomia"],
+        "nl": ["Autonomie"],
+        "sl": ["Avtonomija"]
       },
       "quote": {
-        "en": ["I'm in charge"]
+        "el": ["Είμαι υπεύθυνος"],
+        "en": ["I'm in charge"],
+        "fr": ["Je suis en charge"],
+        "it": ["Sono a capo della situazione"],
+        "nl": ["ik heb de leiding"],
+        "sl": ["Jaz sem odgovoren"]
       },
       "description": {
-        "en": ["Ability to take responsibility for oneself in order to take action at the appropriate time in a given context"]
+        "el": ["Ικανότητα ανάληψης ευθύνης για τον εαυτό του, ώστε να αναλαμβάνει δράση την κατάλληλη στιγμή\nσε ένα δεδομένο πλαίσιο\n"],
+        "en": ["Ability to take responsibility for oneself in order to take action at the appropriate time in a given context"],
+        "fr": ["Capacité à se prendre en charge afin d'agir au moment opportun, dans un contexte donné"],
+        "it": ["Capacità di responsabilizzarsi per agire a tempo debito in un dato contesto"],
+        "nl": ["Vermogen om de leiding over zichzelf te nemen om te handelen op het juiste moment, in een bepaalde context"],
+        "sl": ["Sposobnost prevzemanja odgovornosti zase in ukrepanja ob ustreznem času v danem kontekstu"]
       },
       "itemStyle": {
         "color": "#c0f2cb"
@@ -137,13 +242,28 @@
       "@id": "http://reveal.org/data/skill/08",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Care"]
+        "el": ["Σχολαστικότητα"],
+        "en": ["Care"],
+        "fr": ["Soins"],
+        "it": ["Cura"],
+        "nl": ["Zorg"],
+        "sl": ["Oskrba"]
       },
       "quote": {
-        "en": ["My work is neat, clean and tidy"]
+        "el": ["Η δουλειά μου είναι τακτοποιημένη και καθαρή"],
+        "en": ["My work is neat, clean and tidy"],
+        "fr": ["Mon travail est soigné, propre et ordonné."],
+        "it": ["Il mio lavoro è preciso, pulito e sistemato"],
+        "nl": ["Mijn werk is netjes, schoon en ordelijk."],
+        "sl": ["Moje delovno mesto je urejeno, čisto in pospravljeno"]
       },
       "description": {
-        "en": ["Ability to care for the cleanliness, neatness and thoroughness of the tasks performed"]
+        "el": ["Ικανότητα να φροντίζει για την καθαριότητα, την ευταξία και τη σχολαστικότητα των εργασιών που εκτελεί"],
+        "en": ["Ability to care for the cleanliness, neatness and thoroughness of the tasks performed"],
+        "fr": ["Capacité à veiller à la propreté, à l'ordre et à la rigueur des tâches effectuées"],
+        "it": ["Capacità di prendersi cura della pulizia, precisione e completezza del compito da portare a termine"],
+        "nl": ["Mogelijkheid om de netheid, orde en nauwkeurigheid van de uitgevoerde taken te waarborgen"],
+        "sl": ["Sposobnost skrbeti za čistočo, urejenost in temeljitost opravljenih nalog"]
       },
       "itemStyle": {
         "color": "#c365d2"
@@ -156,13 +276,28 @@
       "@id": "http://reveal.org/data/skill/09",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Communication"]
+        "el": ["Επικοινωνία"],
+        "en": ["Communication"],
+        "fr": ["Communication"],
+        "it": ["Comunicazione"],
+        "nl": ["Communicatie"],
+        "sl": ["Komunikacija"]
       },
       "quote": {
-        "en": ["Message received! Transmitter ok receiver ok"]
+        "el": ["Μήνυμα ελήφθη! Ακούω καθαρά, Μιλάω καθαρά!"],
+        "en": ["Message received! Transmitter ok receiver ok"],
+        "fr": ["Message reçu ! Emetteur ok récepteur ok"],
+        "it": ["Messaggio ricevuto! Trasmettitore ok ricevente ok"],
+        "nl": ["Bericht ontvangen ! Zender ok, ontvanger ok"],
+        "sl": ["Prejeto sporočilo! Oddajnik ok sprejemnik ok"]
       },
       "description": {
-        "en": ["Ability to relate to others, to convey a message by adapting to the person and the circumstances"]
+        "el": ["Ικανότητα να σχετίζεσαι με άλλους, να μεταφέρεις ένα μήνυμα σε άλλους και να προσαρμόζεις το  ανάλογα με τα πρόσωπα και τις περιστάσεις"],
+        "en": ["Ability to relate to others, to convey a message by adapting to the person and the circumstances"],
+        "fr": ["Capacité à établir des relations avec les autres, à transmettre un message aux autres en s'adaptant à la personne et aux circonstances"],
+        "it": ["Capacità di relazionarsi con gli altri, di veicolare un messaggio agli altri, passare un messaggio a qualcuno adattandomi alla persona e alle circostanze"],
+        "nl": ["Vermogen om zich tot anderen te verhouden, een boodschap aan anderen over te brengen door zich aan te passen aan de persoon en de omstandigheden"],
+        "sl": ["Sposobnost navezovanja stikov z drugimi in posredovanja sporočila drugim\nSporočilo nekomu posredovati tako, da se prilagodi osebi in okoliščinam\n"]
       },
       "itemStyle": {
         "color": "#8acaff"
@@ -175,13 +310,28 @@
       "@id": "http://reveal.org/data/skill/10",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Compliance with the rules"]
+        "el": ["Συμμόρφωση με τους κανόνες"],
+        "en": ["Compliance with the rules"],
+        "fr": ["Respect des règles"],
+        "it": ["Rispetto delle regole"],
+        "nl": ["Het respecteren van de regels"],
+        "sl": ["Skladnost s pravili"]
       },
       "quote": {
-        "en": ["I take into account the regulations"]
+        "el": ["Λαμβάνω υπόψη τους κανονισμούς"],
+        "en": ["I take into account the regulations"],
+        "fr": ["Je prends en compte les règlements"],
+        "it": ["Prendo in considerazione le regole"],
+        "nl": ["Ik houd rekening met de regelgeving"],
+        "sl": ["Upoštevam predpise"]
       },
       "description": {
-        "en": ["Ability to comply with requirements, regulations, administrative procedures and operating rules"]
+        "el": ["Ικανότητα συμμόρφωσης με τις απαιτήσεις, τους κανονισμούς, τις διοικητικές διαδικασίες και τους κανόνες λειτουργίας"],
+        "en": ["Ability to comply with requirements, regulations, administrative procedures and operating rules"],
+        "fr": ["Capacité à se conformer aux exigences, aux règlements, aux procédures administratives et aux règles de fonctionnement."],
+        "it": ["Capacità di rispettare i requisiti, le regole, le procedure amministrative e le regole operative"],
+        "nl": ["Mogelijkheid om te voldoen aan vereisten, voorschriften, administratieve procedures en bedrijfsregels."],
+        "sl": ["Sposobnost upoštevanja zahtev, predpisov, upravnih postopkov in operativnih pravil"]
       },
       "itemStyle": {
         "color": "#ed944d"
@@ -194,13 +344,28 @@
       "@id": "http://reveal.org/data/skill/11",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Decision-making capacity"]
+        "el": ["Ικανότητα λήψης αποφάσεων"],
+        "en": ["Decision-making capacity"],
+        "fr": ["Capacité de décision"],
+        "it": ["Capacità decisionali"],
+        "nl": ["Besluitvaardigheid"],
+        "sl": ["Sposobnost odločanja"]
       },
       "quote": {
-        "en": ["I slice"]
+        "el": ["Το παίρνω πάνω μου!"],
+        "en": ["I slice"],
+        "fr": ["Je tranche"],
+        "it": ["Sono sempre sul pezzo"],
+        "nl": ["ik snij"],
+        "sl": ["Strukturiram in definiram"]
       },
       "description": {
-        "en": ["Ability to make a decision when faced with a set of facts"]
+        "el": ["Ικανότητα λήψης απόφασης όταν βρίσκεται αντιμέτωπη με ένα σύνολο γεγονότων"],
+        "en": ["Ability to make a decision when faced with a set of facts"],
+        "fr": ["Capacité à prendre une décision face à un ensemble de faits."],
+        "it": ["Capacità di prendere decisioni davanti ad una serie di fatti"],
+        "nl": ["Vermogen om een \u200B\u200Bbeslissing te nemen in het licht van een reeks feiten."],
+        "sl": ["Sposobnost sprejemanja odločitev na podlagi določenih dejstev"]
       },
       "itemStyle": {
         "color": "#d6e5db"
@@ -213,13 +378,28 @@
       "@id": "http://reveal.org/data/skill/12",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Efficiency"]
+        "el": ["Αποδοτικότητα"],
+        "en": ["Efficiency"],
+        "fr": ["Efficacité"],
+        "it": ["Efficienza"],
+        "nl": ["Efficiëntie"],
+        "sl": ["Učinkovitost"]
       },
       "quote": {
-        "en": ["I achieve my objectives on time with the given means"]
+        "el": ["Επιτυγχάνω τους στόχους μου εγκαίρως με τα διαθέσιμα μέσα"],
+        "en": ["I achieve my objectives on time with the given means"],
+        "fr": ["J'atteins mes objectifs à temps avec les moyens donnés"],
+        "it": ["Raggiungo i miei obiettivi in tempo con i mezzi a disposizione"],
+        "nl": ["Ik bereik mijn doelen op tijd met de gegeven middelen"],
+        "sl": ["Z danimi sredstvi pravočasno dosežem svoje cilje"]
       },
       "description": {
-        "en": ["Ability to produce the expected results on time and to achieve the set objectives"]
+        "el": ["Ικανότητα να παράγω τα αναμενόμενα αποτελέσματα εγκαίρως και να επιτυγχάνω τους στόχους που έχουν τεθεί"],
+        "en": ["Ability to produce the expected results on time and to achieve the set objectives"],
+        "fr": ["Capacité à produire les résultats attendus à temps et à atteindre les objectifs fixés."],
+        "it": ["Capacità di produrre i risultati attesi in tempo e raggiungere gli obiettivi prefissati"],
+        "nl": ["Mogelijkheid om op tijd verwachte resultaten te leveren en gestelde doelen te bereiken."],
+        "sl": ["Sposobnost pravočasnega doseganja pričakovanih rezultatov in uresničevanja zastavljenih ciljev"]
       },
       "itemStyle": {
         "color": "#0c6e6a"
@@ -232,13 +412,28 @@
       "@id": "http://reveal.org/data/skill/13",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Initiative"]
+        "el": ["Πρωτοβουλία"],
+        "en": ["Initiative"],
+        "fr": ["Initiative"],
+        "it": ["Iniziativa"],
+        "nl": ["Initiatief"],
+        "sl": ["Pobuda"]
       },
       "quote": {
-        "en": ["I dare to be proactive"]
+        "el": ["Τολμώ να είμαι ένα βήμα μπροστά!"],
+        "en": ["I dare to be proactive"],
+        "fr": ["J'ose être proactif"],
+        "it": ["Ho il coraggio di essere proattivo"],
+        "nl": ["Ik durf proactief te zijn"],
+        "sl": ["Drznem si biti proaktiven"]
       },
       "description": {
-        "en": ["Ability to be proactive in anticipating needs and demands independently, without instructions or guidelines."]
+        "el": ["Ικανότητα να αναλαμβάνει δράση, να υπολογίζει ενδεχόμενους κινδύνους και να προβλέπει μελλοντικές ανάγκες ακόμα και αν δεν έχει λάβει σχετικές οδηγίες ή κατευθυντήριες γραμμές, προκειμένου να αλλάξει μια κατάσταση"],
+        "en": ["Ability to be proactive in anticipating needs and demands independently, without instructions or guidelines."],
+        "fr": ["Capacité à se prendre en charge, à prendre des risques calculés et à être proactif en anticipant les besoins et les demandes de manière autonome, sans avoir reçu d'instructions ou des directives, afin de changer une situation"],
+        "it": ["Capacità di prendere l’iniziativa, prendere rischi calcolati ed essere proattivo nell’anticipare I bisogni e le esigenze in maniera indipendente, senza aver ricevuto istruzioni, guide o indicazioni, per cambiare una situazione"],
+        "nl": ["Vermogen om de leiding te nemen, berekende risico's te nemen en proactief te zijn in het zelfstandig anticiperen op behoeften en verzoeken, zonder instructies of richtlijnen te hebben ontvangen, om een \u200B\u200Bsituatie te veranderen"],
+        "sl": ["Sposobnost prevzemanja odgovornosti, tveganj in proaktivnega predvidevanja potreb in zahtev samostojno, brez prejetih navodil znakov ali smernic, da bi spremenili položaj"]
       },
       "itemStyle": {
         "color": "#74c954"
@@ -251,13 +446,28 @@
       "@id": "http://reveal.org/data/skill/14",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Innovation"]
+        "el": ["Καινοτομία"],
+        "en": ["Innovation"],
+        "fr": ["Innovation"],
+        "it": ["Innovazione"],
+        "nl": ["Innovatie"],
+        "sl": ["Inovacije"]
       },
       "quote": {
-        "en": ["I solve problems in an original and effective way"]
+        "el": ["Επιλύω προβλήματα με πρωτότυπο και αποτελεσματικό τρόπο"],
+        "en": ["I solve problems in an original and effective way"],
+        "fr": ["Je résous les problèmes de manière originale et efficace"],
+        "it": ["Risolvo problem in maniera originale ed efficace"],
+        "nl": ["Ik los problemen op een originele en effectieve manier op"],
+        "sl": ["Težave rešujem na izviren in učinkovit način"]
       },
       "description": {
-        "en": ["Ability to introduce novelty in problem solving"]
+        "el": ["Ικανότητα εισαγωγής καινοτομίας στην επίλυση προβλημάτων"],
+        "en": ["Ability to introduce novelty in problem solving"],
+        "fr": ["Capacité à introduire de la nouveauté dans la résolution des problèmes"],
+        "it": ["Capacità di introdurre novità nella risoluzione dei problemi"],
+        "nl": ["Mogelijkheid om nieuwigheden in het oplossen van problemen te introduceren"],
+        "sl": ["Sposobnost uvajanja novosti pri reševanju problemov"]
       },
       "itemStyle": {
         "color": "#627712"
@@ -270,13 +480,28 @@
       "@id": "http://reveal.org/data/skill/15",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Intellectual curiosity"]
+        "el": ["Διανοητική περιέργεια"],
+        "en": ["Intellectual curiosity"],
+        "fr": ["Curiosité intellectuelle"],
+        "it": ["Curiosità intellettuale"],
+        "nl": ["Intellectuele nieuwsgierigheid"],
+        "sl": ["Intelektualna radovednost"]
       },
       "quote": {
-        "en": ["I am intellectually curious about my job"]
+        "el": ["Είμαι διανοητικά περίεργος για τη δουλειά μου"],
+        "en": ["I am intellectually curious about my job"],
+        "fr": ["Je suis intellectuellement curieux de mon travail"],
+        "it": ["Sono intellettualmente curioso del mio lavoro"],
+        "nl": ["Ik ben intellectueel nieuwsgierig naar mijn werk"],
+        "sl": ["Moje delo me intelektualno zanima"]
       },
       "description": {
-        "en": ["Ability to be open-minded, to continuously acquire new knowledge and learn from previous experiences"]
+        "el": ["Ικανότητα να διευρύνει κανείς τις γνώσεις του, να είναι ανοιχτόμυαλος, να αποκτά συνεχώς νέες γνώσεις και να μαθαίνει από προηγούμενες εμπειρίες"],
+        "en": ["Ability to open up one's knowledge, to be open-minded, to continuously acquire new knowledge and to learn from previous experiences"],
+        "fr": ["Capacité d'ouvrir ses connaissances, de faire preuve d'ouverture d'esprit, d'acquérir continuellement de nouvelles connaissances et de tirer des enseignements des expériences antérieures"],
+        "it": ["Capacità di aprirsi a nuove conoscenze, essere aperto mentalmente, acquisire continuamente nuove conoscenze e imparare dalle esperienze pregresse"],
+        "nl": ["Vermogen om kennis uit te breiden, ruimdenkend te zijn, voortdurend nieuwe kennis op te doen en te leren van ervaringen uit het verleden"],
+        "sl": ["Sposobnost odprtosti za znanje, odprtega duha, nenehnega pridobivanja novega znanja in učenja iz prejšnjih izkušenj."]
       },
       "itemStyle": {
         "color": "#b98ca4"
@@ -289,13 +514,28 @@
       "@id": "http://reveal.org/data/skill/16",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Motivation"]
+        "el": ["Θετική Στάση"],
+        "en": ["Motivation"],
+        "fr": ["Motivation"],
+        "it": ["Motivazione"],
+        "nl": ["Motivatie"],
+        "sl": ["Motivacija"]
       },
       "quote": {
-        "en": ["I am enthusiastic in carrying out my tasks"]
+        "el": ["Είμαι ενθουσιώδης κατά την εκτέλεση των καθηκόντων μου"],
+        "en": ["I am enthusiastic in carrying out my tasks"],
+        "fr": ["Je suis enthousiaste dans l'exécution de mes tâches"],
+        "it": ["Sono entusiasta nel portare a termine i miei compiti"],
+        "nl": ["Ik ben enthousiast in de uitvoering van mijn taken"],
+        "sl": ["Z navdušenjem opravljam svoje naloge"]
       },
       "description": {
-        "en": ["Ability to have energy, vitality, to show interest and enthusiasm in a professional task"]
+        "el": ["Ικανότητα να έχω ενέργεια και ζωτικότητα και να δείχνω ενδιαφέρον και ενθουσιασμό για ένα επαγγελματικό έργο"],
+        "en": ["Ability to have energy, vitality, to show interest and enthusiasm in a professional task"],
+        "fr": ["Capacité à avoir de l'énergie et de la vitalité et à montrer de l'intérêt et de l'enthousiasme dans une tâche professionnelle."],
+        "it": ["Capacità di avere energia e vitalità e mostrare interesse ed entusiasmo in un compito professionale"],
+        "nl": ["Vermogen om energie en vitaliteit te hebben en interesse en enthousiasme te tonen voor een professionele taak."],
+        "sl": ["Sposobnost biti energičen in vitalen ter pokazati zanimanje in navdušenje za poklicno nalogo"]
       },
       "itemStyle": {
         "color": "#b9b692"
@@ -308,13 +548,28 @@
       "@id": "http://reveal.org/data/skill/17",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Order"]
+        "el": ["Τάξη"],
+        "en": ["Order"],
+        "fr": ["Ordre"],
+        "it": ["Ordine"],
+        "nl": ["Bestellen"],
+        "sl": ["Red"]
       },
       "quote": {
-        "en": ["Everything in its place and a place for everything"]
+        "el": ["Τα πάντα στη θέση τους και μια θέση για τα πάντα"],
+        "en": ["Everything in its place and a place for everything"],
+        "fr": ["Tout à sa place et une place pour chaque chose"],
+        "it": ["Tutto al suo posto e un posto per tutto"],
+        "nl": ["Alles op zijn plek en voor alles een plekje"],
+        "sl": ["Vse na svojem mestu in prostor za vse"]
       },
       "description": {
-        "en": ["Ability to put things in a specific place in an organised and systematic way"]
+        "el": ["Ικανότητα να τοποθετείς τα πράγματα σε μια συγκεκριμένη θέση με οργανωμένο και συστηματικό τρόπο"],
+        "en": ["Ability to put things in a specific place in an organised and systematic way"],
+        "fr": ["Capacité à mettre les choses à un endroit spécifique de manière organisée et systématique."],
+        "it": ["Capacità di mettere le cose in un posto ben preciso in maniera organizzata e sistematica"],
+        "nl": ["Vermogen om dingen op een specifieke plaats te plaatsen op een georganiseerde en systematische manier."],
+        "sl": ["Sposobnost organiziranega in sistematičnega odlaganja stvari na določeno mesto"]
       },
       "itemStyle": {
         "color": "#8f008a"
@@ -327,13 +582,28 @@
       "@id": "http://reveal.org/data/skill/18",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Organisational skills"]
+        "el": ["Οργανωτικές δεξιότητες"],
+        "en": ["Organisational skills"],
+        "fr": ["Compétences organisationnelles"],
+        "it": ["Capacità organizzative"],
+        "nl": ["Organisatorische vaardigheden"],
+        "sl": ["Organizacijske spretnosti"]
       },
       "quote": {
-        "en": ["I plan, prepare and organise my work to meet deadlines"]
+        "el": ["Σχεδιάζω, προετοιμάζω και οργανώνω την εργασία μου για να τηρώ τις προθεσμίες"],
+        "en": ["I plan, prepare and organise my work to meet deadlines"],
+        "fr": ["Je planifie, prépare et organise mon travail pour respecter les délais."],
+        "it": ["Pianifico, preparo e organizzo il mio lavoro per rispettare le scadenze"],
+        "nl": ["Ik plan, bereid en organiseer mijn werk om deadlines te halen."],
+        "sl": ["Načrtujem, pripravljam in organiziram svoje delo tako, da se držim rokov"]
       },
       "description": {
-        "en": ["Ability to effectively and efficiently manage one's work and plan tasks to be completed within a prescribed timeframe"]
+        "el": ["Ικανότητα αποτελεσματικής και αποδοτικής διαχείρισης των καθηκόντων και προγραμματισμός εργασιών που πρέπει να ολοκληρωθούν εντός καθορισμένου χρονικού πλαισίου"],
+        "en": ["Ability to effectively and efficiently manage one's work and plan tasks to be completed within a prescribed timeframe"],
+        "fr": ["Capacité à gérer de manière efficace et efficiente ses propres ressources travailler et planifier les tâches à accomplir dans un délai prescrit"],
+        "it": ["Capacità di gestire efficacemente ed efficientemente il proprio lavoro e pianificare i compiti per essere completati nel tempo prescritto"],
+        "nl": ["Vermogen om eigen middelen effectief en efficiënt te beheren om te werken en taken te plannen die binnen een voorgeschreven tijdsbestek moeten worden voltooid"],
+        "sl": ["Sposobnost učinkovitega in uspešnega upravljanja svojega dela in načrtovanje nalog, ki jih je treba opraviti v predpisanem časovnem okviru"]
       },
       "itemStyle": {
         "color": "#7b52c7"
@@ -346,13 +616,28 @@
       "@id": "http://reveal.org/data/skill/19",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Perseverance"]
+        "el": ["Επιμονή"],
+        "en": ["Perseverance"],
+        "fr": ["Persévérance"],
+        "it": ["Perseveranza"],
+        "nl": ["Doorzettingsvermogen"],
+        "sl": ["Vztrajnost"]
       },
       "quote": {
-        "en": ["I make the effort to complete my work"]
+        "el": ["Καταβάλλω την απαραίτητη προσπάθεια για να ολοκληρώσω τη δουλειά μου"],
+        "en": ["I make the effort to complete my work"],
+        "fr": ["Je fais l'effort de terminer mon travail"],
+        "it": ["Faccio lo sforzo di completare il mio lavoro"],
+        "nl": ["Ik doe mijn best om mijn werk af te maken"],
+        "sl": ["Prizadevam si dokončati svoje delo"]
       },
       "description": {
-        "en": ["Ability to perform a task over the long term, making extra efforts and not giving up when faced with obstacles"]
+        "el": ["Ικανότητα εκτέλεσης μιας εργασίας μακροπρόθεσμα, συχνά καταβάλλοντας πρόσθετες προσπάθειες χωρίς να τα παρατάει,  όταν αντιμετωπίζει εμπόδια"],
+        "en": ["Ability to perform a task over the long term, making extra efforts and not giving up when faced with obstacles"],
+        "fr": ["Capacité d'exécuter une tâche à long terme, souvent en faisant des efforts supplémentaires, et ne pas abandonner face aux obstacles"],
+        "it": ["Capacità di fare una cosa per lungo tempo, spesso facendo uno sforzo in più, e senza mollare di fronte agli ostacoli"],
+        "nl": ["Mogelijkheid om een \u200B\u200Blangdurige taak uit te voeren, vaak een stap verder te gaan en niet op te geven ondanks obstakels"],
+        "sl": ["Sposobnost izpolnjevanja dolgoročnih nalog, pogosto v dodatnih naporih, brez da bi odnehali, ko se soočimo z ovirami"]
       },
       "itemStyle": {
         "color": "#92b995"
@@ -365,13 +650,28 @@
       "@id": "http://reveal.org/data/skill/20",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Personal hygiene"]
+        "el": ["Προσωπική υγιεινή"],
+        "en": ["Personal hygiene"],
+        "fr": ["Hygiène personnelle"],
+        "it": ["Igiene personale"],
+        "nl": ["Persoonlijke hygiëne"],
+        "sl": ["Osebna higiena"]
       },
       "quote": {
-        "en": ["I take care of myself"]
+        "el": ["Φροντίζω τον εαυτό μου"],
+        "en": ["I take care of myself"],
+        "fr": ["Je prends soin de moi"],
+        "it": ["Mi prendo cura di me"],
+        "nl": ["ik zorg voor mezelf"],
+        "sl": ["Skrbim zase"]
       },
       "description": {
-        "en": ["Ability to take care of personal hygiene and cleanliness of clothing"]
+        "el": ["Ικανότητα φροντίδας της προσωπικής υγιεινής και καθαριότητας των ρούχων"],
+        "en": ["Ability to take care of personal hygiene and cleanliness of clothing"],
+        "fr": ["Capacité à prendre soin de son hygiène personnelle et de la propreté de ses vêtements."],
+        "it": ["Capacità di prendersi cura dell’igiene personale e della pulizia degli abiti"],
+        "nl": ["Mogelijkheid om te zorgen voor persoonlijke hygiëne en netheid van kleding."],
+        "sl": ["Sposobnost skrbi za osebno higieno in čistočo oblačil"]
       },
       "itemStyle": {
         "color": "#8e2655"
@@ -384,13 +684,28 @@
       "@id": "http://reveal.org/data/skill/21",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Presentation"]
+        "el": ["Παρουσιαστικό"],
+        "en": ["Presentation"],
+        "fr": ["Présentation"],
+        "it": ["Presentazione"],
+        "nl": ["Presentatie"],
+        "sl": ["Predstavitev"]
       },
       "quote": {
-        "en": ["I have the look of the job"]
+        "el": ["Η εικόνα μου είναι κατάλληλη για τη δουλειά"],
+        "en": ["I have the look of the job"],
+        "fr": ["J'ai le look de l'emploi"],
+        "it": ["Ho il look adatto per il mio lavoro"],
+        "nl": ["Ik heb de uitstraling van de baan"],
+        "sl": ["Moj videz je primeren delovnem mestu"]
       },
       "description": {
-        "en": ["Ability to dress and groom in a manner appropriate to the work environment and the trade"]
+        "el": ["Ικανότητα να ντύνεται και να περιποιείται με τρόπο κατάλληλο για το εργασιακό περιβάλλον και το επάγγελμα"],
+        "en": ["Ability to dress and groom in a manner appropriate to the work environment and the trade"],
+        "fr": ["Capacité à s'habiller et à se coiffer d'une manière appropriée à l'environnement de travail et au métier."],
+        "it": ["Capacità di vestirsi e sistemarsi in maniera appropriate al luogo di lavoro e al settore"],
+        "nl": ["Vaardigheid om haar te kleden en te stylen op een manier die past bij de werkomgeving en het beroep."],
+        "sl": ["Sposobnost oblačenja in urejanja na način, ki ustreza delovnemu okolju in stroki."]
       },
       "itemStyle": {
         "color": "#80310f"
@@ -403,13 +718,28 @@
       "@id": "http://reveal.org/data/skill/22",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Reliability"]
+        "el": ["Αξιοπιστία"],
+        "en": ["Reliability"],
+        "fr": ["Fiabilité"],
+        "it": ["Affidabilità"],
+        "nl": ["Betrouwbaarheid"],
+        "sl": ["Zanesljivost"]
       },
       "quote": {
-        "en": ["I inspire confidence"]
+        "el": ["Εμπνέω εμπιστοσύνη"],
+        "en": ["I inspire confidence"],
+        "fr": ["J'inspire confiance"],
+        "it": ["Ispiro fiducia"],
+        "nl": ["Ik wek vertrouwen"],
+        "sl": ["Vzbujam samozavest"]
       },
       "description": {
-        "en": ["Ability to inspire confidence in others through actions"]
+        "el": ["Ικανότητα να εμπνέει εμπιστοσύνη στους άλλους μέσω των ενεργειών του"],
+        "en": ["Ability to inspire confidence in others through actions"],
+        "fr": ["Capacité à inspirer confiance aux autres par ses actions"],
+        "it": ["Capacità di inspirare fiducia agli altri attraverso le proprie azioni"],
+        "nl": ["Vermogen om vertrouwen in anderen te wekken door iemands acties"],
+        "sl": ["Zmožnost vzbujanja zaupanja pri drugih z dejanji"]
       },
       "itemStyle": {
         "color": "#c0ccf2"
@@ -422,13 +752,28 @@
       "@id": "http://reveal.org/data/skill/23",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Self-control"]
+        "el": ["Αυτοέλεγχος"],
+        "en": ["Self-control"],
+        "fr": ["Maîtrise de soi"],
+        "it": ["Autocontrollo"],
+        "nl": ["Zelfbeheersing"],
+        "sl": ["Samokontrola"]
       },
       "quote": {
-        "en": ["I keep my cool in all circumstances"]
+        "el": ["Διατηρώ την ψυχραιμία μου σε όλες τις περιστάσεις"],
+        "en": ["I keep my cool in all circumstances"],
+        "fr": ["Je garde mon sang-froid en toutes circonstances"],
+        "it": ["Mantengo la calma in tutte le circostanze"],
+        "nl": ["Ik blijf onder alle omstandigheden kalm"],
+        "sl": ["V vseh okoliščinah ostanem miren"]
       },
       "description": {
-        "en": ["Ability to deal with particular situations, to show composure without being overly emotional or defensive"]
+        "el": ["Ικανότητα αντιμετώπισης ιδιαίτερων καταστάσεων, με ψυχραιμία και λογική χωρίς να παρασύρεται από το συναίσθημα ή να υιοθετεί αμυντική στάση"],
+        "en": ["Ability to deal with particular situations, to show composure without being overly emotional or defensive"],
+        "fr": ["Capacité à gérer des situations particulières, à faire preuve de sang-froid sans être trop émotif ou sur la défensive."],
+        "it": ["Capacità di fronteggiare situazioni particolari, mostrare contegno senza essere troppo emotivo o sulla difensiva"],
+        "nl": ["Vermogen om met bepaalde situaties om te gaan, kalmte te tonen zonder overdreven emotioneel of defensief te zijn."],
+        "sl": ["Sposobnost ravnanja v posebnih situacijah, obvladovanje brez pretiranega čustvenega odziva ali obrambe."]
       },
       "itemStyle": {
         "color": "#f2c0e9"
@@ -441,13 +786,28 @@
       "@id": "http://reveal.org/data/skill/24",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Sense of ethics"]
+        "el": ["Αίσθηση της ηθικής"],
+        "en": ["Sense of ethics"],
+        "fr": ["Sens de l'éthique"],
+        "it": ["Senso dell’etica"],
+        "nl": ["Gevoel voor ethiek"],
+        "sl": ["Čut za etilko"]
       },
       "quote": {
-        "en": ["I am faithful to the values of my profession"]
+        "el": ["Είμαι πιστός στις αξίες του επαγγέλματός μου"],
+        "en": ["I am faithful to the values of my profession"],
+        "fr": ["Je suis fidèle aux valeurs de ma profession"],
+        "it": ["Sono fedele ai valori della mia professione"],
+        "nl": ["Ik ben trouw aan de waarden van mijn beroep"],
+        "sl": ["Sem zvest vrednotam svojega poklica"]
       },
       "description": {
-        "en": ["Abitlity to act according to the professions values in order to seek the most appropriate decision in a given situation"]
+        "el": ["Ατομική ικανότητα να ενεργεί σύμφωνα με τις αξίες του επαγγέλματος κατά την επιδίωξη της καταλληλότερης απόφασης σε μια δεδομένη κατάσταση"],
+        "en": ["Abitlity to act according to the professions values in order to seek the most appropriate decision in a given situation"],
+        "fr": ["Capacité individuelle à agir selon les valeurs de la profession afin de rechercher la décision la plus appropriée dans une situation donnée"],
+        "it": ["Capacità individuale di agire secondo i valori della professione per prendere le decisioni appropriate ad una data situazione"],
+        "nl": ["Individueel vermogen om te handelen volgens de waarden van het beroep zoeken naar de meest geschikte beslissing in een bepaalde situatie"],
+        "sl": ["Sposobnost posameznika, da deluje v skladu z vrednotami poklica, da bi\npoiskal najustreznejšo odločitev v dani situaciji\n"]
       },
       "itemStyle": {
         "color": "#114490"
@@ -460,13 +820,28 @@
       "@id": "http://reveal.org/data/skill/25",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Sense of responsibility"]
+        "el": ["Αίσθηση ευθύνης"],
+        "en": ["Sense of responsibility"],
+        "fr": ["Le sens des responsabilités"],
+        "it": ["Senso di responsabilità"],
+        "nl": ["Het verantwoordelijkheidsgevoel"],
+        "sl": ["Oblutek odgovornosti"]
       },
       "quote": {
-        "en": ["I take responsibility for the consequences of decisions related to my tasks"]
+        "el": ["Αναλαμβάνω την ευθύνη για τις συνέπειες των αποφάσεων που σχετίζονται με τα καθήκοντά μου"],
+        "en": ["I take responsibility for the consequences of decisions related to my tasks"],
+        "fr": ["J'assume la responsabilité des conséquences des décisions liées à mes tâches"],
+        "it": ["Mi prendo la responsabilità delle conseguenze delle decisioni connesse ai miei compiti"],
+        "nl": ["Ik neem verantwoordelijkheid voor de gevolgen van beslissingen die verband houden met mijn taken"],
+        "sl": ["Prevzemam odgovornost za posledice odločitev, povezanih z mojimi nalogami"]
       },
       "description": {
-        "en": ["Ability to act responsibly and make appropriate decisions within one's capacity to act"]
+        "el": ["Ικανότητα να ενεργώ υπεύθυνα και να λαμβάνω τις κατάλληλες αποφάσεις δεδομένης της ικανότητάς μου να ενεργώ"],
+        "en": ["Ability to act responsibly and make appropriate decisions within one's capacity to act"],
+        "fr": ["Capacité d'agir de manière responsable et de prendre des décisions appropriées compte tenu de ma capacité d'action"],
+        "it": ["Capacità di agire responsabilmente e prendere decisione adeguate vista la mia abilità ad agire"],
+        "nl": ["vermogen om verantwoordelijk te handelen en de juiste beslissingen te nemen gezien mijn vermogen om te handelen"],
+        "sl": ["Sposobnost odgovornega ravnanja in sprejemanja ustreznih odločitev glede na mojozmožnost delovanja"]
       },
       "itemStyle": {
         "color": "#eebf17"
@@ -479,13 +854,28 @@
       "@id": "http://reveal.org/data/skill/26",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Team spirit"]
+        "el": ["Ομαδικό πνεύμα"],
+        "en": ["Team spirit"],
+        "fr": ["L'esprit d'équipe"],
+        "it": ["Spirito di gruppo"],
+        "nl": ["Team geest"],
+        "sl": ["Timski duh"]
       },
       "quote": {
-        "en": ["One for all, all for one!"]
+        "el": ["Ένας για όλους, όλοι για έναν!"],
+        "en": ["One for all, all for one!"],
+        "fr": ["Un pour tous, tous pour un !"],
+        "it": ["Uno per tutti, tutti per uno!"],
+        "nl": ["Een voor allen, allen voor een !"],
+        "sl": ["Eden za vse, vsi za enega!"]
       },
       "description": {
-        "en": ["Ability to connect with team members with a common goal of collaboration, while focusing on the success of the group"]
+        "el": ["Ικανότητα σύνδεσης με τα μέλη της ομάδας με κοινό στόχο τη συνεργασία, με παράλληλη εστίαση στην επιτυχία της ομάδας"],
+        "en": ["Ability to connect with team members with a common goal of collaboration, while focusing on the success of the group"],
+        "fr": ["Capacité à établir des liens avec les membres de l'équipe dans un but commun de collaboration, tout en se concentrant sur la réussite du groupe."],
+        "it": ["Capacità di relazionarsi con I membri del team con l’ obiettivo comune di collaborare, focalizzandosi sul successo del gruppo"],
+        "nl": ["Mogelijkheid om contact te maken met teamleden voor een gemeenschappelijk doel van samenwerking, terwijl de nadruk ligt op het succes van de groep."],
+        "sl": ["Sposobnost povezovanja s člani ekipe s skupnim ciljem sodelovanja, pri čemer se osredotoča na uspeh skupine."]
       },
       "itemStyle": {
         "color": "#fff4b8"
@@ -498,13 +888,28 @@
       "@id": "http://reveal.org/data/skill/27",
       "@type": "Skill",
       "prefLabel": {
-        "en": ["Tolerance"]
+        "el": ["Αποδοχή της Διαφορετικότητας"],
+        "en": ["Tolerance"],
+        "fr": ["Tolérance"],
+        "it": ["Tolleranza"],
+        "nl": ["Tolerantie"],
+        "sl": ["Strpnost"]
       },
       "quote": {
-        "en": ["I accept the difference"]
+        "el": ["Αποδέχομαι τη διαφορετικότητα"],
+        "en": ["I accept the difference"],
+        "fr": ["J'accepte la différence"],
+        "it": ["Accetto le differenze"],
+        "nl": ["Ik accepteer het verschil"],
+        "sl": ["Sprejemam različnost"]
       },
       "description": {
-        "en": ["Ability to respect the freedom of others, their ways of thinking, acting, political and religious opinions"]
+        "el": ["Ικανότητα σεβασμού της ελευθερίας των άλλων, του τρόπου σκέψης, της δράσης, των πολιτικών και θρησκευτικών τους απόψεων"],
+        "en": ["Ability to respect the freedom of others, their ways of thinking, acting, political and religious opinions"],
+        "fr": ["Capacité à respecter la liberté d'autrui, sa façon de penser, d'agir, ses opinions politiques et religieuses."],
+        "it": ["Capacità di rispettare la libertà degli altri, il loro modo di pensare, agire, le loro opinioni politiche e religiose"],
+        "nl": ["Vermogen om de vrijheid van anderen, hun manier van denken, handelen, politieke en religieuze opvattingen te respecteren."],
+        "sl": ["Sposobnost spoštovanja svobode drugih, njihovega načina mišljenja, delovanja, političnih in verskih prepričanj"]
       },
       "itemStyle": {
         "color": "#1856a5"

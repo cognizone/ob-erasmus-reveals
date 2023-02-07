@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="gr">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Γεια σας!</title>
-</head>
-<body>
-<div>
-    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
-    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
-</div>
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
 
-<h1 style="color: #5B43B1;font-family: Archivo;">Γεια σας!</h1>
+    <h1 style="color: #5b43b1; font-family: Archivo">Γειά σου!</h1>
 
-<h3 th:text="${'O/H ' + user + ' χρειάζεται τη βοήθειά σας:'} "></h3>
-<p th:text="${message}"></p>
-<button style="
+    <h3 th:text="${'O/H ' + user + ' χρείαζεται την υποστήριξη σου:'} "></h3>
+    <p th:text="${message}"></p>
+    <button
+      style="
         color: white;
         font-family: Archivo;
-        background-color:#5B43B1;
-        border:none;
-        border-radius:10px;
-        padding:15px;
-        min-width: 120px">
-    <a th:href="${url}" style="text-decoration: none;color: white">
-        <span>Δώστε την αξιολόγησης σας</span>
-    </a>
-</button>
-</body>
+        background-color: #5b43b1;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        min-width: 120px;
+      "
+    >
+      <a th:href="${url}" style="text-decoration: none; color: white">
+        <span>Κάνε μία σύσταση</span>
+      </a>
+    </button>
+  </body>
 </html>

@@ -25,6 +25,7 @@
   .my-skills-meta {
     font-style: italic;
     color: var(--color-gray-50);
+    margin-top: 0.5rem;
   }
 }
 
@@ -60,8 +61,8 @@
 .my-join-now-content {
   text-align: center;
   width: 400px;
-  height: 850px;
   padding-top: 7.5rem;
+  padding-bottom: 3.5rem;
 
   .my-member {
     display: flex;
@@ -86,4 +87,10 @@
     line-height: 50px;
     margin-bottom: 0;
   }
+}
+
+.my-signup {
+  align-items: center;
+  justify-content: flex-start;
+  width: fit-content;
 }

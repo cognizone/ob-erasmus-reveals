@@ -1,1 +1,264 @@
-{}
+{
+  "about": {
+    "skills": {
+      "part_1": {
+        "description_1": "Mentre puoi facilmente dimostrare le tue competenze hard, direttamente correlate al tuo lavoro, le tue competenze soft potrebbero aver bisogno di una iniezione di riconoscimento.",
+        "description_2": "Reveal ti aiuta ad avere un feedback per aumentare la fiducia nelle tue competenze.",
+        "description_3": "Con l'endorsement dei tuoi colleghi, le tue competenze sono meglio riconosciute e valutate.",
+        "heading_1": "Condividi le tue competenze,",
+        "heading_2": "Condividi i crediti",
+        "logo_alt": "Skills part 1 logo"
+      },
+      "part_2": {
+        "description_1": "Dare un feedback spontaneo suk posto di lavoro è difficile, ma la neuroscienza dice che un invito proattivo lo rende molto più facile.",
+        "description_2": "Ogni volta che vuoi un input da un tuo collega, dai tuoi amici, dai tuoi pari, fai una richiesta di feedback, e verifica il valore di tutte le tue competenze.",
+        "heading_1": "Rivela le tue competenze e te stesso",
+        "logo_alt": "Skills part 2 logo"
+      },
+      "part_3": {
+        "description_1": "Le competenze trasversali sono particolarmente rilevanti quando scrivi il tuo CV, fai una intervista di lavoro o comunichi con persone al lavoro o in altre occasioni della tua vita.",
+        "description_2": "Mentre stai cercando lavoro, usa Reveal per aggiornare il tuo CV e mettere in evidenza le tue più rilevanti competenze trasversali.",
+        "heading_1": "Fai sapere alla gente quanto sei competente",
+        "logo_alt": "Skills part 3 logo"
+      }
+    }
+  },
+  "answer_sent": {
+    "heading": "Le tue risposte sono state inviate a {{ user }}",
+    "thank_you": "Grazie per il tuo tempo!"
+  },
+  "complete_profile": {
+    "back": "Back",
+    "complete_now": "Completa il tuo profilo ora",
+    "description_1": "Puoi chiedere subito l'approvazione per tutte le tue competenze, anche quelle che pensi non valgano la pena di essere condivise!",
+    "description_2": "Sarai sorpreso di scoprire come le persone intorno a te utilizzano le conoscenze acquisite in anni di esperienza sul posto di lavoro e nella vita privata.",
+    "get_started": {
+      "description": "Completa il tuo profilo per avere un'esperienza più personalizzata.",
+      "heading": "Cominciamo",
+      "start": "Start"
+    },
+    "greetings": "Ciao!",
+    "information": {
+      "heading": "Dicci qualcosa su di te",
+      "point_1": {
+        "description": "Completa il tuo profilo per farti conoscere nella comunità e metterti in contatto con altre persone competenti.",
+        "label": "Chi sei?"
+      },
+      "point_2": {
+        "description": "Scegli la tua area di esperienza e lasciati guidare attraverso i « tags ». ",
+        "label": "Quante competenze hai?"
+      },
+      "point_3": {
+        "description": "Approva le competenze delle persone che conosci e aiutale ad essere meglio valutate e riconosciute.",
+        "label": "A chi vuoi dare il tuo sostegno tramite REVEAL?"
+      }
+    },
+    "step_1": {
+      "description": "Queste informazioni aggiuntive ci aiuteranno a fornirti un'esperienza più personalizzata",
+      "heading": "Completa il tuo profilo"
+    },
+    "step_2": {
+      "description": "Queste informazioni aggiuntive ci aiuteranno a migliorare la pagina << competenze >>.",
+      "heading": "Scegli il tuo paese"
+    },
+    "welcome_to_reveal": "Benvenuti nella community di REVEAL, dove potrete condividere le vostre competenze, chiedere o ricevere raccomandazioni."
+  },
+  "email_confirmation": {
+    "check_inbox": "Controlla il tuo inbox",
+    "close": "Close dialog",
+    "email_sent": "Una email è stata correttamente inviata",
+    "get_started": "Inizia cliccando sul link che ti abbiamo inviato",
+    "send_again": "Invia di nuovo"
+  },
+  "endorse_skills": {
+    "back": "Indietro",
+    "country": "{{global.country}}",
+    "email": "{{global.email}}",
+    "feedback_given": {
+      "homepage": "Vai alla homepage"
+    },
+    "name": "{{global.name}}",
+    "next": "{{global.next}}",
+    "optional": "(optional)",
+    "relationship_level": "Il tuo livello di conoscenza con {{ user }}",
+    "select_relationship": "Seleziona un livello di conoscenza",
+    "start": "Start",
+    "step_0": {
+      "description": "Grazie per aver trovato il tempo di rispondere a questa richiesta di raccomandazione. Non ti preoccupare, non ci vorrà molto per completarla.",
+      "heading": "Benvenuti"
+    },
+    "step_1": {
+      "about": "Dicci qualcosa in più su di te",
+      "description": "Grazie per aver trovato il tempo di rispondere a questa richiesta di raccomandazione. Non ti preoccupare, non ci vorrà molto per completarla.",
+      "heading": "Richiesta di raccomandazione per una competenza da {{ user }}"
+    },
+    "step_2": {
+      "description": "Usiamo i dati della localizzazione dei nostri utenti per migliorare le informazioni sulla pagina « competenze »",
+      "heading": "Condividi il tuo paese"
+    },
+    "step_3": {
+      "heading": "Quale competenza di {{ user }} vuoi raccomandare?"
+    },
+    "step_4": {
+      "heading": "Perché raccomandi queste competenze di {{ user }}?",
+      "placeholder_text": "Inserisci un commento",
+      "send_answers": "Invia le tue risposte"
+    },
+    "surname": "{{global.surname}}"
+  },
+  "feedback_request": {
+    "creation": {
+      "cancel": "{{global.cancel}}",
+      "description": "Questo modulo consente di richiedere una raccomandazione per le proprie competenze.",
+      "heading": "Richiesta di validazione delle competenze",
+      "next": "{{global.next}}",
+      "selected": "selezionato"
+    },
+    "creation_modal": {
+      "cancel": "{{global.cancel}}",
+      "copy": "Copy",
+      "default_message": "Salve, per accreditare le mie competenze, potreste darmi un feedback? \nGrazie.",
+      "email_heading": "Invia la richiesta",
+      "email_tab": "Per email",
+      "feedback_sent": "La tua richiesta è stata inviata correttamente",
+      "from": "Da",
+      "link": "Link",
+      "link_heading": "Invia il modulo",
+      "link_tab": "Con un link",
+      "message": "Messaggio",
+      "send": "Invia",
+      "to": "A",
+      "to_caption": "Separate le e-mail con una virgola."
+    }
+  },
+  "footer": {
+    "accessibility": "Accessibilità",
+    "discover": "Scopri",
+    "follow": "Seguici",
+    "help": "Aiuto",
+    "join_now": "Iscriviti e inizia subito a condividere le tue competenze",
+    "privacy_policy": "Informativa sulla privacy",
+    "social_media": {
+      "facebook": "Facebook",
+      "linkedin": "Linkedin",
+      "twitter": "Twitter"
+    },
+    "terms_of_use": "Condizioni di utilizzo"
+  },
+  "global": {
+    "about": "Cos'è Reveal?",
+    "about_tags": "Cos'è un tag",
+    "application_name": "Reveal",
+    "cancel": "Cancella",
+    "country": "Paese",
+    "email": "Indirizzo email",
+    "email_invalid_error": "L'indirizzo e-mail non sembra essere corretto. Si prega di riprovare.",
+    "email_placeholder": "Inserisci il tuo indirizzo e-mail",
+    "join": "Iscriviti",
+    "login_alt": "Login",
+    "logo_alt": "Application logo",
+    "name": "Nome",
+    "next": "Avanti",
+    "sign_up_alt": "Registrati",
+    "skills": {
+      "heading_1": "Esplora le 27 competenze",
+      "heading_2": "utilizzate da oltre 12.000 persone",
+      "heading_3": "in 21 paesi"
+    },
+    "success": "Successo",
+    "surname": "Cognome",
+    "unknown_error": "Errore sconosciuto"
+  },
+  "global_skills_visualization": {
+    "description": "Esplora le 27 competenze del Projet Européen Léonardo Transfert de l'innovation - OPC-SFC / tableau des SFC utilizzate da oltre 12'000 persone.",
+    "heading": "{{header.skills}}"
+  },
+  "header": {
+    "get_started": "Inizia",
+    "sign_in": "Iscriviti",
+    "skills": "Competenze"
+  },
+  "home": {
+    "description": "Reveal ti aiuta a promuovere le tue competenze e ad ampliare il tuo sviluppo personale.",
+    "heading": "Lasciate che le vostre competenze facciano la differenza",
+    "promote_skills": "Inizia a promuovere le tue competenze",
+    "skills_alt": "Più competenze per utente",
+    "skills_meta_description": "Gratuito, tutto da guadagnare, inizia subito a ottenere e dare raccomandazioni",
+    "target_1": {
+      "description": "la tua visibilità",
+      "image_alt": "visibilità",
+      "label": "Migliora"
+    },
+    "target_2": {
+      "description": "la tua reputazione",
+      "image_alt": "reputazione",
+      "label": "Migliora"
+    },
+    "target_3": {
+      "description": "le tue credenziali",
+      "image_alt": "credenziali",
+      "label": "Costruisci"
+    }
+  },
+  "join_now": {
+    "action_points": {
+      "image_alt": "punti da annotare",
+      "point_1": "Fai qualcosa per il tuo sviluppo personale",
+      "point_2": "Sii più sicuro del tuo lavoro",
+      "point_3": "Mostra tutte le tue competenze",
+      "point_4": "Migliora la tua carriera"
+    },
+    "already_member": "Sei già un membro?",
+    "and": "and",
+    "connect": "Connettiti",
+    "description": "le persone che usano Reveal per ottenere raccomandazioni per le proprie capacità",
+    "heading": "Migliora il tuo cv, unisciti a Reveal",
+    "join": "Iscriviti",
+    "join_now": "Iscriviti ora",
+    "must_be_connected": "Devi essere connesso per usare questa funzione",
+    "not_a_member": "Non sei membro?",
+    "skills_description": "Unisciti a noi e inizia subito a condividere le tue competenze, a chiedere approvazioni e a dare feedback.",
+    "unlock_access": "Sblocca l'accesso illimitato a Reveal con un solo clic",
+    "user_exists": "L'utente esiste già, siete pregati di inserire una nuova mail"
+  },
+  "language_selection": {
+    "heading": "Lingua"
+  },
+  "login": {
+    "no_user_found": "Errore: l'utente non esiste, torna per favore a Sign Up."
+  },
+  "profile": {
+    "across": "Across",
+    "add_new_description": "Per aggiungere nuove competenze al tuo profilo, devi chiedere la raccomandazione ai tuoi colleghi, amici o compagni di scuola.",
+    "add_new_heading": "Tutto fatto! Adesso aggiungi delle competenze",
+    "alt_logo": "profile logo",
+    "ask_endorsement_skill": "Chiedi una raccomandazione per questa competenza",
+    "ask_for_endorsement": "Chiedi una raccomandazione",
+    "back": "Back",
+    "countries_count": "{{ count }} paesi",
+    "country_count": "{{ count }} paese",
+    "description": "Description",
+    "endorsement_count": "{{ count }} endorsement",
+    "endorsements_count": "{{count}} endorsements",
+    "last_endorsement_from": "Ultima raccomandazione da",
+    "people_count": "{{ count }} people",
+    "skill_alt_logo": "Skill logo",
+    "skill_count": "{{ count }} skill",
+    "skills_count": "{{count}} {{header.skills}}",
+    "total": "Total",
+    "used_by": "Used by"
+  },
+  "profile_header": {
+    "ask_endorsement": "Chiedi l'endorsement",
+    "heading": "Il mio profilo",
+    "logout": "Log out",
+    "settings": "Impostazioni",
+    "skills": "{{header.skills}}"
+  },
+  "skills_feedback": {
+    "select_skills": "Seleziona una o più competenze per il quale vuoi essere raccomandato:",
+    "skill_selected": "{{count}} skill selected",
+    "skills_selected": "{{count}} skills selected",
+    "unselected": "unselected"
+  }
+}

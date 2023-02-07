@@ -19,14 +19,14 @@ export class SkillsFeedbackComponent implements OnInit {
   @Input()
   skills: Skill[] = [];
   @Input()
-  skillUris!: string[]
+  skillUris?: string[];
 
   @Output()
   skillsSelected: EventEmitter<string[]> = new EventEmitter();
   selectedSkills: string[] = [];
 
   ngOnInit(): void {
-    if ((this.skillUris?.length ?? 0) > 0) {
+    if (this.skillUris && (this.skillUris?.length ?? 0) > 0) {
       this.selectedSkills = this.skillUris;
     }
   }

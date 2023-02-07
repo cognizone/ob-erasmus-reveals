@@ -5,7 +5,12 @@ import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class FeedbackRequestCreationViewService {
-  skillsUris: Observable<string[]> = this.route.queryParams.pipe(map(({ skillUri }) => [this.encodeUriService.decode(skillUri)]))
+  skillsUris$: Observable<string[] | undefined> = this.route.queryParams.pipe(
+    map(({ skillUri }) => {
+      if (skillUri) return [this.encodeUriService.decode(skillUri)];
+      return undefined;
+    })
+  );
 
   constructor(private route: ActivatedRoute, private encodeUriService: EncodeUriService) {}
 }
