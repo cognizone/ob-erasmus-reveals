@@ -3,21 +3,26 @@
     <span class="my-prompt">{{ t('select_skills') }}</span>
     <!-- FIXME for some reason, was not able to make messageformat work with transloco 🤷 -->
     <span class="my-count" [class.is-filled]="selectedSkills.length > 0">{{
-      t(selectedSkills.length > 1 ? 'skills_selected' : 'skill_selected', {count: selectedSkills.length})
-      }}</span>
+      t(selectedSkills.length > 1 ? 'skills_selected' : 'skill_selected', { count: selectedSkills.length })
+    }}</span>
   </div>
   <div class="my-skills">
-    <button type="button" *ngFor="let skill of skills" class="my-skill" [class.is-selected]="isSelected(skill)"
-            (click)="toggleSelection(skill)">
+    <button
+      type="button"
+      *ngFor="let skill of skills"
+      class="my-skill"
+      [class.is-selected]="isSelected(skill)"
+      (click)="toggleSelection(skill)"
+    >
       <div class="my-skill-heading">
         <div class="my-icon">
           <mat-icon color="primary">check_box</mat-icon>
-          <img [ngSrc]="skill | skillImageUrl" fill [alt]="t('unselected')"/>
+          <img [ngSrc]="skill | skillImageUrl" fill [alt]="t('unselected')" />
         </div>
-        <span>{{ skill.prefLabel | czLabel }}</span>
+        <span *ngIf="skill.prefLabel">{{ skill.prefLabel | czLabel: lang }}</span>
       </div>
-      <div class="my-skill-description">
-        {{ skill.description | czLabel }}
+      <div class="my-skill-description" *ngIf="skill.description">
+        {{ skill.description | czLabel: lang }}
       </div>
     </button>
   </div>

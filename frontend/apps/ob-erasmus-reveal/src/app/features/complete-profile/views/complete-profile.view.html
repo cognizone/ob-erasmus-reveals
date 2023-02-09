@@ -5,8 +5,7 @@
       <!-- step 0 starts here -->
       <mat-step *transloco="let t;read: 'complete_profile'">
         <div class="d-flex flex-column align-items-center">
-          <img ngSrc="assets/images/icon-svgs/icon-bubble-check.svg" width="64" height="64"
-               [alt]="t('get_started.heading')"/>
+          <img ngSrc="assets/images/icon-svgs/icon-bubble-check.svg" width="64" height="64" [alt]="t('get_started.heading')" />
           <h1>{{ t('get_started.heading') }}</h1>
           <p>{{ t('get_started.description') }}</p>
           <ob-erasmus-reveal-language-selection></ob-erasmus-reveal-language-selection>
@@ -25,15 +24,15 @@
         <div class="row">
           <div class="col-lg-12 d-flex flex-column mb-4">
             <label for="email">{{ t('global.email') }}</label>
-            <input class="w-50" id="email" formControlName="email">
+            <input class="w-50" id="email" formControlName="email" />
           </div>
           <div class="col-lg-6 d-flex flex-column mb-5">
             <label for="lastName">{{ t('global.surname') }}</label>
-            <input id="lastName" formControlName="lastName">
+            <input id="lastName" formControlName="lastName" />
           </div>
           <div class="col-lg-6 d-flex flex-column mb-5">
             <label for="firstName">{{ t('global.name') }}</label>
-            <input id="firstName" formControlName="firstName">
+            <input id="firstName" formControlName="firstName" />
           </div>
         </div>
         <button type="button" class="app-button mt-5" color="primary" matStepperNext>{{ t('global.next') }}</button>
@@ -50,12 +49,18 @@
           <div class="col-lg-6 d-flex flex-column mb-4">
             <label for="country">{{ t('global.country') }}</label>
             <select name="country" id="country" formControlName="country">
-              <option *ngFor="let country of countries"
-                      [value]="country['@id']"> {{ country.prefLabel | czLabel }}</option>
+              <option *ngFor="let country of countries" [value]="country['@id']">{{ country.prefLabel | czLabel: lang }}</option>
             </select>
           </div>
         </div>
-        <button [disabled]="!formGroup.value.step2?.country || (loadingService.loading$ | async)" type="submit" class="app-button mt-5" color="primary">{{ t('global.next') }}</button>
+        <button
+          [disabled]="!formGroup.value.step2?.country || (loadingService.loading$ | async)"
+          type="submit"
+          class="app-button mt-5"
+          color="primary"
+        >
+          {{ t('global.next') }}
+        </button>
         <mat-progress-bar *ngIf="loadingService.loading$ | async" mode="indeterminate"></mat-progress-bar>
       </mat-step>
     </mat-stepper>

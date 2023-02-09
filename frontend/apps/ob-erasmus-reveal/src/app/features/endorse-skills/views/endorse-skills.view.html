@@ -31,29 +31,28 @@
             <div class="row">
               <div class="col-lg-12 d-flex flex-column mb-4">
                 <label for="fromEmail">{{ t('email') }}</label>
-                <input class="w-50" id="fromEmail" formControlName="fromEmail">
+                <input class="w-50" id="fromEmail" formControlName="fromEmail" />
               </div>
               <div class="col-lg-6 d-flex flex-column mb-5">
                 <label for="fromLastName">{{ t('surname') }} {{ t('optional') }}</label>
-                <input id="fromLastName" formControlName="fromLastName">
+                <input id="fromLastName" formControlName="fromLastName" />
               </div>
               <div class="col-lg-6 d-flex flex-column mb-5">
                 <label for="fromFirstName">{{ t('name') }} {{ t('optional') }}</label>
-                <input id="fromFirstName" formControlName="fromFirstName">
+                <input id="fromFirstName" formControlName="fromFirstName" />
               </div>
 
               <div class="col-lg-12 d-flex flex-column mb-5">
                 <label for="relationshipType">{{ t('relationship_level', {user: requestingUser}) }}</label>
                 <select class="w-50" name="relationshipType" id="relationshipType" formControlName="relationshipType">
                   <option value="" selected>{{ t('select_relationship') }}</option>
-                  <option *ngFor="let relation of relationType"
-                          [value]="relation['@id']"> {{ relation.prefLabel | czLabel }}
-                  </option>
+                  <option *ngFor="let relation of relationType" [value]="relation['@id']">{{ relation.prefLabel | czLabel : lang }}</option>
                 </select>
               </div>
             </div>
-            <button type="button" [disabled]="formGroup.controls.step1.invalid" class="app-button"
-                    color="primary" matStepperNext>{{ t('next') }}</button>
+            <button type="button" [disabled]="formGroup.controls.step1.invalid" class="app-button" color="primary" matStepperNext>
+              {{ t('next') }}
+            </button>
           </mat-step>
           <!-- Step 2 -->
           <mat-step formGroupName="step2">
@@ -67,8 +66,7 @@
               <div class="col-lg-6 d-flex flex-column mb-4">
                 <label for="fromCountry">{{ t('country') }} {{ t('optional') }}</label>
                 <select name="fromCountry" id="fromCountry" formControlName="fromCountry">
-                  <option *ngFor="let country of countries"
-                          [value]="country['@id']"> {{ country.prefLabel | czLabel }}</option>
+                  <option *ngFor="let country of countries" [value]="country['@id']">{{ country.prefLabel | czLabel : lang }}</option>
                 </select>
               </div>
             </div>
@@ -81,8 +79,19 @@
               {{ t('back') }}
             </button>
             <h2 class="mt-3">{{ t('step_3.heading', {user: requestingUser}) }}</h2>
-            <ob-erasmus-reveal-skills-feedback [skills]="skills" (skillsSelected)="setSelectedSkills($event)"></ob-erasmus-reveal-skills-feedback>
-            <button type="button" [disabled]="formGroup.controls.step3.controls.selectedSkills.invalid" class="app-button" color="primary" matStepperNext>{{ t('next') }}</button>
+            <ob-erasmus-reveal-skills-feedback
+              [skills]="skills"
+              (skillsSelected)="setSelectedSkills($event)"
+            ></ob-erasmus-reveal-skills-feedback>
+            <button
+              type="button"
+              [disabled]="formGroup.controls.step3.controls.selectedSkills.invalid"
+              class="app-button"
+              color="primary"
+              matStepperNext
+            >
+              {{ t('next') }}
+            </button>
           </mat-step>
 
           <!-- Step 4 -->
@@ -94,12 +103,18 @@
             <label for="text" class="my-label mt-3 d-block">{{ t('step_4.heading', {user: requestingUser}) }}</label>
 
             <div class="my-form-field">
-              <textarea [placeholder]="t('step_4.placeholder_text')" id="text" formControlName="text"
-                        cdkTextareaAutosize></textarea>
+              <textarea [placeholder]="t('step_4.placeholder_text')" id="text" formControlName="text" cdkTextareaAutosize></textarea>
             </div>
 
-            <button type="submit" [disabled]="(formGroup.controls.step4.invalid) || (loading$ | async)" class="app-button" color="primary"
-                    matStepperNext>{{ t('step_4.send_answers') }}</button>
+            <button
+              type="submit"
+              [disabled]="(formGroup.controls.step4.invalid) || (loading$ | async)"
+              class="app-button"
+              color="primary"
+              matStepperNext
+            >
+              {{ t('step_4.send_answers') }}
+            </button>
           </mat-step>
         </mat-stepper>
       </div>
