@@ -1,10 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
 import { Params, Router, RouterModule } from '@angular/router';
@@ -22,9 +18,9 @@ import {
   RelationshipType,
   RelationshipTypeService,
   Skill,
-  SkillsService
+  SkillsService,
 } from '@app/core';
-import { I18nModule } from '@cognizone/i18n';
+import { I18nModule, I18nService } from '@cognizone/i18n';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AppLogoComponent } from '@app/shared-features/app-logo';
@@ -34,9 +30,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { EndorseSkillsViewService } from '../services/endorse-skills-view.service';
 import { EndorsementCompleteComponent } from '../components/endorsement-complete/endorsement-complete.component';
 import { Dialog } from '@angular/cdk/dialog';
-import {
-  FeedbackSentToProfileModal
-} from '../components/feedback-sent-to-profile/feedback-sent-to-profile.modal';
+import { FeedbackSentToProfileModal } from '../components/feedback-sent-to-profile/feedback-sent-to-profile.modal';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LanguageSelectionComponent } from '@app/shared-features/language-selection';
 
@@ -58,7 +52,7 @@ import { LanguageSelectionComponent } from '@app/shared-features/language-select
     EndorsementCompleteComponent,
     FeedbackSentToProfileModal,
     MatProgressBarModule,
-    LanguageSelectionComponent
+    LanguageSelectionComponent,
   ],
   providers: [LoadingService, EndorseSkillsViewService],
   templateUrl: './endorse-skills.view.html',
@@ -66,7 +60,7 @@ import { LanguageSelectionComponent } from '@app/shared-features/language-select
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EndorseSkillsView extends OnDestroy$ implements OnInit {
-  endorseSkillsParams: Params = this.endorseSkillsService.endorseSkillsParams
+  endorseSkillsParams: Params = this.endorseSkillsService.endorseSkillsParams;
   formGroup = this.fb.group({
     step1: this.fb.group({
       fromEmail: [{ value: this.endorseSkillsParams['email'], disabled: true }],
@@ -78,11 +72,11 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
       fromCountry: [''],
     }),
     step3: this.fb.group({
-      selectedSkills: [this.selectedSkills, [Validators.required, Validators.minLength(1)]]
+      selectedSkills: [this.selectedSkills, [Validators.required, Validators.minLength(1)]],
     }),
     step4: this.fb.group({
-      text: ['', Validators.required]
-    })
+      text: ['', Validators.required],
+    }),
   });
 
   countries: Country[] = [];
@@ -92,6 +86,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
   feedbackRequest!: FeedbackRequest;
   endorsementComplete: boolean = false;
   loading$: Observable<boolean> = this.loadingService.loading$;
+  lang?: string;
 
   constructor(
     private fb: FormBuilder,
@@ -106,7 +101,8 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
     private authService: AuthService,
     private dialog: Dialog,
     private loadingService: LoadingService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private i18nService: I18nService
   ) {
     super();
   }
@@ -122,16 +118,25 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
       this.cdr.markForCheck();
     });
 
-
-    this.subSink = this.feedbackRequestService.getFeedbackRequest(this.endorseSkillsParams['feedbackRequestId'])
-    .pipe(this.loadingService.asOperator(), switchMap((request) => this.skillsService.getSkillForEndorsement(request.skills as string[])
-    .pipe(map(skills => ({ request, skills })))))
-    .subscribe(({ request, skills }) => {
-      this.requestingUser = request['@facets']?.firstName || request['@facets']?.email as string;
-      this.skills = skills;
-      this.feedbackRequest = request;
+    this.subSink = this.i18nService.selectActiveLang().subscribe(lang => {
+      this.lang = lang ?? undefined;
       this.cdr.markForCheck();
     });
+
+    this.subSink = this.feedbackRequestService
+      .getFeedbackRequest(this.endorseSkillsParams['feedbackRequestId'])
+      .pipe(
+        this.loadingService.asOperator(),
+        switchMap(request =>
+          this.skillsService.getSkillForEndorsement(request.skills as string[]).pipe(map(skills => ({ request, skills })))
+        )
+      )
+      .subscribe(({ request, skills }) => {
+        this.requestingUser = request['@facets']?.firstName || (request['@facets']?.email as string);
+        this.skills = skills;
+        this.feedbackRequest = request;
+        this.cdr.markForCheck();
+      });
   }
 
   get selectedSkills(): string[] {
@@ -161,35 +166,42 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
       '@facets': facets,
       request: this.feedbackRequest?.['@id'],
       text: this.formGroup.value.step4?.['text'],
-      created: new Date().toISOString()
+      created: new Date().toISOString(),
     } as JsonModelFields<Feedback>;
 
-    this.subSink = this.feedbackService.create(feedback).pipe(
-      switchMap(feedback => forkJoin(this.selectedSkills.map(skill => {
-        return this.notificationService.create({
-          endorsedSkill: skill,
-          feedback,
-          acknowledged: false,
-          endorsedUser: this.feedbackRequest.user
+    this.subSink = this.feedbackService
+      .create(feedback)
+      .pipe(
+        switchMap(feedback =>
+          forkJoin(
+            this.selectedSkills.map(skill => {
+              return this.notificationService.create({
+                endorsedSkill: skill,
+                feedback,
+                acknowledged: false,
+                endorsedUser: this.feedbackRequest.user,
+              });
+            })
+          )
+        ),
+        this.loadingService.asOperator(),
+        switchMap(() => {
+          if (this.endorseSkillsParams['email'] === this.authService.currentUser?.email) {
+            this.dialog.open(FeedbackSentToProfileModal, {
+              data: { requestingUser: this.requestingUser },
+            });
+            return of(true);
+          }
+          return of(false);
         })
-      }))),
-      this.loadingService.asOperator(),
-      switchMap(() => {
-        if (this.endorseSkillsParams['email'] === this.authService.currentUser?.email) {
-          this.dialog.open(FeedbackSentToProfileModal, {
-            data: { requestingUser: this.requestingUser },
-          });
-          return of(true)
+      )
+      .subscribe(request => {
+        if (request) {
+          this.router.navigate(['profile']);
+        } else {
+          this.endorsementComplete = true;
         }
-        return of(false);
-      })
-    ).subscribe((request) => {
-      if (request) {
-        this.router.navigate(['profile']);
-      } else {
-        this.endorsementComplete = true;
-      }
-      this.cdr.markForCheck();
-    });
+        this.cdr.markForCheck();
+      });
   }
 }

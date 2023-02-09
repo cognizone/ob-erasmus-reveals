@@ -24,7 +24,7 @@
     }
   },
   "answer_sent": {
-    "heading": "Vos réponses ont été envoyées à {{ utilisateur }}",
+    "heading": "Vos réponses ont été envoyées à {{ user }}",
     "thank_you": "Merci pour votre temps !"
   },
   "complete_profile": {
@@ -71,7 +71,7 @@
     "send_again": "Envoyer à nouveau"
   },
   "endorse_skills": {
-    "back": "Back",
+    "back": "Retour",
     "country": "{{global.country}}",
     "email": "{{global.email}}",
     "feedback_given": {
@@ -80,24 +80,24 @@
     "name": "{{global.name}}",
     "next": "{{global.next}}",
     "optional": "(facultatif)",
-    "relationship_level": "Votre niveau de relation avec {{l'utilisateur }}",
+    "relationship_level": "Votre niveau de relation avec {{ user }}",
     "select_relationship": "Sélectionnez une relation",
     "start": "Commencer",
     "step_0": {
       "description": "Merci de prendre le temps de répondre à cette demande d'endossement. Ne vous inquiétez pas, cela ne vous prendra pas beaucoup de temps pour la compléter.",
-      "heading": "Welcome"
+      "heading": "Bienvenue"
     },
     "step_1": {
       "about": "Dites-nous en plus sur vous",
       "description": "Merci de prendre le temps de répondre à cette demande d'endossement. Il ne vous faudra pas beaucoup de temps pour la remplir.",
-      "heading": "Demande de validation de compétences de {{ utilisateur }}"
+      "heading": "Demande de validation de compétences de {{ user }}"
     },
     "step_2": {
       "description": "Nous utilisons les données de localisation de nos utilisateurs pour améliorer les informations de la page << compétences >>",
       "heading": "Partagez votre localisation"
     },
     "step_3": {
-      "heading": "Quelles compétences {{utilisateur}} approuvez-vous ?"
+      "heading": "Quelles compétences {{user}} approuvez-vous ?"
     },
     "step_4": {
       "heading": "Pourquoi approuvez-vous ces compétences pour {{ l'utilisateur }} ?",
@@ -235,16 +235,16 @@
     "ask_endorsement_skill": "Demander une reconnaissance pour cette compétence",
     "ask_for_endorsement": "Demande d'approbation",
     "back": "Retour",
-    "countries_count": "{{compte }} pays",
-    "country_count": "{{ nombre }}} pays",
+    "countries_count": "{{ count }} pays",
+    "country_count": "{{ count }}} pays",
     "description": "Description",
-    "endorsement_count": "{{nombre }} d'endossements",
-    "endorsements_count": "{{compte}} endossements",
+    "endorsement_count": "{{ count }} d'endossements",
+    "endorsements_count": "{{ count }} endossements",
     "last_endorsement_from": "Dernier endossement de",
-    "people_count": "{{compte}} personnes",
+    "people_count": "{{ count }} personnes",
     "skill_alt_logo": "Logo de la compétence",
     "skill_count": "{{ count }}} compétence",
-    "skills_count": "{{count}} {{en-tête.compétences}}",
+    "skills_count": "{{count}} {{header.skills}}",
     "total": "Total",
     "used_by": "Utilisé par"
   },

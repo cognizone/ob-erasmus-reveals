@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { Skill } from '@app/core';
 import produce from 'immer';
 import { MatIconModule } from '@angular/material/icon';
 import { SkillImageUrlPipe } from './pipes/skill-image-url.pipe';
-import { I18nModule } from '@cognizone/i18n';
+import { I18nModule, I18nService } from '@cognizone/i18n';
+import { OnDestroy$ } from '@cognizone/ng-core';
 
 @Component({
   selector: 'ob-erasmus-reveal-skills-feedback',
@@ -15,7 +16,7 @@ import { I18nModule } from '@cognizone/i18n';
   styleUrls: ['./skills-feedback.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SkillsFeedbackComponent implements OnInit {
+export class SkillsFeedbackComponent extends OnDestroy$ implements OnInit {
   @Input()
   skills: Skill[] = [];
   @Input()
@@ -24,8 +25,18 @@ export class SkillsFeedbackComponent implements OnInit {
   @Output()
   skillsSelected: EventEmitter<string[]> = new EventEmitter();
   selectedSkills: string[] = [];
+  lang?: string;
+
+  constructor(private i18nService: I18nService, private cdr: ChangeDetectorRef) {
+    super();
+  }
 
   ngOnInit(): void {
+    this.subSink = this.i18nService.selectActiveLang().subscribe(lang => {
+      this.lang = lang ?? undefined;
+      this.cdr.markForCheck();
+    });
+
     if (this.skillUris && (this.skillUris?.length ?? 0) > 0) {
       this.selectedSkills = this.skillUris;
     }
