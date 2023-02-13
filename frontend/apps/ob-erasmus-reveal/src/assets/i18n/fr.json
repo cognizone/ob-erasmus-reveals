@@ -243,7 +243,7 @@
     "last_endorsement_from": "Dernier endossement de",
     "people_count": "{{ count }} personnes",
     "skill_alt_logo": "Logo de la compétence",
-    "skill_count": "{{ count }}} compétence",
+    "skill_count": "{{ count }} compétence",
     "skills_count": "{{count}} {{header.skills}}",
     "total": "Total",
     "used_by": "Utilisé par"
