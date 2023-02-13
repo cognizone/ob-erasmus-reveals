@@ -236,7 +236,7 @@
     "ask_for_endorsement": "Demande d'approbation",
     "back": "Retour",
     "countries_count": "{{ count }} pays",
-    "country_count": "{{ count }}} pays",
+    "country_count": "{{ count }} pays",
     "description": "Description",
     "endorsement_count": "{{ count }} d'endossements",
     "endorsements_count": "{{ count }} endossements",
