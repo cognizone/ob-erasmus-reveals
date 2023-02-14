@@ -63,7 +63,8 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
     ]).subscribe(([uris, users, data]) => {
       this.users = users;
       this.selectedCountryUri = uris.selectedCountryUri;
-      this.data = data.find(d => d.metaData?.skillUri === decodeURIComponent(uris.selectedSkillUri as string))?.metaData;
+      const selectedSkillUri = decodeURIComponent(uris.selectedSkillUri as string);
+      this.data = data.find(d => d.metaData?.skillUri === selectedSkillUri)?.metaData;
       this.currentIndex = this.selectedCountryUri ? 1 : 0;
       this.cdr.markForCheck();
     });

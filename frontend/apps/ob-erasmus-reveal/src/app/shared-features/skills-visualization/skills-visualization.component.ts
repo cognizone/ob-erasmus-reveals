@@ -1,5 +1,14 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { CommonModule } from '@angular/common';import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef,Injector, Input, ViewChild ,
+import { CommonModule } from '@angular/common';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Injector,
+  Input,
+  ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Counts, FeedbacksService, Skill, SkillsService } from '@app/core';
@@ -37,15 +46,13 @@ export class SkillsVisualizationComponent extends OnDestroy$ implements AfterVie
     private dialog: Dialog,
     private cdr: ChangeDetectorRef,
     private chartDataService: ChartDataService,
-    private feedbackService: FeedbacksService
-  ,
+    private feedbackService: FeedbacksService,
     private router: Router,
     public skillUserService: SkillUsersService,
     private injector: Injector
   ) {
     super();
   }
-
 
   ngAfterViewInit(): void {
     this.subSink = this.skillUserService.selectedUris$.subscribe(params => {

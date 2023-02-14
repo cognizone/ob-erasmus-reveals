@@ -35,7 +35,7 @@
         ></ob-erasmus-reveal-countries-map>
       </section>
       <section class="my-endorsements-section" *ngIf="data.feedbacks">
-        <p>{{ data.endorsementCount }} {{ t(data.endorsementCount > 1 ? 'endorsements_count' : 'endorsement_count') }}</p>
+        <p>{{ data.feedbacks.length }} {{ t(data.feedbacks.length > 1 ? 'endorsements_count' : 'endorsement_count') }}</p>
 
         <!-- List of feedbacks -->
         <article *ngFor="let feedback of data.feedbacks">

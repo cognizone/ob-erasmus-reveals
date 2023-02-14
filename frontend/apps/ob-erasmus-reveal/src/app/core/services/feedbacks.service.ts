@@ -1,13 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JsonModelService } from '@cognizone/json-model';
-import {
-  Dictionary,
-  extractSourcesFromElasticResponse,
-  ElasticBucket,
-  notNil,
-  ElasticSearchResponse
-} from '@cognizone/model-utils';
+import { Dictionary, extractSourcesFromElasticResponse, ElasticBucket, notNil, ElasticSearchResponse } from '@cognizone/model-utils';
 import { map, Observable } from 'rxjs';
 
 import { Counts, Feedback, JsonModelFields } from '../models';
@@ -33,18 +27,18 @@ export class FeedbacksService extends ItemService<Feedback> {
   create(feedback: JsonModelFields<Feedback>): Observable<string> {
     const fullFeedback = {
       ...this.jsonModelService.createNewBareboneJsonModel('Feedback'),
-      ...feedback
+      ...feedback,
     };
     return this.save(fullFeedback);
   }
 
   // TODO - modify the params to `as const`
   getCountsPerCountry(skillUri: string): Observable<Counts> {
-    return this.getCounts( 'endorsedSkills', skillUri, '@facets.requestingUserCountry', true);
+    return this.getCounts('endorsedSkills', skillUri, '@facets.requestingUserCountry', true);
   }
 
   getSkillsCountsPerUser(userUri: string): Observable<Counts> {
-    return this.getCounts( '@facets.requestingUser', userUri, 'endorsedSkills');
+    return this.getCounts('@facets.requestingUser', userUri, 'endorsedSkills');
   }
 
   getGlobalSkillCount(): Observable<Counts> {
@@ -55,55 +49,61 @@ export class FeedbacksService extends ItemService<Feedback> {
           terms: {
             field: 'endorsedSkills.keyword',
             size: 10_000,
-          }
-        }
-      }
+          },
+        },
+      },
     };
 
-    return this.elasticService.search(this.getIndex(), query).pipe(
-      map(response => this.getAggregatedCounts(response))
-    );
+    return this.elasticService.search(this.getIndex(), query).pipe(map(response => this.getAggregatedCounts(response)));
   }
 
   getFeedbacksForUser(uri: string): Observable<Feedback[]> {
     return this.elasticService
-    .search<Feedback>(this.getIndex(), {
-      query: {
-        bool: {
-          filter: {
-            terms: {
-              '@facets.requestingUser.keyword': [uri],
+      .search<Feedback>(this.getIndex(), {
+        size: 10_000,
+        query: {
+          bool: {
+            filter: {
+              term: {
+                '@facets.requestingUser.keyword': uri,
+              },
             },
           },
         },
-      },
-    })
-    .pipe(map(extractSourcesFromElasticResponse));
+        sort: {
+          created: 'desc',
+        },
+      })
+      .pipe(map(extractSourcesFromElasticResponse));
   }
 
   getUsersForSkills(uri: string, skillUri: string): Observable<string[]> {
     return this.elasticService
-    .search<Feedback>(this.getIndex(), {
-      query: {
-        bool: {
-          must: [
-            {
-              term: {
-                '@facets.requestingUserCountry.keyword': uri,
+      .search<Feedback>(this.getIndex(), {
+        size: 10_000,
+        query: {
+          bool: {
+            must: [
+              {
+                term: {
+                  '@facets.requestingUserCountry.keyword': uri,
+                },
               },
-            },
-            {
-              term: {
-                'endorsedSkills.keyword': skillUri,
+              {
+                term: {
+                  'endorsedSkills.keyword': skillUri,
+                },
               },
-            },
-          ],
+            ],
+          },
         },
-      }
-    })
-    .pipe(map(extractSourcesFromElasticResponse), map(response => {
-      return response.map(res => res?.["@facets"]?.requestingUser).filter(notNil) ?? []
-    }));
+      })
+      .pipe(
+        map(extractSourcesFromElasticResponse),
+        map(response => {
+          return response.map(res => res?.['@facets']?.requestingUser).filter(notNil) ?? [];
+        })
+      );
   }
 
   override getAll(): Observable<Feedback[]> {
@@ -131,28 +131,28 @@ export class FeedbacksService extends ItemService<Feedback> {
           aggs: {
             unique_count: {
               cardinality: {
-                field: '@facets.requestingUser.keyword'
-              }
-            }
-          }
-        }
-      }
+                field: '@facets.requestingUser.keyword',
+              },
+            },
+          },
+        },
+      },
     };
 
-    return this.elasticService.search(this.getIndex(), query).pipe(
-      map(response => this.getAggregatedCounts(response, uniqueCount))
-    );
+    return this.elasticService.search(this.getIndex(), query).pipe(map(response => this.getAggregatedCounts(response, uniqueCount)));
   }
 
   private getAggregatedCounts(response: ElasticSearchResponse<unknown>, uniqueCount: boolean = false): Counts {
     const counts: Dictionary<number> = {};
-    response.aggregations['counts'].buckets?.forEach((b: ElasticBucketUnique) => (counts[b.key] = uniqueCount ? b.unique_count?.value as number : b.doc_count));
+    response.aggregations['counts'].buckets?.forEach(
+      (b: ElasticBucketUnique) => (counts[b.key] = uniqueCount ? (b.unique_count?.value as number) : b.doc_count)
+    );
     return counts;
   }
 }
 
 interface ElasticBucketUnique extends ElasticBucket {
   unique_count?: {
-    value: number
-  }
+    value: number;
+  };
 }
