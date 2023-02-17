@@ -2,12 +2,12 @@
   "baseUri": "http://reveal.org/data",
   "baseUriForNewItems": "http://resource",
   "dataVersions": {
-    "countries": 3,
-    "feedbacks": 4,
-    "feedback-requests": 3,
-    "relationship-types": 3,
-    "notification": 1,
-    "users": 3,
-    "skills": 5
+    "countries": 6,
+    "feedbacks": 6,
+    "feedback-requests": 6,
+    "relationship-types": 6,
+    "notification": 6,
+    "users": 6,
+    "skills": 6
   }
 }
