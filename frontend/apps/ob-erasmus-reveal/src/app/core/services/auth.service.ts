@@ -25,7 +25,8 @@ export class AuthService implements Initializer {
   async init(): Promise<void> {
     const email = this.getState();
     if (!email) return;
-    await firstValueFrom(this.login(email));
+    const loggedIn = await firstValueFrom(this.login(email));
+    if (!loggedIn) this.setState(null);
   }
 
   login(email: string): Observable<boolean> {
@@ -41,14 +42,13 @@ export class AuthService implements Initializer {
   }
 
   userExists(email: string): Observable<boolean> {
-    return this.userService.getByEmail(email).pipe(
-      map(user => !!user));
+    return this.userService.getByEmail(email).pipe(map(user => !!user));
   }
 
   register(email: string): Observable<string> {
     const body = {
       email: email,
-      language: this.i18nService.getActiveLang()
+      language: this.i18nService.getActiveLang(),
     };
     return this.http.post('api/signup', body) as Observable<string>;
   }

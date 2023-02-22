@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { extractOneSourceFromElasticResponse } from '@cognizone/model-utils';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 import { JsonModelFields, User } from '../models';
 import { ItemService } from './item.service';
@@ -17,13 +17,19 @@ export class UserService extends ItemService<User> {
           bool: {
             filter: {
               term: {
-                'email.keyword': email
-              }
-            }
+                'email.keyword': email,
+              },
+            },
           },
         },
       })
-      .pipe(map(extractOneSourceFromElasticResponse));
+      .pipe(
+        map(extractOneSourceFromElasticResponse),
+        catchError(err => {
+          console.error('Failed to fetch user', err);
+          return of(undefined);
+        })
+      );
   }
 
   create(user: JsonModelFields<User>): Observable<string> {
