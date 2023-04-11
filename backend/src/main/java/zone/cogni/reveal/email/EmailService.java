@@ -170,7 +170,7 @@ public class EmailService {
     String url = UriComponentsBuilder
       .fromHttpUrl(baseUrl)
       .path("/profile")
-      .path("/" + URLEncoder.encode(signInModel.getEmail(), StandardCharsets.UTF_8.toString()))
+      .path("/" + URLEncoder.encode(signInModel.getId(), StandardCharsets.UTF_8.toString()))
       .path("/token")
       .path("/" + UUID.randomUUID())
       .build()

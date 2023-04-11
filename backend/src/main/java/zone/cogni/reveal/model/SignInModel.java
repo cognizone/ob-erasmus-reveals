@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class SignInModel {
+  public String id;
   public String language;
   public String email;
 
