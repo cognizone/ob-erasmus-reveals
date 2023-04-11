@@ -53,6 +53,15 @@ export class AuthService implements Initializer {
     return this.http.post('api/signup', body) as Observable<string>;
   }
 
+  signin(): Observable<string> {
+    const body = {
+      email: this.currentUser.email,
+      language: this.i18nService.getActiveLang(),
+      id: this.currentUser['@id'],
+    };
+    return this.http.post('api/signin', body) as Observable<string>;
+  }
+
   private getState(): string | null {
     return localStorage.getItem(this.storageKey);
   }

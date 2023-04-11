@@ -17,17 +17,14 @@ import { Observable, of, switchMap } from 'rxjs';
   providers: [LoadingService],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupComponent extends OnDestroy$ {
   @Input()
   isLogin: boolean = false;
-  loading$: Observable<boolean> = this.loadingService.loading$
+  loading$: Observable<boolean> = this.loadingService.loading$;
   userEmail = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email
-    ])
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   constructor(
@@ -49,39 +46,56 @@ export class SignupComponent extends OnDestroy$ {
       const email = this.userEmail.getRawValue().email as string;
 
       if (this.isLogin) {
-        this.subSink = this.authService.login(email).pipe(this.loadingService.asOperator()).subscribe(userValid => {
-          if (userValid) this.router.navigate(['profile']);
-          else {
-            this.userPrompt.error(this.transloco.translate('login.no_user_found'));
-            this.logger.error('User not found');
-          }
-        }, (error) => {
-          this.userPrompt.error();
-          this.logger.error(error);
-        })
-      } else {
-        this.subSink = this.authService.userExists(email).pipe(
-          switchMap(userExists => {
-            if (!userExists) {
-              return this.authService.register(email).pipe(this.loadingService.asOperator())
-            }
-            return of(null);
-          })
-        ).subscribe((user) => {
-          if (user) {
-            this.dialogRef?.close();
-            this.dialog
-            .open(ConfirmationDialogComponent, {
-              data: { email },
+        this.subSink = this.authService
+          .login(email)
+          .pipe(
+            this.loadingService.asOperator(),
+            switchMap(userValid => {
+              if (userValid) return this.authService.signin().pipe(this.loadingService.asOperator());
+              return of(null);
             })
-          } else {
-            this.userPrompt.error('join_now.user_exists');
-            this.logger.error('User already exists');
-          }
-        }, (error) => {
-          this.userPrompt.error();
-          this.logger.error(error);
-        })
+          )
+          .subscribe(
+            userValid => {
+              if (userValid) this.userPrompt.success('login.check_email');
+              else {
+                this.userPrompt.error(this.transloco.translate('login.no_user_found'));
+                this.logger.error('User not found');
+              }
+            },
+            error => {
+              this.userPrompt.error();
+              this.logger.error(error);
+            }
+          );
+      } else {
+        this.subSink = this.authService
+          .userExists(email)
+          .pipe(
+            switchMap(userExists => {
+              if (!userExists) {
+                return this.authService.register(email).pipe(this.loadingService.asOperator());
+              }
+              return of(null);
+            })
+          )
+          .subscribe(
+            user => {
+              if (user) {
+                this.dialogRef?.close();
+                this.dialog.open(ConfirmationDialogComponent, {
+                  data: { email },
+                });
+              } else {
+                this.userPrompt.error('join_now.user_exists');
+                this.logger.error('User already exists');
+              }
+            },
+            error => {
+              this.userPrompt.error();
+              this.logger.error(error);
+            }
+          );
       }
     }
   }

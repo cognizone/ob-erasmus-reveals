@@ -35,7 +35,15 @@
             <input id="firstName" formControlName="firstName" />
           </div>
         </div>
-        <button type="button" class="app-button mt-5" color="primary" matStepperNext>{{ t('global.next') }}</button>
+        <button
+          type="button"
+          class="app-button mt-5"
+          color="primary"
+          matStepperNext
+          [disabled]="!formGroup.value.step1?.firstName || !formGroup.value.step1?.lastName"
+        >
+          {{ t('global.next') }}
+        </button>
       </mat-step>
       <!-- Step 2 -->
       <mat-step formGroupName="step2">

@@ -63,12 +63,7 @@ export class ProfileView extends OnDestroy$ implements OnInit {
         )
       )
       .subscribe(({ user, result }) => {
-        if (user?.firstName || user?.lastName) {
-          this.userInfo = `${user?.firstName} ${user.lastName}`;
-          this.userEmail = user?.email as string;
-        } else {
-          this.userInfo = user?.email as string;
-        }
+        this.userInfo = `${user?.firstName} ${user.lastName}`;
         this.userId = user['@id'];
         this.endorsedSkillsUris = Object.keys(result);
         if (this.endorsedSkillsUris.length > 0) {

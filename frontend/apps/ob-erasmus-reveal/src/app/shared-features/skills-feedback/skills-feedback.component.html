@@ -1,6 +1,9 @@
 <ng-container *transloco="let t; read: 'skills_feedback'">
   <div class="d-flex justify-content-between">
-    <span class="my-prompt">{{ t('select_skills') }}</span>
+    <span class="my-prompt" *ngIf="this.requestingUser; else elseTemplate">{{
+      t('select_skills_user', { user: this.requestingUser })
+    }}</span>
+    <ng-template #elseTemplate>{{ t('select_skills') }}</ng-template>
     <!-- FIXME for some reason, was not able to make messageformat work with transloco 🤷 -->
     <span class="my-count" [class.is-filled]="selectedSkills.length > 0">{{
       t(selectedSkills.length > 1 ? 'skills_selected' : 'skill_selected', { count: selectedSkills.length })

@@ -80,6 +80,7 @@
             </button>
             <h2 class="mt-3">{{ t('step_3.heading', {user: requestingUser}) }}</h2>
             <ob-erasmus-reveal-skills-feedback
+              [requestingUser]="requestingUser"
               [skills]="skills"
               (skillsSelected)="setSelectedSkills($event)"
             ></ob-erasmus-reveal-skills-feedback>

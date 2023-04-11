@@ -14,5 +14,6 @@ export * from './notification.service';
 export * from './relationship-type.service';
 export * from './skills.service';
 export * from './transloco-http-loader.service';
+export * from './token-storage.service';
 export * from './user-prompt.service';
 export * from './user.service';
