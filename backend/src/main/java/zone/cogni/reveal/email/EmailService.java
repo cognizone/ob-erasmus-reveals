@@ -9,12 +9,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import zone.cogni.reveal.model.FeedbackModel;
+import zone.cogni.reveal.model.SignInModel;
 import zone.cogni.reveal.model.SignupModel;
 
 import javax.activation.DataHandler;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -25,8 +27,12 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Properties;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -37,19 +43,29 @@ public class EmailService {
   public void sendFeedbackMail(FeedbackModel feedbackModel, String baseUrl) {
     String subject = emailProperties.getSubject(feedbackModel.getLanguage());
     feedbackModel.getEmails().forEach(email -> {
-      sendEmail(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, baseUrl));
+      try {
+        sendEmail(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, baseUrl));
+      }
+      catch (Exception e) {
+        log.error("Failed to send email to {}, with subject {}", email, subject);
+      }
       log.info("Message sent with email to {}, subject {}", email, subject);
     });
   }
 
-  public void sendSignupMail(SignupModel signupModel, String baseUrl) {
+  public void sendSignupMail(SignupModel signupModel, String baseUrl) throws MessagingException, UnsupportedEncodingException {
     String subject = emailProperties.getSubject(signupModel.getLanguage());
     sendEmail(signupModel.getEmail(), subject, signupModel.getTemplate(), getContextForSignup(signupModel.getEmail(), baseUrl));
     log.info("Message sent with email to {}, subject {}", signupModel.getEmail(), subject);
   }
 
-  @SneakyThrows
-  private void sendEmail(String email, String subject, String templateName, Context context) {
+  public void sendSignInMail(SignInModel signInModel, String baseUrl) throws MessagingException, UnsupportedEncodingException {
+    String subject = emailProperties.getSubject(signInModel.getLanguage());
+    sendEmail(signInModel.getEmail(), subject, signInModel.getTemplate(), getContextForSignIn(signInModel, baseUrl));
+    log.info("Message sent with email to {}, subject {}", signInModel.getEmail(), subject);
+  }
+
+  private void sendEmail(String email, String subject, String templateName, Context context) throws MessagingException, UnsupportedEncodingException {
     Session session = initSession();
 
     log.info("Sending email to {}, subject {}", email, subject);
@@ -95,8 +111,7 @@ public class EmailService {
     return properties;
   }
 
-  @SneakyThrows
-  private Message setMimeMessage(Session session, String email, String subject) {
+  private Message setMimeMessage(Session session, String email, String subject) throws MessagingException, UnsupportedEncodingException {
     Message mimeMessage = new MimeMessage(session);
     mimeMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
     mimeMessage.setSubject(subject);
@@ -107,8 +122,7 @@ public class EmailService {
     return mimeMessage;
   }
 
-  @SneakyThrows
-  private MimeMultipart addHtmlTemplate(String body) {
+  private MimeMultipart addHtmlTemplate(String body) throws MessagingException {
     // adds an inline image with a content id , in this case it is adding the logo
     MimeMultipart multipart = new MimeMultipart("related");
     BodyPart messageBodyPartHtml = new MimeBodyPart();
@@ -130,12 +144,12 @@ public class EmailService {
 
   private Context getContextForFeedback(String email, FeedbackModel feedbackModel, String baseUrl) {
     String url = UriComponentsBuilder
-            .fromHttpUrl(baseUrl)
-            .path("/endorse-skills")
-            .queryParam("feedbackRequestId", feedbackModel.getId())
-            .queryParam("email", email)
-            .build()
-            .toUriString();
+      .fromHttpUrl(baseUrl)
+      .path("/endorse-skills")
+      .queryParam("feedbackRequestId", feedbackModel.getId())
+      .queryParam("email", email)
+      .build()
+      .toUriString();
     Context context = initContext(url);
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
@@ -144,11 +158,23 @@ public class EmailService {
 
   private Context getContextForSignup(String email, String baseUrl) {
     String url = UriComponentsBuilder
-            .fromHttpUrl(baseUrl)
-            .path("/complete-profile")
-            .queryParam("email", email)
-            .build()
-            .toUriString();
+      .fromHttpUrl(baseUrl)
+      .path("/complete-profile")
+      .queryParam("email", email)
+      .build()
+      .toUriString();
+    return initContext(url);
+  }
+
+  private Context getContextForSignIn(SignInModel signInModel, String baseUrl) throws UnsupportedEncodingException {
+    String url = UriComponentsBuilder
+      .fromHttpUrl(baseUrl)
+      .path("/profile")
+      .path("/" + URLEncoder.encode(signInModel.getEmail(), StandardCharsets.UTF_8.toString()))
+      .path("/token")
+      .path("/" + UUID.randomUUID())
+      .build()
+      .toUriString();
     return initContext(url);
   }
 
