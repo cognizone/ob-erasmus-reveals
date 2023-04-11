@@ -28,8 +28,6 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
@@ -47,7 +45,7 @@ public class EmailService {
         sendEmail(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, baseUrl));
       }
       catch (Exception e) {
-        log.error("Failed to send email to {}, with subject {}", email, subject);
+        log.error("Failed to send feedback email to {}, with subject {}", email, subject);
       }
       log.info("Message sent with email to {}, subject {}", email, subject);
     });
@@ -170,7 +168,7 @@ public class EmailService {
     String url = UriComponentsBuilder
       .fromHttpUrl(baseUrl)
       .path("/profile")
-      .path("/" + URLEncoder.encode(signInModel.getId(), StandardCharsets.UTF_8.toString()))
+      .path("/" + signInModel.getId())
       .path("/token")
       .path("/" + UUID.randomUUID())
       .build()
