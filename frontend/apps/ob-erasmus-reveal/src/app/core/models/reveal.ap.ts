@@ -52,11 +52,11 @@ export interface User extends JsonModel {
   '@type': JsonModelType<'User'>;
   country?: string;
   email?: string;
-  firstName?: string;
-  lastName?: string;
+  firstName: string;
+  lastName: string;
 }
 
-export interface Notification extends JsonModel{
+export interface Notification extends JsonModel {
   '@type': JsonModelType<'Notification'>;
   endorsedSkill: string;
   acknowledged: boolean;

@@ -97,7 +97,7 @@
       "heading": "Condividi il tuo paese"
     },
     "step_3": {
-      "heading": "Quale competenza di {{ user }} vuoi raccomandare?"
+      "heading": "Quali competenze di {{ user }} sono condivise?"
     },
     "step_4": {
       "heading": "Perché raccomandi queste competenze di {{ user }}?",
@@ -225,6 +225,7 @@
     "heading": "Lingua"
   },
   "login": {
+    "check_email": "Controllare l'e-mail per l'accesso",
     "no_user_found": "Errore: l'utente non esiste, torna per favore a Sign Up."
   },
   "profile": {
@@ -257,6 +258,7 @@
   },
   "skills_feedback": {
     "select_skills": "Seleziona una o più competenze per il quale vuoi essere raccomandato:",
+    "select_skills_user": "Selezionare 1 o più abilità per le quali {{ user }} vuole essere approvato:",
     "skill_selected": "{{count}} skill selected",
     "skills_selected": "{{count}} skills selected",
     "unselected": "unselected"

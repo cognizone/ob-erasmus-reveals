@@ -21,6 +21,8 @@ export class SkillsFeedbackComponent extends OnDestroy$ implements OnInit {
   skills: Skill[] = [];
   @Input()
   skillUris?: string[];
+  @Input()
+  requestingUser?: string;
 
   @Output()
   skillsSelected: EventEmitter<string[]> = new EventEmitter();

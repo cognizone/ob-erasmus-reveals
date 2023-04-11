@@ -36,8 +36,8 @@ export class CompleteProfileView extends OnDestroy$ implements OnInit {
   formGroup = this.fb.group({
     step1: this.fb.group({
       email: [{ value: this.completeProfileViewService.completeProfileParams['email'], disabled: true }],
-      lastName: [''],
-      firstName: [''],
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required],
     }),
     step2: this.fb.group({
       country: ['', Validators.required],

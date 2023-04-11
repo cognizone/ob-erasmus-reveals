@@ -97,7 +97,7 @@
       "heading": "Delite svojo lokacijo"
     },
     "step_3": {
-      "heading": "Katere {{ user }} spretnosti potrjujete?"
+      "heading": "Katere spretnosti {{ uporabnika }} podpirate?"
     },
     "step_4": {
       "heading": "Zakaj potrjujete te spretnosti za {{ user }}?",
@@ -225,6 +225,7 @@
     "heading": "Jezik"
   },
   "login": {
+    "check_email": "Preverite e-pošto za prijavo",
     "no_user_found": "Napaka: Uporabnik ne obstaja, prosimo, da se registrirate."
   },
   "profile": {
@@ -257,6 +258,7 @@
   },
   "skills_feedback": {
     "select_skills": "Izberite 1 ali več spretnosti, za katere želite potrditev:",
+    "select_skills_user": "Izberite 1 ali več spretnosti, za katere {{ user }} želite biti potrjeni:",
     "skill_selected": "{{count}} izbrana spretnost",
     "skills_selected": "{{count}} izbrane spretnosti",
     "unselected": "neizbrano"

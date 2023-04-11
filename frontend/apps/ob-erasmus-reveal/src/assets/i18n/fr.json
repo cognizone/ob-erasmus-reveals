@@ -97,7 +97,7 @@
       "heading": "Partagez votre localisation"
     },
     "step_3": {
-      "heading": "Quelles compétences {{user}} approuvez-vous ?"
+      "heading": "Quelles sont les compétences de {{ user }} que vous approuvez ?"
     },
     "step_4": {
       "heading": "Pourquoi approuvez-vous ces compétences pour {{ l'utilisateur }} ?",
@@ -225,6 +225,7 @@
     "heading": "Langue"
   },
   "login": {
+    "check_email": "Vérifiez votre email pour vous connecter",
     "no_user_found": "Erreur : L'utilisateur n'existe pas, veuillez vous diriger vers l'inscription."
   },
   "profile": {
@@ -257,6 +258,7 @@
   },
   "skills_feedback": {
     "select_skills": "Sélectionnez une ou plusieurs compétences pour lesquelles vous souhaitez être reconnu.e :",
+    "select_skills_user": "Sélectionnez 1 ou plusieurs compétences pour lesquelles {{ user }} veut être soutenu",
     "skill_selected": "{{count}} compétence sélectionnée",
     "skills_selected": "{{count}} compétences sélectionnées",
     "unselected": "non sélectionnée"

@@ -97,7 +97,7 @@
       "heading": "Deel je locatie"
     },
     "step_3": {
-      "heading": "Welke {{ user }} vaardigheden onderschrijf je?"
+      "heading": "Welke vaardigheden van {{ user }} onderschrijf je?"
     },
     "step_4": {
       "heading": "Waarom onderschrijf je deze vaardigheden voor {{ user }}?",
@@ -225,6 +225,7 @@
     "heading": "Taal"
   },
   "login": {
+    "check_email": "Controleer uw e-mail voor aanmelding",
     "no_user_found": "Fout: gebruiker bestaat niet, ga naar aanmelden."
   },
   "profile": {
@@ -257,6 +258,7 @@
   },
   "skills_feedback": {
     "select_skills": "Selecteer 1 of meer vaardigheden waarvoor je wilt worden onderschreven:",
+    "select_skills_user": "Selecteer 1 of meer vaardigheden waarvoor {{ user }} bekrachtigd wil worden:",
     "skill_selected": "{{count}} vaardigheid geselecteerd",
     "skills_selected": "{{count}} vaardigheden geselecteerd",
     "unselected": "niet geselecteerd"

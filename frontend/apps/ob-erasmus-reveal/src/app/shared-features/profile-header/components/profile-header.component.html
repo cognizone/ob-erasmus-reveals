@@ -1,12 +1,14 @@
 <header *transloco="let t" class="container d-flex align-items-center">
   <a routerLink="/profile">
-    <img priority width="158" height="36" ngSrc="assets/images/logo/reveal-logo-square.svg" [alt]="t('global.logo_alt')"/>
+    <img priority width="158" height="36" ngSrc="assets/images/logo/reveal-logo-square.svg" [alt]="t('global.logo_alt')" />
   </a>
   <div class="flex-grow-1"></div>
   <nav>
     <ul>
       <li *ngFor="let item of header">
-        <a routerLinkActive="is-active" class="app-button" [routerLink]="item.path" [ngClass]="item.className">{{ t(item.label) }}</a>
+        <a *ngIf="item.display" routerLinkActive="is-active" class="app-button" [routerLink]="item.path" [ngClass]="item.className">{{
+          t(item.label)
+        }}</a>
       </li>
     </ul>
   </nav>

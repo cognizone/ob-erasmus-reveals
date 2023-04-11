@@ -97,7 +97,7 @@
       "heading": "Share your location"
     },
     "step_3": {
-      "heading": "Which {{ user }} skills do you endorse?"
+      "heading": "Which of {{ user }}'s skills do you endorse?"
     },
     "step_4": {
       "heading": "Why do you endorse these skills for {{ user }}?",
@@ -225,6 +225,7 @@
     "heading": "Language"
   },
   "login": {
+    "check_email": "Check your email for login",
     "no_user_found": "Error: User does not exist, Please head to signup."
   },
   "profile": {
@@ -257,6 +258,7 @@
   },
   "skills_feedback": {
     "select_skills": "Select the 1 or more skills for which you want to be endorsed:",
+    "select_skills_user": "Select the 1 or more skills for which {{user}} want to be endorsed:",
     "skill_selected": "{{count}} skill selected",
     "skills_selected": "{{count}} skills selected",
     "unselected": "unselected"
