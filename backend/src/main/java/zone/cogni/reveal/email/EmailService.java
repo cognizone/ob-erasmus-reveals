@@ -28,6 +28,8 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
@@ -168,7 +170,7 @@ public class EmailService {
     String url = UriComponentsBuilder
       .fromHttpUrl(baseUrl)
       .path("/profile")
-      .path("/" + signInModel.getId())
+      .path("/" + URLEncoder.encode(signInModel.getId(), StandardCharsets.UTF_8.toString()))
       .path("/token")
       .path("/" + UUID.randomUUID())
       .build()
