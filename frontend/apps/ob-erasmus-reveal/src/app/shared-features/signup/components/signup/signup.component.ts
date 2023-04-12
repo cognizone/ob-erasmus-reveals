@@ -49,11 +49,11 @@ export class SignupComponent extends OnDestroy$ {
         this.subSink = this.authService
           .login(email)
           .pipe(
-            this.loadingService.asOperator(),
             switchMap(userValid => {
-              if (userValid) return this.authService.signin().pipe(this.loadingService.asOperator());
+              if (userValid) return this.authService.signin();
               return of(null);
-            })
+            }),
+            this.loadingService.asOperator()
           )
           .subscribe(
             userValid => {
@@ -74,10 +74,11 @@ export class SignupComponent extends OnDestroy$ {
           .pipe(
             switchMap(userExists => {
               if (!userExists) {
-                return this.authService.register(email).pipe(this.loadingService.asOperator());
+                return this.authService.register(email);
               }
               return of(null);
-            })
+            }),
+            this.loadingService.asOperator()
           )
           .subscribe(
             user => {

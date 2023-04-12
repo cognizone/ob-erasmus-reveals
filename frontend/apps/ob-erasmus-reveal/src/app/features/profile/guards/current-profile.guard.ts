@@ -16,11 +16,11 @@ export class CurrentProfileGuard implements CanActivate {
   canActivate(): boolean | UrlTree {
     if (this.authService.currentUser && this.tokenStorage.tokenParams) {
       return this.router.createUrlTree(
-        [`profile/${this.encodeUriService.encode(this.authService.currentUser['@id'])}/token/${this.tokenStorage.tokenParams}`],
+        ['profile', this.encodeUriService.encode(this.authService.currentUser['@id']), 'token', this.tokenStorage.tokenParams],
         {}
       );
     } else if (this.authService.currentUser) {
-      return this.router.createUrlTree([`profile/${this.encodeUriService.encode(this.authService.currentUser['@id'])}`], {});
+      return this.router.createUrlTree(['profile', this.encodeUriService.encode(this.authService.currentUser['@id'])], {});
     }
     return true;
   }
