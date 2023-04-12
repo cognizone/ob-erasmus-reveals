@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="it">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
-<div>
-    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
-    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
-</div>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
 
-<h1 style="color: #5B43B1;font-family: Archivo;">Ciao!</h1>
-<p>Benvenuto nella community di Reveal, dove puoi condividere le tue competenze, chiedere e dare endorsement.Puoi
-    chiedere endorsement fin da ora per tutte le tue competenze, anche quelle che pensi non valga la pena condividere!
-    Sarai sorpreso di scoprire come le persone intorno a te utilizzano le conoscenze acquisite in anni di esperienza sul
-    posto di lavoro e nella vita privata.
-</p>
-<button style="
-        color: white;
-        font-family: Archivo;
-        background-color:#5B43B1;
-        border:none;
-        border-radius:10px;
-        padding:15px;
-        min-width: 120px">
-    <a th:href="${url}" style="text-decoration: none;color: white">
-        <span>Completa il tuo profilo</span>
-    </a>
-</button>
-</body>
+    <h1 style="color: #5b43b1; font-family: Archivo">Ciao!</h1>
+    <p>
+      Benvenuto nella community di Reveal, dove puoi condividere le tue
+      competenze, chiedere e dare endorsement.Puoi chiedere endorsement fin da
+      ora per tutte le tue competenze, anche quelle che pensi non valga la pena
+      condividere! Sarai sorpreso di scoprire come le persone intorno a te
+      utilizzano le conoscenze acquisite in anni di esperienza sul posto di
+      lavoro e nella vita privata.
+    </p>
+    <div
+      style="
+        width: 170px;
+        max-width: 170px;
+        background-color: #5b43b1;
+        display: inline-block;
+        margin-top: 16px;
+        text-align: center;
+      "
+    >
+      <a
+        th:href="${url}"
+        style="
+          font-family: Archivo;
+          display: inline-block;
+          background-color: #5b43b1;
+          border: 1px solid #5b43b1;
+          border-radius: 10px;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
+          min-width: 120px;
+          color: white;
+          text-decoration: none;
+        "
+        >Completa il tuo profilo</a
+      >
+    </div>
+  </body>
 </html>
