@@ -47,7 +47,7 @@ public class EmailService {
         sendEmail(email, subject, feedbackModel.getTemplate(), getContextForFeedback(email, feedbackModel, baseUrl));
       }
       catch (Exception e) {
-        log.error("Failed to send feedback email to {}, with subject {}", email, subject);
+        log.error("Failed to send feedback email to {}, with subject {}", email, subject, e);
       }
       log.info("Message sent with email to {}, subject {}", email, subject);
     });
