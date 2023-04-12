@@ -18,6 +18,7 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
 
   private all$?: Observable<T[]>;
   private readonly INDEX_PREFIX: string = environment.production ? '' : 'local-';
+  private readonly RESET_DATA_KEY: string = 'resetData';
 
   constructor(
     protected http: HttpClient,
@@ -31,6 +32,7 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
     if (!(await this.needDataInit())) return;
 
     const { data } = await firstValueFrom(this.http.get<DataFile<T>>(`assets/data/${this.collectionName}.json`));
+    if (data) localStorage.setItem(this.RESET_DATA_KEY, 'false');
     await this.initializeIndex(data);
   }
 
@@ -68,19 +70,19 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
   // maybe the name can be better
   getByUrisMulti(uris: string[]): Observable<T[]> {
     return this.elasticService
-    .search<T>(this.getIndex(), {
-      size: 10_000,
-      query: {
-        bool: {
-          filter: {
-            terms: {
-              '@id.keyword': uris,
+      .search<T>(this.getIndex(), {
+        size: 10_000,
+        query: {
+          bool: {
+            filter: {
+              terms: {
+                '@id.keyword': uris,
+              },
             },
           },
         },
-      },
-    })
-    .pipe(map(extractSourcesFromElasticResponse));
+      })
+      .pipe(map(extractSourcesFromElasticResponse));
   }
 
   getAll(): Observable<T[]> {
@@ -110,10 +112,12 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
   }
 
   private async needDataInit(): Promise<boolean> {
+    if (!this.isDataResetEnabled()) return false;
     const indexes = await firstValueFrom(this.elasticService.getIndexes());
     const myIndex = this.getIndex();
-    if (indexes.includes(myIndex)) return false;
-
+    if (indexes.includes(myIndex)) {
+      return false;
+    }
     for (const index of indexes) {
       if (this.getIndexWithoutVersion(index) === this.getIndexWithoutVersion(myIndex)) {
         await firstValueFrom(this.elasticService.deleteIndex(index));
@@ -121,5 +125,13 @@ export abstract class ItemService<T extends JsonModel> implements Initializer {
     }
 
     return true;
+  }
+
+  private isDataResetEnabled(): boolean {
+    const value = localStorage.getItem(this.RESET_DATA_KEY);
+    if (value === null) {
+      localStorage.setItem(this.RESET_DATA_KEY, 'false');
+    }
+    return value === 'true';
   }
 }
