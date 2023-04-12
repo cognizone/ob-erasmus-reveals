@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Hello!</title>
-</head>
-<body>
-<div>
-    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
-    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
-</div>
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
 
-<h1 style="color: #5B43B1;font-family: Archivo;">Hello!</h1>
+    <h1 style="color: #5b43b1; font-family: Archivo">Hello!</h1>
 
-<h3 th:text="${user + ' needs your help:'} "></h3>
-<p th:text="${message}"></p>
-<button style="
-        color: white;
-        font-family: Archivo;
-        background-color:#5B43B1;
-        border:none;
-        border-radius:10px;
-        padding:15px;
-        min-width: 120px">
-    <a th:href="${url}" style="text-decoration: none;color: white">
-        <span>Give your endorsement</span>
-    </a>
-</button>
-</body>
+    <h3 th:text="${user + ' needs your help:'} "></h3>
+    <p th:text="${message}"></p>
+    <div
+      style="
+        width: 170px;
+        max-width: 170px;
+        background-color: #5b43b1;
+        display: inline-block;
+        margin-top: 16px;
+        text-align: center;
+      "
+    >
+      <a
+        th:href="${url}"
+        style="
+          font-family: Archivo;
+          display: inline-block;
+          background-color: #5b43b1;
+          border: 1px solid #5b43b1;
+          border-radius: 10px;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
+          min-width: 120px;
+          color: white;
+          text-decoration: none;
+        "
+        >Give your endorsement</a
+      >
+    </div>
+  </body>
 </html>

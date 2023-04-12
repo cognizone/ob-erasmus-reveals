@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Hello!</title>
-</head>
-<body>
-<div>
-    <img style="vertical-align:middle" th:src="|cid:${imageName}|">
-    <span style="color: #5B43B1;font-family: Archivo;  font-weight: bold; font-size: 20px;">Reveal</span>
-</div>
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
 
-<h1 style="color: #5B43B1;font-family: Archivo;">Hello!</h1>
-<p>Welcome to the Reveal community, where you can share your skills, ask for and give endorsements.You can ask
-    endorsements right now for all your skills, even the ones you think are not worth sharing!You'd be surprised to find
-    out how people around you use the knowledge they have gained from years of experience in the workplace and in
-    private life.</p>
-<button style="
-        color: white;
-        font-family: Archivo;
-        background-color:#5B43B1;
-        border:none;
-        border-radius:10px;
-        padding:15px;
-        min-width: 120px">
-    <a th:href="${url}" style="text-decoration: none;color: white">
-        <span>Complete your profile</span>
-    </a>
-</button>
-</body>
+    <h1 style="color: #5b43b1; font-family: Archivo">Hello!</h1>
+    <p>
+      Welcome to the Reveal community, where you can share your skills, ask for
+      and give endorsements.You can ask endorsements right now for all your
+      skills, even the ones you think are not worth sharing!You'd be surprised
+      to find out how people around you use the knowledge they have gained from
+      years of experience in the workplace and in private life.
+    </p>
+    <div
+      style="
+        width: 170px;
+        max-width: 170px;
+        background-color: #5b43b1;
+        display: inline-block;
+        margin-top: 16px;
+        text-align: center;
+      "
+    >
+      <a
+        th:href="${url}"
+        style="
+          font-family: Archivo;
+          display: inline-block;
+          background-color: #5b43b1;
+          border: 1px solid #5b43b1;
+          border-radius: 10px;
+          padding-top: 16px;
+          padding-bottom: 16px;
+          padding-left: 16px;
+          padding-right: 16px;
+          min-width: 120px;
+          color: white;
+          text-decoration: none;
+        "
+        >Complete your profile</a
+      >
+    </div>
+  </body>
 </html>
