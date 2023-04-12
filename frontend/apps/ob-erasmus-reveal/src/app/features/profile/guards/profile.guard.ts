@@ -17,7 +17,7 @@ export class ProfileGuard implements CanActivate {
     if (this.authService.currentUser && !this.tokenStorage.tokenParams) {
       const { profileId, tokenId } = route.params;
       this.tokenStorage.tokenParams = tokenId;
-      return this.router.createUrlTree([`profile/${this.encodeUriService.encode(profileId)}/token/${tokenId}`], {});
+      return this.router.createUrlTree(['profile', this.encodeUriService.encode(profileId), 'token', tokenId], {});
     }
     return true;
   }

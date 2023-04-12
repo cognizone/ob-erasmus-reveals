@@ -50,7 +50,7 @@ export class AuthService implements Initializer {
       email: email,
       language: this.i18nService.getActiveLang(),
     };
-    return this.http.post('api/signup', body) as Observable<string>;
+    return this.http.post('api/signup', body, { responseType: 'text' });
   }
 
   signin(): Observable<string> {
@@ -59,7 +59,7 @@ export class AuthService implements Initializer {
       language: this.i18nService.getActiveLang(),
       id: this.currentUser['@id'],
     };
-    return this.http.post('api/signin', body) as Observable<string>;
+    return this.http.post('api/signin', body, { responseType: 'text' });
   }
 
   private getState(): string | null {
