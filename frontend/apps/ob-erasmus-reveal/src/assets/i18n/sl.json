@@ -85,7 +85,7 @@
     "start": "Začnite",
     "step_0": {
       "description": "Hvala, ker ste si vzeli čas in odgovorili na to prošnjo za potrditev spretosti. Ne skrbite, izpolnjevanje vam ne bo vzelo veliko časa.",
-      "heading": "Dorbodošli"
+      "heading": "Dobrodošli"
     },
     "step_1": {
       "about": "Povejte nam več o sebi",
@@ -158,7 +158,7 @@
     "login_alt": "Prijavite se",
     "logo_alt": "Logotip prijave",
     "name": "Ime",
-    "next": "Naslednji",
+    "next": "Naprej",
     "sign_up_alt": "Registrirajte se",
     "skills": {
       "heading_1": "Raziščite 27 spretnosti",
@@ -185,7 +185,7 @@
     "skills_alt": "Več spretnosti za posameznega uporabnika",
     "skills_meta_description": "Brezplačno, začnite zdaj in zberite potrditve svojih spretnosti s strani drugih oseb.",
     "target_1": {
-      "description": "Vaša prepoznavnost",
+      "description": "vašo prepoznavnost",
       "image_alt": "prepoznavnost",
       "label": "Izboljšajte"
     },
@@ -197,22 +197,22 @@
     "target_3": {
       "description": "svoje reference",
       "image_alt": "reference",
-      "label": "Ustvari"
+      "label": "ustvarite"
     }
   },
   "join_now": {
     "action_points": {
       "image_alt": "opombe, ki jih je treba upoštevati",
       "point_1": "Ukrepajte na področju osebnega razvoja",
-      "point_2": "Bodite bolj samozavestni v svoji vlogi",
+      "point_2": "Postanite bolj samozavestni v svoji vlogi",
       "point_3": "Predstavite vsa svoja znanja in spretnosti",
       "point_4": "Razvijajte svojo kariero"
     },
     "already_member": "Ste že član?",
     "and": "in",
     "connect": "Povežite se",
-    "description": "z drugimi, ki uporabljajo Reveal, da bi dobili potrditev svojih spretnosti.",
-    "heading": "Izboljšajte svojo igro, pridružite se projektu Reveal",
+    "description": "drugim, ki uporabljajo Reveal, da bi dobili potrditev svojih spretnosti.",
+    "heading": "Izboljšajte svojo predstavitev, pridružite se projektu Reveal",
     "join": "Pridružite se",
     "join_now": "Pridružite se zdaj",
     "must_be_connected": "Če želite uporabljati to funkcijo, morate biti povezani.",
