@@ -153,7 +153,7 @@
         "fr": ["Je suis fidèle au poste"],
         "it": ["Sono devoto al mio lavoro"],
         "nl": ["Ik ben loyaal aan de positie"],
-        "sl": ["Zvest sem objavi"]
+        "sl": ["Zvest sem lastni udeležbi"]
       },
       "description": {
         "el": ["Ικανότητα τακτικής και διαρκούς ενεργού παρουσίας"],
@@ -552,7 +552,7 @@
         "en": ["Order"],
         "fr": ["Ordre"],
         "it": ["Ordine"],
-        "nl": ["Bestellen"],
+        "nl": ["Organiseren"],
         "sl": ["Red"]
       },
       "quote": {
@@ -636,7 +636,7 @@
         "en": ["Ability to perform a task over the long term, making extra efforts and not giving up when faced with obstacles"],
         "fr": ["Capacité d'exécuter une tâche à long terme, souvent en faisant des efforts supplémentaires, et ne pas abandonner face aux obstacles"],
         "it": ["Capacità di fare una cosa per lungo tempo, spesso facendo uno sforzo in più, e senza mollare di fronte agli ostacoli"],
-        "nl": ["Mogelijkheid om een \u200B\u200Blangdurige taak uit te voeren, vaak een stap verder te gaan en niet op te geven ondanks obstakels"],
+        "nl": ["Mogelijkheid om een \u200B\u200Blangdurige taak uit te voeren, vaak een stap verder te gaan en niet op te geven ondanks obstakels."],
         "sl": ["Sposobnost izpolnjevanja dolgoročnih nalog, pogosto v dodatnih naporih, brez da bi odnehali, ko se soočimo z ovirami"]
       },
       "itemStyle": {
@@ -731,7 +731,7 @@
         "fr": ["J'inspire confiance"],
         "it": ["Ispiro fiducia"],
         "nl": ["Ik wek vertrouwen"],
-        "sl": ["Vzbujam samozavest"]
+        "sl": ["Spodbujam samozavest"]
       },
       "description": {
         "el": ["Ικανότητα να εμπνέει εμπιστοσύνη στους άλλους μέσω των ενεργειών του"],
@@ -791,7 +791,7 @@
         "fr": ["Sens de l'éthique"],
         "it": ["Senso dell’etica"],
         "nl": ["Gevoel voor ethiek"],
-        "sl": ["Čut za etilko"]
+        "sl": ["Čut za etiko"]
       },
       "quote": {
         "el": ["Είμαι πιστός στις αξίες του επαγγέλματός μου"],
@@ -825,7 +825,7 @@
         "fr": ["Le sens des responsabilités"],
         "it": ["Senso di responsabilità"],
         "nl": ["Het verantwoordelijkheidsgevoel"],
-        "sl": ["Oblutek odgovornosti"]
+        "sl": ["Občutek odgovornosti"]
       },
       "quote": {
         "el": ["Αναλαμβάνω την ευθύνη για τις συνέπειες των αποφάσεων που σχετίζονται με τα καθήκοντά μου"],
@@ -841,7 +841,7 @@
         "fr": ["Capacité d'agir de manière responsable et de prendre des décisions appropriées compte tenu de ma capacité d'action"],
         "it": ["Capacità di agire responsabilmente e prendere decisione adeguate vista la mia abilità ad agire"],
         "nl": ["vermogen om verantwoordelijk te handelen en de juiste beslissingen te nemen gezien mijn vermogen om te handelen"],
-        "sl": ["Sposobnost odgovornega ravnanja in sprejemanja ustreznih odločitev glede na mojozmožnost delovanja"]
+        "sl": ["Sposobnost odgovornega ravnanja in sprejemanja ustreznih odločitev glede na mojo zmožnost delovanja"]
       },
       "itemStyle": {
         "color": "#eebf17"
