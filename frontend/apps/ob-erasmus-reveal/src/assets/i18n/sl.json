@@ -10,14 +10,14 @@
         "logo_alt": "Logotip spretnosti 1 del"
       },
       "part_2": {
-        "description_1": "Dajanje spontanih povratnih informacij na delovnem mestu je težavno, vendar nevroznanost pravi, da je s proaktivnim povabilom to veliko lažje.",
+        "description_1": "Podajanje spontanih povratnih informacij na delovnem mestu je težavno, vendar nevroznanost pravi, da je s proaktivnim delovanjem veliko lažje.",
         "description_2": "Kadar koli želite pridobiti mnenje sodelavcev, prijateljev ali vrstnikov, pošljite prošnjo za povratne informacije in začutite vrednost vseh svojih znanj in spretnosti.",
-        "heading_1": "Razkrijte sebe in svoje spretnosti",
+        "heading_1": "Odkrij sebe in svoje spretnosti",
         "logo_alt": "Logotip spretnosti 2 del"
       },
       "part_3": {
         "description_1": "Mehke veščine so še posebej pomembne pri pisanju življenjepisa, razgovorih in komuniciranju z ljudmi na delovnem mestu ali na drugih področjih življenja.",
-        "description_2": "Ko napredujete v procesu iskanja zaposlitve, uporabite Reveal za posodobitev svojega življenjepisa in izpostavite svoje najpomembnejše mehke veščine.",
+        "description_2": "Ko napredujete v procesu iskanja zaposlitve, uporabite Reveal za nadgradnjo svojega življenjepisa in izpostavite najpomembnejše mehke veščine.",
         "heading_1": "Pokažite ljudem, kako spretni ste",
         "logo_alt": "Logotip spretnosti 3 del"
       }
@@ -117,7 +117,7 @@
     "creation_modal": {
       "cancel": "{{global.cancel}}",
       "copy": "Kopiraj",
-      "default_message": "Pozdravljeni, \nČe želite potrditi moje sposobnosti, mi lahko podate nekaj povratnih informacij? \nHvala.",
+      "default_message": "Pozdravljeni, \nali bi mi lahko podali povratne informacije, in obenem potrdili tudi moje spretnosti? \nHvala.",
       "email_heading": "Pošljite prošnjo",
       "email_tab": "Po elektronski pošti",
       "feedback_sent": "Vaša prošja je bila pravilno poslana",
