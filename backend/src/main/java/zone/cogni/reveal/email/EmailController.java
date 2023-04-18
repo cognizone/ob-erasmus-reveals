@@ -23,32 +23,20 @@ public class EmailController {
   public ResponseEntity<?> sendMailFeedback(@RequestBody FeedbackModel feedbackModel) {
     String baseUrl = String.valueOf(ServletUriComponentsBuilder.fromCurrentContextPath().build());
     emailService.sendFeedbackMail(feedbackModel, baseUrl);
-    return ResponseEntity.status(HttpStatus.OK).build();
+    return ResponseEntity.ok(HttpStatus.OK);
   }
 
   @PostMapping(path = "/api/signup")
   public ResponseEntity<?> sendMailSignup(@RequestBody SignupModel signupModel) {
     String baseUrl = String.valueOf(ServletUriComponentsBuilder.fromCurrentContextPath().build());
-    try {
-      emailService.sendSignupMail(signupModel, baseUrl);
-      return ResponseEntity.status(HttpStatus.OK).build();
-    }
-    catch (Exception e) {
-      log.error("Failed sign up for user with email {}", signupModel.getEmail(), e);
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
+    emailService.sendSignupMail(signupModel, baseUrl);
+    return ResponseEntity.ok(HttpStatus.OK);
   }
 
   @PostMapping(path = "/api/signin")
   public ResponseEntity<?> sendMailSignIn(@RequestBody SignInModel signInModel) {
     String baseUrl = String.valueOf(ServletUriComponentsBuilder.fromCurrentContextPath().build());
-    try {
-      emailService.sendSignInMail(signInModel, baseUrl);
-      return ResponseEntity.status(HttpStatus.OK).build();
-    }
-    catch (Exception e) {
-      log.error("Failed sign in for user with email {}", signInModel.getEmail(), e);
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    }
+    emailService.sendSignInMail(signInModel, baseUrl);
+    return ResponseEntity.ok(HttpStatus.OK);
   }
 }
