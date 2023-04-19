@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Hello!</title>
+    <title>Bonjour!</title>
   </head>
   <body>
     <div>
@@ -18,9 +18,14 @@
       >
     </div>
 
-    <h1 style="color: #5b43b1; font-family: Archivo">Hello!</h1>
-    <p>Welcome back to the Reveal community! We're glad to see you again.</p>
-    <p>To continue your recognition journey, please click on the link below:</p>
+    <h1 style="color: #5b43b1; font-family: Archivo">Bonjour!</h1>
+    <p>
+      Bienvenue dans la communauté Reveal ! Nous sommes heureux de vous revoir.
+    </p>
+    <p>
+      Pour poursuivre ton parcours de reconnaissance, clique sur le lien
+      ci-dessous :
+    </p>
     <a th:href="${url}" th:text="${url}"></a>
   </body>
 </html>
