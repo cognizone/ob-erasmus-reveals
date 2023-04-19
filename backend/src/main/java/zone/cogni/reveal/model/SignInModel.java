@@ -1,0 +1,14 @@
+package zone.cogni.reveal.model;
+
+import lombok.Data;
+
+@Data
+public class SignInModel {
+  public String id;
+  public String language;
+  public String email;
+
+  public String getTemplate() {
+    return "signin_" + language;
+  }
+}

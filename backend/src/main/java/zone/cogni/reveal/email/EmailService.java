@@ -9,6 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import zone.cogni.reveal.model.FeedbackModel;
+import zone.cogni.reveal.model.SignInModel;
 import zone.cogni.reveal.model.SignupModel;
 
 import javax.activation.DataHandler;
@@ -25,8 +26,11 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 import java.io.InputStream;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Properties;
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -46,6 +50,12 @@ public class EmailService {
     String subject = emailProperties.getSubject(signupModel.getLanguage());
     sendEmail(signupModel.getEmail(), subject, signupModel.getTemplate(), getContextForSignup(signupModel.getEmail(), baseUrl));
     log.info("Message sent with email to {}, subject {}", signupModel.getEmail(), subject);
+  }
+
+  public void sendSignInMail(SignInModel signInModel, String baseUrl) {
+    String subject = emailProperties.getSubject(signInModel.getLanguage());
+    sendEmail(signInModel.getEmail(), subject, signInModel.getTemplate(), getContextForSignIn(signInModel, baseUrl));
+    log.info("Message sent with email to {}, subject {}", signInModel.getEmail(), subject);
   }
 
   @SneakyThrows
@@ -130,12 +140,12 @@ public class EmailService {
 
   private Context getContextForFeedback(String email, FeedbackModel feedbackModel, String baseUrl) {
     String url = UriComponentsBuilder
-            .fromHttpUrl(baseUrl)
-            .path("/endorse-skills")
-            .queryParam("feedbackRequestId", feedbackModel.getId())
-            .queryParam("email", email)
-            .build()
-            .toUriString();
+      .fromHttpUrl(baseUrl)
+      .path("/endorse-skills")
+      .queryParam("feedbackRequestId", feedbackModel.getId())
+      .queryParam("email", email)
+      .build()
+      .toUriString();
     Context context = initContext(url);
     context.setVariable("user", feedbackModel.fullName());
     context.setVariable("message", feedbackModel.getMessage());
@@ -144,11 +154,24 @@ public class EmailService {
 
   private Context getContextForSignup(String email, String baseUrl) {
     String url = UriComponentsBuilder
-            .fromHttpUrl(baseUrl)
-            .path("/complete-profile")
-            .queryParam("email", email)
-            .build()
-            .toUriString();
+      .fromHttpUrl(baseUrl)
+      .path("/complete-profile")
+      .queryParam("email", email)
+      .build()
+      .toUriString();
+    return initContext(url);
+  }
+
+  @SneakyThrows
+  private Context getContextForSignIn(SignInModel signInModel, String baseUrl) {
+    String url = UriComponentsBuilder
+      .fromHttpUrl(baseUrl)
+      .path("/profile")
+      .path("/" + URLEncoder.encode(signInModel.getId(), StandardCharsets.UTF_8.toString()))
+      .path("/token")
+      .path("/" + UUID.randomUUID())
+      .build()
+      .toUriString();
     return initContext(url);
   }
 

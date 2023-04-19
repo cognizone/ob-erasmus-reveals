@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import zone.cogni.reveal.model.FeedbackModel;
+import zone.cogni.reveal.model.SignInModel;
 import zone.cogni.reveal.model.SignupModel;
 
 
@@ -27,6 +28,13 @@ public class EmailController {
   public ResponseEntity<?> sendMailSignup(@RequestBody SignupModel signupModel) {
     String baseUrl = String.valueOf(ServletUriComponentsBuilder.fromCurrentContextPath().build());
     emailService.sendSignupMail(signupModel, baseUrl);
+    return ResponseEntity.ok(HttpStatus.OK);
+  }
+
+  @PostMapping(path = "/api/signin")
+  public ResponseEntity<?> sendMailSignIn(@RequestBody SignInModel signInModel) {
+    String baseUrl = String.valueOf(ServletUriComponentsBuilder.fromCurrentContextPath().build());
+    emailService.sendSignInMail(signInModel, baseUrl);
     return ResponseEntity.ok(HttpStatus.OK);
   }
 }
