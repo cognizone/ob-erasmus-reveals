@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="el">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Γειά σας!</title>
+  </head>
+  <body>
+    <div>
+      <img style="vertical-align: middle" th:src="|cid:${imageName}|" />
+      <span
+        style="
+          color: #5b43b1;
+          font-family: Archivo;
+          font-weight: bold;
+          font-size: 20px;
+        "
+        >Reveal</span
+      >
+    </div>
+
+    <h1 style="color: #5b43b1; font-family: Archivo">Γειά σας!</h1>
+    <p>
+      Καλώς ήρθατε και πάλι στην κοινότητα του Reveal! Χαιρόμαστε που σας
+      ξαναβλέπουμε.
+    </p>
+    <p>
+      Για να συνεχίσετε το ταξίδι σας για την ανάδειξη των δεξιοτήτων σας μέσω
+      της πλατφόρμας iReveal, κάντε κλικ στον παρακάτω σύνδεσμο:
+    </p>
+    <a th:href="${url}" th:text="${url}"></a>
+  </body>
+</html>
