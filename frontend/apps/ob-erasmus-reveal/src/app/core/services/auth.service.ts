@@ -6,6 +6,7 @@ import { Initializer } from './initializers-handler.service';
 import { UserService } from './user.service';
 import { I18nService } from '@cognizone/i18n';
 import { HttpClient } from '@angular/common/http';
+import { EncodeUriService } from './encode-uri-service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService implements Initializer {
@@ -20,7 +21,12 @@ export class AuthService implements Initializer {
   private readonly storageKey: string = 'auth';
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
-  constructor(private userService: UserService, private i18nService: I18nService, private http: HttpClient) {}
+  constructor(
+    private userService: UserService,
+    private i18nService: I18nService,
+    private http: HttpClient,
+    private encodeService: EncodeUriService
+  ) {}
 
   async init(): Promise<void> {
     const email = this.getState();
@@ -57,7 +63,7 @@ export class AuthService implements Initializer {
     const body = {
       email: this.currentUser.email,
       language: this.i18nService.getActiveLang(),
-      id: this.currentUser['@id'],
+      id: this.encodeService.encode(this.currentUser['@id']),
     };
     return this.http.post('api/signin', body, { responseType: 'text' });
   }
