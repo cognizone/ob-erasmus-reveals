@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="nl">
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Hallo!</title>
+    <title>Ciao!</title>
   </head>
   <body>
     <div>
@@ -18,9 +18,12 @@
       >
     </div>
 
-    <h1 style="color: #5b43b1; font-family: Archivo">Hallo!</h1>
-    <p>Welkom terug bij de Reveal community! We zijn blij u weer te zien.</p>
-    <p>Klik op onderstaande link om uw reis naar erkenning te vervolgen:</p>
+    <h1 style="color: #5b43b1; font-family: Archivo">Ciao!</h1>
+    <p>Ben ritornato nella community di REVEAL! Siamo contenti di rivederti.</p>
+    <p>
+      Per continuare il tuo viaggio di validazione delle tue competenze, clicca
+      nel link sotto:
+    </p>
     <a th:href="${url}" th:text="${url}"></a>
   </body>
 </html>
