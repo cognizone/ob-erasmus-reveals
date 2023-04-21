@@ -72,7 +72,7 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
       this.skillsService.getSkillForEndorsement(this.skillsUris).pipe(this.loadingService.asOperator()),
       this.feedbackService.getFeedbacksForUser(this.userId).pipe(this.loadingService.asOperator()),
       this.profileViewService.notifications$.pipe(
-        map(notifications => (this.userId === this.authService.currentUser['@id'] ? notifications : []))
+        map(notifications => (this.userId === this.authService?.currentUser?.['@id'] ? notifications : []))
       ),
       this.i18nService.selectActiveLang(),
     ]).subscribe(([skills, feedbacks, notifications]) => {
