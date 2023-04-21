@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Notification, NotificationService, User } from '@app/core';
-import { map, merge, Observable, Subject, switchMap } from 'rxjs';
+import { AuthService, Notification, NotificationService, User } from '@app/core';
+import { map, merge, Observable, of, Subject, switchMap } from 'rxjs';
 
 @Injectable()
 export class ProfileViewService {
   user$!: Observable<User>;
   notifications$!: Observable<Notification[]>;
+  private authService = inject(AuthService);
   private refresh$: Subject<void> = new Subject();
 
   constructor(private route: ActivatedRoute, private notificationService: NotificationService) {
@@ -18,7 +19,10 @@ export class ProfileViewService {
     const refresh$ = this.refresh$.asObservable().pipe(map(() => this.route.snapshot.params));
     this.notifications$ = merge(this.route.params, refresh$).pipe(
       switchMap(() => {
-        return this.notificationService.getUnAcknowledgedNotifications();
+        if (this.authService.currentUser) {
+          return this.notificationService.getUnAcknowledgedNotifications();
+        }
+        return of([]);
       })
     );
   }

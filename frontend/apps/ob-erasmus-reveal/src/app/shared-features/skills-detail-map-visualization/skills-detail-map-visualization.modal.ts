@@ -1,10 +1,10 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
 import { Router, RouterModule } from '@angular/router';
-import { Counts, RelationshipTypeService, User } from '@app/core';
+import { AuthService, Counts, RelationshipTypeService, User } from '@app/core';
 import { CountriesMapComponent } from '@app/shared-features/countries-map';
 import { ChartMetaData, SkillUsersService } from '@app/shared-features/meta-visualization';
 import { SkillImageUrlPipe } from '@app/shared-features/skills-feedback';
@@ -43,6 +43,8 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
   currentIndex: number = 0;
   data?: ChartMetaData;
   selectedCountryUri?: string;
+  displayEndorsementButton?: boolean;
+  private authService = inject(AuthService);
 
   constructor(
     public dialogRef: DialogRef,
@@ -76,6 +78,8 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
       );
       this.cdr.markForCheck();
     });
+
+    this.displayEndorsementButton = !!this.authService.currentUser;
   }
 
   onCountrySelected(country: string): void {
