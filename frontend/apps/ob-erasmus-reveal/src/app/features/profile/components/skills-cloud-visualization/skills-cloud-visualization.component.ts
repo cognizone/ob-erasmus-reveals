@@ -147,8 +147,8 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
             repulsion: 400,
             friction: 0.4,
           },
-          top: skills.length > 6 ? '40%' : '20%',
-          height: 150, // This helps to align the component height along with the height provided to the whole chart itself
+          top: skills.length > 10 ? '30%' : '20%', // 40% seems to be  a lot of gap and even 6 skills seems less(Discussed and tested with Mariam)
+          height: skills.length > 10 ? 200 : 150, // This helps to align the component height along with the height provided to the whole chart itself
         },
       ],
     });
