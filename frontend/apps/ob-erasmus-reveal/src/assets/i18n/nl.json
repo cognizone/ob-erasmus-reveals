@@ -2,69 +2,69 @@
   "about": {
     "skills": {
       "part_1": {
-        "description_1": "Hoewel je je harde vaardigheden (Harde vaardigheden zijn specifieke competenties, vaardigheden, kennis en bekwaamheden die nodig zijn om een specifieke taak of rol uit te voeren), die rechtstreeks verband houden met uw rol, veilig kunt laten zien, hebben je zachte vaardigheden (Zachte vaardigheden zijn persoonlijkheidskenmerken, sociale competenties en vaardigheden, kennis en bekwaamheden die worden gebruikt om interpersoonlijke activiteiten en unieke taken uit te voeren. Soms worden ze ook menselijke vaardigheden genoemd.) misschien een boost van erkenning nodig.",
-        "description_2": "Reveal helpt je feedback te ontvangen om vertrouwen op te bouwen in al je vaardigheden.",
-        "description_3": "Met de onderschrijving van je collega's worden je vaardigheden beter erkend en waardevol.",
+        "description_1": "Hoewel u uw harde vaardigheden (Harde vaardigheden zijn specifieke competenties, vaardigheden, kennis en bekwaamheden die nodig zijn om een specifieke taak of rol uit te voeren), die rechtstreeks verband houden met uw rol, veilig kunt laten zien, hebben je zachte vaardigheden (Zachte vaardigheden zijn persoonlijkheidskenmerken, sociale competenties en vaardigheden, kennis en bekwaamheden die worden gebruikt om interpersoonlijke activiteiten en unieke taken uit te voeren. Soms worden ze ook menselijke vaardigheden genoemd.) misschien een boost van erkenning nodig.",
+        "description_2": "Reveal helpt u feedback te ontvangen om vertrouwen op te bouwen in al uw vaardigheden.",
+        "description_3": "Met de onderschrijving van uw collega's worden uw vaardigheden beter erkend en waardevol.",
         "heading_1": "Vaardigheden delen,",
         "heading_2": "Erkenningen delen",
         "logo_alt": "Vaardigheden deel 1 logo"
       },
       "part_2": {
         "description_1": "Spontane feedback geven op de werkvloer is moeilijk, maar de neurowetenschap zegt dat een proactieve uitnodiging het veel gemakkelijker maakt.",
-        "description_2": "Elke keer wanneer je input wilt van uw collega's, je vrienden, je collega's, plaats je gewoon een feedbackverzoek en ervaar je de waarde van al je vaardigheden.",
-        "heading_1": "Onthul je vaardigheden en jezelf",
+        "description_2": "Elke keer wanneer u input wilt van uw collega's, uw vrienden, uw collega's, plaats u gewoon een feedbackverzoek en ervaart u de waarde van al uw vaardigheden.",
+        "heading_1": "Onthul uw vaardigheden en uzelf",
         "logo_alt": "Vaardigheden deel 2 logo"
       },
       "part_3": {
-        "description_1": "Zachte vaardigheden zijn vooral relevant bij het schrijven van cv's, het voeren van sollicitatiegesprekken en het communiceren met mensen op het werk of op andere gebieden in je leven.",
-        "description_2": "Gebruik Reveal tijdens je zoektocht naar een baan, om je cv bij te werken en je meest relevante soft skills onder de aandacht te brengen.",
-        "heading_1": "Laat mensen weten hoe bekwaam je bent",
+        "description_1": "Zachte vaardigheden zijn vooral relevant bij het schrijven van cv's, het voeren van sollicitatiegesprekken en het communiceren met mensen op het werk of op andere gebieden in uw leven.",
+        "description_2": "Gebruik Reveal tijdens uw zoektocht naar een baan, om uw cv bij te werken en uw meest relevante soft skills onder de aandacht te brengen.",
+        "heading_1": "Laat mensen weten hoe bekwaam u bent",
         "logo_alt": "Vaardigheden deel 3 logo"
       }
     }
   },
   "answer_sent": {
-    "heading": "Je antwoorden zijn verzonden naar {{ user }}",
-    "thank_you": "Bedankt voor je tijd!"
+    "heading": "Uw antwoorden zijn verzonden naar {{ user }}",
+    "thank_you": "Bedankt voor uw tijd!"
   },
   "complete_profile": {
     "back": "Rug",
-    "complete_now": "Maak nu je profiel compleet",
-    "description_1": "Je kunt nu al je vaardigheden om onderschrijving vragen, zelfs degenen waarvan je denkt dat ze het niet waard zijn om te delen!",
-    "description_2": "Het zal je verbazen hoe mensen om je heen de kennis gebruiken die ze hebben opgedaan door jarenlange ervaring op de werkvloer en in het privéleven.",
+    "complete_now": "Maak nu uw profiel compleet",
+    "description_1": "U kunt nu voor al uw vaardigheden om een onderschrijving vragen, zelfs degenen waarvan u denkt dat ze het niet waard zijn om te delen!",
+    "description_2": "Het zal u verbazen hoe mensen om u heen de kennis gebruiken die ze hebben opgedaan door jarenlange ervaring op de werkvloer en in het privéleven.",
     "get_started": {
-      "description": "Voltooi je profiel voor een persoonlijkere ervaring.",
+      "description": "Voltooi uw profiel voor een persoonlijkere ervaring.",
       "heading": "Laten we aan de slag gaan",
       "start": "Begin"
     },
     "greetings": "Hallo!",
     "information": {
-      "heading": "Vertel ons over jezelf",
+      "heading": "Vertel ons over uzelf",
       "point_1": {
-        "description": "Voltooi je profiel om jezelf bekend te maken in de gemeenschap en in contact te komen met andere bekwame mensen.",
-        "label": "Wie ben je?"
+        "description": "Voltooi uw profiel om uzelf bekend te maken in de gemeenschap en in contact te komen met andere bekwame mensen.",
+        "label": "Wie bent u?"
       },
       "point_2": {
-        "description": "Kies je expertisegebieden en laat ons je door de « tags » leiden. ",
-        "label": "Hoe bekwaam ben je?"
+        "description": "Kies uw expertisegebieden en laat ons u door de « tags » leiden. ",
+        "label": "Hoe bekwaam bent u?"
       },
       "point_3": {
-        "description": "Geef mensen die je kent een compliment over hun vaardigheden en help hen om beter (h)erkend te worden.",
-        "label": "Wie wil je zichtbaar maken?"
+        "description": "Geef mensen die u kent een compliment over hun vaardigheden en help hen om beter (h)erkend te worden.",
+        "label": "Wie wil u zichtbaar maken?"
       }
     },
     "step_1": {
-      "description": "Deze aanvullende informatie helpt ons om je een meer persoonlijke ervaring te bieden",
-      "heading": "Voltooi je profiel"
+      "description": "Deze aanvullende informatie helpt ons om u een meer persoonlijke ervaring te bieden",
+      "heading": "Maak uw profiel compleet"
     },
     "step_2": {
       "description": "Deze aanvullende informatie zal ons helpen de << skills >> pagina te verbeteren.",
-      "heading": "Deel je locatie"
+      "heading": "Deel uw locatie"
     },
-    "welcome_to_reveal": "Welkom bij de Reveal-community, waar je je vaardigheden kunt delen, onderschrijvingen kunt vragen en geven."
+    "welcome_to_reveal": "Welkom bij de Reveal-community, waar u uw vaardigheden kunt delen, onderschrijvingen kunt vragen en geven."
   },
   "email_confirmation": {
-    "check_inbox": "Controleer je inbox",
+    "check_inbox": "Controleer uw inbox",
     "close": "Dialoogvenster sluiten",
     "email_sent": "E-mail is correct verzonden",
     "get_started": "Ga aan de slag door op de link te klikken die we hebben verzonden",
@@ -80,36 +80,36 @@
     "name": "{{global.name}}",
     "next": "{{global.next}}",
     "optional": "(optioneel)",
-    "relationship_level": "Je niveau van relatie met {{ user }}",
+    "relationship_level": "Uw niveau van relatie met {{ user }}",
     "select_relationship": "Selecteer een relatie",
     "start": "Begin",
     "step_0": {
-      "description": "Bedankt dat je de tijd hebt genomen om dit verzoek voor onderschrijving te beantwoorden. ",
+      "description": "Bedankt dat u de tijd hebt genomen om dit verzoek voor onderschrijving te beantwoorden. ",
       "heading": "Welkom"
     },
     "step_1": {
-      "about": "Vertel ons meer over jezelf",
-      "description": "Bedankt dat je de tijd hebt genomen om dit onderschrijvingsverzoek te beantwoorden. ",
+      "about": "Vertel ons meer over uzelf",
+      "description": "Bedankt dat u de tijd hebt genomen om dit onderschrijvingsverzoek te beantwoorden. ",
       "heading": "Verzoek om onderschrijving van vaardigheden van {{ user }}"
     },
     "step_2": {
       "description": "We gebruiken de locatiegegevens van onze gebruikers om de informatie op de pagina « vaardigheden » te verbeteren",
-      "heading": "Deel je locatie"
+      "heading": "Deel uw locatie"
     },
     "step_3": {
-      "heading": "Welke vaardigheden van {{ user }} onderschrijf je?"
+      "heading": "Welke vaardigheden van {{ user }} onderschrijft u?"
     },
     "step_4": {
-      "heading": "Waarom onderschrijf je deze vaardigheden voor {{ user }}?",
-      "placeholder_text": "Voer je feedback in",
-      "send_answers": "Verstuur je antwoorden"
+      "heading": "Waarom onderschrijft u deze vaardigheden voor {{ user }}?",
+      "placeholder_text": "Plaats hier uw feedback",
+      "send_answers": "Verstuur uw feedback"
     },
     "surname": "{{global.surname}}"
   },
   "feedback_request": {
     "creation": {
       "cancel": "{{global.cancel}}",
-      "description": "Met dit formulier kun je een onderschrijving aanvragen voor je vaardigheden.",
+      "description": "Met dit formulier kunt u een onderschrijving aanvragen voor uw vaardigheden.",
       "heading": "Verzoek om onderschrijving van vaardigheden",
       "next": "{{global.next}}",
       "selected": "Geselecteerd"
@@ -120,7 +120,7 @@
       "default_message": "Hallo,\n",
       "email_heading": "Verstuur het verzoek",
       "email_tab": "Per email",
-      "feedback_sent": "Je aanvraag is correct verzonden",
+      "feedback_sent": "Uw aanvraag is correct verzonden",
       "from": "Van",
       "link": "Koppeling",
       "link_heading": "Verstuur het formulier",
@@ -136,7 +136,7 @@
     "discover": "Ontdekken",
     "follow": "Volg ons",
     "help": "Helpen",
-    "join_now": "Doe mee en begin meteen om je vaardigheden te delen",
+    "join_now": "Doe mee en begin meteen om uw vaardigheden te delen",
     "privacy_policy": "Privacybeleid",
     "social_media": {
       "facebook": "Facebook",
@@ -152,8 +152,8 @@
     "cancel": "Annuleren",
     "country": "Land",
     "email": "E-mailadres",
-    "email_invalid_error": "Je e-mailadres lijkt onjuist te zijn. ",
-    "email_placeholder": "Voer je e-mailadres in",
+    "email_invalid_error": "Uw e-mailadres lijkt onjuist te zijn. ",
+    "email_placeholder": "Voer uw e-mailadres in",
     "join": "Meedoen",
     "login_alt": "Log in",
     "logo_alt": "Applicatie-logo",
@@ -179,8 +179,8 @@
     "skills": "Vaardigheden"
   },
   "home": {
-    "description": "Reveal helpt je om je vaardigheden te promoten en je persoonlijke ontwikkeling te vergroten",
-    "heading": "Laat je vaardigheden het verschil maken",
+    "description": "Reveal helpt u om uw vaardigheden te promoten en uw persoonlijke ontwikkeling te vergroten",
+    "heading": "Laat uw vaardigheden het verschil maken",
     "promote_skills": "Begin met het promoten van uw vaardigheden",
     "skills_alt": "Meerdere vaardigheden per gebruiker",
     "skills_meta_description": "Gratis, begin nu met het verkrijgen en geven van onderschrijvingen",
@@ -203,19 +203,19 @@
   "join_now": {
     "action_points": {
       "image_alt": "punten op te merken",
-      "point_1": "Kom in actie voor je persoonlijke ontwikkeling",
+      "point_1": "Kom in actie voor uw persoonlijke ontwikkeling",
       "point_2": "Wees zelfverzekerder in je rol",
-      "point_3": "Laat al je vaardigheden zien",
-      "point_4": "Groei in je carrière"
+      "point_3": "Laat al uw vaardigheden zien",
+      "point_4": "Groei in uw carrière"
     },
     "already_member": "Al lid?",
     "and": "en",
     "connect": "Aansluiten",
-    "description": "de mensen die Reveal gebruiken om erkenning te krijgen voor je vaardigheden",
+    "description": "de mensen die Reveal gebruiken om erkenning te krijgen voor uw vaardigheden",
     "heading": "Doe mee met Reveal",
     "join": "Meedoen",
     "join_now": "Doe nu mee",
-    "must_be_connected": "Je moet verbonden zijn om deze functie te gebruiken",
+    "must_be_connected": "U moet ingelogd zijn om deze functie te gebruiken",
     "not_a_member": "Geen lid?",
     "skills_description": "Doe mee en begin meteen met het delen van je vaardigheden, vraag om aanbevelingen en geef feedback.",
     "unlock_access": "Ontgrendel onbeperkte toegang tot Reveal met slechts één klik",
@@ -225,12 +225,12 @@
     "heading": "Taal"
   },
   "login": {
-    "check_email": "Controleer uw e-mail voor aanmelding",
+    "check_email": "Controleer uw e-mail om uw aanmelding te bevestigen.",
     "no_user_found": "Fout: gebruiker bestaat niet, ga naar aanmelden."
   },
   "profile": {
     "across": "Over",
-    "add_new_description": "Om nieuwe vaardigheden aan je profiel toe te voegen, moet je een onderschrijving vragen aan je collega's, vrienden en collega's.",
+    "add_new_description": "Om nieuwe vaardigheden aan uw profiel toe te voegen, moet u een onderschrijving vragen aan uw collega's, vrienden en collega's.",
     "add_new_heading": "Helemaal klaar! Voeg nu een aantal vaardigheden toe",
     "alt_logo": "profiellogo",
     "ask_endorsement_skill": "Vraag onderschrijving voor deze vaardigheid",
@@ -257,8 +257,8 @@
     "skills": "{{header.skills}}"
   },
   "skills_feedback": {
-    "select_skills": "Selecteer 1 of meer vaardigheden waarvoor je wilt worden onderschreven:",
-    "select_skills_user": "Selecteer 1 of meer vaardigheden waarvoor {{ user }} bekrachtigd wil worden:",
+    "select_skills": "Selecteer 1 of meer vaardigheden waarvoor u wilt worden onderschreven:",
+    "select_skills_user": "Selecteer 1 of meer vaardigheden waarvoor {{ user }} onderschreven wil worden",
     "skill_selected": "{{count}} vaardigheid geselecteerd",
     "skills_selected": "{{count}} vaardigheden geselecteerd",
     "unselected": "niet geselecteerd"

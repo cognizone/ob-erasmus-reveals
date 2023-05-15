@@ -52,7 +52,7 @@ mail:
     en: Message from reveals' admin.
     it: Messaggio dall'amministratore reveals.
     nl: Bericht van reveals beheerder
-    sl: Správa od reveals admina
+    sl: Sporočilo od Reveal administratorja
   #SMTP host
   smtp:
     host: ${env.reveals.mail.smtp.host}
