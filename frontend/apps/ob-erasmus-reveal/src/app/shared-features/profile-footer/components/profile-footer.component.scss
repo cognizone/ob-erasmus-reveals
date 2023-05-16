@@ -1,7 +1,4 @@
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   border-top: 1px solid var(--border-color);
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -10,4 +7,16 @@ footer {
 
 .is-active {
   color: var(--primary-violet);
+}
+
+.my-footer {
+  margin-top: 3rem;
+}
+
+@media only screen and (min-width: 1550px) {
+  .my-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }

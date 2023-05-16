@@ -1,7 +1,7 @@
-<footer *transloco="let t;">
+<footer *transloco="let t" [class.my-footer]="isNotEndorsed">
   <div class="container d-flex justify-content-between">
     <nav class="d-flex align-items-center">
-      <img width="105" height="24" ngSrc="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')"/>
+      <img width="105" height="24" ngSrc="assets/images/logo/reveal-logo.svg" [alt]="t('global.logo_alt')" />
       <div class="my-copyright pl-3">© {{ year }}</div>
     </nav>
 
@@ -22,13 +22,15 @@
   <ng-template #menu>
     <div class="app-cdk-menu" cdkMenu>
       <button
-          cdkMenuItem
-          *ngFor="let lang of i18nService.getAvailableLangs()"
-          [class.is-active]="lang === i18nService.getActiveLang()"
-          (click)="languageService.setActiveLang(lang)"
+        cdkMenuItem
+        *ngFor="let lang of i18nService.getAvailableLangs()"
+        [class.is-active]="lang === i18nService.getActiveLang()"
+        (click)="languageService.setActiveLang(lang)"
       >
         {{ t('langs.' + lang) }}
       </button>
     </div>
   </ng-template>
+
+  <ob-erasmus-reveal-eu-logo></ob-erasmus-reveal-eu-logo>
 </footer>

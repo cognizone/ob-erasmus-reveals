@@ -1,0 +1,11 @@
+<div class="container mt-3" *transloco="let t; read: 'eu-logo'">
+  <!-- Using *ngFor to force re-render on lang change -->
+  <img
+    *ngFor="let lang of [i18nService.getActiveLang()]"
+    width="230"
+    height="55"
+    [ngSrc]="'assets/images/footer/eu_' + lang + '.svg'"
+    [alt]="t('logo_alt')"
+  />
+  <p>{{ t('description') }}</p>
+</div>

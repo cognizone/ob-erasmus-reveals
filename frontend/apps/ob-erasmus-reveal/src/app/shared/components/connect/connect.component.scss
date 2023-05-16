@@ -1,1 +1,11 @@
+.my-connect {
+  height: calc(150vh - 360px);
+  display: flex;
+  justify-content: space-between;
+}
 
+@media only screen and (min-width: 1550px) {
+  .my-connect {
+    height: calc(100vh - 360px);
+  }
+}
