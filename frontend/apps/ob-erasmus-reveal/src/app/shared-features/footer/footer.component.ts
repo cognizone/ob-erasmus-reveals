@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { SignupComponent } from '../signup';
+import { EuLogoComponent } from '../eu-logo';
 
 @Component({
   selector: 'ob-erasmus-reveal-footer',
   standalone: true,
-  imports: [CommonModule, TranslocoModule, NgOptimizedImage, SignupComponent],
+  imports: [CommonModule, TranslocoModule, NgOptimizedImage, SignupComponent, EuLogoComponent],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,7 +47,7 @@ export class FooterComponent {
 }
 
 interface NavItem {
-  labelKey: string,
-  path: string,
+  labelKey: string;
+  path: string;
   className?: string;
 }

@@ -106,6 +106,10 @@
     },
     "surname": "{{global.surname}}"
   },
+  "eu-logo": {
+    "description": "Financirano s strani Evropske unije. Izražena stališča in mnenja so zgolj stališča in mnenja avtorja(-ev) in ni nujno, da odražajo stališča in mnenja Evropske unije ali Evropske izvajalske agencije za izobraževanje in kulturo (EACEA). Zanje ne moreta biti odgovorna niti Evropska unija niti EACEA.",
+    "logo_alt": "Logotip Evropske unije"
+  },
   "feedback_request": {
     "creation": {
       "cancel": "{{global.cancel}}",

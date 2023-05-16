@@ -8,6 +8,7 @@ import { I18nService } from '@cognizone/i18n';
 import { HttpClient } from '@angular/common/http';
 import { EncodeUriService } from './encode-uri-service';
 import { TokenStorageService } from './token-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService implements Initializer {
@@ -28,7 +29,8 @@ export class AuthService implements Initializer {
     private userService: UserService,
     private i18nService: I18nService,
     private http: HttpClient,
-    private encodeService: EncodeUriService
+    private encodeService: EncodeUriService,
+    private router: Router
   ) {}
 
   async init(): Promise<void> {
@@ -76,6 +78,7 @@ export class AuthService implements Initializer {
     if (token && new Date().getTime() > token['expiry']) {
       localStorage.removeItem(this.storageKey);
       localStorage.removeItem('token');
+      this.router.navigate(['login']);
       return null;
     }
 
