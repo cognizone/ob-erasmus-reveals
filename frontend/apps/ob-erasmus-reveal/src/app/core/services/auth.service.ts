@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, firstValueFrom, map, Observable, of, switchMap } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject, firstValueFrom, map, Observable } from 'rxjs';
 
 import { User } from '../models';
 import { Initializer } from './initializers-handler.service';
@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { I18nService } from '@cognizone/i18n';
 import { HttpClient } from '@angular/common/http';
 import { EncodeUriService } from './encode-uri-service';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService implements Initializer {
@@ -17,6 +18,8 @@ export class AuthService implements Initializer {
   get currentUser(): User {
     return this._currentUser$.value as User;
   }
+
+  private tokenStorageService = inject(TokenStorageService);
 
   private readonly storageKey: string = 'auth';
   private _currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
@@ -39,7 +42,7 @@ export class AuthService implements Initializer {
     return this.userService.getByEmail(email).pipe(
       map(user => {
         this._currentUser$.next(user);
-        if (user) {
+        if (user && !this.tokenStorageService.tokenParams) {
           this.setState(email);
         }
         return !!user;
@@ -69,6 +72,13 @@ export class AuthService implements Initializer {
   }
 
   private getState(): string | null {
+    const token = this.tokenStorageService.tokenParams;
+    if (token && new Date().getTime() > token['expiry']) {
+      localStorage.removeItem(this.storageKey);
+      localStorage.removeItem('token');
+      return null;
+    }
+
     return localStorage.getItem(this.storageKey);
   }
 
