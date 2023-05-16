@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileViewResolver } from './resolvers/profile-view.resolver';
-import { CurrentProfileGuard, ProfileGuard } from './guards';
+import { ProfileGuard } from './guards';
+import { ProfileAuthGuard } from '@app/core';
 
 const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./views/profile.view').then(m => m.ProfileView),
-    canActivate: [CurrentProfileGuard], // maybe the names can be modified.....
+    canActivate: [ProfileAuthGuard],
   },
   {
     path: ':profileId/token/:tokenId',

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
-import { AuthService, EncodeUriService, TokenStorageService } from '@app/core';
+import { AuthService, EncodeUriService, TokenStorageService } from '../services';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CurrentProfileGuard implements CanActivate {
+export class ProfileAuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -16,7 +16,7 @@ export class CurrentProfileGuard implements CanActivate {
   canActivate(): boolean | UrlTree {
     if (this.authService.currentUser && this.tokenStorage.tokenParams) {
       return this.router.createUrlTree(
-        ['profile', this.encodeUriService.encode(this.authService.currentUser['@id']), 'token', this.tokenStorage.tokenParams],
+        ['profile', this.encodeUriService.encode(this.authService.currentUser['@id']), 'token', this.tokenStorage.tokenParams['value']],
         {}
       );
     } else if (this.authService.currentUser) {

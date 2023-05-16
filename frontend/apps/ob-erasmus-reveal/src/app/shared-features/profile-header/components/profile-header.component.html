@@ -1,5 +1,5 @@
 <header *transloco="let t" class="container d-flex align-items-center">
-  <a routerLink="/profile">
+  <a [routerLink]="[authService.currentUser ? '/profile' : '/']">
     <img priority width="158" height="36" ngSrc="assets/images/logo/reveal-logo-square.svg" [alt]="t('global.logo_alt')" />
   </a>
   <div class="flex-grow-1"></div>
