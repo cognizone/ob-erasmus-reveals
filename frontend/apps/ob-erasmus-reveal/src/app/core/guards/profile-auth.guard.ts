@@ -26,9 +26,6 @@ export class ProfileAuthGuard implements CanActivate {
     }
 
     if (this.authService.currentUser && this.tokenStorage.tokenParams) {
-      if (state.url === '/feedback-request/create') {
-        return true;
-      }
       return this.router.createUrlTree(
         ['profile', this.encodeUriService.encode(this.authService.currentUser['@id']), 'token', this.tokenStorage.tokenParams['value']],
         {}
