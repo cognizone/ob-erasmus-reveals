@@ -109,6 +109,16 @@ export class SkillsDetailMapVisualizationModal extends OnDestroy$ implements OnI
     this.dialogRef.close();
     this.router.navigate([], { queryParams: {} });
   }
+
+  goToPreviousStep(): void {
+    // removing the country uri to make sure the click on country works fine back and forth
+    this.router.navigate([], {
+      queryParamsHandling: 'merge',
+      queryParams: {
+        selectedCountryUri: null,
+      },
+    });
+  }
 }
 
 interface Relation {

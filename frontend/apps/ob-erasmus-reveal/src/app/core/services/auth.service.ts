@@ -44,7 +44,7 @@ export class AuthService implements Initializer {
     return this.userService.getByEmail(email).pipe(
       map(user => {
         this._currentUser$.next(user);
-        if (user && !this.tokenStorageService.tokenParams) {
+        if (user) {
           this.setState(email);
         }
         return !!user;
@@ -73,12 +73,15 @@ export class AuthService implements Initializer {
     return this.http.post('api/signin', body, { responseType: 'text' });
   }
 
+  getTokenState(): string | null {
+    return this.getState();
+  }
+
   private getState(): string | null {
     const token = this.tokenStorageService.tokenParams;
     if (token && new Date().getTime() > token['expiry']) {
-      localStorage.removeItem(this.storageKey);
       localStorage.removeItem('token');
-      this.router.navigate(['login']);
+      localStorage.removeItem(this.storageKey);
       return null;
     }
 
