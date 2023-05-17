@@ -106,7 +106,7 @@
     },
     "surname": "{{global.surname}}"
   },
-  "eu-logo": {
+  "eu_logo": {
     "description": "Finanziato dall'Unione europea. Le opinioni espresse appartengono, tuttavia, al solo o ai soli autori e non riflettono necessariamente le opinioni dell'Unione europea o dell’Agenzia esecutiva europea per l’istruzione e la cultura (EACEA). Né l'Unione europea né l'EACEA possono esserne ritenute responsabili.",
     "logo_alt": "Logo dell'Unione europea"
   },
