@@ -106,7 +106,7 @@
     },
     "surname": "{{global.surname}}"
   },
-  "eu-logo": {
+  "eu_logo": {
     "description": "Gefinancierd door de Europese Unie. De hier geuite ideeën en meningen komen echter uitsluitend voor rekening van de auteur(s) en geven niet noodzakelijkerwijs die van de Europese Unie of het Europese Uitvoerende Agentschap onderwijs en cultuur (EACEA) weer. Noch de Europese Unie, noch het EACEA kan ervoor aansprakelijk worden gesteld.",
     "logo_alt": "Logo van de Europese Unie"
   },
