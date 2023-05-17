@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -19,6 +19,7 @@ import {
   RelationshipTypeService,
   Skill,
   SkillsService,
+  TokenStorageService,
 } from '@app/core';
 import { I18nModule, I18nService } from '@cognizone/i18n';
 import { LoadingService, OnDestroy$ } from '@cognizone/ng-core';
@@ -87,6 +88,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
   endorsementComplete: boolean = false;
   loading$: Observable<boolean> = this.loadingService.loading$;
   lang?: string;
+  private tokenStorageService = inject(TokenStorageService);
 
   constructor(
     private fb: FormBuilder,
@@ -186,7 +188,7 @@ export class EndorseSkillsView extends OnDestroy$ implements OnInit {
         ),
         this.loadingService.asOperator(),
         switchMap(() => {
-          if (this.endorseSkillsParams['email'] === this.authService.currentUser?.email) {
+          if (this.authService.currentUser?.email && this.tokenStorageService.tokenParams) {
             this.dialog.open(FeedbackSentToProfileModal, {
               data: { requestingUser: this.requestingUser },
             });
