@@ -78,7 +78,7 @@
     </mat-step>
     <!-- step 2-->
     <mat-step>
-      <button class="app-anchor my-back-button mb-4" color="primary" matStepperPrevious>
+      <button class="app-anchor my-back-button mb-4" color="primary" matStepperPrevious (click)="goToPreviousStep()">
         <mat-icon>arrow_forward_ios</mat-icon>
         {{ t('back') }}
       </button>

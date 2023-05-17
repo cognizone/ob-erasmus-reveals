@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AuthService } from '@app/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { AuthService, TokenStorageService } from '@app/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoModule } from '@ngneat/transloco';
 import { SkillsVisualizationComponent } from '@app/shared-features/skills-visualization';
@@ -26,10 +26,11 @@ import { ProfileFooterComponent } from '@app/shared-features/profile-footer';
 })
 export class GlobalSkillsVisualizationView implements OnInit {
   isConnected: boolean = false;
+  private tokenStorageService = inject(TokenStorageService);
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    if (this.authService.currentUser) this.isConnected = true;
+    if (this.authService.currentUser && this.tokenStorageService.tokenParams) this.isConnected = true;
   }
 }
