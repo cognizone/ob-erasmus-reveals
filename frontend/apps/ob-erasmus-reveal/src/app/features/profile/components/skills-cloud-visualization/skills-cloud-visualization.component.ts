@@ -114,6 +114,20 @@ export class SkillsCloudVisualizationComponent extends OnDestroy$ implements OnI
 
         this.router.navigate([], { queryParams: { selectedSkillUri: encodeURIComponent(metaData?.skillUri as string) } });
       });
+
+      // on mouseover
+      this.chart.on('mouseover', 'series.graph', event => {
+        const { metaData } = event.data as ChartData;
+        // When there are notifications, need to make sure on acknowledged notifications we don't show highlight
+        if (this.notifications.some(n => n.endorsedSkill !== metaData?.skillUri)) {
+          // Downplay has to be set first and then highlight on the rest of the bubbles
+          this.chart?.dispatchAction({ type: 'downplay' });
+          this.chart?.dispatchAction({
+            type: 'highlight',
+            dataIndex: this.getIndexesOfSkills(skills, this.notifications),
+          });
+        }
+      });
     }
 
     const data = this.chartDataService.generateData(skills, this.counts, feedbacks);
