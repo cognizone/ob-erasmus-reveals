@@ -7,8 +7,7 @@
     "semantic-release": "semantic-release"
   },
   "repository": {
-    "type": "git",
-    "url": "https://github.com/cognizone/ob-erasmus-reveals.git"
+    "url": "git@github.com-cognizone:cognizone/ob-erasmus-reveals.git"
   },
   "devDependencies": {
     "semantic-release": "^24.0.0",
