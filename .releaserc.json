@@ -1,11 +1,9 @@
 {
+  "repositoryUrl": "git@github.com-cognizone:cognizone/ob-erasmus-reveals.git",
   "branches": [
     "main",
     "master",
-    {
-      "name": "feat/*",
-      "prerelease": true
-    }
+    "feat/semantic-release"
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
