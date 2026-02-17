@@ -7,8 +7,6 @@ buildscript {
 }
 
 plugins {
-  id "pl.allegro.tech.build.axion-release" version "1.13.6"
-//  id "pl.allegro.tech.build.axion-release" version "1.14.3"
   id 'org.springframework.boot' version '2.6.14' apply false
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
@@ -19,22 +17,6 @@ plugins {
 }
 repositories {
   maven { url "https://plugins.gradle.org/m2/" }
-}
-
-scmVersion {
-  tag {
-    prefix = "v"
-    versionSeparator = ""
-    branchPrefix = [
-            'release/.*': 'release-v',
-            'hotfix/.*' : 'hotfix-v'
-    ]
-    //manually added version tag// initialVersion = { final TagProperties rules, final ScmPosition position -> "0.0.1" }
-  }
-  nextVersion {
-    suffix = "SNAPSHOT"
-    separator = "-"
-  }
 }
 
 idea {
@@ -87,7 +69,7 @@ subprojects {
   targetCompatibility = JavaVersion.VERSION_11
 
   group = "zone.cogni"
-  version = scmVersion.version
+  version = project.hasProperty('version') ? project.property('version') : '0.0.1-SNAPSHOT'
 
   compileJava.options.encoding = "UTF-8"
   compileTestJava.options.encoding = "UTF-8"
@@ -157,7 +139,7 @@ project("backend") {
         artifact(bootJar)
         groupId = 'zone.cogni.ob.erasmus-reveals'
         artifactId = 'erasmus-reveals'
-        version = scmVersion.version
+        version = project.version
       }
     }
     repositories {
