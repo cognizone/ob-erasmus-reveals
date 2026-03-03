@@ -2,7 +2,7 @@ buildscript {
   ext {
     javaxMailVersion = "1.6.2"
     springDocVersion = "1.6.13"
-    vinzClorthoVersion = "0.1.2"
+    vinzClorthoVersion = "1.0.5"
   }
 }
 
@@ -55,7 +55,7 @@ subprojects {
       //mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
     dependencies {
-      dependency("zone.cogni.vinz-clortho:vinz-clortho:${vinzClorthoVersion}")
+      dependency("zone.cogni.lib.vinz-clortho:vinz-clortho:${vinzClorthoVersion}")
       dependency("com.sun.mail:javax.mail:${javaxMailVersion}")
       dependency("org.springdoc:springdoc-openapi-ui:${springDocVersion}")
     }
@@ -117,7 +117,7 @@ project("backend") {
 
     implementation("org.springdoc:springdoc-openapi-ui")
 
-    implementation("zone.cogni.vinz-clortho:vinz-clortho")
+    implementation("zone.cogni.lib.vinz-clortho:vinz-clortho")
 
     implementation("com.sun.mail:javax.mail")
 
